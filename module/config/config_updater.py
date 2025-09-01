@@ -801,7 +801,7 @@ class ConfigUpdater:
 
         if not is_template:
             new = self.config_redirect(old, new)
-        new = self.update_state(new)
+        # new = self.update_state(new)
 
         return new
 
@@ -854,8 +854,8 @@ class ConfigUpdater:
 
         return new
 
-    @staticmethod
-    def update_state(data):
+    # @staticmethod
+    # def update_state(data):
         # Limit setting combinations
         # if deep_get(data, keys='Rogue.RogueWorld.UseImmersifier') is False:
         #     deep_set(data, keys='Rogue.RogueWorld.UseStamina', value=False)
@@ -867,10 +867,10 @@ class ConfigUpdater:
         # if deep_get(data, keys='Rogue.RogueWorld.UseImmersifier') is True:
         #     deep_set(data, keys='Dungeon.Scheduler.Enable', value=True)
         # Cloud settings
-        if deep_get(data, keys='Alas.Emulator.GameClient') == 'cloud_android':
-            deep_set(data, keys='Alas.Emulator.PackageName', value='CN-Official')
+        # if deep_get(data, keys='Alas.Emulator.GameClient') == 'cloud_android':
+        #     deep_set(data, keys='Alas.Emulator.PackageName', value='CN-Official')
 
-        return data
+        # return data
 
     def save_callback(self, key: str, value: t.Any) -> t.Iterable[t.Tuple[str, t.Any]]:
         """
