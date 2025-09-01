@@ -5,7 +5,7 @@ from module.exception import GameNotRunningError, GamePageUnknownError, HandledE
 from module.logger import logger
 from module.ocr.ocr import Ocr
 from tasks.base.assets.assets_base_main_page import ROGUE_LEAVE_FOR_NOW, ROGUE_LEAVE_FOR_NOW_OE
-from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_EXIT, MAP_EXIT_OE
+from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_EXIT, MAP_EXIT_OE, MAIN_PAGE
 from tasks.base.assets.assets_base_popup import POPUP_STORY_LATER
 from tasks.base.main_page import MainPage
 from tasks.base.page import Page, page_gacha, page_main
@@ -192,11 +192,13 @@ class UI(MainPage):
         logger.hr("UI ensure")
         self.ui_get_current_page(skip_first_screenshot=skip_first_screenshot)
 
-        self.ui_leave_special()
+        # no need exit any special
+        # self.ui_leave_special()
 
-        if acquire_lang_checked:
-            if self.acquire_lang_checked():
-                self.ui_get_current_page(skip_first_screenshot=skip_first_screenshot)
+        # fuxiao is always use cn so no need check lang
+        # if acquire_lang_checked:
+        #     if self.acquire_lang_checked():
+        #         self.ui_get_current_page(skip_first_screenshot=skip_first_screenshot)
 
         if self.ui_current == destination:
             logger.info("Already at %s" % destination)
@@ -312,14 +314,15 @@ class UI(MainPage):
                     continue
 
     def is_in_main(self, interval=0):
-        self.device.stuck_record_add(MAIN_GOTO_CHARACTER)
-
-        if interval and not self.interval_is_reached(MAIN_GOTO_CHARACTER, interval=interval):
+        p_main = MAIN_PAGE
+        self.device.stuck_record_add(p_main)
+        if interval and not self.interval_is_reached(p_main, interval=interval):
             return False
 
         appear = False
-        if MAIN_GOTO_CHARACTER.match_template_luma(self.device.image):
-            if self.image_color_count(MAIN_GOTO_CHARACTER, color=(235, 235, 235), threshold=234, count=400):
+        if p_main.match_template_luma(self.device.image):
+            if self.image_color_count(p_main, color=(79, 164, 215), threshold=234, count=400):
+            # if self.image_color_count(p_main, color=(235, 235, 235), threshold=234, count=400):
                 appear = True
         if not appear:
             if MAP_EXIT.match_template_luma(self.device.image):
@@ -327,7 +330,7 @@ class UI(MainPage):
                     appear = True
 
         if appear and interval:
-            self.interval_reset(MAIN_GOTO_CHARACTER, interval=interval)
+            self.interval_reset(p_main, interval=interval)
 
         return appear
 

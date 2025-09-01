@@ -50,6 +50,7 @@ export default defineComponent({
       ipcRendererSend(WINDOW_READY, true);
 
       ipcRendererOn(ALAS_LOG, async (_, arg: string) => {
+        console.log(arg)
         logInfos.value.push(arg);
         await nextTick();
         scrollToBottom();

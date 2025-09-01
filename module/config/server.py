@@ -7,12 +7,7 @@ server = 'CN-Official'
 
 VALID_LANG = ['cn', 'en']
 VALID_SERVER = {
-    'CN-Official': 'com.miHoYo.hkrpg',
-    'CN-Bilibili': 'com.miHoYo.hkrpg.bilibili',
-    'OVERSEA-America': 'com.HoYoverse.hkrpgoversea',
-    'OVERSEA-Asia': 'com.HoYoverse.hkrpgoversea',
-    'OVERSEA-Europe': 'com.HoYoverse.hkrpgoversea',
-    'OVERSEA-TWHKMO': 'com.HoYoverse.hkrpgoversea',
+    'CN-Official': 'com.nineyou.fuxiao',
 }
 VALID_PACKAGE = set(list(VALID_SERVER.values()))
 VALID_CLOUD_SERVER = {

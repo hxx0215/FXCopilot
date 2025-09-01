@@ -470,6 +470,9 @@ class AlasGUI(Frame):
         )
 
         log = RichLog("log")
+        # for arg in self.ALAS_STORED:
+        #     x = deep_get(self.ALAS_STORED, keys=[arg, "order"], default=0)
+        #     logger.info(f"keys - x: {x}")
 
         with use_scope("logs"):
             put_scope("log-bar", [

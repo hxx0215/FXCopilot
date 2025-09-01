@@ -179,13 +179,11 @@
   "Dungeon": {
     "Scheduler": {
       "Enable": {
-        "type": "state",
-        "value": true,
+        "type": "checkbox",
+        "value": false,
         "option": [
-          true
-        ],
-        "option_bold": [
-          true
+          true,
+          false
         ]
       },
       "NextRun": {
@@ -1461,13 +1459,11 @@
   "DailyQuest": {
     "Scheduler": {
       "Enable": {
-        "type": "state",
-        "value": true,
+        "type": "checkbox",
+        "value": false,
         "option": [
-          true
-        ],
-        "option_bold": [
-          true
+          true,
+          false
         ]
       },
       "NextRun": {
@@ -1506,13 +1502,11 @@
   "BattlePass": {
     "Scheduler": {
       "Enable": {
-        "type": "state",
-        "value": true,
+        "type": "checkbox",
+        "value": false,
         "option": [
-          true
-        ],
-        "option_bold": [
-          true
+          true,
+          false
         ]
       },
       "NextRun": {
@@ -1599,13 +1593,11 @@
   "Assignment": {
     "Scheduler": {
       "Enable": {
-        "type": "state",
-        "value": true,
+        "type": "checkbox",
+        "value": false,
         "option": [
-          true
-        ],
-        "option_bold": [
-          true
+          true,
+          false
         ]
       },
       "NextRun": {
@@ -1807,6 +1799,22 @@
         "stored": "StoredInt",
         "order": 8,
         "color": "#fc8f8b"
+      },
+      "Oil":{
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredInt",
+        "order": 7,
+        "color": "#ab7cf2"
+      },
+      "Money":{
+        "type": "stored",
+        "value": {},
+        "display": "display",
+        "stored": "StoredInt",
+        "order": 8,
+        "color": "#fc8f8b"
       }
     },
     "CloudStorage": {
@@ -1834,7 +1842,7 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": true,
+        "value": false,
         "option": [
           true,
           false
@@ -2177,13 +2185,11 @@
   "Daemon": {
     "Daemon": {
       "Enable": {
-        "type": "state",
-        "value": true,
+        "type": "checkbox",
+        "value": false,
         "option": [
-          true
-        ],
-        "option_bold": [
-          true
+          true,
+          false
         ]
       },
       "AimClicker": {

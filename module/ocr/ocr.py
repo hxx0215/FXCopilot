@@ -79,6 +79,7 @@ class Ocr:
 
     @cached_property
     def model(self) -> TextSystem:
+        logger.info(f'current lang is {self.lang}')
         return OCR_MODEL.get_by_lang(self.lang)
 
     def pre_process(self, image):

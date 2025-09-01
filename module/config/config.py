@@ -126,6 +126,7 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
 
     def load(self):
         self.data = self.read_file(self.config_name)
+        # logger.info(f'current data: {self.data}')
         self.config_override()
 
         for path, value in self.modified.items():
@@ -212,12 +213,14 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
         if AzurLaneConfig.is_hoarding_task:
             now -= self.hoarding
         for func in self.data.values():
+            # logger.info(f'before {func}')
             func = Function(func)
             if not func.enable:
                 continue
             if not isinstance(func.next_run, datetime):
                 error.append(func)
             elif func.next_run < now:
+                logger.info(f'add func {func}')
                 pending.append(func)
             else:
                 waiting.append(func)

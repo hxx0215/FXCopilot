@@ -109,6 +109,8 @@ class MainPage(PopupHandler):
 
     def check_lang_from_map_plane(self) -> str | None:
         logger.info('check_lang_from_map_plane')
+        # no need check fx is always cn
+        return "cn"
         lang_unknown = self.config.Emulator_GameLanguage == 'auto'
 
         if lang_unknown:
@@ -160,6 +162,8 @@ class MainPage(PopupHandler):
         Returns:
             bool: If checked
         """
+        # because fx is always using cn
+        return False
         if MainPage._lang_checked:
             return False
 

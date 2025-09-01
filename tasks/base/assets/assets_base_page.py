@@ -131,6 +131,13 @@ GUIDE_CLOSE = ButtonWrapper(
 )
 ITEM_CHECK = ButtonWrapper(
     name='ITEM_CHECK',
+    # share=Button(
+    #     file='./assets/share/base/page/OIL.png',
+    #     area=(800, 25, 825, 50),
+    #     search=(780, 5, 845, 70),
+    #     color=(247, 247, 247),
+    #     button=(800, 25, 825, 50),
+    # ),
     share=Button(
         file='./assets/share/base/page/ITEM_CHECK.png',
         area=(43, 23, 72, 54),
@@ -148,6 +155,16 @@ MAIN_GOTO_BATTLE_PASS = ButtonWrapper(
         color=(165, 164, 162),
         button=(860, 36, 889, 56),
     ),
+)
+MAIN_PAGE = ButtonWrapper(
+    name = 'MAIN_PAGE',
+    share = Button(
+        file='./assets/share/base/page/FX_MAIN_PAGE.png',
+        area=(1195,550,1263,585),
+        search=(1075,530,1280,605),
+        color=(77,165,215),
+        button=(1195,550,1263,585)
+    )
 )
 MAIN_GOTO_CHARACTER = ButtonWrapper(
     name='MAIN_GOTO_CHARACTER',

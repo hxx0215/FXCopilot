@@ -10,6 +10,7 @@ from module.config.convert import *
 from module.config.deep import deep_default, deep_get, deep_iter, deep_set
 from module.config.server import VALID_SERVER
 from module.config.utils import *
+from module.logger import logger
 
 CONFIG_IMPORT = '''
 import datetime
@@ -787,7 +788,6 @@ class ConfigUpdater:
         new = {}
         type_lock = {'lock', 'state'}
         type_stored = {'stored', 'dict'}
-
         for keys, data in deep_iter(self.args, depth=3):
             value = deep_get(old, keys=keys, default=data['value'])
             typ = data['type']
@@ -796,6 +796,7 @@ class ConfigUpdater:
                     or typ in type_lock or (display == 'hide' and typ not in type_stored):
                 value = data['value']
             value = parse_value(value, data=data)
+            # logger.info(f'set {keys} : {value}')
             deep_set(new, keys=keys, value=value)
 
         if not is_template:
@@ -856,15 +857,15 @@ class ConfigUpdater:
     @staticmethod
     def update_state(data):
         # Limit setting combinations
-        if deep_get(data, keys='Rogue.RogueWorld.UseImmersifier') is False:
-            deep_set(data, keys='Rogue.RogueWorld.UseStamina', value=False)
-        if deep_get(data, keys='Rogue.RogueWorld.UseStamina') is True:
-            deep_set(data, keys='Rogue.RogueWorld.UseImmersifier', value=True)
-        if deep_get(data, keys='Rogue.RogueWorld.DoubleEvent') is True:
-            deep_set(data, keys='Rogue.RogueWorld.UseImmersifier', value=True)
+        # if deep_get(data, keys='Rogue.RogueWorld.UseImmersifier') is False:
+        #     deep_set(data, keys='Rogue.RogueWorld.UseStamina', value=False)
+        # if deep_get(data, keys='Rogue.RogueWorld.UseStamina') is True:
+        #     deep_set(data, keys='Rogue.RogueWorld.UseImmersifier', value=True)
+        # if deep_get(data, keys='Rogue.RogueWorld.DoubleEvent') is True:
+        #     deep_set(data, keys='Rogue.RogueWorld.UseImmersifier', value=True)
         # Store immersifier in dungeon task
-        if deep_get(data, keys='Rogue.RogueWorld.UseImmersifier') is True:
-            deep_set(data, keys='Dungeon.Scheduler.Enable', value=True)
+        # if deep_get(data, keys='Rogue.RogueWorld.UseImmersifier') is True:
+        #     deep_set(data, keys='Dungeon.Scheduler.Enable', value=True)
         # Cloud settings
         if deep_get(data, keys='Alas.Emulator.GameClient') == 'cloud_android':
             deep_set(data, keys='Alas.Emulator.PackageName', value='CN-Official')
