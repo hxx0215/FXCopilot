@@ -156,6 +156,7 @@ MAIN_GOTO_BATTLE_PASS = ButtonWrapper(
         button=(860, 36, 889, 56),
     ),
 )
+# fx
 MAIN_PAGE = ButtonWrapper(
     name = 'MAIN_PAGE',
     share = Button(
@@ -481,4 +482,65 @@ WORLD_CHECK = ButtonWrapper(
         color=(110, 102, 87),
         button=(46, 19, 68, 54),
     ),
+)
+REWARD_CHECK = ButtonWrapper(
+    name = 'REWARD_CHECK',
+    share=Button(
+        file='./assets/share/reward/REWARD_CHECK.png',
+        area=(585,270,635,310),
+        search=(565,250,655,330),
+        button=(585,270,635,310),
+        color=(188,188,188)
+    )
+)
+REWARD_CHECK_CLOSE = ButtonWrapper(
+    name = 'REWARD_CHECK_CLOSE',
+    share=Button(
+        file='./assets/share/reward/REWARD_CHECK_CLOSE.png',
+        area=(470,333,495,385),
+        color=(199,245,255),
+        button=(470,333,495,385),
+        search=(450,313,515,405)
+    )
+)
+REWARD_CHECK_OPEN = ButtonWrapper(
+    name = 'REWARD_CHECK_OPEN',
+    share=Button(
+        file='./assets/share/reward/REWARD_CHECK_OPEN.png',
+        area=(1170,195,1258,223),
+        search=(1150,175,1278,243),
+        button=(1170,195,1258,223),
+        color=(32,32,32)
+
+    )
+)
+REFINERY_OPEN= ButtonWrapper(
+    name = 'REFINERY_OPEN',
+    share=Button(
+        file='./assets/share/reward/REFINERY_OPEN.png',
+        area=(590,70,645,85),
+        search=(570,50,665,105),
+        button=(590,70,645,85),
+        color=(39,39,39)
+    )
+)
+REFINERY=ButtonWrapper(
+    name = 'REFINERY',
+    share=Button(
+        file='./assets/share/reward/REFINERY.png',
+        area=(100,100,275,250),
+        search=(80,80,295,270),
+        button=(100,100,275,250),
+        color=(188,158,168)
+    )
+)
+HOME_BUTTON=ButtonWrapper(
+    name = 'HOME_BUTTON',
+    share = Button(
+        file='./assets/share/base/main_page/HOME_BUTTON.png',
+        area=(220,25,250,50),
+        search=(200,5,275,70),
+        button=(220,25,250,50),
+        color=(51,51,51)
+    )
 )

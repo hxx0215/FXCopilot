@@ -164,3 +164,13 @@ page_rogue.link(CLOSE, destination=page_main)
 # Planner result
 page_planner = Page(PLANNER_CHECK)
 page_planner.link(CLOSE, destination=page_menu)
+
+
+page_reward = Page(REWARD_CHECK)
+
+page_reward.link(REWARD_CHECK_CLOSE, destination=page_main)
+page_main.link(REWARD_CHECK_OPEN, destination=page_reward)
+
+page_refinery = Page(REFINERY)
+page_reward.link(REFINERY_OPEN, destination=page_refinery)
+page_refinery.link(HOME_BUTTON, destination=page_main)

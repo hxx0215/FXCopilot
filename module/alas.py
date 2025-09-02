@@ -26,7 +26,7 @@ class AzurLaneAutoScript:
         self.failure_record = {}
 
     @cached_property
-    def config(self):
+    def config(self) -> AzurLaneConfig:
         try:
             config = AzurLaneConfig(config_name=self.config_name)
             return config
@@ -195,6 +195,7 @@ class AzurLaneAutoScript:
         """
         while 1:
             task = self.config.get_next()
+            logger.info(f"next run task {task}")
             self.config.task = task
             self.config.bind(task)
 

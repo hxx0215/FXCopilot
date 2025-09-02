@@ -14,6 +14,7 @@ class ManualConfig:
     > BattlePass > DailyQuest
     > Freebies > DataUpdate
     > Rogue
+    > Reward
     """
 
     """

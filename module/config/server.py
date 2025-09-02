@@ -3,11 +3,12 @@ This file stores server, such as 'cn', 'en'.
 Use 'import module.config.server as server' to import, don't use 'from xxx import xxx'.
 """
 lang = 'cn'  # Setting default to cn, will avoid errors when using dev_tools
-server = 'CN-Official'
+server = 'CN-Bilibili'
 
 VALID_LANG = ['cn', 'en']
 VALID_SERVER = {
     'CN-Official': 'com.nineyou.fuxiao',
+    'CN-Bilibili': 'com.baitian.fx.bt.bilibili'
 }
 VALID_PACKAGE = set(list(VALID_SERVER.values()))
 VALID_CLOUD_SERVER = {

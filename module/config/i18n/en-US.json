@@ -69,6 +69,10 @@
     "PlannerScan": {
       "name": "Character Planner",
       "help": ""
+    },
+    "Reward":{
+      "name": "Reward",
+      "help": ""
     }
   },
   "Scheduler": {

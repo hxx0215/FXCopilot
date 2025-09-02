@@ -80,6 +80,10 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.planner.scan import PlannerScan
         PlannerScan(config=self.config, device=self.device, task="PlannerScan").run()
 
+    def reward(self):
+        from tasks.reward.reward import Reward
+        Reward(config=self.config, device=self.device, task="Reward").run()
+
 
 if __name__ == '__main__':
     src = StarRailCopilot('src')
