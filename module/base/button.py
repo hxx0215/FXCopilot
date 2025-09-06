@@ -24,6 +24,12 @@ class Button(Resource):
 
         self.resource_add(self.file)
         self._button_offset: t.Tuple[int, int] = (0, 0)
+    @classmethod
+    def default_init(cls,file, area,color, posi = None):
+        left,top,right,bottom = area
+        search = (min(0, left - 20), min(0, top - 20), max(right +20 ,1280), max(bottom+20, 1280))
+        button = (left,top,right,bottom)
+        return cls(file, area, search, color, button, posi)
 
     @property
     def button(self):

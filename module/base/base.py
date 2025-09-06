@@ -254,7 +254,7 @@ class ModuleBase:
 
         return appear
 
-    def appear(self, button, interval=0, similarity=0.85):
+    def appear(self, button, interval: int| float=0, similarity=0.85):
         """
         Args:
             button (Button, ButtonWrapper, HierarchyButton, str):
@@ -281,7 +281,7 @@ class ModuleBase:
         else:
             return self.match_template(button, interval=interval, similarity=similarity)
 
-    def appear_then_click(self, button, interval=5, similarity=0.85):
+    def appear_then_click(self, button, interval : int | float = 5, similarity=0.85):
         button = self.xpath(button)
         appear = self.appear(button, interval=interval, similarity=similarity)
         if appear:

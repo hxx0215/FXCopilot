@@ -174,3 +174,13 @@ page_main.link(REWARD_CHECK_OPEN, destination=page_reward)
 page_refinery = Page(REFINERY)
 page_reward.link(REFINERY_OPEN, destination=page_refinery)
 page_refinery.link(HOME_BUTTON, destination=page_main)
+
+page_refinery_schedule = Page(REFINERY_SCHEDULE_PAGE)
+page_refinery.link(SCHEDULE_BUTTON, destination=page_refinery_schedule)
+
+page_convenience_store = Page(CONVENIENCE_STORE)
+page_convenience_store.link(HOME_BUTTON, destination=page_main)
+page_reward.link(CONVENIENCE_STORE_OPEN, destination=page_convenience_store)
+
+page_convenience_store_schedule = Page(CONVENIENCE_STORE_SCHEDULE_PAGE)
+page_convenience_store.link(SCHEDULE_BUTTON, destination=page_convenience_store_schedule)

@@ -28,6 +28,7 @@ inflection==0.5.1         # via starrailcopilot (pyproject.toml)
 jellyfish==0.11.2         # via starrailcopilot (pyproject.toml)
 logzero==1.7.0            # via uiautomator2
 lxml==6.0.1               # via uiautomator2
+lxml-stubs==0.5.1         # via starrailcopilot (pyproject.toml)
 lz4==4.3.2                # via starrailcopilot (pyproject.toml)
 markdown-it-py==2.2.0     # via rich
 mdurl==0.1.2              # via markdown-it-py

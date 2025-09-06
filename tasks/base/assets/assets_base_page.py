@@ -156,17 +156,6 @@ MAIN_GOTO_BATTLE_PASS = ButtonWrapper(
         button=(860, 36, 889, 56),
     ),
 )
-# fx
-MAIN_PAGE = ButtonWrapper(
-    name = 'MAIN_PAGE',
-    share = Button(
-        file='./assets/share/base/page/FX_MAIN_PAGE.png',
-        area=(1195,550,1263,585),
-        search=(1075,530,1280,605),
-        color=(77,165,215),
-        button=(1195,550,1263,585)
-    )
-)
 MAIN_GOTO_CHARACTER = ButtonWrapper(
     name='MAIN_GOTO_CHARACTER',
     share=[
@@ -483,6 +472,17 @@ WORLD_CHECK = ButtonWrapper(
         button=(46, 19, 68, 54),
     ),
 )
+# fx
+MAIN_PAGE = ButtonWrapper(
+    name = 'MAIN_PAGE',
+    share = Button(
+        file='./assets/share/base/page/FX_MAIN_PAGE.png',
+        area=(1195,550,1263,585),
+        search=(1075,530,1280,605),
+        color=(77,165,215),
+        button=(1195,550,1263,585)
+    )
+)
 REWARD_CHECK = ButtonWrapper(
     name = 'REWARD_CHECK',
     share=Button(
@@ -542,5 +542,61 @@ HOME_BUTTON=ButtonWrapper(
         search=(200,5,275,70),
         button=(220,25,250,50),
         color=(51,51,51)
+    )
+)
+SCHEDULE_BUTTON = ButtonWrapper(
+    name='SCHEDULE_BUTTON',
+    share = Button.default_init(
+        file = './assets/share/rescheduler/SCHEDULE_BUTTON.png',
+        area=(277,606,311,662),
+        color=(255,255,255)
+    )
+)
+REFINERY_SCHEDULE_PAGE = ButtonWrapper(
+    name= 'REFINERY_SCHEDULE_PAGE',
+    share= Button.default_init(
+        file = './assets/share/rescheduler/REFINERY_SCHEDULE_PAGE.png',
+        area=(636,156,744,198),
+        color=(52,64,86)
+    )
+)
+SCHEDULE_EDIT_BUTTON=ButtonWrapper(
+    name='SCHEDULE_EDIT_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/rescheduler/SCHEDULE_EDIT_BUTTON.png',
+        area=(795,607,995,644),
+        color=(0,104,163)
+    )
+)
+SCHEDULE_START_BUTTON=ButtonWrapper(
+    name='SCHEDULE_EDIT_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/rescheduler/SCHEDULE_START_BUTTON.png',
+        area=(800,607,993,644),
+        color=(4, 124, 97)
+    )
+)
+CONVENIENCE_STORE_OPEN=ButtonWrapper(
+    name='CONVENIENCE_STORE_OPEN',
+    share=Button.default_init(
+        file='./assets/share/reward/CONVENIENCE_STORE_OPEN.png',
+        area=(591,158,642,174),
+        color=(39,39,39)
+    )
+)
+CONVENIENCE_STORE=ButtonWrapper(
+    name='CONVENIENCE_STOREE',
+    share=Button.default_init(
+        file='./assets/share/reward/CONVENIENCE_STORE.png',
+        area=(171,154,283,304),
+        color=(226,208,195)
+    )
+)
+CONVENIENCE_STORE_SCHEDULE_PAGE=ButtonWrapper(
+    name='CONVENIENCE_STORE_SCHEDULE_PAGE',
+    share=Button.default_init(
+        file='./assets/share/rescheduler/CONVENIENCE_STORE_SCHEDULE_PAGE.png',
+        area=(633,160,737,185),
+        color=(30,45,70)
     )
 )

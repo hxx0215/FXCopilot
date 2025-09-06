@@ -3,7 +3,8 @@ import time
 from datetime import datetime, timedelta
 
 import inflection
-from cached_property import cached_property
+#from cached_property import cached_property
+from functools import cached_property
 
 from module.base.decorator import del_cached_property
 from module.config.config import AzurLaneConfig, TaskEnd
@@ -11,6 +12,7 @@ from module.config.deep import deep_get, deep_set
 from module.exception import *
 from module.logger import logger, save_error_log
 from module.notify import handle_notify
+from module.device.device import Device
 
 
 class AzurLaneAutoScript:
@@ -38,9 +40,8 @@ class AzurLaneAutoScript:
             exit(1)
 
     @cached_property
-    def device(self):
+    def device(self) -> Device:
         try:
-            from module.device.device import Device
             device = Device(config=self.config)
             return device
         except RequestHumanTakeover:

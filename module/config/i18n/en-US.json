@@ -73,6 +73,10 @@
     "Reward":{
       "name": "Reward",
       "help": ""
+    },
+    "Rescheduler":{
+      "name": "Rescheduler",
+      "help": ""
     }
   },
   "Scheduler": {

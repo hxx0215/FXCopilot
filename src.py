@@ -84,6 +84,9 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.reward.reward import Reward
         Reward(config=self.config, device=self.device, task="Reward").run()
 
+    def rescheduler(self):
+        from tasks.rescheduler.rescheduler import Rescheduler
+        Rescheduler(config=self.config, device=self.device, task="Rescheduler").run()
 
 if __name__ == '__main__':
     src = StarRailCopilot('src')
