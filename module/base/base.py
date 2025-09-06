@@ -128,7 +128,7 @@ class ModuleBase:
                 self.device.dump_hierarchy()
             yield self.device.image, self.device.hierarchy
 
-    def match_template(self, button, interval=0, similarity=0.85):
+    def match_template(self, button, interval: int | float=0, similarity=0.85):
         """
         Args:
             button (ButtonWrapper):

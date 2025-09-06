@@ -77,6 +77,10 @@
     "Rescheduler":{
       "name": "Rescheduler",
       "help": ""
+    },
+    "Exercise":{
+      "name": "Exercise",
+      "help": ""
     }
   },
   "Scheduler": {

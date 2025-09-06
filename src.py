@@ -88,6 +88,10 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.rescheduler.rescheduler import Rescheduler
         Rescheduler(config=self.config, device=self.device, task="Rescheduler").run()
 
+    def exercise(self):
+        from tasks.exercise.exercise import Exercise
+        Exercise(self.config,self.device, task="Exercise").run()
+
 if __name__ == '__main__':
     src = StarRailCopilot('src')
     src.loop()

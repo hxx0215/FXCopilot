@@ -600,3 +600,96 @@ CONVENIENCE_STORE_SCHEDULE_PAGE=ButtonWrapper(
         color=(30,45,70)
     )
 )
+ATTACK_BUTTON = ButtonWrapper(
+    name = 'ATTACK_BUTTON',
+    share = Button(
+        file='./assets/share/base/page/FX_MAIN_PAGE.png',
+        area=(1195,550,1263,585),
+        search=(1075,530,1280,605),
+        color=(77,165,215),
+        button=(1195,550,1263,585)
+    )
+)
+MAIN_LINE_PAGE=ButtonWrapper(
+    name='MAIN_LINE_PAGE',
+    share=Button.default_init(
+        file='./assets/share/attack/ATTACK_MAIN_LINE_PAGE.png',
+        area=(31,126,167,171),
+        color=(241,241,241)
+    )
+)
+
+EXERCISE_PAGE=ButtonWrapper(
+    name='EXERCISE_PAGE',
+    share=Button.default_init(
+        file='./assets/share/attack/ATTACK_EXERCISE_PAGE.png',
+        area=(31,350,167,394),
+        color=(241,241,241)
+    )
+)
+
+EXERCISE_BUTTON=ButtonWrapper(
+    name='EXERCISE_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/attack/ATTACK_EXERCISE_BUTTON.png',
+        area=(30,355,157,396),
+        color=(57,57,57)
+    )
+)
+
+CONTINUOUS_CHALLENGE_BUTTON=ButtonWrapper(
+    name='CONTINUOUS_CHALLENGE_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/attack/exercise/CONTINUOUS_CHALLENGE.png',
+        area=(431,466,578,500),
+        color=(0,137,227)
+    )
+)
+CONTINUOUS_CHALLENGE_ON_BUTTON=ButtonWrapper(
+    name='CONTINUOUS_CHALLENGE_ON_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/attack/exercise/CONTINUOUS_CHALLENGE_ON.png',
+        area=(431,466,578,500),
+        color=(0,137,227)
+    )
+)
+EXERCISE_ALL_BUTTON=ButtonWrapper(
+    name='EXERCISE_ALL_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/attack/exercise/EXERCISE_ALL.png',
+        area=(1222,682,1262,702),
+        color=(201,201,201)
+    )
+)
+EXERCISE_ALL_CHECKBOX=ButtonWrapper(
+    name='EXERCISE_ALL_CHECKBOX',
+    share=Button.default_init(
+        file='./assets/share/attack/exercise/EXERCISE_ALL_CHECKBOX.png',
+        area=(1185,685,1200,700),
+        color=(32,32,32)
+    )
+)
+EXERCISE_START_HOSTING=ButtonWrapper(
+    name='EXERCISE_START_HOSTING',
+    share=Button.default_init(
+        file='./assets/share/attack/exercise/EXERCISE_START_HOSTING.png',
+        area=(833,676,980,708),
+        color=(96,249,181)
+    )
+)
+EXERCISE_REMAIN_COUNT_DATA=ButtonWrapper(
+    name='EXERCISE_REMAIN_COUNT_DATA',
+    share=Button.default_init(
+        file='./assets/share/attack/exercise/REMAIN_COUNT_DATA.png',
+        area=(234,457,286,515),
+        color=(34,59,79)
+    )
+)
+CHANGE_OPPONENT=ButtonWrapper(
+    name='CHANGE_OPPONENT',
+    share=Button.default_init(
+        file='./assets/share/attack/exercise/CHANGE_OPPONENT.png',
+        area=(618,466,756,501),
+        color=(105,211,211)
+    )
+)

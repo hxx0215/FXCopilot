@@ -263,7 +263,7 @@ class UI(MainPage):
             check_button,
             appear_button=None,
             additional=None,
-            retry_wait=5,
+            retry_wait: int | float=5,
             skip_first_screenshot=True,
     ):
         """
@@ -292,7 +292,8 @@ class UI(MainPage):
             else:
                 return self.appear(button)
 
-        click_timer = Timer(retry_wait, count=retry_wait // 0.5)
+        # changed to fix count to be int
+        click_timer = Timer(retry_wait, count=int(retry_wait // 0.5))
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False

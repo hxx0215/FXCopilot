@@ -69,7 +69,7 @@ class Page:
 
 
 # Main page
-page_main = Page(MAIN_GOTO_CHARACTER)
+# page_main = Page(MAIN_GOTO_CHARACTER)
 page_main = Page(MAIN_PAGE)
 # page_home = Page(MAIN_PAGE)
 
@@ -166,6 +166,8 @@ page_planner = Page(PLANNER_CHECK)
 page_planner.link(CLOSE, destination=page_menu)
 
 
+# FX
+page_main = Page(MAIN_PAGE)
 page_reward = Page(REWARD_CHECK)
 
 page_reward.link(REWARD_CHECK_CLOSE, destination=page_main)
@@ -184,3 +186,11 @@ page_reward.link(CONVENIENCE_STORE_OPEN, destination=page_convenience_store)
 
 page_convenience_store_schedule = Page(CONVENIENCE_STORE_SCHEDULE_PAGE)
 page_convenience_store.link(SCHEDULE_BUTTON, destination=page_convenience_store_schedule)
+
+page_main_line = Page(MAIN_LINE_PAGE)
+page_main.link(ATTACK_BUTTON, destination=page_main_line)
+page_main_line.link(HOME_BUTTON, destination=page_main)
+
+page_exercise = Page(EXERCISE_PAGE)
+page_main_line.link(EXERCISE_BUTTON, destination=page_exercise)
+page_exercise.link(HOME_BUTTON, destination=page_main)

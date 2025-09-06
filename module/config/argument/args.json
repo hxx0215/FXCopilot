@@ -2234,7 +2234,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     }
@@ -2261,7 +2261,34 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Exercise":{
+    "Scheduler":{
+      "Enable":{
+        "type":"state",
+        "value":true,
+        "option":[
+          true,
+          false
+        ]
+      },
+      "Command":{
+        "type": "input",
+        "value": "Exercise",
+        "display": "hide"
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
         "display": "hide"
       }
     }
