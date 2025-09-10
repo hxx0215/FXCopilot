@@ -194,3 +194,11 @@ page_main_line.link(HOME_BUTTON, destination=page_main)
 page_exercise = Page(EXERCISE_PAGE)
 page_main_line.link(EXERCISE_BUTTON, destination=page_exercise)
 page_exercise.link(HOME_BUTTON, destination=page_main)
+
+page_naval_port = Page(NAVAL_PORT_PAGE)
+page_main.link(NAVAL_PORT_BUTTON, destination=page_naval_port)
+page_naval_port.link(HOME_BUTTON, destination=page_main)
+
+page_quiz_center = Page(QUIZ_CENTER_PAGE)
+page_naval_port.link(QUIZ_CENTER_BUTTON, destination=page_quiz_center)
+page_quiz_center.link(HOME_BUTTON, destination=page_main)

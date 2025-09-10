@@ -92,6 +92,10 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.exercise.exercise import Exercise
         Exercise(self.config,self.device, task="Exercise").run()
 
+    def quiz_center(self):
+        from tasks.quiz_center.quiz_center import QuizCenter
+        QuizCenter(self.config, self.device, task="QuizCenter").run()
+
 if __name__ == '__main__':
     src = StarRailCopilot('src')
     src.loop()

@@ -693,3 +693,112 @@ CHANGE_OPPONENT=ButtonWrapper(
         color=(105,211,211)
     )
 )
+NAVAL_PORT_PAGE=ButtonWrapper(
+    name='NAVAL_PORT_PAGE',
+    share=Button.default_init(
+        file='./assets/share/naval_port/NAVAL_PORT_PAGE.png',
+        area=(141,95,168,120),
+        color=(255,255,255)
+    )
+)
+NAVAL_PORT_BUTTON=ButtonWrapper(
+    name='NAVAL_PORT_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/naval_port/NAVAL_PORT_BUTTON.png',
+        area=(500,664,617,693),
+        color=(235,238,242)
+    )
+)
+QUIZ_CENTER_BUTTON=ButtonWrapper(
+    name='QUIZ_CENTER_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/naval_port/QUIZ_CENTER_BUTTON.png',
+        area=(749,640,775,665),
+        color=(255,255,255)
+    )
+)
+QUIZ_CENTER_PAGE=ButtonWrapper(
+    name='QUIZ_CENTER_PAGE',
+    share=Button.default_init(
+        file='./assets/share/naval_port/QUIZ_CENTER.png',
+        area=(206,87,263,167),
+        color=(142,105,80)
+    )
+)
+QUIZ_START_DATA=ButtonWrapper(
+    name='QUIZ_START_DATA',
+    share=Button.default_init(
+        file='./assets/share/naval_port/QUIZ_START_DATA.png',
+        area=(301,148,920,423),
+        color=(54,69,101)
+    )
+)
+QUIZ_QUESTION_DATA=ButtonWrapper(
+    name='QUIZ_QUESTION_DATA',
+    share=Button.default_init(
+        file='./assets/share/naval_port/QUIZ_QUESTION_DATA.png',
+        area=(118,594,1156,678),
+        color=(31,31,44)
+    )
+)
+QUIZ_CANDIDATE_DATA=ButtonWrapper(
+    name='QUIZ_CANDIDATE_DATA',
+    share=Button.default_init(
+        file='./assets/share/naval_port/QUIZ_CANDIDATE.png',
+        area=(261,186,1011,423),
+        color=(217,237,241)
+    )
+)
+
+QUIZ_REFRESH_DATA=ButtonWrapper(
+    name='QUIZ_REFRESH_DATA',
+    share=Button(
+        file='./assets/share/naval_port/QUIZ_REFRESH_DATA.png',
+        area=(1144,584,1190,615),
+        search=(1124,684,1210,635),
+        button=(1144,584,1190,615),
+        color=(223,223,223)
+    )
+)
+
+CLICK_TO_CONTINUE=ButtonWrapper(
+    name='CLICK_TO_CONTINUE',
+    share=Button(
+        file='./assets/share/base/main_page/CLICK_TO_CONTINUE.png',
+        area=(595,576,686,595),
+        button=(595,546,686,565),
+        search=(565,546,716,635),
+        color=(33,31,33)
+    )
+)
+
+MIDSHIPS_CANDIDATE=ButtonWrapper(
+    name='MIDSHIPS_CANDIDATE',
+    share=Button(
+        file='./assets/share/naval_port/MIDSHIPS_CANDIDATE.png',
+        # area=(380,248,437,285),
+        # button=(380,248,437,285),
+        area=(608,189,675,227),
+        button=(263,189,1017,227),
+        search=(263,182,1017,420),
+        color=(246,245,240)
+    )
+)
+STERN_CANDIDATE=ButtonWrapper(
+    name='STERN_CANDIDATE',
+    share=Button(
+        file='./assets/share/naval_port/STERN_CANDIDATE.png',
+        area=(612,384,673,419),
+        search=(263,182,1017,420),
+        button=(263,381,1017,420),
+        color=(246,245,240)
+    )
+)
+QUIZ_EMPTY_PAGE=ButtonWrapper(
+    name='QUIZ_EMPTY_PAGE',
+    share=Button.default_init(
+        file='./assets/share/naval_port/QUIZ_EMPTY_PAGE.png',
+        area=(282,221,1011,549),
+        color=(84,99,109)
+    )
+)

@@ -81,6 +81,10 @@
     "Exercise":{
       "name": "Exercise",
       "help": ""
+    },
+    "QuizCenter":{
+      "name":"QuizCenter",
+      "help":""
     }
   },
   "Scheduler": {

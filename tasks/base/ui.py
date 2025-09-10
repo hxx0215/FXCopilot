@@ -1,9 +1,9 @@
-from module.base.button import ButtonWrapper
+from module.base.button import ButtonWrapper,ClickButton
 from module.base.decorator import run_once
 from module.base.timer import Timer
 from module.exception import GameNotRunningError, GamePageUnknownError, HandledError
 from module.logger import logger
-from module.ocr.ocr import Ocr
+from module.ocr.ocr import Ocr,OcrResultButton
 from tasks.base.assets.assets_base_main_page import ROGUE_LEAVE_FOR_NOW, ROGUE_LEAVE_FOR_NOW_OE
 from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_EXIT, MAP_EXIT_OE, MAIN_PAGE
 from tasks.base.assets.assets_base_popup import POPUP_STORY_LATER
@@ -510,3 +510,13 @@ class UI(MainPage):
                 logger.info(f'{EFFECT_NOTIFICATION} -> {RUN_BUTTON}')
                 self.device.click(RUN_BUTTON)
                 continue
+    def ui_ocr_button_click(self, button: OcrResultButton, interval=3) -> bool:
+        if not isinstance(button, OcrResultButton):
+            logger.warning(f"handle_ocr_button received a non-OcrResultButton object: {button}")
+            return False
+        if self.interval_is_reached(button, interval):
+            self.device.click(button)
+            self.interval_reset(button)
+            return True
+        else:
+            return False

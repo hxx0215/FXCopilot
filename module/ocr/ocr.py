@@ -16,7 +16,7 @@ from module.ocr.utils import merge_buttons
 
 
 class OcrResultButton:
-    def __init__(self, boxed_result: BoxedResult, matched_keyword):
+    def __init__(self, boxed_result: BoxedResult, matched_keyword: Keyword | None):
         """
         Args:
             boxed_result: BoxedResult from ppocr-onnx
@@ -286,7 +286,7 @@ class Ocr:
             self,
             boxed_result: BoxedResult,
             keyword_classes,
-            lang: str = None,
+            lang: str|None = None,
             ignore_punctuation=True,
             ignore_digit=True
     ) -> OcrResultButton:

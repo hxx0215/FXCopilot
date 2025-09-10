@@ -4,7 +4,7 @@ from module.exception import GameStuckError
 from tasks.base.ui import UI
 from module.logger import logger
 from tasks.base.page import page_main_line, page_exercise
-from tasks.base.assets.assets_base_page import EXERCISE_PAGE,CONTINUOUS_CHALLENGE_BUTTON,CONTINUOUS_CHALLENGE_ON_BUTTON,EXERCISE_ALL_BUTTON,EXERCISE_ALL_CHECKBOX,EXERCISE_START_HOSTING,EXERCISE_REMAIN_COUNT_DATA,CHANGE_OPPONENT
+from tasks.base.assets.assets_base_page import EXERCISE_PAGE,CONTINUOUS_CHALLENGE_BUTTON,CONTINUOUS_CHALLENGE_ON_BUTTON,EXERCISE_ALL_BUTTON,EXERCISE_ALL_CHECKBOX,EXERCISE_START_HOSTING,EXERCISE_REMAIN_COUNT_DATA,CHANGE_OPPONENT,CLICK_TO_CONTINUE
 from module.ocr.ocr import Digit
 from module.base.timer import Timer
 
@@ -41,8 +41,8 @@ class Exercise(UI):
             if self.handle_popup_confirm():
                 hosting = False
                 break
-            if hosting and (not max_wait.reached()):
-                self.device.stuck_record_clear()
+            if self.appear_then_click(CLICK_TO_CONTINUE):
+                continue
             if max_wait.reached():
                 raise GameStuckError
         logger.info("host 1 turn over")
