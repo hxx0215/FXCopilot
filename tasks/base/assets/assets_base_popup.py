@@ -96,16 +96,16 @@ POPUP_BATTLE_PASS_UPDATE = ButtonWrapper(
         button=(537, 217, 562, 244),
     ),
 )
-POPUP_CANCEL = ButtonWrapper(
-    name='POPUP_CANCEL',
-    share=Button(
-        file='./assets/share/base/popup/POPUP_CANCEL.png',
-        area=(428, 537, 452, 561),
-        search=(339, 446, 482, 653),
-        color=(98, 92, 80),
-        button=(419, 531, 512, 567),
-    ),
-)
+# POPUP_CANCEL = ButtonWrapper(
+#     name='POPUP_CANCEL',
+#     share=Button(
+#         file='./assets/share/base/popup/POPUP_CANCEL.png',
+#         area=(428, 537, 452, 561),
+#         search=(339, 446, 482, 653),
+#         color=(98, 92, 80),
+#         button=(419, 531, 512, 567),
+#     ),
+# )
 # POPUP_CONFIRM = ButtonWrapper(
 #     name='POPUP_CONFIRM',
 #     share=Button(
@@ -161,5 +161,12 @@ POPUP_CONFIRM = ButtonWrapper(
         search=(729, 426, 936, 496),
         color=(96, 200, 202),
         button=(749, 446, 916, 476),
+    ),
+)
+POPUP_CANCEL = ButtonWrapper(
+    name='POPUP_CANCEL',
+    share=Button.default_init(
+        file='./assets/share/base/popup/POPUP_CANCEL.png',
+        area=(538,436,724,486),color=(111,111,111)
     ),
 )

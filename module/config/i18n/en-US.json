@@ -85,6 +85,10 @@
     "QuizCenter":{
       "name":"QuizCenter",
       "help":""
+    },
+    "Competition":{
+      "name":"Competition",
+      "help":""
     }
   },
   "Scheduler": {

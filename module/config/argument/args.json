@@ -7,12 +7,10 @@
         "valuetype": "str"
       },
       "GameClient": {
-        "type": "select",
+        "type": "input",
         "value": "android",
-        "option": [
-          "android",
-          "cloud_android"
-        ]
+        "readonly": true,
+        "display": "hide"
       },
       "PackageName": {
         "type": "select",
@@ -20,21 +18,13 @@
         "option": [
           "auto",
           "CN-Official",
-          "CN-Bilibili",
-          "OVERSEA-America",
-          "OVERSEA-Asia",
-          "OVERSEA-Europe",
-          "OVERSEA-TWHKMO"
+          "CN-Bilibili"
         ]
       },
       "GameLanguage": {
-        "type": "select",
-        "value": "auto",
-        "option": [
-          "auto",
-          "cn",
-          "en"
-        ]
+        "type": "input",
+        "value": "cn",
+        "readonly": true
       },
       "ScreenshotMethod": {
         "type": "select",
@@ -64,7 +54,8 @@
       },
       "CloudPriorQueue": {
         "type": "checkbox",
-        "value": false
+        "value": false,
+        "display": "hide"
       },
       "AdbRestart": {
         "type": "checkbox",
@@ -2306,6 +2297,33 @@
       "Command":{
         "type": "input",
         "value": "QuizCenter",
+        "display": "hide"
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Competition":{
+    "Scheduler":{
+      "Enable":{
+        "type":"state",
+        "value":true,
+        "option":[
+          true,
+          false
+        ]
+      },
+      "Command":{
+        "type": "input",
+        "value": "Competition",
         "display": "hide"
       },
       "NextRun": {

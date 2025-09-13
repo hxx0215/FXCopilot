@@ -13,7 +13,8 @@ class ManualConfig:
     > Weekly > Ornament > Dungeon > Assignment
     > BattlePass > DailyQuest
     > Freebies > DataUpdate
-    > Rogue > Exercise > QuizCenter
+    > Rogue 
+    > Exercise > Competition > QuizCenter
     > Reward > Rescheduler
     """
 

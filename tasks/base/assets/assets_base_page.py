@@ -802,3 +802,142 @@ QUIZ_EMPTY_PAGE=ButtonWrapper(
         color=(84,99,109)
     )
 )
+COMPETITION_BUTTON=ButtonWrapper(
+    name='COMPETITION_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/attack/ATTACK_COMPETITION_BUTTON.png',
+        area=(24,414,188,478),color=(72,72,73)
+    )
+)
+COMPETITION_PAGE=ButtonWrapper(
+    name='COMPETITION_PAGE',
+    share=Button.default_init(
+        file='./assets/share/attack/ATTACK_COMPETITION_PAGE.png',
+        area=(17,412,209,474),color=(207,209,210)
+    )
+)
+ARENA_BUTTON=ButtonWrapper(
+    name='ARENA_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/attack/competition/ARENA_BUTTON.png',
+        area=(503,248,641,384),color=(225,132,177)
+    )
+)
+ARENA_REFRESH=ButtonWrapper(
+    name='ARENA_REFRESH',
+    share=Button.default_init(
+        file='./assets/share/attack/competition/ARENA_REFRESH.png',
+        area=(1107,488,1262,533),color=(101,197,198)
+    )
+)
+ARENA_PAGE=ButtonWrapper(
+    name='ARENA_PAGE',
+    share=Button.default_init(
+        file='./assets/share/attack/competition/ARENA_PAGE.png',
+        area=(7,100,468,127),color=(125,83,156)
+    )
+)
+ARENA_COMPETITOR_1_DATA=ButtonWrapper(
+    name='ARENA_COMPETITOR_1',
+    share=Button(
+        area=(599,167,731,187),color=(202,202,202),
+        button=(601,149,1245,225),search=(599,167,731,187),
+        file='./assets/share/attack/competition/ARENA_COMPETITOR_1.png'
+    )
+)
+ARENA_COMPETITOR_2_DATA=ButtonWrapper(
+    name='ARENA_COMPETITOR_2',
+    share=Button(
+        area=(598,284,732,305),color=(204,204,204),
+        button=(601,263,1245,339),search=(598,284,732,305),
+        file='./assets/share/attack/competition/ARENA_COMPETITOR_2.png'
+    )
+)
+ARENA_COMPETITOR_3_DATA=ButtonWrapper(
+    name='ARENA_COMPETITOR_3',
+    share=Button(
+        area=(599,399,733,417),color=(198,198,198),
+        button=(601,377,1245,455),search=(599,399,733,417),
+        file='./assets/share/attack/competition/ARENA_COMPETITOR_3.png'
+    )
+)
+ARENA_CROSSING_T=ButtonWrapper(
+    name='ARENA_CROSSING_T',
+    share=Button.default_init(
+        file='./assets/share/attack/competition/ARENA_CROSSING_T.png',
+        area=(709,585,944,644),color=(98,99,96)
+    )
+)
+ARENA_T_CROSSED=ButtonWrapper(
+    name='ARENA_T_CROSSED',
+    share=Button.default_init(
+        area=(709,585,944,644),color=(100,97,96),
+        file='./assets/share/attack/competition/ARENA_T_CROSSED.png'
+    )
+)
+ARENA_PARALLEL_COURSE=ButtonWrapper(
+    name='ARENA_PARALLEL_COURSE',
+    share=Button.default_init(
+        area=(709,585,944,644),color=(100,98,98),
+        file='./assets/share/attack/competition/ARENA_PARALLEL_COURSE.png'
+    )
+
+)
+ARENA_OPPOSITE_COURSE=ButtonWrapper(
+    name='ARENA_OPPOSITE_COURSE',
+    share=Button.default_init(
+        area=(709,585,944,644),color=(100,98,98),
+        file='./assets/share/attack/competition/ARENA_OPPOSITE_COURSE.png'
+    )
+)
+ARENA_MIDDLE_CLASS=ButtonWrapper(
+    name='ARENA_MIDDLE_CLASS',
+    share=Button.default_init(
+        area=(1184,208,1280,295),color=(64,77,79),
+        file='./assets/share/attack/competition/ARENA_MIDDLE_CLASS.png'
+    )
+)
+ARENA_LARGE_CLASS=ButtonWrapper(
+    name='ARENA_LARGE_CLASS',
+    share=Button.default_init(
+        area=(1184,315,1280,402),color=(68,81,79),
+        file='./assets/share/attack/competition/ARENA_LARGE_CLASS.png'
+    )
+)
+ARENA_SMALL_CLASS=ButtonWrapper(
+    name='ARENA_SMALL_CLASS',
+    share=Button.default_init(
+        area=(1184,101,1280,182),color=(55,68,75),
+        file='./assets/share/attack/competition/ARENA_SMALL_CLASS.png'
+    )
+)
+ARENA_MIDDLE_CLASS_SELECTED=ButtonWrapper(
+    name='ARENA_MIDDLE_CLASS_SELECTED',
+    share=Button.default_init(
+        area=(1160,186,1280,287),color=(98,123,128),
+        file='./assets/share/attack/competition/ARENA_MIDDLE_CLASS_SELECTED.png'
+    )
+)
+ARENA_SMALL_CLASS_SELECTED=ButtonWrapper(
+    name='ARENA_SMALL_CLASS_SELECTED',
+    share=Button.default_init(
+        area=(1160,78,1280,178),color=(89,114,120),
+        file='./assets/share/attack/competition/ARENA_SMALL_CLASS_SELECTED.png'
+    )
+)
+ARENA_LARGE_CLASS_SELECTED=ButtonWrapper(
+    name='ARENA_LARGE_CLASS_SELECTED',
+    share=Button.default_init(
+        area=(1160,295,1280,396),color=(99,124,126),
+        file='./assets/share/attack/competition/ARENA_LARGE_CLASS_SELECTED.png'
+    )
+)
+ARENA_SET_SAIL=ButtonWrapper(
+    name='',
+    share=Button(
+        area=(1171,579,1266,646),color=(141,127,67),
+        search=(1151,550,1280,666),
+        button=(1071,579,1266,646),
+        file='./assets/share/attack/competition/ARENA_SET_SAIL.png'
+    )
+)
