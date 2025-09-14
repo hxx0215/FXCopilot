@@ -211,3 +211,7 @@ page_competition.link(EXERCISE_BUTTON, destination=page_exercise)
 
 page_arena = Page(ARENA_PAGE)
 page_arena.link(HOME_BUTTON, destination=page_main)
+
+page_daily_routine = Page(DAILY_ROUTINE_PAGE)
+page_daily_routine.link(HOME_BUTTON, destination=page_main)
+page_main_line.link(DAILY_ROUTINE_BUTTON, destination=page_daily_routine)

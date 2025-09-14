@@ -32,8 +32,8 @@ class Exercise(UI):
         return c
     def start_hosting(self):
         hosting = False
-        # 最多运行720s
-        max_wait = Timer(720).start()
+        # 一场战斗最多120s
+        max_wait = Timer(120).start()
         for _ in self.loop():
             if (not hosting) and self.appear_then_click(EXERCISE_START_HOSTING):
                 hosting = True
@@ -42,9 +42,12 @@ class Exercise(UI):
                 hosting = False
                 break
             if self.appear_then_click(CLICK_TO_CONTINUE):
+                max_wait.reset()
                 continue
             if max_wait.reached():
                 raise GameStuckError
+            else:
+                self.device.stuck_record_clear()
         logger.info("host 1 turn over")
     def refresh(self):
         logger.info("begining refresh opponent")

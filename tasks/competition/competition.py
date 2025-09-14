@@ -6,6 +6,8 @@ from module.logger import logger
 from module.ocr.ocr import Ocr,OcrResultButton
 import random
 import operator
+from module.base.timer import Timer
+from module.exception import GameStuckError
 class CompetitorOcr(Ocr):
     pass
 class Competition(UI):
@@ -90,13 +92,19 @@ class Competition(UI):
         return 'Unknown'
 
     def wait_competition_finish(self):
+        timer = Timer(120).start()
         for _ in self.loop():
             if self.appear_then_click(ARENA_SET_SAIL):
                 continue
             if self.appear_then_click(CLICK_TO_CONTINUE):
+                timer.reset()
                 continue
             if self.appear(ARENA_REFRESH):
                 return
+            if timer.reached():
+                raise GameStuckError('competition stucked')
+            else:
+                self.device.stuck_record_clear()
 
 
     def start_competition(self):
@@ -119,6 +127,7 @@ class Competition(UI):
                 continue
             else:
                 if cnt < 10:
+                    self.device.adb_shell(['input', 'keyevent', '4'])
                     for _ in self.loop():
                         if self.appear_then_click(ARENA_REFRESH, interval=7):
                             cnt+=1

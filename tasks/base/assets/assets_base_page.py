@@ -933,11 +933,59 @@ ARENA_LARGE_CLASS_SELECTED=ButtonWrapper(
     )
 )
 ARENA_SET_SAIL=ButtonWrapper(
-    name='',
+    name='ARENA_SET_SAIL',
     share=Button(
         area=(1171,579,1266,646),color=(141,127,67),
         search=(1151,550,1280,666),
         button=(1071,579,1266,646),
         file='./assets/share/attack/competition/ARENA_SET_SAIL.png'
+    )
+)
+DAILY_ROUTINE_BUTTON=ButtonWrapper(
+    name='DAILY_ROUTINE_BUTTON',
+    share=Button.default_init(
+        area=(22,194,186,253),color=(72,72,72),
+        file='./assets/share/attack/ATTACK_DAILY_ROUTINE_BUTTON.png'
+    )
+)
+DAILY_ROUTINE_PAGE=ButtonWrapper(
+    name='DAILY_ROUTINE_PAGE',
+    share=Button.default_init(
+        area=(17,193,208,253),color=(217,219,219),
+        file='./assets/share/attack/ATTACK_DAILY_ROUTINE_PAGE.png'
+    )
+)
+DAILY_CONVOY_ESCORT_BUTTON=ButtonWrapper(
+    name='DAILY_CONVOY_ESCORT_BUTTON',
+    share=Button.default_init(
+        area=(483,568,544,657),color=(90,91,97),
+        file='./assets/share/attack/daily_routine/CONVOY_ESCORT_BUTTON.png',
+        button=(430,568,597,657)
+    )
+)
+DAILY_CONVOY_ESCORT_ACTIVE=ButtonWrapper(
+    name='DAILY_CONVOY_ESCORT_ACTIVE',
+    share=Button(
+        area=(422,539,606,648),color=(74,71,63),
+        file='./assets/share/attack/daily_routine/CONVOY_ESCORT_ACTIVE.png',
+        button=(422,539,606,648),
+        search=(417,534,611,653)
+    )
+)
+DAILY_ARM_TRANSPORT_BUTTON=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_BUTTON',
+    share=Button.default_init(
+        area=(295,569,354,654),color=(92,100,110),
+        file='./assets/share/attack/daily_routine/ARM_TRASPORT_BUTTON.png',
+        button=(242,569,406,659)
+    )
+)
+DAILY_ARM_TRANSPORT_ACTIVE=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_ACTIVE',
+    share=Button(
+        area=(230,539,416,648),color=(67,67,62),
+        file='./assets/share/attack/daily_routine/ARM_TRASPORT_ACTIVE.png',
+        button=(230,539,416,648),
+        search=(225,534,421,653)
     )
 )

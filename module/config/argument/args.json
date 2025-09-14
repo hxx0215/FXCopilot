@@ -2337,5 +2337,64 @@
         "display": "hide"
       }
     }
+  },
+  "DailyRoutine":{
+    "Scheduler":{
+      "Enable":{
+        "type":"state",
+        "value":true,
+        "option":[
+          true,
+          false
+        ]
+      },
+      "Command":{
+        "type": "input",
+        "value": "DailyRoutine",
+        "display": "hide"
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "DungeonSetting":{
+      "BattleExplore":{
+        "type": "select",
+        "value": "nv1",
+        "option":[
+        "nv1",
+        "sv1",
+        "ma1",
+        "ns1",
+        "nv2",
+        "sv2",
+        "ma2",
+        "ns2"
+        ]
+      },
+    "ArmTransport":{
+      "type": "select",
+      "value": "a-ng1",
+      "option":[
+        "a-ng1",
+        "a-tp1",
+        "a-ac1",
+        "a-aa1",
+        "a-eq1",
+        "a-ng2",
+        "a-tp2",
+        "a-ac2",
+        "a-aa2",
+        "a-eq2"
+      ]
+    }
+    }
   }
 }

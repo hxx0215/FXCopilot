@@ -100,6 +100,10 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.competition.competition import Competition
         Competition(self.config, self.device, task="Competition").run()
 
+    def daily_routine(self):
+        from tasks.daily_routine.daily_routine import DailyRoutine
+        DailyRoutine(self.config, self.device, task="DailyRoutine").run()
+
 
 if __name__ == '__main__':
     src = StarRailCopilot('src')

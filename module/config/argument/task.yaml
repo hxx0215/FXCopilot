@@ -51,6 +51,8 @@ Daily:
     Freebies:
       - Scheduler
       - Freebies
+    Reward:
+      - Scheduler
 
 # ==================== Weekly ====================
 
