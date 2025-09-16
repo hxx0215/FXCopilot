@@ -125,13 +125,13 @@ class QuizCenter(UI):
                 break
             cnt = cnt + 1
         for _ in self.loop():
+            if self.handle_popup_confirm():
+                break
+            if self.ui_ocr_button_click(ocr_btn):
+                continue
+        for _ in self.loop():
             if self.appear_then_click(DIALOGUE_NEXT):
                 break
-            if self.handle_popup_confirm():
-                continue
-            if self.ui_ocr_button_click(ocr_btn):
-                self.device.sleep(1)
-                continue
         return False
     def find_question(self) -> QuizItem:
         question_ocr = QuizOcr(QUIZ_QUESTION_DATA)

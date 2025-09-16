@@ -7,6 +7,7 @@ from module.exception import RequestHumanTakeover
 from dataclasses import dataclass
 from module.ocr.keyword import Keyword
 from typing import ClassVar
+from module.ocr.ocr import OcrWhiteLetterOnComplexBackground
 STAGE_SELECTOR_AREA=(231,157,1280,426)
 STAGE_CLASS_SELECTOR_AREA=(283,558,1224,671)
 @dataclass(repr=False)
@@ -15,15 +16,43 @@ class BattleFieldKeyword(Keyword):
     @classmethod
     def init(cls,id: int, name: str):
         return cls(id,name,cn = name,en = name,jp = name, cht = '',es = '')
+
+class BattleFieldOcr(OcrWhiteLetterOnComplexBackground):
+    pass
 class DailyRoutine(UI):
     ARM_TRANSPORT_KV = [("a-ng1", DAILY_ARM_TRANSPORT_NG1),("a-ng2", DAILY_ARM_TRANSPORT_NG2),
                         ("a-tp1", DAILY_ARM_TRANSPORT_TP1),("a-tp2", DAILY_ARM_TRANSPORT_TP2),
                         ("a-ac1", DAILY_ARM_TRANSPORT_AC1),("a-ac2", DAILY_ARM_TRANSPORT_AC2),
                         ("a-aa1", DAILY_ARM_TRANSPORT_AA1),("a-aa2", DAILY_ARM_TRANSPORT_AA2),
                         ("a-eq1", DAILY_ARM_TRANSPORT_EQ1),("a-eq2", DAILY_ARM_TRANSPORT_EQ2)]
-    BATTLE_FIELD_KV= [("nv-1")]
+    BATTLE_FIELD_KV= [("nv1","纳尔维克的影"),("sv1" ,"萨沃岛子夜"),("ma1","马里亚纳飞鸟"),("ns1", "北海勘探"),("nv2", "纳尔维克的光"),("sv2", "萨沃岛黎明"),("ma2", "马里亚纳黑影"),("ns2", "北海寻踪")]
+    def battle_field_stage(self):
+        self.start_stage(DAILY_BATTLE_FIELD_BUTTON, DAILY_BATTLE_FIELD_ACTIVE, DAILY_BATTLE_FIELD_START, DAILY_BATTLE_FIELD_START2)
+        keywords = [BattleFieldKeyword.init(idx,v) for idx,(_,v) in enumerate(self.BATTLE_FIELD_KV)]
+        target_idx = next((index for index, (k,_) in enumerate(self.BATTLE_FIELD_KV) if k == self.config.DungeonSetting_BattleField), None)
+        logger.info(f"target is {target_idx}")
+        idx = 0
+        ocr = BattleFieldOcr(DAILY_BATTLE_FIELD_DATA)
+        if target_idx == None:
+            raise RequestHumanTakeover
+        for _ in self.loop():
+            if self.handle_popup_confirm():
+                logger.info("次数用完")
+                return
+            result = ocr.matched_ocr(self.device.image, keywords)
+            if len(result) == 1:
+                key = result[0]
+                idx = key.matched_keyword.id if key.matched_keyword else -1
+            if idx < target_idx:
+                self.appear_then_click(NEXT_STAGE_BUTTON,1)
+                self.device.sleep((0.5,1.5))
+                continue
+            if idx == target_idx:
+                break
+        self.max_stage_and_process()
+        
     def arm_transport_stage(self):
-        self.start_stage(DAILY_ARM_TRANSPORT_BUTTON, DAILY_ARM_TRANSPORT_ACTIVE, DAILY_ARM_TRANSPORT_START, None)
+        self.start_stage(DAILY_ARM_TRANSPORT_BUTTON, DAILY_ARM_TRANSPORT_ACTIVE, DAILY_ARM_TRANSPORT_START, DAILY_ARM_TRANSPORT_START2)
         target_idx = next((index for index, (k,_) in enumerate(self.ARM_TRANSPORT_KV) if k == self.config.DungeonSetting_ArmTransport), None)
         idx = 0
         if not target_idx:
@@ -52,6 +81,11 @@ class DailyRoutine(UI):
             self.max_stage_and_process()
     def tactical_traning_stage(self):
         self.start_stage(DAILY_TACTICAL_TRAINING_BUTTON,DAILY_TACTICAL_TRAINING_ACTIVE,DAILY_TACTICAL_TRAINING_START, DAILY_TACTICAL_TRAINING_START2)
+        if self.find_last_stage():
+            self.max_stage_and_process()
+
+    def military_practice_stage(self):
+        self.start_stage(DAILY_MILITARY_PRACTICE_BUTTON, DAILY_MILITARY_PRACTICE_ACTIVE, DAILY_MILITARY_PRACTICE_START, DAILY_MILITARY_PRACTICE_START2)
         if self.find_last_stage():
             self.max_stage_and_process()
 
@@ -118,16 +152,18 @@ class DailyRoutine(UI):
         weekday = get_server_weekday()
         if weekday != 6 and weekday % 2 == 0:
             #1,3,5
-            self.convoy_escort_stage()
             self.arm_transport_stage()
+            self.military_practice_stage()
         elif weekday % 2 == 1:
             #2,4,6
-            self.convoy_escort_stage()
             self.military_technology_stage()
             self.tactical_traning_stage()
         else:
             self.arm_transport_stage()
-            self.convoy_escort_stage()
+            self.military_technology_stage()
+            self.tactical_traning_stage()
+        self.convoy_escort_stage()
+        self.battle_field_stage()
         self.config.task_delay(server_update=True)
 
 if __name__ == '__main__':

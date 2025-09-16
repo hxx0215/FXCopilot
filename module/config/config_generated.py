@@ -13,7 +13,7 @@ class GeneratedConfig:
     Scheduler_Enable = False  # True, False
     Scheduler_NextRun = datetime.datetime(2020, 1, 1, 0, 0)
     Scheduler_Command = 'Alas'
-    Scheduler_ServerUpdate = '04:00'
+    Scheduler_ServerUpdate = '00:00'
 
     # Group `Emulator`
     Emulator_Serial = 'auto'
@@ -248,5 +248,5 @@ class GeneratedConfig:
     DailyRoutine_Enable = True  # True, False
 
     # Group `DungeonSetting`
-    DungeonSetting_BattleExplore = 'nv1'  # nv1, sv1, ma1, ns1, nv2, sv2, ma2, ns2
+    DungeonSetting_BattleField = 'nv1'  # nv1, sv1, ma1, ns1, nv2, sv2, ma2, ns2
     DungeonSetting_ArmTransport = 'a-ng1'  # a-ng1, a-tp1, a-ac1, a-aa1, a-eq1, a-ng2, a-tp2, a-ac2, a-aa2, a-eq2

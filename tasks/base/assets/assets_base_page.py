@@ -1076,7 +1076,7 @@ DAILY_ARM_TRANSPORT_BUTTON=ButtonWrapper(
     name='DAILY_ARM_TRANSPORT_BUTTON',
     share=Button(
         area=(295,569,354,654),color=(92,100,110),
-        file='./assets/share/attack/daily_routine/ARM_TRASPORT_BUTTON.png',
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_BUTTON.png',
         button=(242,569,406,659),
         search=(290,564,359,659)
     )
@@ -1099,17 +1099,26 @@ DAILY_ARM_TRANSPORT_START=ButtonWrapper(
         search=(595,99,860,540)
     )
 )
+DAILY_ARM_TRANSPORT_START2=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_START2',
+    share=Button(
+        area=(600,121,854,519),color=(127,151,102),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_START2.png',
+        button=(635,461,818,512),
+        search=(580,101,874,539)
+    )
+)
 DAILY_BATTLE_FIELD_BUTTON=ButtonWrapper(
     name='DAILY_BATTLE_FIELD_BUTTON',
     share=Button.default_init(
-        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_BUTTON.png',
+        file='./assets/share/attack/daily_routine/BATTLE_FIELD_BUTTON.png',
         area=(1195,567,1227,633),color=(202,151,113)
     )
 )
 DAILY_BATTLE_FIELD_ACTIVE=ButtonWrapper(
     name='DAILY_BATTLE_FIELD_ACTIVE',
     share=Button.default_init(
-        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_ACTIVE.png',
+        file='./assets/share/attack/daily_routine/BATTLE_FIELD_ACTIVE.png',
         area=(1185,537,1226,648),color=(117,98,73)
     )
 )
@@ -1131,6 +1140,43 @@ DAILY_BATTLE_FIELD_START2=ButtonWrapper(
         search=(595,101,860,539)
     )
 )
+DAILY_MILITARY_PRACTICE_BUTTON=ButtonWrapper(
+    name='DAILY_MILITARY_PRACTICE_BUTTON',
+    share=Button(
+        file='./assets/share/attack/daily_routine/MILITARY_PRACTICE_BUTTON.png',
+        area=(674,568,735,657),color=(121,162,192),
+        button=(622,568,789,657),
+        search=(669,563,740,661)
+    )
+)
+DAILY_MILITARY_PRACTICE_ACTIVE=ButtonWrapper(
+    name='DAILY_MILITARY_PRACTICE_ACTIVE',
+    share=Button(
+        area=(613,539,797,648),color=(82,95,97),
+        file='./assets/share/attack/daily_routine/MILITARY_PRACTICE_ACTIVE.png',
+        button=(613,539,797,648),
+        search=(608,534,802,653)
+    )
+)
+DAILY_MILITARY_PRACTICE_START=ButtonWrapper(
+    name='DAILY_MILITARY_PRACTICE_START',
+    share=Button(
+        file='./assets/share/attack/daily_routine/MILITARY_PRACTICE_START.png',
+        area=(615,121,840,519),color=(148,155,144),
+        button=(635,461,818,512),
+        search=(595,101,860,539)
+    )
+)
+DAILY_MILITARY_PRACTICE_START2=ButtonWrapper(
+    name='DAILY_MILITARY_PRACTICE_START2',
+    share=Button(
+        file='./assets/share/attack/daily_routine/MILITARY_PRACTICE_START.png',
+        area=(600,121,854,519),color=(147,155,144),
+        button=(635,461,818,512),
+        search=(580,101,874,539)
+    )
+)
+
 PREVIOUS_STAGE_BUTTON=ButtonWrapper(
     name='PREVIOUS_STAGE_BUTTON',
     share=Button.default_init(

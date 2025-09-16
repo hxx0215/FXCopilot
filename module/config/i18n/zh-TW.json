@@ -1682,9 +1682,9 @@
       "name": "DungeonSetting._info.name",
       "help": "DungeonSetting._info.help"
     },
-    "BattleExplore": {
-      "name": "DungeonSetting.BattleExplore.name",
-      "help": "DungeonSetting.BattleExplore.help",
+    "BattleField": {
+      "name": "DungeonSetting.BattleField.name",
+      "help": "DungeonSetting.BattleField.help",
       "nv1": "nv1",
       "sv1": "sv1",
       "ma1": "ma1",

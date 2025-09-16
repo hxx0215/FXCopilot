@@ -188,7 +188,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     }
@@ -215,7 +215,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     }
@@ -242,7 +242,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     }
@@ -269,7 +269,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     }
@@ -296,7 +296,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     }
@@ -323,12 +323,12 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
     "DungeonSetting": {
-      "BattleExplore": {
+      "BattleField": {
         "type": "select",
         "value": "nv1",
         "option": [
@@ -386,7 +386,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1485,7 +1485,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1670,7 +1670,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1717,7 +1717,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1812,7 +1812,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1981,7 +1981,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -2046,7 +2046,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -2092,7 +2092,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -2243,7 +2243,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
