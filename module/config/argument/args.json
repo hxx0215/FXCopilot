@@ -54,8 +54,7 @@
       },
       "CloudPriorQueue": {
         "type": "checkbox",
-        "value": false,
-        "display": "hide"
+        "value": false
       },
       "AdbRestart": {
         "type": "checkbox",
@@ -167,7 +166,7 @@
       }
     }
   },
-  "Dungeon": {
+  "Reward": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
@@ -176,6 +175,204 @@
           true,
           false
         ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Reward",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Rescheduler": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Rescheduler",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Exercise": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Exercise",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
+      }
+    }
+  },
+  "QuizCenter": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "QuizCenter",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Competition": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Competition",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
+      }
+    }
+  },
+  "DailyRoutine": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "DailyRoutine",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "04:00",
+        "display": "hide"
+      }
+    },
+    "DungeonSetting": {
+      "BattleExplore": {
+        "type": "select",
+        "value": "nv1",
+        "option": [
+          "nv1",
+          "sv1",
+          "ma1",
+          "ns1",
+          "nv2",
+          "sv2",
+          "ma2",
+          "ns2"
+        ]
+      },
+      "ArmTransport": {
+        "type": "select",
+        "value": "a-ng1",
+        "option": [
+          "a-ng1",
+          "a-tp1",
+          "a-ac1",
+          "a-aa1",
+          "a-eq1",
+          "a-ng2",
+          "a-tp2",
+          "a-ac2",
+          "a-aa2",
+          "a-eq2"
+        ]
+      }
+    }
+  },
+  "Dungeon": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ],
+        "option_bold": [
+          true
+        ],
+        "display": "display"
       },
       "NextRun": {
         "type": "datetime",
@@ -1455,7 +1652,11 @@
         "option": [
           true,
           false
-        ]
+        ],
+        "option_bold": [
+          true
+        ],
+        "display": "display"
       },
       "NextRun": {
         "type": "datetime",
@@ -1498,7 +1699,11 @@
         "option": [
           true,
           false
-        ]
+        ],
+        "option_bold": [
+          true
+        ],
+        "display": "display"
       },
       "NextRun": {
         "type": "datetime",
@@ -1589,7 +1794,11 @@
         "option": [
           true,
           false
-        ]
+        ],
+        "option_bold": [
+          true
+        ],
+        "display": "display"
       },
       "NextRun": {
         "type": "datetime",
@@ -1749,14 +1958,16 @@
   "DataUpdate": {
     "Scheduler": {
       "Enable": {
-        "type": "state",
+        "type": "checkbox",
         "value": true,
         "option": [
-          true
+          true,
+          false
         ],
         "option_bold": [
           true
-        ]
+        ],
+        "display": "display"
       },
       "NextRun": {
         "type": "datetime",
@@ -1784,22 +1995,6 @@
         "color": "#ab7cf2"
       },
       "StallerJade": {
-        "type": "stored",
-        "value": {},
-        "display": "display",
-        "stored": "StoredInt",
-        "order": 8,
-        "color": "#fc8f8b"
-      },
-      "Oil":{
-        "type": "stored",
-        "value": {},
-        "display": "display",
-        "stored": "StoredInt",
-        "order": 7,
-        "color": "#ab7cf2"
-      },
-      "Money":{
         "type": "stored",
         "value": {},
         "display": "display",
@@ -2181,6 +2376,9 @@
         "option": [
           true,
           false
+        ],
+        "option_bold": [
+          true
         ]
       },
       "AimClicker": {
@@ -2201,200 +2399,6 @@
         "type": "checkbox",
         "value": false
       }
-    }
-  },
-  "Reward":{
-    "Scheduler":{
-      "Enable":{
-        "type":"state",
-        "value":true,
-        "option":[
-          true,
-          false
-        ]
-      },
-      "Command":{
-        "type": "input",
-        "value": "Reward",
-        "display": "hide"
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    }
-  },
-  "Rescheduler":{
-    "Scheduler":{
-      "Enable":{
-        "type":"state",
-        "value":true,
-        "option":[
-          true,
-          false
-        ]
-      },
-      "Command":{
-        "type": "input",
-        "value": "Rescheduler",
-        "display": "hide"
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    }
-  },
-  "Exercise":{
-    "Scheduler":{
-      "Enable":{
-        "type":"state",
-        "value":true,
-        "option":[
-          true,
-          false
-        ]
-      },
-      "Command":{
-        "type": "input",
-        "value": "Exercise",
-        "display": "hide"
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    }
-  },
-  "QuizCenter":{
-    "Scheduler":{
-      "Enable":{
-        "type":"state",
-        "value":true,
-        "option":[
-          true,
-          false
-        ]
-      },
-      "Command":{
-        "type": "input",
-        "value": "QuizCenter",
-        "display": "hide"
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    }
-  },
-  "Competition":{
-    "Scheduler":{
-      "Enable":{
-        "type":"state",
-        "value":true,
-        "option":[
-          true,
-          false
-        ]
-      },
-      "Command":{
-        "type": "input",
-        "value": "Competition",
-        "display": "hide"
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    }
-  },
-  "DailyRoutine":{
-    "Scheduler":{
-      "Enable":{
-        "type":"state",
-        "value":true,
-        "option":[
-          true,
-          false
-        ]
-      },
-      "Command":{
-        "type": "input",
-        "value": "DailyRoutine",
-        "display": "hide"
-      },
-      "NextRun": {
-        "type": "datetime",
-        "value": "2020-01-01 00:00:00",
-        "validate": "datetime"
-      },
-      "ServerUpdate": {
-        "type": "input",
-        "value": "00:00",
-        "display": "hide"
-      }
-    },
-    "DungeonSetting":{
-      "BattleExplore":{
-        "type": "select",
-        "value": "nv1",
-        "option":[
-        "nv1",
-        "sv1",
-        "ma1",
-        "ns1",
-        "nv2",
-        "sv2",
-        "ma2",
-        "ns2"
-        ]
-      },
-    "ArmTransport":{
-      "type": "select",
-      "value": "a-ng1",
-      "option":[
-        "a-ng1",
-        "a-tp1",
-        "a-ac1",
-        "a-aa1",
-        "a-eq1",
-        "a-ng2",
-        "a-tp2",
-        "a-ac2",
-        "a-aa2",
-        "a-eq2"
-      ]
-    }
     }
   }
 }

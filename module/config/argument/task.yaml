@@ -17,7 +17,23 @@ Alas:
       - Scheduler
 
 # ==================== Daily ====================
-
+FX:
+  menu: 'list'
+  page: 'setting'
+  tasks:
+    Reward:
+      - Scheduler
+    Rescheduler:
+      - Scheduler
+    Exercise:
+      - Scheduler
+    QuizCenter:
+      - Scheduler
+    Competition:
+      - Scheduler
+    DailyRoutine:
+      - Scheduler
+      - DungeonSetting
 Daily:
   menu: 'list'
   page: 'setting'
@@ -51,8 +67,7 @@ Daily:
     Freebies:
       - Scheduler
       - Freebies
-    Reward:
-      - Scheduler
+
 
 # ==================== Weekly ====================
 

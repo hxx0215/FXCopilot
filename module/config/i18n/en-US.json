@@ -4,6 +4,10 @@
       "name": "SRC",
       "help": ""
     },
+    "FX": {
+      "name": "Menu.FX.name",
+      "help": "Menu.FX.help"
+    },
     "Daily": {
       "name": "Daily",
       "help": ""
@@ -25,6 +29,30 @@
     "Restart": {
       "name": "Error Handling",
       "help": ""
+    },
+    "Reward": {
+      "name": "Reward",
+      "help": ""
+    },
+    "Rescheduler": {
+      "name": "Task.Rescheduler.name",
+      "help": "Task.Rescheduler.help"
+    },
+    "Exercise": {
+      "name": "Task.Exercise.name",
+      "help": "Task.Exercise.help"
+    },
+    "QuizCenter": {
+      "name": "Task.QuizCenter.name",
+      "help": "Task.QuizCenter.help"
+    },
+    "Competition": {
+      "name": "Task.Competition.name",
+      "help": "Task.Competition.help"
+    },
+    "DailyRoutine": {
+      "name": "Task.DailyRoutine.name",
+      "help": "Task.DailyRoutine.help"
     },
     "Dungeon": {
       "name": "Dungeon",
@@ -69,26 +97,6 @@
     "PlannerScan": {
       "name": "Character Planner",
       "help": ""
-    },
-    "Reward":{
-      "name": "Reward",
-      "help": ""
-    },
-    "Rescheduler":{
-      "name": "Rescheduler",
-      "help": ""
-    },
-    "Exercise":{
-      "name": "Exercise",
-      "help": ""
-    },
-    "QuizCenter":{
-      "name":"QuizCenter",
-      "help":""
-    },
-    "Competition":{
-      "name":"Competition",
-      "help":""
     }
   },
   "Scheduler": {
@@ -126,27 +134,18 @@
     },
     "GameClient": {
       "name": "Game Client",
-      "help": "When using cloud, you will be automatically queued to log in. Cloud game is available in CN only",
-      "android": "Android client",
-      "cloud_android": "Cloud game android client"
+      "help": "When using cloud, you will be automatically queued to log in. Cloud game is available in CN only"
     },
     "PackageName": {
       "name": "Game Server",
       "help": "Can't distinguish different regions of oversea servers, please select the server manually.",
       "auto": "Auto-detect",
       "CN-Official": "[CN]-Official",
-      "CN-Bilibili": "[CN]-Bilibili",
-      "OVERSEA-America": "[OVERSEA]-America",
-      "OVERSEA-Asia": "[OVERSEA]-Asia",
-      "OVERSEA-Europe": "[OVERSEA]-Europe",
-      "OVERSEA-TWHKMO": "[OVERSEA]-TW,HK,MO"
+      "CN-Bilibili": "[CN]-Bilibili"
     },
     "GameLanguage": {
       "name": "In-game Text Language",
-      "help": "Currently, only Simplified Chinese and English are supported. Please set the text language in game to one of them.",
-      "auto": "Auto-detect",
-      "cn": "简体中文",
-      "en": "English"
+      "help": "Currently, only Simplified Chinese and English are supported. Please set the text language in game to one of them."
     },
     "ScreenshotMethod": {
       "name": "Screenshot Method",
@@ -1549,7 +1548,7 @@
     "Dungeon": {
       "name": "Dungeon Name",
       "help": "",
-      "Divergent_Universe_Moonlit_Blood": "Ornament:  (Moonlit Blood)",
+      "Divergent_Universe_Moonlit_Blood": "Ornament: Arcadia & Revelry (Moonlit Blood)",
       "Divergent_Universe_Unceasing_Strife": "Ornament: Bone Collection & Giant Tree (Unceasing Strife)",
       "Divergent_Universe_Famished_Worker": "Ornament: Sunken Seas & Wondrous (Famished Worker)",
       "Divergent_Universe_Eternal_Comedy": "Ornament: Running Wolves & Lantern (Eternal Comedy)",
@@ -1559,7 +1558,7 @@
       "Divergent_Universe_Permafrost": "Ornament: Belobog & Salsotto (Permafrost)",
       "Divergent_Universe_Gentle_Words": "Ornament: Commercial Enterprise & Differentiator (Gentle Words)",
       "Divergent_Universe_Smelted_Heart": "Ornament: Banditry & Vonwacq (Smelted Heart)",
-      "Divergent_Universe_Untoppled_Walls": "Ornament: Space & Ageless Fleet & Arcadia & Revelry (Untoppled Walls)"
+      "Divergent_Universe_Untoppled_Walls": "Ornament: Space & Ageless Fleet (Untoppled Walls)"
     },
     "UseImmersifier": {
       "name": "Claim Planars Using Immersifiers",
@@ -1584,7 +1583,8 @@
     "Enable": {
       "name": "Dialogue Clicker",
       "help": "Monitor game, automatically click dialogue, phone chatting, and blessing in simulated universe (follow the simulated universe task settings)",
-      "True": "Enabled"
+      "True": "Enabled",
+      "False": "False"
     },
     "AimClicker": {
       "name": "Click Aimed Items and Enemies",
@@ -1603,6 +1603,110 @@
     "ResultAdd": {
       "name": "Accumulate multiple scan results",
       "help": "Turn on when planning multiple characters, will raise multiple characters all together\nTurn off when planning one character, planning goal will be refreshed at every scan"
+    }
+  },
+  "Reward": {
+    "_info": {
+      "name": "Reward._info.name",
+      "help": "Reward._info.help"
+    },
+    "Enable": {
+      "name": "Reward.Enable.name",
+      "help": "Reward.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Rescheduler": {
+    "_info": {
+      "name": "Rescheduler._info.name",
+      "help": "Rescheduler._info.help"
+    },
+    "Enable": {
+      "name": "Rescheduler.Enable.name",
+      "help": "Rescheduler.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "QuizCenter": {
+    "_info": {
+      "name": "QuizCenter._info.name",
+      "help": "QuizCenter._info.help"
+    },
+    "Enable": {
+      "name": "QuizCenter.Enable.name",
+      "help": "QuizCenter.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Competition": {
+    "_info": {
+      "name": "Competition._info.name",
+      "help": "Competition._info.help"
+    },
+    "Enable": {
+      "name": "Competition.Enable.name",
+      "help": "Competition.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Exercise": {
+    "_info": {
+      "name": "Exercise._info.name",
+      "help": "Exercise._info.help"
+    },
+    "Enable": {
+      "name": "Exercise.Enable.name",
+      "help": "Exercise.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "DailyRoutine": {
+    "_info": {
+      "name": "DailyRoutine._info.name",
+      "help": "DailyRoutine._info.help"
+    },
+    "Enable": {
+      "name": "DailyRoutine.Enable.name",
+      "help": "DailyRoutine.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "DungeonSetting": {
+    "_info": {
+      "name": "DungeonSetting._info.name",
+      "help": "DungeonSetting._info.help"
+    },
+    "BattleExplore": {
+      "name": "DungeonSetting.BattleExplore.name",
+      "help": "DungeonSetting.BattleExplore.help",
+      "nv1": "nv1",
+      "sv1": "sv1",
+      "ma1": "ma1",
+      "ns1": "ns1",
+      "nv2": "nv2",
+      "sv2": "sv2",
+      "ma2": "ma2",
+      "ns2": "ns2"
+    },
+    "ArmTransport": {
+      "name": "DungeonSetting.ArmTransport.name",
+      "help": "DungeonSetting.ArmTransport.help",
+      "a-ng1": "a-ng1",
+      "a-tp1": "a-tp1",
+      "a-ac1": "a-ac1",
+      "a-aa1": "a-aa1",
+      "a-eq1": "a-eq1",
+      "a-ng2": "a-ng2",
+      "a-tp2": "a-tp2",
+      "a-ac2": "a-ac2",
+      "a-aa2": "a-aa2",
+      "a-eq2": "a-eq2"
     }
   },
   "Gui": {

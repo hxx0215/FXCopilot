@@ -20,13 +20,16 @@ Emulator:
     valuetype: str
   GameClient:
     value: android
-    option: [ android, cloud_android ]
+    type: input
+    readonly: true
+    display: hide
   PackageName:
     value: auto
     option: [ auto, ]
   GameLanguage:
-    value: auto
-    option: [ auto, cn, en ]
+    value: cn
+    readonly: true
+    type: input
   ScreenshotMethod:
     value: auto
     option: [
@@ -391,12 +394,56 @@ Ornament:
 
 Daemon:
   Enable:
-    type: state
-    value: true
-    option: [ true ]
+    type: checkbox
+    value: false
+    option: [ true,false ]
     option_bold: [ true, ]
   AimClicker:
     value: do_not_click
     option: [ item_enemy, item, enemy, do_not_click ]
 PlannerScan:
   ResultAdd: false
+
+Reward:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+
+Rescheduler:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+
+QuizCenter:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+
+Competition:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+
+Exercise:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+DailyRoutine:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+DungeonSetting:
+  BattleField:
+    type: select
+    value: nv1
+    option: [nv1,sv1,ma1,ns1,nv2,sv2,ma2,ns2]
+  ArmTransport:
+    type: select
+    value: a-ng1
+    option: [a-ng1,a-tp1,a-ac1,a-aa1,a-eq1,a-ng2,a-tp2,a-ac2,a-aa2,a-eq2]

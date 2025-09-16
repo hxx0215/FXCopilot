@@ -4,7 +4,7 @@
       "Serial": "auto",
       "GameClient": "android",
       "PackageName": "auto",
-      "GameLanguage": "auto",
+      "GameLanguage": "cn",
       "ScreenshotMethod": "scrcpy",
       "ControlMethod": "MaaTouch",
       "CloudPriorQueue": false,
@@ -35,9 +35,61 @@
       "ServerUpdate": "04:00"
     }
   },
+  "Reward": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Reward",
+      "ServerUpdate": "04:00"
+    }
+  },
+  "Rescheduler": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Rescheduler",
+      "ServerUpdate": "04:00"
+    }
+  },
+  "Exercise": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Exercise",
+      "ServerUpdate": "04:00"
+    }
+  },
+  "QuizCenter": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "QuizCenter",
+      "ServerUpdate": "04:00"
+    }
+  },
+  "Competition": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Competition",
+      "ServerUpdate": "04:00"
+    }
+  },
+  "DailyRoutine": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "DailyRoutine",
+      "ServerUpdate": "04:00"
+    },
+    "DungeonSetting": {
+      "BattleExplore": "nv1",
+      "ArmTransport": "a-ng1"
+    }
+  },
   "Dungeon": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Dungeon",
       "ServerUpdate": "04:00"
@@ -176,7 +228,7 @@
   },
   "DailyQuest": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "DailyQuest",
       "ServerUpdate": "04:00"
@@ -188,7 +240,7 @@
   },
   "BattlePass": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "BattlePass",
       "ServerUpdate": "04:00"
@@ -208,7 +260,7 @@
   },
   "Assignment": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Assignment",
       "ServerUpdate": "04:00"
@@ -243,7 +295,7 @@
   },
   "Freebies": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Freebies",
       "ServerUpdate": "04:00"
@@ -304,7 +356,7 @@
   },
   "Daemon": {
     "Daemon": {
-      "Enable": true,
+      "Enable": false,
       "AimClicker": "do_not_click"
     }
   },

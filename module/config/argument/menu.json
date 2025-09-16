@@ -7,6 +7,18 @@
       "Restart"
     ]
   },
+  "FX": {
+    "menu": "list",
+    "page": "setting",
+    "tasks": [
+      "Reward",
+      "Rescheduler",
+      "Exercise",
+      "QuizCenter",
+      "Competition",
+      "DailyRoutine"
+    ]
+  },
   "Daily": {
     "menu": "list",
     "page": "setting",

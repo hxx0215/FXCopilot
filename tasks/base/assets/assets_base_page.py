@@ -771,6 +771,14 @@ CLICK_TO_CONTINUE=ButtonWrapper(
         color=(33,31,33)
     )
 )
+GET_REWARD=ButtonWrapper(
+    name='GET_REWARD',
+    share=Button.default_init(
+        area=(508,135,801,216),color=(169,156,114),
+        file='./assets/share/base/main_page/GET_REWARDS.png',
+        button=(595,546,686,565)
+    )
+)
 
 MIDSHIPS_CANDIDATE=ButtonWrapper(
     name='MIDSHIPS_CANDIDATE',
@@ -957,10 +965,11 @@ DAILY_ROUTINE_PAGE=ButtonWrapper(
 )
 DAILY_CONVOY_ESCORT_BUTTON=ButtonWrapper(
     name='DAILY_CONVOY_ESCORT_BUTTON',
-    share=Button.default_init(
+    share=Button(
         area=(483,568,544,657),color=(90,91,97),
         file='./assets/share/attack/daily_routine/CONVOY_ESCORT_BUTTON.png',
-        button=(430,568,597,657)
+        button=(430,568,597,657),
+        search=(475,563,559,662)
     )
 )
 DAILY_CONVOY_ESCORT_ACTIVE=ButtonWrapper(
@@ -972,12 +981,104 @@ DAILY_CONVOY_ESCORT_ACTIVE=ButtonWrapper(
         search=(417,534,611,653)
     )
 )
+DAILY_CONVOY_ESCORT_START=ButtonWrapper(
+    name='DAILY_CONVOY_ESCORT_START',
+    share=Button(
+        area=(615,119,840,520),color=(154,158,148),
+        file='./assets/share/attack/daily_routine/CONVOY_ESCORT_START.png',
+        button=(635,460,819,510),
+        search=(595,99,860,540)
+    )
+)
+DAILY_CONVOY_ESCORT_START2=ButtonWrapper(
+    name='CONVOY_ESCORT_START2',
+    share=Button(
+        area=(600,121,854,519),color=(154,158,149),
+        file='./assets/share/attack/daily_routine/CONVOY_ESCORT_START2.png',
+        button=(635,461,818,512),
+        search=(580,101,874,539)
+    )
+)
+DAILY_MILITARY_TECHNOLOGY_BUTTON=ButtonWrapper(
+    name='DAILY_MILITARY_TECHNOLOGY_BUTTON',
+    share=Button(
+        area=(864,568,925,657),color=(77,82,91),
+        file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_BUTTON.png',
+        button=(813,568,980,657),
+        search=(859,563,930,662)
+    )
+)
+DAILY_MILITARY_TECHNOLOGY_ACTIVE=ButtonWrapper(
+    name='DAILY_MILITARY_TECHNOLOGY_ACTIVE',
+    share=Button(
+        area=(804,539,988,648),color=(62,63,57),
+        file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_ACTIVE.png',
+        button=(804,539,988,648),
+        search=(799,534,993,653)
+    )
+)
+DAILY_MILITARY_TECHNOLOGY_START=ButtonWrapper(
+    name='DAILY_MILITARY_TECHNOLOGY_START',
+    share=Button(
+        area=(615,119,840,520),color=(168,167,158),
+        file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_START.png',
+        button=(635,460,819,510),
+        search=(595,99,860,540)
+    )
+)
+DAILY_MILITARY_TECHNOLOGY_START2=ButtonWrapper(
+    name='DAILY_MILITARY_TECHNOLOGY_START2',
+    share=Button(
+        area=(600,121,854,519),color=(168,167,159),
+        file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_START2.png',
+        button=(635,461,818,512),
+        search=(580,101,874,539)
+    )
+)
+
+DAILY_TACTICAL_TRAINING_BUTTON=ButtonWrapper(
+    name='DAILY_TACTICAL_TRAINING_BUTTON',
+    share=Button(
+        area=(1054,568,1115,657),color=(82,78,85),
+        file='./assets/share/attack/daily_routine/TACTICAL_TRAINING_BUTTON.png',
+        button=(1004,568,1171,657),
+        search=(1049,563,1120,662)
+    )
+)
+DAILY_TACTICAL_TRAINING_ACTIVE=ButtonWrapper(
+    name='DAILY_TACTICAL_TRAINING_ACTIVE',
+    share=Button(
+        area=(994,539,1178,648),color=(66,63,57),
+        file='./assets/share/attack/daily_routine/TACTICAL_TRAINING_ACTIVE.png',
+        button=(994,539,1178,648),
+        search=(989,534,1183,653)
+    )
+)
+DAILY_TACTICAL_TRAINING_START=ButtonWrapper(
+    name='DAILY_TACTICAL_TRAINING_START',
+    share=Button(
+        area=(615,119,840,520),color=(167,167,160),
+        file='./assets/share/attack/daily_routine/TACTICAL_TRAINING_START.png',
+        button=(635,460,819,510),
+        search=(595,99,860,540)
+    )
+)
+DAILY_TACTICAL_TRAINING_START2=ButtonWrapper(
+    name='TACTICAL_TRAINING_START2',
+    share=Button(
+        area=(600,121,854,519),color=(167,168,162),
+        file='./assets/share/attack/daily_routine/TACTICAL_TRAINING_START2.png',
+        button=(635,461,818,512),
+        search=(580,101,874,539)
+    )
+)
 DAILY_ARM_TRANSPORT_BUTTON=ButtonWrapper(
     name='DAILY_ARM_TRANSPORT_BUTTON',
-    share=Button.default_init(
+    share=Button(
         area=(295,569,354,654),color=(92,100,110),
         file='./assets/share/attack/daily_routine/ARM_TRASPORT_BUTTON.png',
-        button=(242,569,406,659)
+        button=(242,569,406,659),
+        search=(290,564,359,659)
     )
 )
 DAILY_ARM_TRANSPORT_ACTIVE=ButtonWrapper(
@@ -987,5 +1088,165 @@ DAILY_ARM_TRANSPORT_ACTIVE=ButtonWrapper(
         file='./assets/share/attack/daily_routine/ARM_TRASPORT_ACTIVE.png',
         button=(230,539,416,648),
         search=(225,534,421,653)
+    )
+)
+DAILY_ARM_TRANSPORT_START=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_START',
+    share=Button(
+        area=(615,119,840,520),color=(127,150,101),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_START.png',
+        button=(635,460,819,510),
+        search=(595,99,860,540)
+    )
+)
+DAILY_BATTLE_FIELD_BUTTON=ButtonWrapper(
+    name='DAILY_BATTLE_FIELD_BUTTON',
+    share=Button.default_init(
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_BUTTON.png',
+        area=(1195,567,1227,633),color=(202,151,113)
+    )
+)
+DAILY_BATTLE_FIELD_ACTIVE=ButtonWrapper(
+    name='DAILY_BATTLE_FIELD_ACTIVE',
+    share=Button.default_init(
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_ACTIVE.png',
+        area=(1185,537,1226,648),color=(117,98,73)
+    )
+)
+DAILY_BATTLE_FIELD_START=ButtonWrapper(
+    name='DAILY_BATTLE_FIELD_START',
+    share=Button(
+        area=(628,119,827,520),color=(119,149,153),
+        file='./assets/share/attack/daily_routine/BATTLE_FIELD_START.png',
+        button=(635,460,819,510),
+        search=(608,99,847,540)
+    )
+)
+DAILY_BATTLE_FIELD_START2=ButtonWrapper(
+    name='DAILY_BATTLE_FIELD_START2',
+    share=Button(
+        area=(615,121,840,519),color=(117,148,154),
+        file='./assets/share/attack/daily_routine/BATTLE_FIELD_START2.png',
+        button=(635,461,818,512),
+        search=(595,101,860,539)
+    )
+)
+PREVIOUS_STAGE_BUTTON=ButtonWrapper(
+    name='PREVIOUS_STAGE_BUTTON',
+    share=Button.default_init(
+        area=(17,314,80,417),color=(71,93,103),
+        file='./assets/share/base/main_page/PREVIOUS_STAGE_BUTTON.png'
+    )
+)
+NEXT_STAGE_BUTTON=ButtonWrapper(
+    name='NEXT_STAGE_BUTTON',
+    share=Button.default_init(
+        area=(1200,314,1263,417),color=(77,102,107),
+        file='./assets/share/base/main_page/NEXT_STAGE_BUTTON.png'
+    )
+)
+STAGE_TIMES_SELECT_BUTTON = ButtonWrapper(
+    name='STAGE_TIMES_SELECT_BUTTON',
+    share=Button.default_init(
+        area=(1096,496,1134,537),color=(40,40,40),
+        file='./assets/share/base/main_page/STAGE_TIMES_SELECT.png'
+    )
+)
+STAGE_MAX_TIMES_BUTTON = ButtonWrapper(
+    name='STAGE_MAX_TIMES_BUTTON',
+    share=Button.default_init(
+        area=(940,309,1142,354),color=(152,192,199),
+        file='./assets/share/base/main_page/STAGE_MAX_TIMES.png'
+    )
+)
+STAGE_SWEEP_BUTTON = ButtonWrapper(
+    name='STAGE_SWEEP_BUTTON',
+    share=Button.default_init(
+        area=(772,555,865,622),color=(1,106,181),
+        file='./assets/share/base/main_page/STAGE_SWEEP_BUTTON.png'
+    )
+)
+STAGE_CLOSE_BUTTON = ButtonWrapper(
+    name='STAGE_CLOSE_BUTTON',
+    share=Button.default_init(
+        area=(1116,99,1152,139),color=(80,76,76),
+        file='./assets/share/base/main_page/STAGE_CLOSE_BUTTON.png'
+    )
+)
+DAILY_ARM_TRANSPORT_NG1=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_NG1',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(137,137,137),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_NG1.png'
+    )
+)
+DAILY_ARM_TRANSPORT_TP1=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_TP1',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(139,139,139),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_TP1.png'
+    )
+)
+DAILY_ARM_TRANSPORT_AC1=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_AC1',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(138,138,138),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_AC1.png'
+    )
+)
+DAILY_ARM_TRANSPORT_AA1=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_AA1',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(137,137,137),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_AA1.png'
+    )
+)
+DAILY_ARM_TRANSPORT_EQ1=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_EQ1',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(138,138,138),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_EQ1.png'
+    )
+)
+DAILY_ARM_TRANSPORT_NG2=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_NG2',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(136,136,136),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_NG2.png'
+    )
+)
+DAILY_ARM_TRANSPORT_TP2=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_TP2',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(142,142,142),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_TP2.png'
+    )
+)
+DAILY_ARM_TRANSPORT_AC2=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_AC2',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(139,139,139),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_AC2.png'
+    )
+)
+DAILY_ARM_TRANSPORT_AA2=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_AA2',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(141,141,141),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_AA2.png'
+    )
+)
+DAILY_ARM_TRANSPORT_EQ2=ButtonWrapper(
+    name='DAILY_ARM_TRANSPORT_EQ2',
+    share=Button.default_init(
+        area=(139,158,535,306),color=(142,142,142),
+        file='./assets/share/attack/daily_routine/ARM_TRANSPORT_EQ2.png'
+    )
+)
+DAILY_BATTLE_FIELD_DATA=ButtonWrapper(
+    name='DAILY_BATTLE_FIELD_DATA',
+    share=Button.default_init(
+        area=(140,158,535,217),color=(78,78,78),
+        file='./assets/share/attack/daily_routine/BATTLE_FIELD_STAGE_DATA.png'
     )
 )

@@ -17,9 +17,9 @@ class GeneratedConfig:
 
     # Group `Emulator`
     Emulator_Serial = 'auto'
-    Emulator_GameClient = 'android'  # android, cloud_android
+    Emulator_GameClient = 'android'
     Emulator_PackageName = 'auto'  # auto, CN-Official, CN-Bilibili
-    Emulator_GameLanguage = 'auto'  # auto, cn, en
+    Emulator_GameLanguage = 'cn'
     Emulator_ScreenshotMethod = 'auto'  # auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy, nemu_ipc, ldopengl
     Emulator_ControlMethod = 'MaaTouch'  # minitouch, MaaTouch
     Emulator_CloudPriorQueue = False
@@ -223,8 +223,30 @@ class GeneratedConfig:
     Ornament_UseStamina = False
 
     # Group `Daemon`
-    Daemon_Enable = True  # True
+    Daemon_Enable = False  # True, False
     Daemon_AimClicker = 'do_not_click'  # item_enemy, item, enemy, do_not_click
 
     # Group `PlannerScan`
     PlannerScan_ResultAdd = False
+
+    # Group `Reward`
+    Reward_Enable = True  # True, False
+
+    # Group `Rescheduler`
+    Rescheduler_Enable = True  # True, False
+
+    # Group `QuizCenter`
+    QuizCenter_Enable = True  # True, False
+
+    # Group `Competition`
+    Competition_Enable = True  # True, False
+
+    # Group `Exercise`
+    Exercise_Enable = True  # True, False
+
+    # Group `DailyRoutine`
+    DailyRoutine_Enable = True  # True, False
+
+    # Group `DungeonSetting`
+    DungeonSetting_BattleExplore = 'nv1'  # nv1, sv1, ma1, ns1, nv2, sv2, ma2, ns2
+    DungeonSetting_ArmTransport = 'a-ng1'  # a-ng1, a-tp1, a-ac1, a-aa1, a-eq1, a-ng2, a-tp2, a-ac2, a-aa2, a-eq2

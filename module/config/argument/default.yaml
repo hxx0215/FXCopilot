@@ -24,7 +24,7 @@ Assignment:
     Enable: true
 Freebies:
   Scheduler:
-    Enable: true
+    Enable: false
 
 # ==================== Weekly ====================
 

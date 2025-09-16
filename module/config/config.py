@@ -220,12 +220,10 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
             if not isinstance(func.next_run, datetime):
                 error.append(func)
             elif func.next_run < now:
-                logger.info(f'add func {func}')
                 pending.append(func)
             else:
                 waiting.append(func)
 
-        logger.info(f"current pending:{pending}")
         f = Filter(regex=r"(.*)", attr=["command"])
         f.load(self.SCHEDULER_PRIORITY)
         if pending:
@@ -238,7 +236,6 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
 
         self.pending_task = pending
         self.waiting_task = waiting
-        logger.info(f"current pending:{self.waiting_task}")
 
     def get_next(self):
         """
@@ -246,7 +243,6 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
             Function: Command to run
         """
         self.get_next_task()
-        logger.info(f"current pending:{self.pending_task}")
         if self.pending_task:
             AzurLaneConfig.is_hoarding_task = False
             logger.info(f"Pending tasks: {[f.command for f in self.pending_task]}")
