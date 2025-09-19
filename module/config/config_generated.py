@@ -244,6 +244,9 @@ class GeneratedConfig:
     # Group `Exercise`
     Exercise_Enable = True  # True, False
 
+    # Group `Expedition`
+    Expedition_Enable = True  # True, False
+
     # Group `DailyRoutine`
     DailyRoutine_Enable = True  # True, False
 

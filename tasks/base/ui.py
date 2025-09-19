@@ -510,6 +510,17 @@ class UI(MainPage):
                 logger.info(f'{EFFECT_NOTIFICATION} -> {RUN_BUTTON}')
                 self.device.click(RUN_BUTTON)
                 continue
+    def ui_button_click(self, button: ClickButton, interval=3) -> bool:
+        if not isinstance(button, ClickButton):
+            logger.warning(f"handle_ocr_button received a non-click-button object: {button}")
+            return False
+        if self.interval_is_reached(button, interval):
+            self.device.click(button)
+            self.interval_reset(button)
+            return True
+        else:
+            return False
+
     def ui_ocr_button_click(self, button: OcrResultButton, interval=3) -> bool:
         if not isinstance(button, OcrResultButton):
             logger.warning(f"handle_ocr_button received a non-OcrResultButton object: {button}")

@@ -949,6 +949,14 @@ ARENA_SET_SAIL=ButtonWrapper(
         file='./assets/share/attack/competition/ARENA_SET_SAIL.png'
     )
 )
+ARENA_ADVANCE_POPUP=ButtonWrapper(
+    name='ARENA_ADVANCE_POPUP',
+    share=Button.default_init(
+        area=(337,215.25,940,498.25),color=(172,177,177),
+        file='./assets/share/attack/competition/ARENA_ADVANCE_POPUP.png',
+        button=(739,436,926,485)
+    )
+)
 DAILY_ROUTINE_BUTTON=ButtonWrapper(
     name='DAILY_ROUTINE_BUTTON',
     share=Button.default_init(
@@ -1294,5 +1302,128 @@ DAILY_BATTLE_FIELD_DATA=ButtonWrapper(
     share=Button.default_init(
         area=(140,158,535,217),color=(78,78,78),
         file='./assets/share/attack/daily_routine/BATTLE_FIELD_STAGE_DATA.png'
+    )
+)
+EXPEDITION_BUTTON=ButtonWrapper(
+    name='EXPEDITION_BUTTON',
+    share=Button.default_init(
+        area=(584,411,664,483),color=(146,146,146),
+        file='./assets/share/attack/ATTACK_EXPEDITION_BUTTON.png'
+    )
+)
+EXPEDITION_PAGE=ButtonWrapper(
+    name='EXPEDITION_PAGE',
+    share=Button.default_init(
+        area=(34,266,209,328),color=(210,212,212),
+        file='./assets/share/attack/ATTACK_EXPEDITION_PAGE.png'
+    )
+)
+EXPEDITION_FINISH_FLAG=ButtonWrapper(
+    name='EXPEDITION_FINISH_FLAG',
+    share=Button(
+        area=(980,585,992,599),color=(253,99,86),
+        file='./assets/share/attack/expedition/EXPEDITION_FINISH_FLAG.png',
+        button=(896,589,992,612),
+        search=(975,570,1259,661)
+    )
+)
+EXPEDITION_COLLECT_ALL=ButtonWrapper(
+    name='EXPEDITION_COLLECT_ALL',
+    share=Button.default_init(
+        area=(220,631,401,679),color=(94,187,188),
+        file='./assets/share/attack/expedition/EXPEDITION_COLLECT_ALL.png'
+    )
+)
+EXPEDITION_WAITING=ButtonWrapper(
+    name='EXPEDITION_WAITING',
+    share=Button(
+        area=(1229,647,1246,671),color=(104,94,66),
+        file='./assets/share/attack/expedition/EXPEDITION_WAITING.png',
+        search=(972,580,1253,678),
+        button=(1150,644,1248,673)
+    )
+)
+EXPEDITION_WAITING2=ButtonWrapper(
+    name='EXPEDITION_WAITING2',
+    share=Button(
+        area=(1225,589,1246,614),color=(56,86,96),
+        file='./assets/share/attack/expedition/EXPEDITION_WAITING2.png',
+        search=(965,582,1251,617),
+        button=(1153,589,1246,614)
+    )
+)
+EXPEDITION_FINISH_REWARD=ButtonWrapper(
+    name='EXPEDITION_FINISH_REWARD',
+    share=Button(
+        area=(377,323,421,398),color=(129,131,133),
+        file='./assets/share/attack/expedition/EXPEDITION_FINISH_REWARD.png',
+        search=(243,218,986,517),
+        button=(434,459,867,575)
+    )
+)
+EXPEDITION_TIME_DATA=ButtonWrapper(
+    name='EXPEDITION_TIME_DATA',
+    share=Button.default_init(
+        area=(726,476,973,492),color=(161,161,161),
+        file='./assets/share/attack/expedition/EXPEDITION_TIME_DATA.png'
+    )
+)
+EXPEDITION_READY=ButtonWrapper(
+    name='EXPEDITION_READY',
+    share=Button.default_init(
+        area=(1110,416,1220,487),color=(194,194,194),
+        file='./assets/share/attack/expedition/EXPEDITION_READY.png'
+    )
+)
+EXPEDITION_CURRENT_TEAMS_DATA=ButtonWrapper(
+    name='EXPEDITION_CURRENT_TEAMS_DATA',
+    share=Button.default_init(
+        area=(1236,95,1273,117),color=(55,55,55),
+        file='./assets/share/attack/expedition/EXPEDITION_CURRENT_TEAMS_DATA.png'
+    )
+)
+EXPEDITION_TIME_SELECT_DATA=ButtonWrapper(
+    name='EXPEDITION_TIME_SELECT_DATA',
+    share=Button.default_init(
+        area=(915,589,1232,611),color=(188,196,202),
+        file='./assets/share/attack/expedition/EXPEDITION_TIME_SELECT_DATA.png'
+    )
+)
+EXPEDITION_LIMITED_TIME_SELECT_DATA=ButtonWrapper(
+    name='EXPEDITION_LIMITED_TIME_SELECT_DATA',
+    share=Button.default_init(
+        area=(1016,633,1256,681),color=(155,172,184),
+        file='./assets/share/attack/expedition/EXPEDITION_LIMITED_TIME_SELECT_DATA.png'
+    )
+)
+EXPEDITION_DEPLOY_ICON_BUTTON=ButtonWrapper(
+    name='EXPEDITION_DEPLOY_ICON_BUTTON',
+    share=Button(
+        #area=(763,188,811,254),color=(192,153,199),
+        area=(762,188,812,247),color=(176,188,207),
+        file='./assets/share/attack/expedition/EXPEDITION_DEPLOY_ICON_BUTTON.png',
+        search=(755,186,816,523),
+        button=(754,153,984,252)
+    )
+)
+EXPEDITION_AUTO_DEPLOY=ButtonWrapper(
+    name='EXPEDITION_AUTO_DEPLOY',
+    share=Button.default_init(
+        area=(529,444,675,491),color=(94,182,182),
+        file='./assets/share/attack/expedition/EXPEDITION_AUTO_DEPLOY.png'
+    )
+)
+EXPEDITION_SAIL=ButtonWrapper(
+    name='EXPEDITION_SAIL',
+    share=Button.default_init(
+        area=(378,540,563,587),color=(223,204,112),
+        file='./assets/share/attack/expedition/EXPEDITION_SAIL.png'
+    )
+)
+EXPEDITION_RECALL=ButtonWrapper(
+    name='EXPEDITION_RECALL',
+    share=Button.default_init(
+        area=(377,539,563,589),color=(215,115,115),
+        file='./assets/share/attack/expedition/EXPEDITION_RECALL.png'
     )
 )

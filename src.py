@@ -104,6 +104,10 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.daily_routine.daily_routine import DailyRoutine
         DailyRoutine(self.config, self.device, task="DailyRoutine").run()
 
+    def expedition(self):
+        from tasks.expedition.expedition import Expedition
+        Expedition(self.config, self.device, task="Expedition").run()
+
 
 if __name__ == '__main__':
     src = StarRailCopilot('src')

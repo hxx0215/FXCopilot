@@ -14,7 +14,7 @@ class ManualConfig:
     > BattlePass > DailyQuest
     > Freebies > DataUpdate
     > Rogue 
-    > DailyRoutine > Exercise > Competition > QuizCenter
+    > DailyRoutine > Exercise > Competition > QuizCenter > Expedition
     > Reward > Rescheduler
     """
 

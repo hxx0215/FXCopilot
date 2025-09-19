@@ -80,6 +80,8 @@ class Competition(UI):
         return scout_result
 
     def go_to_prepare(self) -> str:
+        if self.appear(ARENA_ADVANCE_POPUP):
+            return 'Cancel'
         if self.handle_popup_cancel():
             return 'Cancel'
         if self.appear(ARENA_SMALL_CLASS_SELECTED):

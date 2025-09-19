@@ -433,6 +433,11 @@ Exercise:
     type: checkbox
     value: true
     option: [true, false]
+Expedition:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
 DailyRoutine:
   Enable:
     type: checkbox

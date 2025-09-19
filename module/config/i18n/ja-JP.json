@@ -54,6 +54,10 @@
       "name": "Task.DailyRoutine.name",
       "help": "Task.DailyRoutine.help"
     },
+    "Expedition": {
+      "name": "Task.Expedition.name",
+      "help": "Task.Expedition.help"
+    },
     "Dungeon": {
       "name": "Task.Dungeon.name",
       "help": "Task.Dungeon.help"
@@ -1661,6 +1665,18 @@
     "Enable": {
       "name": "Exercise.Enable.name",
       "help": "Exercise.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Expedition": {
+    "_info": {
+      "name": "Expedition._info.name",
+      "help": "Expedition._info.help"
+    },
+    "Enable": {
+      "name": "Expedition.Enable.name",
+      "help": "Expedition.Enable.help",
       "True": "True",
       "False": "False"
     }

@@ -386,7 +386,7 @@ def get_server_next_update(daily_trigger):
 
     diff = server_time_offset()
     local_now = datetime.now()
-    trigger = []
+    trigger: list[datetime] = []
     for t in daily_trigger:
         h, m = [int(x) for x in t.split(':')]
         future = local_now.replace(hour=h, minute=m, second=0, microsecond=0) + diff
@@ -507,6 +507,9 @@ def get_server_weekday():
     result = server_now.weekday()
     return result
 
+def get_server_now():
+    diff = server_time_offset()
+    return datetime.now() - diff
 
 def random_id(length=32):
     """

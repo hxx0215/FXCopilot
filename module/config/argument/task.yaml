@@ -34,6 +34,8 @@ FX:
     DailyRoutine:
       - Scheduler
       - DungeonSetting
+    Expedition:
+      - Scheduler
 Daily:
   menu: 'list'
   page: 'setting'

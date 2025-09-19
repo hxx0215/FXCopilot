@@ -266,7 +266,7 @@ class ButtonWrapper(Resource):
                 return True
         return False
 
-    def match_multi_template(self, image, similarity=0.85, threshold=5, direct_match=False):
+    def match_multi_template(self, image, similarity=0.85, threshold=5, direct_match=False) -> list['ClickButton']:
         """
         Detects assets by template matching, return multiple results
 

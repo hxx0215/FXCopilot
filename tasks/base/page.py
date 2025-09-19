@@ -215,3 +215,7 @@ page_arena.link(HOME_BUTTON, destination=page_main)
 page_daily_routine = Page(DAILY_ROUTINE_PAGE)
 page_daily_routine.link(HOME_BUTTON, destination=page_main)
 page_main_line.link(DAILY_ROUTINE_BUTTON, destination=page_daily_routine)
+
+page_expedition = Page(EXPEDITION_PAGE)
+page_expedition.link(HOME_BUTTON, destination=page_main)
+page_reward.link(EXPEDITION_BUTTON, destination=page_expedition)
