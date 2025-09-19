@@ -27,6 +27,7 @@ class TimeExpeditionKeyword(Keyword):
         return cls(id,name,cn = name,en = name,jp = name, cht = '',es = '')
 class Expedition(UI):
     def check_remain_time(self):
+        self.ui_ensure(page_reward)
         ocr = DataDigit(EXPEDITION_TIME_DATA)
         for _ in self.loop():
             remain_time = ocr.detect_and_ocr(self.device.image)
@@ -159,15 +160,15 @@ class Expedition(UI):
         
 
     def run(self):
-        self.ui_ensure(page_reward)
         (has_finished,times) = self.check_remain_time()
         logger.info(f"{(has_finished, times)}")
         if not has_finished:
             self.config.task_delay(target= times)
         else:
             team_num = self.collect_reward()
-            delay = self.deploy_next_expedition(team_num)
-            self.config.task_delay(minute= delay * 60)
+            self.deploy_next_expedition(team_num)
+            (_, times) = self.check_remain_time()
+            self.config.task_delay(target= times)
 
 if __name__ == '__main__':
     task = Expedition('src', task='Exercise')
