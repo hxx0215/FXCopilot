@@ -100,8 +100,6 @@ class Ocr:
         Returns:
             str:
         """
-        if result.startswith('UID'):
-            result = 'UID'
         return result
 
     def format_result(self, result):
@@ -186,9 +184,9 @@ class Ocr:
             self,
             result: str,
             keyword_classes,
-            lang: str = None,
+            lang: str | None = None,
             ignore_punctuation=True,
-            ignore_digit=True):
+            ignore_digit=True) -> Keyword | None:
         """
         Args:
             result (str):
@@ -224,9 +222,9 @@ class Ocr:
             self,
             image,
             keyword_classes,
-            lang: str = None,
+            lang: str | None = None,
             ignore_punctuation=True
-    ) -> Keyword:
+    ) -> Keyword | None:
         """
         Args:
             image: Image to detect
@@ -254,7 +252,7 @@ class Ocr:
             self,
             image_list,
             keyword_classes,
-            lang: str = None,
+            lang: str | None = None,
             ignore_punctuation=True
     ) -> list[Keyword]:
         """
@@ -275,8 +273,8 @@ class Ocr:
             keyword_classes=keyword_classes,
             lang=lang,
             ignore_punctuation=ignore_punctuation,
-        ) for result in results]
-        results = [result for result in results if result.is_keyword_matched]
+        ) for (result,_) in results]
+        results = [result for result in results if result]
 
         logger.attr(name=f'{self.name} matched',
                     text=results)
@@ -472,10 +470,16 @@ class OcrWhiteLetterOnComplexBackground(Ocr):
             dt_boxes = self.enlarge_boxes(dt_boxes)
             return dt_boxes, elapse
 
-        self.model.text_detector = text_detector_with_min_box
+        # TODO: make a class wrapper
+        self.model.text_detector = text_detector_with_min_box # type: ignore
         try:
             result = super().detect_and_ocr(*args, **kwargs)
         finally:
             self.model.text_detector.box_thresh = backup
             self.model.text_detector = text_detector
         return result
+class QuickClaimTimeOcr(Ocr):
+    def after_process(self, result):
+        result = re.sub(r'[l|]', '1', result)
+        result = re.sub(r'[oO]', '0', result)
+        return super().after_process(result)
