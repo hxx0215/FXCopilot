@@ -58,6 +58,10 @@
       "name": "Task.Expedition.name",
       "help": "Task.Expedition.help"
     },
+    "Beach": {
+      "name": "Task.Beach.name",
+      "help": "Task.Beach.help"
+    },
     "Dungeon": {
       "name": "Task.Dungeon.name",
       "help": "Task.Dungeon.help"
@@ -1689,6 +1693,18 @@
     "Enable": {
       "name": "DailyRoutine.Enable.name",
       "help": "DailyRoutine.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Beach": {
+    "_info": {
+      "name": "Beach._info.name",
+      "help": "Beach._info.help"
+    },
+    "Enable": {
+      "name": "Beach.Enable.name",
+      "help": "Beach.Enable.help",
       "True": "True",
       "False": "False"
     }

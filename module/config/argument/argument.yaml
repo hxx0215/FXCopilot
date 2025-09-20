@@ -443,6 +443,11 @@ DailyRoutine:
     type: checkbox
     value: true
     option: [true, false]
+Beach:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
 DungeonSetting:
   BattleField:
     type: select

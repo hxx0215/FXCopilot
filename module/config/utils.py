@@ -286,7 +286,8 @@ def server_time_offset() -> timedelta:
     To convert server time to local time:
         local_time = server_time - server_time_offset()
     """
-    return datetime.now(timezone.utc).astimezone().utcoffset() - server_timezone()
+    offset = datetime.now(timezone.utc).astimezone().utcoffset()
+    return offset - server_timezone() if offset else timedelta()
 
 
 def random_normal_distribution_int(a, b, n=3):

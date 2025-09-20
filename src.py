@@ -108,6 +108,10 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.expedition.expedition import Expedition
         Expedition(self.config, self.device, task="Expedition").run()
 
+    def beach(self):
+        from tasks.beach.beach import Beach
+        Beach(self.config, self.device, task="Beach").run()
+
 
 if __name__ == '__main__':
     src = StarRailCopilot('src')

@@ -36,6 +36,8 @@ FX:
       - DungeonSetting
     Expedition:
       - Scheduler
+    Beach:
+      - Scheduler
 Daily:
   menu: 'list'
   page: 'setting'
