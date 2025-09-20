@@ -1,4 +1,4 @@
-from module.base.button import Button, ButtonWrapper
+from module.base.button import Button, ButtonWrapper,ItemWrapper
 
 # This file was auto-generated, do not modify it manually. To generate:
 # ``` python -m dev_tools.button_extract ```
@@ -712,7 +712,7 @@ NAVAL_PORT_BUTTON=ButtonWrapper(
 QUIZ_CENTER_BUTTON=ButtonWrapper(
     name='QUIZ_CENTER_BUTTON',
     share=Button.default_init(
-        file='./assets/share/naval_port/QUIZ_CENTER_BUTTON.png',
+        file='./assets/share/naval_port/quiz_center/QUIZ_CENTER_BUTTON.png',
         area=(749,640,775,665),
         color=(255,255,255)
     )
@@ -720,7 +720,7 @@ QUIZ_CENTER_BUTTON=ButtonWrapper(
 QUIZ_CENTER_PAGE=ButtonWrapper(
     name='QUIZ_CENTER_PAGE',
     share=Button.default_init(
-        file='./assets/share/naval_port/QUIZ_CENTER.png',
+        file='./assets/share/naval_port/quiz_center/QUIZ_CENTER.png',
         area=(206,87,263,167),
         color=(142,105,80)
     )
@@ -728,7 +728,7 @@ QUIZ_CENTER_PAGE=ButtonWrapper(
 QUIZ_START_DATA=ButtonWrapper(
     name='QUIZ_START_DATA',
     share=Button.default_init(
-        file='./assets/share/naval_port/QUIZ_START_DATA.png',
+        file='./assets/share/naval_port/quiz_center/QUIZ_START_DATA.png',
         area=(301,148,920,423),
         color=(54,69,101)
     )
@@ -736,7 +736,7 @@ QUIZ_START_DATA=ButtonWrapper(
 QUIZ_QUESTION_DATA=ButtonWrapper(
     name='QUIZ_QUESTION_DATA',
     share=Button.default_init(
-        file='./assets/share/naval_port/QUIZ_QUESTION_DATA.png',
+        file='./assets/share/naval_port/quiz_center/QUIZ_QUESTION_DATA.png',
         area=(118,594,1156,678),
         color=(31,31,44)
     )
@@ -744,7 +744,7 @@ QUIZ_QUESTION_DATA=ButtonWrapper(
 QUIZ_CANDIDATE_DATA=ButtonWrapper(
     name='QUIZ_CANDIDATE_DATA',
     share=Button.default_init(
-        file='./assets/share/naval_port/QUIZ_CANDIDATE.png',
+        file='./assets/share/naval_port/quiz_center/QUIZ_CANDIDATE.png',
         area=(261,186,1011,423),
         color=(217,237,241)
     )
@@ -753,7 +753,7 @@ QUIZ_CANDIDATE_DATA=ButtonWrapper(
 QUIZ_REFRESH_DATA=ButtonWrapper(
     name='QUIZ_REFRESH_DATA',
     share=Button(
-        file='./assets/share/naval_port/QUIZ_REFRESH_DATA.png',
+        file='./assets/share/naval_port/quiz_center/QUIZ_REFRESH_DATA.png',
         area=(1144,584,1190,615),
         search=(1124,684,1210,635),
         button=(1144,584,1190,615),
@@ -783,7 +783,7 @@ GET_REWARD=ButtonWrapper(
 MIDSHIPS_CANDIDATE=ButtonWrapper(
     name='MIDSHIPS_CANDIDATE',
     share=Button(
-        file='./assets/share/naval_port/MIDSHIPS_CANDIDATE.png',
+        file='./assets/share/naval_port/quiz_center/MIDSHIPS_CANDIDATE.png',
         # area=(380,248,437,285),
         # button=(380,248,437,285),
         area=(608,189,675,227),
@@ -795,7 +795,7 @@ MIDSHIPS_CANDIDATE=ButtonWrapper(
 STERN_CANDIDATE=ButtonWrapper(
     name='STERN_CANDIDATE',
     share=Button(
-        file='./assets/share/naval_port/STERN_CANDIDATE.png',
+        file='./assets/share/naval_port/quiz_center/STERN_CANDIDATE.png',
         area=(612,384,673,419),
         search=(263,182,1017,420),
         button=(263,381,1017,420),
@@ -805,7 +805,7 @@ STERN_CANDIDATE=ButtonWrapper(
 QUIZ_EMPTY_PAGE=ButtonWrapper(
     name='QUIZ_EMPTY_PAGE',
     share=Button.default_init(
-        file='./assets/share/naval_port/QUIZ_EMPTY_PAGE.png',
+        file='./assets/share/naval_port/quiz_center/QUIZ_EMPTY_PAGE.png',
         area=(282,221,1011,549),
         color=(84,99,109)
     )
@@ -1379,7 +1379,7 @@ EXPEDITION_CURRENT_TEAMS_DATA=ButtonWrapper(
     name='EXPEDITION_CURRENT_TEAMS_DATA',
     share=Button.default_init(
         area=(1236,95,1273,117),color=(55,55,55),
-        file='./assets/share/attack/expedition/EXPEDITION_CURRENT_TEAMS_DATA.png'
+        file='./assets/share/attack/expedition/EXPEDITION_CURRENT_TEAMS_DATA.png',
     )
 )
 EXPEDITION_TIME_SELECT_DATA=ButtonWrapper(
@@ -1426,4 +1426,76 @@ EXPEDITION_RECALL=ButtonWrapper(
         area=(377,539,563,589),color=(215,115,115),
         file='./assets/share/attack/expedition/EXPEDITION_RECALL.png'
     )
+)
+BEACH_TIME_DATA=ButtonWrapper(
+    name='BEACH_TIME_DATA',
+    share=Button.default_init(
+        area=(724,651,1094,665),color=(175,178,176),
+        file='./assets/share/naval_port/beach/BEACH_TIME_DATA.png'
+    )
+)
+BEACH_BUTTON=ButtonWrapper(
+    name='BEACH_BUTTON',
+    share=Button.default_init(
+        area=(580,589,662,666),color=(148,148,148),
+        file='./assets/share/naval_port/beach/BEACH_BUTTON.png'
+    )
+)
+BEACH_PAGE=ButtonWrapper(
+    name='BEACH_PAGE',
+    share=Button.default_init(
+        area=(132,76,171,162),color=(164,116,110),
+        file='./assets/share/naval_port/beach/BEACH_PAGE.png'
+    )
+)
+BEACH_CONTINUE_TRAINING=ButtonWrapper(
+    name='BEACH_CONTINUE_TRAINING',
+    share=Button(
+        area=(565,111,706,162),color=(179,107,178),
+        file='./assets/share/naval_port/beach/BEACH_CONTINUE_TRAINING.png',
+        search=(287,111,1212,692),button=(565,111,706,162)
+    )
+)
+GET_ITEMS=ButtonWrapper(
+    name='GET_ITEMS',
+    share=Button.default_init(
+        area=(503,144,653,208),color=(190,181,167),
+        file='./assets/share/base/main_page/GET_ITEMS.png',
+        button=(460,445,836,613)
+    )
+)
+BEACH_START_TRAINING=ButtonWrapper(
+    name='BEACH_START_TRAINING',
+    share=Button.default_init(
+        area=(950,591,1147,641),color=(119,205,206),
+        file='./assets/share/naval_port/beach/BEACH_START_TRAINING.png'
+    )
+)
+
+BEACH_FOOD_COCONUT = ItemWrapper(
+    name='BEACH_FOOD_COCONUT',
+    share=Button(
+        area=(489,336,590,402),color=(161,156,145),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_COCONUT.png',
+        search=(145,324,1146,424),button=(489,324,590,424)
+    ),
+    ocr_area=(489,402,590,424)
+)
+BEACH_FOOD_CHICKEN = ItemWrapper(
+    name='BEACH_FOOD_CHICKEN',
+    share=Button(
+        area=(378,334,479,402),color=(134,113,89),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_CHIKEN.png',
+        search=(145,324,1146,424),button=(378,324,479,424)
+    ),
+    ocr_area=(378,402,479,424)
+)
+BEACH_FOOD_SEAFOOD = ItemWrapper(
+    name='BEACH_FOOD_SEAFOOD',
+    share=Button(
+        area=(265,334,366,402),color=(130,110,86),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_SEAFOOD.png',
+        search=(145,324,1146,424),button=(265,324,366,424)
+    ),
+    ocr_area=(265,402,366,424)
 )

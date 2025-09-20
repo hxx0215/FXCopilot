@@ -44,7 +44,7 @@ class Rescheduler(UI):
         self.ui_ensure(page_reward)
         self.reschedule_refinery()
         self.reschedule_convenience_store()
-        self.config.task_delay(minute=2)
+        self.config.task_delay(minute=8.4)
 
 if __name__ == '__main__':
     rescheduler = Rescheduler('src', task='Reward')

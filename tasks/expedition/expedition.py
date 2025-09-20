@@ -53,8 +53,8 @@ class Expedition(UI):
             r = ocr.detect_and_ocr(self.device.image)
             txt = [re.sub(r'\D','', item.ocr_text) for item in r]
             cnt = sum(1 for x in txt if x != '')
-            if (cnt > 0):
-                ocr_text = r[0].ocr_text.split('/')
+            ocr_text = r[0].ocr_text.split('/')
+            if cnt > 0 and len(ocr_text) == 2:
                 cur_team = int(ocr_text[0])
                 total_team = int(ocr_text[1])
                 logger.info(f'total {total_team} current {cur_team}')

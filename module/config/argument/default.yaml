@@ -28,6 +28,9 @@ Freebies:
 Expedition:
   Scheduler:
     Enable: true
+Beach:
+  Scheduler:
+    Enable: true
 
 # ==================== Weekly ====================
 

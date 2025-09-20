@@ -161,6 +161,7 @@ class DailyRoutine(UI):
         else:
             self.arm_transport_stage()
             self.military_technology_stage()
+            self.military_practice_stage()
             self.tactical_traning_stage()
         self.convoy_escort_stage()
         self.battle_field_stage()

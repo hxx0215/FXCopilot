@@ -219,3 +219,11 @@ page_main_line.link(DAILY_ROUTINE_BUTTON, destination=page_daily_routine)
 page_expedition = Page(EXPEDITION_PAGE)
 page_expedition.link(HOME_BUTTON, destination=page_main)
 page_reward.link(EXPEDITION_BUTTON, destination=page_expedition)
+
+page_beach = Page(BEACH_PAGE)
+page_beach.link(HOME_BUTTON, destination=page_main)
+page_reward.link(BEACH_BUTTON, destination=page_beach)
+
+page_temp = Page(BEACH_START_TRAINING)
+# page_default = Page(HOME_BUTTON)
+# page_default.link(HOME_BUTTON, destination=page_main)

@@ -5,7 +5,7 @@ import numpy as np
 from pponnxcr.predict_system import BoxedResult
 
 import module.config.server as server
-from module.base.button import ButtonWrapper
+from module.base.button import ButtonWrapper,ItemWrapper,Button
 from module.base.decorator import cached_property
 from module.base.utils import *
 from module.exception import ScriptError
@@ -114,11 +114,14 @@ class Ocr:
             logger.attr(f'{self.name} {attr}', f'{before} -> {after}')
         return after
 
-    def ocr_single_line(self, image, direct_ocr=False):
+    def ocr_single_line(self, image, direct_ocr=False, area: tuple[int, int, int, int]|None = None):
         # pre process
         start_time = time.time()
         if not direct_ocr:
-            image = crop(image, self.button.area, copy=False)
+            if area:
+                image = crop(image, area, copy=False)
+            else:
+                image = crop(image, self.button.area, copy=False)
         image = self.pre_process(image)
         # ocr
         result, _ = self.model.ocr_single_line(image)
@@ -483,3 +486,24 @@ class QuickClaimTimeOcr(Ocr):
         result = re.sub(r'[l|]', '1', result)
         result = re.sub(r'[oO]', '0', result)
         return super().after_process(result)
+
+    def format_result(self, result: str):
+        has_finished = '完成' in result
+        only_digits = re.sub(r'\D', '', result)
+        if only_digits == '':
+            return (True, [])
+        if len(only_digits) % 6 != 0:
+            return (False, [])
+        time_parts = [int(only_digits[i:i+2]) for i in range(0, len(only_digits), 2)]
+        import datetime
+        deltas = [datetime.timedelta(hours=time_parts[0], minutes=time_parts[1],seconds=time_parts[2]) for i in range(0, len(time_parts), 3)]
+        return (has_finished, deltas)
+class ItemOcr(Ocr):
+    def __init__(self, button: ItemWrapper, lang=None, name=None):
+        self.item = button
+        super().__init__(button, lang, name)
+        self.button = button
+    def ocr_single_line(self, image, direct_ocr=False):
+        from module.base.utils import area_offset
+        target_area = area_offset(self.item.ocr_area, self.item.button_offset)
+        return super().ocr_single_line(image, direct_ocr, area=target_area)

@@ -391,11 +391,12 @@
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
-        "value": false,
+        "value": true,
         "option": [
           true,
           false
-        ]
+        ],
+        "style": "display: block"
       },
       "NextRun": {
         "type": "datetime",

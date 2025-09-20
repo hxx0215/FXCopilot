@@ -402,7 +402,17 @@ class ButtonWrapper(Resource):
                 bottom_right_x + right,
                 bottom_right_y + bottom,
             )
+class ItemWrapper(ButtonWrapper):
+    def __init__(self, ocr_area:tuple[int,int,int,int], **kwargs):
+        self.ocr_area = ocr_area
+        super().__init__(**kwargs)
 
+    def temp_multi_match(self, image ,search: tuple[int,int,int,int]):
+        temp_search = self.matched_button.search
+        self.matched_button.search = search
+        result = self.match_multi_template(image)
+        self.matched_button.search = temp_search
+        return result
 
 class ClickButton:
     def __init__(self, area, button=None, name='CLICK_BUTTON'):

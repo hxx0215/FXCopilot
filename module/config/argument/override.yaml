@@ -65,6 +65,10 @@ DataUpdate:
       option: [ true,false ]
       option_bold: [ true, ]
       display: display
+Beach:
+  Scheduler:
+    Enable:
+      style: 'display: block'
 
 # ==================== Weekly ====================
 
