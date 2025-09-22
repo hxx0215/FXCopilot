@@ -9,7 +9,7 @@ from tasks.login.assets.assets_login_popup import ADVERTISE_Castorice, UNITY_ENG
 from tasks.login.cloud import LoginAndroidCloud
 from tasks.login.uid import UIDHandler
 from tasks.rogue.blessing.ui import RogueUI
-
+from module.ocr.ocr import Ocr
 
 class Login(LoginAndroidCloud, RogueUI, AgreementHandler, UIDHandler):
     def _handle_app_login(self):
@@ -28,8 +28,9 @@ class Login(LoginAndroidCloud, RogueUI, AgreementHandler, UIDHandler):
         startup_timer = Timer(5).start()
         app_timer = Timer(5).start()
         login_success = False
-        first_map_loading = True
         self.device.stuck_record_clear()
+        ocr = Ocr(LOGIN_SUCCESS_DATA)
+        login_confirm_appeared = False
 
         while 1:
             # Watch if game alive
@@ -60,33 +61,21 @@ class Login(LoginAndroidCloud, RogueUI, AgreementHandler, UIDHandler):
                 self.device.stuck_record_clear()
                 app_timer.reset()
                 orientation_timer.reset()
-            # Watch map loading
-            if first_map_loading and self.appear(MAP_LOADING, similarity=0.75):
-                logger.info('Map loading')
-                # Reset stuck record after map loading to extend wait time on slow devices
-                self.device.stuck_record_clear()
-                first_map_loading = False
-                continue
 
-            # Error
-            # Unable to initialize Unity Engine
-            if self.match_template_luma(UNITY_ENGINE_ERROR):
-                logger.error('Unable to initialize Unity Engine')
-                self.device.app_stop()
-                raise GameNotRunningError('Unable to initialize Unity Engine')
-            # Login
-            if self.is_in_login_confirm(interval=5):
-                self.device.click(LOGIN_CONFIRM)
-                # Reset stuck record to extend wait time on slow devices
-                self.device.stuck_record_clear()
-                login_success = True
+            if login_confirm_appeared:
+                text = ocr.ocr_single_line(self.device.image)
+                if '成功' in text:
+                    login_success = True
+            if self.appear_then_click(LOGIN_CONFIRM):
+                login_confirm_appeared = True
                 continue
+            if self.handle_popup_confirm():
+                continue
+            continue
             if self.handle_user_agreement():
                 continue
             # Additional
             if self.handle_popup_single():
-                continue
-            if self.handle_popup_confirm():
                 continue
             if self.ui_additional():
                 continue
@@ -142,21 +131,13 @@ class Login(LoginAndroidCloud, RogueUI, AgreementHandler, UIDHandler):
         logger.hr('App start')
         self.device.app_start()
 
-        if self.config.is_cloud_game:
-            self.device.dump_hierarchy()
-            self.cloud_enter_game()
-        else:
-            self.handle_app_login()
+        self.handle_app_login()
 
     def app_restart(self):
         logger.hr('App restart')
         self.device.app_stop()
         self.device.app_start()
 
-        if self.config.is_cloud_game:
-            self.device.dump_hierarchy()
-            self.cloud_enter_game()
-        else:
-            self.handle_app_login()
+        self.handle_app_login()
 
         self.config.task_delay(server_update=True)

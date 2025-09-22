@@ -224,6 +224,11 @@ page_beach = Page(BEACH_PAGE)
 page_beach.link(HOME_BUTTON, destination=page_main)
 page_reward.link(BEACH_BUTTON, destination=page_beach)
 
-page_temp = Page(BEACH_START_TRAINING)
 # page_default = Page(HOME_BUTTON)
 # page_default.link(HOME_BUTTON, destination=page_main)
+
+page_daily_reward = Page(DAILY_REWARD)
+page_daily_reward.link(DAILY_REWARD, destination=page_main)
+
+page_temp = Page(BEACH_START_TRAINING)
+page_temp.link(HOME_BUTTON, destination=page_main)

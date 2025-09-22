@@ -1443,10 +1443,13 @@ BEACH_BUTTON=ButtonWrapper(
 )
 BEACH_PAGE=ButtonWrapper(
     name='BEACH_PAGE',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(132,76,171,162),color=(164,116,110),
         file='./assets/share/naval_port/beach/BEACH_PAGE.png'
-    )
+    ),Button.default_init(
+        area=(132,76,171,162),color=(9,54,91),
+        file='./assets/share/naval_port/beach/BEACH_PAGE2.png'
+    )]
 )
 BEACH_CONTINUE_TRAINING=ButtonWrapper(
     name='BEACH_CONTINUE_TRAINING',
@@ -1498,4 +1501,12 @@ BEACH_FOOD_SEAFOOD = ItemWrapper(
         search=(145,324,1146,424),button=(265,324,366,424)
     ),
     ocr_area=(265,402,366,424)
+)
+DAILY_REWARD = ButtonWrapper(
+    name='DAILY_REWARD',
+    share=Button.default_init(
+        area=(417.5,92,601,121),color=(169,140,173),
+        file='./assets/share/base/main_page/DAILY_REWARD.png',
+        button=(1220.5,84.5,1260,125.5)
+    )
 )

@@ -3,7 +3,7 @@ from tasks.base.page import page_expedition,page_reward
 from tasks.base.assets.assets_base_page import EXPEDITION_FINISH_FLAG,EXPEDITION_WAITING,EXPEDITION_COLLECT_ALL,EXPEDITION_FINISH_REWARD,EXPEDITION_WAITING2,EXPEDITION_TIME_DATA,EXPEDITION_READY,EXPEDITION_CURRENT_TEAMS_DATA,EXPEDITION_TIME_SELECT_DATA,EXPEDITION_DEPLOY_ICON_BUTTON,EXPEDITION_AUTO_DEPLOY,EXPEDITION_SAIL,EXPEDITION_RECALL,EXPEDITION_LIMITED_TIME_SELECT_DATA
 from module.logger import logger
 from module.base.timer import Timer
-from module.ocr.ocr import Digit,Ocr,OcrResultButton
+from module.ocr.ocr import Digit,Ocr,OcrResultButton,QuickClaimTimeOcr
 from module.config.utils import server_time_offset, get_server_now,get_server_next_update
 from module.base.button import ButtonWrapper
 import re
@@ -28,6 +28,12 @@ class TimeExpeditionKeyword(Keyword):
 class Expedition(UI):
     def check_remain_time(self):
         self.ui_ensure(page_reward)
+        ocr = QuickClaimTimeOcr(EXPEDITION_TIME_DATA)
+        for image in self.loop():
+            (has_item_finished, deltas) = ocr.ocr_single_line(image)
+            if has_item_finished or len(deltas) != 0:
+                break
+        return (has_item_finished, deltas)
         ocr = DataDigit(EXPEDITION_TIME_DATA)
         for _ in self.loop():
             remain_time = ocr.detect_and_ocr(self.device.image)
@@ -161,14 +167,16 @@ class Expedition(UI):
 
     def run(self):
         (has_finished,times) = self.check_remain_time()
+        target = [datetime.datetime.now() + d for d in times]
         logger.info(f"{(has_finished, times)}")
         if not has_finished:
-            self.config.task_delay(target= times)
+            self.config.task_delay(target= target)
         else:
             team_num = self.collect_reward()
             self.deploy_next_expedition(team_num)
             (_, times) = self.check_remain_time()
-            self.config.task_delay(target= times)
+            target = [datetime.datetime.now() + d for d in times]
+            self.config.task_delay(target= target)
 
 if __name__ == '__main__':
     task = Expedition('src', task='Exercise')

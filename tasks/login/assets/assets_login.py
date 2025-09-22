@@ -51,3 +51,21 @@ LOGIN_LOADING = ButtonWrapper(
         button=(1103, 599, 1119, 616),
     ),
 )
+
+# FX
+LOGIN_CONFIRM = ButtonWrapper(
+    name='LOGIN_CONFIRM',
+    share=Button.default_init(
+        file='./assets/share/login/LOGIN_CONFIRM.png',
+        area=(1191,642,1251.5,716),color=(215,177,120),
+        button=(338,268,951,543)
+    )
+)
+
+LOGIN_SUCCESS_DATA=ButtonWrapper(
+    name='LOGIN_SUCCESS_DATA',
+    share=Button.default_init(
+        file='./assets/share/login/LOGIN_SUCCESS_DATA.png',
+        area=(583,343.5,753,379.5),color=(118,116,111)
+    )
+)

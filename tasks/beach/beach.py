@@ -1,11 +1,11 @@
 
 from tasks.base.ui import UI
 from tasks.base.remain_time_mixin import RemainTimeMixin
-from tasks.base.page import page_reward, page_beach,page_temp
+from tasks.base.page import page_reward, page_beach
 from module.ocr.ocr import QuickClaimTimeOcr,ItemOcr
 from module.logger.logger import logger
 from module.base.button import ItemWrapper
-from tasks.base.assets.assets_base_page import BEACH_TIME_DATA,BEACH_CONTINUE_TRAINING,GET_ITEMS,BEACH_START_TRAINING,BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN,BEACH_PAGE
+from tasks.base.assets.assets_base_page import BEACH_TIME_DATA,BEACH_CONTINUE_TRAINING,GET_ITEMS,BEACH_START_TRAINING,BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN,BEACH_PAGE,BEACH_FOOD_SEAFOOD
 from module.base.timer import Timer
 import datetime
 
@@ -15,7 +15,11 @@ class Beach(UI, RemainTimeMixin):
         timer = Timer(5).start()
         for image in self.loop():
             if self.appear(food):
-                cnt = int(ocr.ocr_single_line(image))
+                ocr_result = ocr.ocr_single_line(image)
+                if ocr_result.isdigit():
+                    cnt = int(ocr_result)
+                else:
+                    continue
                 if cnt > 0:
                     return cnt
                 else:
@@ -38,7 +42,7 @@ class Beach(UI, RemainTimeMixin):
             if self.appear_then_click(food, interval=1):
                 continue
     def process_pick_food(self):
-        foods = [BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN]
+        foods = [BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN, BEACH_FOOD_SEAFOOD]
         total = 6
         pick_food: list[tuple[ItemWrapper, int]] = []
         for food in foods:
@@ -70,7 +74,6 @@ class Beach(UI, RemainTimeMixin):
                         break
                 self.ui_click(GET_ITEMS, BEACH_START_TRAINING)
                 self.process_pick_food()
-                self.device.sleep(60)
                 
     def check_if_finished(self):
         self.ui_ensure(page_reward)
@@ -84,24 +87,24 @@ class Beach(UI, RemainTimeMixin):
     def run(self):
         # self.ui_ensure(page_temp)
         # self.process_pick_food()
+        # self.config.task_delay(minute=1)
         (has_finished, deltas) = self.check_if_finished()
         if has_finished:
             self.ui_ensure(page_beach)
             self.process_continue_training()
             (_, deltas) = self.check_if_finished()
         target = [datetime.datetime.now() + d for d in deltas]
-        self.config.task_delay(target=target)
+        if len(target) > 0:
+            self.config.task_delay(target=target)
+        else:
+            #beach没有舰灵2小时后再来检测
+            self.config.task_delay(minute=120)
 
 if __name__ == '__main__':
     task = Beach('src', task='Beach')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test2.png")
+    image_path = os.path.join(path,"test3.png")
     task.image_file=image_path
-    print(BEACH_FOOD_COCONUT.button_offset)
-    b = task.appear(BEACH_FOOD_COCONUT)
+    b = task.appear(BEACH_PAGE)
     print(f"{b}")
-    print(BEACH_FOOD_COCONUT.button_offset)
-    ocr = ItemOcr(BEACH_FOOD_COCONUT)
-    num = ocr.ocr_single_line(task.device.image)
-    print(num)

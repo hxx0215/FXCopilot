@@ -491,12 +491,13 @@ class QuickClaimTimeOcr(Ocr):
         has_finished = '完成' in result
         only_digits = re.sub(r'\D', '', result)
         if only_digits == '':
-            return (True, [])
+            return (has_finished, [])
         if len(only_digits) % 6 != 0:
             return (False, [])
         time_parts = [int(only_digits[i:i+2]) for i in range(0, len(only_digits), 2)]
         import datetime
-        deltas = [datetime.timedelta(hours=time_parts[0], minutes=time_parts[1],seconds=time_parts[2]) for i in range(0, len(time_parts), 3)]
+        deltas = [datetime.timedelta(hours=time_parts[i], minutes=time_parts[i+1],seconds=time_parts[i+2]) for i in range(0, len(time_parts), 3)]
+        logger.info(f'delta is {time_parts}')
         return (has_finished, deltas)
 class ItemOcr(Ocr):
     def __init__(self, button: ItemWrapper, lang=None, name=None):
@@ -507,3 +508,6 @@ class ItemOcr(Ocr):
         from module.base.utils import area_offset
         target_area = area_offset(self.item.ocr_area, self.item.button_offset)
         return super().ocr_single_line(image, direct_ocr, area=target_area)
+    def after_process(self, result):
+        result = re.sub(r'\D','',result)
+        return super().after_process(result)
