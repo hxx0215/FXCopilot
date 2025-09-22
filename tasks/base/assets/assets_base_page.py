@@ -1507,6 +1507,15 @@ DAILY_REWARD = ButtonWrapper(
     share=Button.default_init(
         area=(417.5,92,601,121),color=(169,140,173),
         file='./assets/share/base/main_page/DAILY_REWARD.png',
-        button=(1220.5,84.5,1260,125.5)
+        button=(1220.5,84,1260,125)
+    )
+)
+REWARD_CLAIM_BUTTON=ButtonWrapper(
+    name='REWARD_CLAIM_BUTTON',
+    share=Button(
+        area=(1109,68,1219,134),color=(101,192,207),
+        file='./assets/share/reward/REWARD_CLAIM.png',
+        button=(1109,68,1219,134),
+        search=(1105,63,1226,226)
     )
 )

@@ -448,6 +448,11 @@ Beach:
     type: checkbox
     value: true
     option: [true, false]
+LimitTimeEvent:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
 DungeonSetting:
   BattleField:
     type: select

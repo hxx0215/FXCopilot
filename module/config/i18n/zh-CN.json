@@ -62,6 +62,10 @@
       "name": "沙滩",
       "help": ""
     },
+    "LimitTimeEvent": {
+      "name": "活动图",
+      "help": ""
+    },
     "Dungeon": {
       "name": "每日副本",
       "help": ""
@@ -1705,6 +1709,18 @@
     "Enable": {
       "name": "Beach.Enable.name",
       "help": "Beach.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "LimitTimeEvent": {
+    "_info": {
+      "name": "LimitTimeEvent._info.name",
+      "help": "LimitTimeEvent._info.help"
+    },
+    "Enable": {
+      "name": "LimitTimeEvent.Enable.name",
+      "help": "LimitTimeEvent.Enable.help",
       "True": "True",
       "False": "False"
     }

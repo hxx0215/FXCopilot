@@ -18,7 +18,8 @@
       "Competition",
       "DailyRoutine",
       "Expedition",
-      "Beach"
+      "Beach",
+      "LimitTimeEvent"
     ]
   },
   "Daily": {
