@@ -1532,3 +1532,10 @@ STAGE_FAILED_PAGE=ButtonWrapper(
         file='./assets/share/base/main_page/STAGE_FAILED_PAGE.png'
     )
 )
+TO_EVENT_PAGE_BUTTON=ButtonWrapper(
+    name='TO_EVENT_PAGE_BUTTON',
+    share=Button.default_init(
+        area=(1164,101,1267,147),color=(175,169,181),
+        file='./assets/share/event/TO_EVENT_PAGE_BUTTON.png'
+    )
+)

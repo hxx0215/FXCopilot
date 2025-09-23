@@ -135,10 +135,13 @@ class Expedition(UI):
         team_to_deploy = available_team
         logger.info(f"begin to deploy {team_to_deploy}")
         while team_to_deploy > 0:
+            timer = Timer(5).start()
             for image in self.loop():
-                buttons = EXPEDITION_DEPLOY_ICON_BUTTON.match_multi_template(image, similarity=0.8)
+                buttons = EXPEDITION_DEPLOY_ICON_BUTTON.match_multi_template(image, similarity=0.75)
                 logger.info(f'buttons : {buttons}')
                 if len(buttons) == 3 or len(buttons) >= team_to_deploy:
+                    break
+                if timer.reached():
                     break
             if len(buttons) > 0:
                 btn = buttons[0]
@@ -159,24 +162,24 @@ class Expedition(UI):
                         break
                 team_to_deploy = team_to_deploy - 1
             else:
-                vector = (0,500)
+                vector = (0,-500)
                 box = (746,169,1252,484)
                 self.device.swipe_vector(vector,box=box)
         return delay
         
 
     def run(self):
-        (has_finished,times) = self.check_remain_time()
+        # (has_finished,times) = self.check_remain_time()
+        # target = [datetime.datetime.now() + d for d in times]
+        # logger.info(f"{(has_finished, times)}")
+        # if not has_finished:
+        #     self.config.task_delay(target= target)
+        # else:
+        team_num = self.collect_reward()
+        self.deploy_next_expedition(team_num)
+        (_, times) = self.check_remain_time()
         target = [datetime.datetime.now() + d for d in times]
-        logger.info(f"{(has_finished, times)}")
-        if not has_finished:
-            self.config.task_delay(target= target)
-        else:
-            team_num = self.collect_reward()
-            self.deploy_next_expedition(team_num)
-            (_, times) = self.check_remain_time()
-            target = [datetime.datetime.now() + d for d in times]
-            self.config.task_delay(target= target)
+        self.config.task_delay(target= target)
 
 if __name__ == '__main__':
     task = Expedition('src', task='Exercise')

@@ -112,6 +112,10 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.beach.beach import Beach
         Beach(self.config, self.device, task="Beach").run()
 
+    def event(self):
+        from tasks.event.event import Event
+        Event(self.config, self.device, task="Event").run()
+
 
 if __name__ == '__main__':
     src = StarRailCopilot('fxc')

@@ -5,6 +5,7 @@ from tasks.base.page import page_main
 from tasks.combat.assets.assets_combat_interact import MAP_LOADING
 from tasks.login.agreement import AgreementHandler
 from tasks.login.assets.assets_login import *
+from tasks.base.assets.assets_base_page import GET_REWARD
 from tasks.login.assets.assets_login_popup import ADVERTISE_Castorice, UNITY_ENGINE_ERROR
 from tasks.login.cloud import LoginAndroidCloud
 from tasks.login.uid import UIDHandler
@@ -74,6 +75,8 @@ class Login(LoginAndroidCloud, RogueUI, AgreementHandler, UIDHandler):
             if self.appear_then_click(LOGIN_REWARD):
                 continue
             if self.appear_then_click(LOGIN_NOTIFICATION):
+                continue
+            if self.appear_then_click(GET_REWARD):
                 continue
             continue
             if self.handle_user_agreement():
