@@ -62,9 +62,9 @@
       "name": "Task.Beach.name",
       "help": "Task.Beach.help"
     },
-    "LimitTimeEvent": {
-      "name": "Task.LimitTimeEvent.name",
-      "help": "Task.LimitTimeEvent.help"
+    "Event": {
+      "name": "Task.Event.name",
+      "help": "Task.Event.help"
     },
     "Dungeon": {
       "name": "Mazmorra",
@@ -1713,14 +1713,14 @@
       "False": "False"
     }
   },
-  "LimitTimeEvent": {
+  "Event": {
     "_info": {
-      "name": "LimitTimeEvent._info.name",
-      "help": "LimitTimeEvent._info.help"
+      "name": "Event._info.name",
+      "help": "Event._info.help"
     },
     "Enable": {
-      "name": "LimitTimeEvent.Enable.name",
-      "help": "LimitTimeEvent.Enable.help",
+      "name": "Event.Enable.name",
+      "help": "Event.Enable.help",
       "True": "True",
       "False": "False"
     }

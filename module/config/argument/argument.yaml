@@ -448,7 +448,7 @@ Beach:
     type: checkbox
     value: true
     option: [true, false]
-LimitTimeEvent:
+Event:
   Enable:
     type: checkbox
     value: true

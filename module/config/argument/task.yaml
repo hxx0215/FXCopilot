@@ -38,7 +38,7 @@ FX:
       - Scheduler
     Beach:
       - Scheduler
-    LimitTimeEvent:
+    Event:
       - Scheduler
 Daily:
   menu: 'list'

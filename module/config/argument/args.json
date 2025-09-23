@@ -415,7 +415,7 @@
       }
     }
   },
-  "LimitTimeEvent": {
+  "Event": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
@@ -432,7 +432,7 @@
       },
       "Command": {
         "type": "input",
-        "value": "LimitTimeEvent",
+        "value": "Event",
         "display": "hide"
       },
       "ServerUpdate": {

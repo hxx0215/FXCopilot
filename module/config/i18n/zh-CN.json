@@ -1,7 +1,7 @@
 {
   "Menu": {
     "Alas": {
-      "name": "SRC",
+      "name": "FXC",
       "help": ""
     },
     "FX": {
@@ -23,7 +23,7 @@
   },
   "Task": {
     "Alas": {
-      "name": "SRC设置",
+      "name": "FXC设置",
       "help": ""
     },
     "Restart": {
@@ -62,8 +62,8 @@
       "name": "沙滩",
       "help": ""
     },
-    "LimitTimeEvent": {
-      "name": "活动图",
+    "Event": {
+      "name": "活动",
       "help": ""
     },
     "Dungeon": {
@@ -1713,14 +1713,14 @@
       "False": "False"
     }
   },
-  "LimitTimeEvent": {
+  "Event": {
     "_info": {
-      "name": "LimitTimeEvent._info.name",
-      "help": "LimitTimeEvent._info.help"
+      "name": "Event._info.name",
+      "help": "Event._info.help"
     },
     "Enable": {
-      "name": "LimitTimeEvent.Enable.name",
-      "help": "LimitTimeEvent.Enable.help",
+      "name": "Event.Enable.name",
+      "help": "Event.Enable.help",
       "True": "True",
       "False": "False"
     }
