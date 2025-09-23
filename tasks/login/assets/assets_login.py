@@ -69,3 +69,20 @@ LOGIN_SUCCESS_DATA=ButtonWrapper(
         area=(583,343.5,753,379.5),color=(118,116,111)
     )
 )
+
+LOGIN_REWARD=ButtonWrapper(
+    name='LOGIN_REWARD',
+    share=Button.default_init(
+        area=(416,92,598,121),color=(164,135,167),
+        file='./assets/share/login/LOGIN_REWARD.png',
+        button=(1216,80,1261,125)
+    )
+)
+LOGIN_NOTIFICATION=ButtonWrapper(
+    name='LOGIN_NOTIFICATION',
+    share=Button.default_init(
+        area=(185,102,244,147),color=(184,184,184),
+        file='./assets/share/login/LOGIN_NOTIFICATION.png',
+        button=(1118,48,1155,84)
+    )
+)

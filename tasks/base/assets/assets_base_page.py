@@ -952,7 +952,7 @@ ARENA_SET_SAIL=ButtonWrapper(
 ARENA_ADVANCE_POPUP=ButtonWrapper(
     name='ARENA_ADVANCE_POPUP',
     share=Button.default_init(
-        area=(337,215.25,940,498.25),color=(172,177,177),
+        area=(337,215,940,498),color=(172,177,177),
         file='./assets/share/attack/competition/ARENA_ADVANCE_POPUP.png',
         button=(739,436,926,485)
     )
@@ -1522,5 +1522,13 @@ REWARD_CLAIM_MONEY=ButtonWrapper(
     share=Button.default_init(
         area=(1111,156,1221,221),color=(99,193,209),
         file='./assets/share/reward/REWARD_CLAIM_MONEY.png'
+    )
+)
+STAGE_FAILED_PAGE=ButtonWrapper(
+    name='STAGE_FAILED_PAGE',
+    share=Button.default_init(
+        area=(468,202,541,294),color=(157,158,158),
+        button=(993,117,1027,148),
+        file='./assets/share/base/main_page/STAGE_FAILED_PAGE.png'
     )
 )

@@ -232,3 +232,6 @@ page_daily_reward.link(DAILY_REWARD, destination=page_main)
 
 page_temp = Page(BEACH_START_TRAINING)
 page_temp.link(HOME_BUTTON, destination=page_main)
+
+page_stage_failed = Page(STAGE_FAILED_PAGE)
+page_stage_failed.link(STAGE_FAILED_PAGE, destination=page_main_line)

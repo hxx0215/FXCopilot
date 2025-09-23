@@ -71,6 +71,10 @@ class Login(LoginAndroidCloud, RogueUI, AgreementHandler, UIDHandler):
                 continue
             if self.handle_popup_confirm():
                 continue
+            if self.appear_then_click(LOGIN_REWARD):
+                continue
+            if self.appear_then_click(LOGIN_NOTIFICATION):
+                continue
             continue
             if self.handle_user_agreement():
                 continue
