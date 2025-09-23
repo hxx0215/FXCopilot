@@ -101,7 +101,7 @@ class Beach(UI, RemainTimeMixin):
             self.config.task_delay(minute=120)
 
 if __name__ == '__main__':
-    task = Beach('src', task='Beach')
+    task = Beach('fxc', task='Beach')
     import os
     path = os.path.dirname(__file__)
     image_path = os.path.join(path,"test3.png")

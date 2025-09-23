@@ -1,7 +1,7 @@
 {
   "Menu": {
     "Alas": {
-      "name": "SRC",
+      "name": "FXC",
       "help": ""
     },
     "FX": {
@@ -23,7 +23,7 @@
   },
   "Task": {
     "Alas": {
-      "name": "SRC Settings",
+      "name": "FXC Settings",
       "help": ""
     },
     "Restart": {
