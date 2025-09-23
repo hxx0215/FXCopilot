@@ -1,26 +1,24 @@
 from tasks.base.ui import UI
 from module.logger import logger
-from tasks.base.assets.assets_base_page import REWARD_CLAIM_BUTTON,GET_REWARD
+from tasks.base.assets.assets_base_page import REWARD_CLAIM_FUEL, REWARD_CLAIM_MONEY,GET_REWARD
 from tasks.base.page import page_reward
 from module.base.timer import Timer
 class Reward(UI):
     def run(self):
         self.ui_ensure(page_reward)
-        for image in self.loop():
-            btns = REWARD_CLAIM_BUTTON.match_multi_template(image)
-            if len(btns) == 2:
-                break
+        btns = [REWARD_CLAIM_FUEL, REWARD_CLAIM_MONEY]
         for btn in btns:
-            if self.ui_button_click(btn):
-                claimed = False
-                for image in self.loop():
-                    if claimed and not self.appear(GET_REWARD):
-                        break
-                    if self.appear_then_click(GET_REWARD):
-                        claimed = True
-                        continue
-                    if self.handle_popup_confirm():
-                        break
+            claimed = False
+            for _ in self.loop():
+                if not claimed and self.appear_then_click(btn):
+                    continue
+                if self.appear_then_click(GET_REWARD):
+                    claimed = True
+                    continue
+                if claimed and not self.appear(GET_REWARD):
+                    break
+                if self.handle_popup_confirm():
+                    break
         self.config.task_delay(minute=30)
 
 

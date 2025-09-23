@@ -1510,12 +1510,17 @@ DAILY_REWARD = ButtonWrapper(
         button=(1220.5,84,1260,125)
     )
 )
-REWARD_CLAIM_BUTTON=ButtonWrapper(
-    name='REWARD_CLAIM_BUTTON',
-    share=Button(
+REWARD_CLAIM_FUEL=ButtonWrapper(
+    name='REWARD_CLAIM_FUEL',
+    share=Button.default_init(
         area=(1109,68,1219,134),color=(101,192,207),
-        file='./assets/share/reward/REWARD_CLAIM.png',
-        button=(1109,68,1219,134),
-        search=(1105,63,1226,226)
+        file='./assets/share/reward/REWARD_CLAIM_FUEL.png'
+    )
+)
+REWARD_CLAIM_MONEY=ButtonWrapper(
+    name='REWARD_CLAIM_MONEY',
+    share=Button.default_init(
+        area=(1111,156,1221,221),color=(99,193,209),
+        file='./assets/share/reward/REWARD_CLAIM_MONEY.png'
     )
 )
