@@ -1510,7 +1510,6 @@ BEACH_FOOD_SHRIMP=ItemWrapper(
         search=(145,324,1146,424),button=(152,324,253,424)
     ),
     ocr_area=(152,402,253,424)
-    )
 )
 DAILY_REWARD = ButtonWrapper(
     name='DAILY_REWARD',
