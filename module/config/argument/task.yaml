@@ -38,8 +38,9 @@ FX:
       - Scheduler
     Beach:
       - Scheduler
-    Event:
+    TimeOdyssey:
       - Scheduler
+      - TimeOdysseyModeSetting
 Daily:
   menu: 'list'
   page: 'setting'

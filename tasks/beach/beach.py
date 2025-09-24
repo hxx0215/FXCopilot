@@ -5,7 +5,7 @@ from tasks.base.page import page_reward, page_beach
 from module.ocr.ocr import QuickClaimTimeOcr,ItemOcr
 from module.logger.logger import logger
 from module.base.button import ItemWrapper
-from tasks.base.assets.assets_base_page import BEACH_TIME_DATA,BEACH_CONTINUE_TRAINING,GET_ITEMS,BEACH_START_TRAINING,BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN,BEACH_PAGE,BEACH_FOOD_SEAFOOD
+from tasks.base.assets.assets_base_page import BEACH_TIME_DATA,BEACH_CONTINUE_TRAINING,GET_ITEMS,BEACH_START_TRAINING,BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN,BEACH_PAGE,BEACH_FOOD_SEAFOOD,BEACH_FOOD_SHRIMP
 from module.base.timer import Timer
 import datetime
 
@@ -42,7 +42,7 @@ class Beach(UI, RemainTimeMixin):
             if self.appear_then_click(food, interval=1):
                 continue
     def process_pick_food(self):
-        foods = [BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN, BEACH_FOOD_SEAFOOD]
+        foods = [BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN, BEACH_FOOD_SEAFOOD, BEACH_FOOD_SHRIMP]
         total = 6
         pick_food: list[tuple[ItemWrapper, int]] = []
         for food in foods:

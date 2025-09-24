@@ -1502,6 +1502,16 @@ BEACH_FOOD_SEAFOOD = ItemWrapper(
     ),
     ocr_area=(265,402,366,424)
 )
+BEACH_FOOD_SHRIMP=ItemWrapper(
+    name='BEACH_FOOD_SHRIMP',
+    share=Button(
+        area=(152,334,253,402),color=(135,122,94),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_SHRIMP.png',
+        search=(145,324,1146,424),button=(152,324,253,424)
+    ),
+    ocr_area=(152,402,253,424)
+    )
+)
 DAILY_REWARD = ButtonWrapper(
     name='DAILY_REWARD',
     share=Button.default_init(
@@ -1537,5 +1547,131 @@ TO_EVENT_PAGE_BUTTON=ButtonWrapper(
     share=Button.default_init(
         area=(1164,101,1267,147),color=(175,169,181),
         file='./assets/share/event/TO_EVENT_PAGE_BUTTON.png'
+    )
+)
+TIME_ODYSSEY_PAGE=ButtonWrapper(
+    name='TIME_ODYSSEY_PAGE',
+    share=Button.default_init(
+        area=(19,147,76,161),color=(221,181,95),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_PAGE.png'
+    )
+)
+TIME_ODYSSEY_SAIL_BUTTON=ButtonWrapper(
+    name='TIME_ODYSSEY_SAIL_BUTTON',
+    share=Button.default_init(
+        area=(991,600,1239,676),color=(75,152,212),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_SAIL_BUTTON.png'
+    )
+)
+TIME_ODYSSEY_MAP_BUTTON=ButtonWrapper(
+    name='TIME_ODYSSEY_MAP_BUTTON',
+    share=Button.default_init(
+        area=(1069,609,1270,682),color=(182,164,80),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_MAP_BUTTON.png'
+    )
+)
+TIME_ODYSSEY_NORMAL_BUTTON=ButtonWrapper(
+    name='TIME_ODYSSEY_NORMAL_BUTTON',
+    share=Button.default_init(
+        area=(68,122,184,157),color=(61,61,61),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_NORMAL_BUTTON.png'
+    )
+)
+TIME_ODYSSEY_HARD_BUTTON=ButtonWrapper(
+    name='TIME_ODYSSEY_HARD_BUTTON',
+    share=Button.default_init(
+        area=(68,200,184,235),color=(63,63,63),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_HARD_BUTTON.png'
+    )
+)
+TIME_ODYSSEY_HELL_EX_BUTTON=ButtonWrapper(
+    name='TIME_ODYSSEY_HELL_EX_BUTTON',
+    share=Button.default_init(
+        area=(44,348,174,383),color=(72,72,72),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_HELL_EX_BUTTON.png'
+    )
+)
+TIME_ODYSSEY_HELL_PAGE=ButtonWrapper(
+    name='TIME_ODYSSEY_HELL_PAGE',
+    share=Button.default_init(
+        area=(77,270,204,306),color=(168,172,173),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_HELL_PAGE.png'
+    )
+)
+TIME_ODYSSEY_NORMAL_PAGE=ButtonWrapper(
+    name='TIME_ODYSSEY_NORMAL_PAGE',
+    share=Button.default_init(
+        area=(77,124,204,160),color=(171,176,176),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_NORMAL_PAGE.png'
+    )
+)
+TIME_ODYSSEY_HARD_PAGE=ButtonWrapper(
+    name='TIME_ODYSSEY_HARD_PAGE',
+    share=Button.default_init(
+        area=(77,200,204,236),color=(172,177,178),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_HARD_PAGE.png'
+    )
+)
+TIME_ODYSSEY_HELL_EX_PAGE=ButtonWrapper(
+    name='TIME_ODYSSEY_HELL_EX_PAGE',
+    share=Button.default_init(
+        area=(56,347,206,383),color=(166,170,170),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_HELL_EX_PAGE.png'
+    )
+)
+TIME_ODYSSEY_SAIL_HOSTING_BUTTON=ButtonWrapper(
+    name='TIME_ODYSSEY_SAIL_HOSTING_BUTTON',
+    share=Button.default_init(
+        area=(931,611,983,666),color=(59,103,109),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_SAIL_HOSTING.png'
+    )
+)
+TIME_ODYSSEY_HOSTING_START=ButtonWrapper(
+    name='TIME_ODYSSEY_HOSTING_START',
+    share=Button.default_init(
+        area=(972,595,1158,645),color=(115,203,204),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_HOSTING_START.png'
+    )
+)
+TIME_ODYSSEY_TIMES_DATA=ButtonWrapper(
+    name='TIME_ODYSSEY_TIMES_DATA',
+    share=Button.default_init(
+        area=(818,423,933,570),color=(214,214,214),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_TIMES_DATA.png'
+    )
+)
+TIME_ODYSSEY_TIMES_SELECT=ButtonWrapper(
+    name='TIME_ODYSSEY_TIMES_SELECT',
+    share=Button.default_init(
+        area=(928,575,959,607),color=(43,43,43),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_TIMES_SELECT.png'
+    )
+)
+STAGE_HOSTING=ButtonWrapper(
+    name='STAGE_HOSTING',
+    share=Button.default_init(
+        area=(1145,364,1185,391),color=(56,217,218),
+        file='./assets/share/base/main_page/STAGE_HOSTING.png'
+    )
+)
+STAGE_HOSTING_FINISH_DECOMMISIONING=ButtonWrapper(
+    name='STAGE_HOSTING_FINISH_DECOMMISIONING',
+    share=Button.default_init(
+        area=(548,434,734,480),color=(114,114,114),
+        file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_DECOMMISIONING.png'
+    )
+)
+STAGE_HOSTING_CLOSE=ButtonWrapper(
+    name='STAGE_HOSTING_CLOSE',
+    share=Button.default_init(
+        area=(1148,10,1179,43),color=(74,74,76),
+        file='./assets/share/base/main_page/STAGE_HOSTING_CLOSE.png'
+    )
+)
+DECOMMISSIONING_PAGE=ButtonWrapper(
+    name='DECOMMISSIONING_PAGE',
+    share=Button.default_init(
+        area=(36,495,204,541),color=(209,213,213),
+        file='./assets/share/depot/DECOMMISSIONING_PAGE.png'
     )
 )

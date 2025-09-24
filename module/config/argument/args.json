@@ -415,7 +415,7 @@
       }
     }
   },
-  "Event": {
+  "TimeOdyssey": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
@@ -432,13 +432,37 @@
       },
       "Command": {
         "type": "input",
-        "value": "Event",
+        "value": "TimeOdyssey",
         "display": "hide"
       },
       "ServerUpdate": {
         "type": "input",
         "value": "00:00",
         "display": "hide"
+      }
+    },
+    "TimeOdysseyModeSetting": {
+      "Mode": {
+        "type": "select",
+        "value": "default",
+        "option": [
+          "default",
+          "normal",
+          "hard",
+          "hell",
+          "hell_ex"
+        ]
+      },
+      "Times": {
+        "type": "select",
+        "value": "default",
+        "option": [
+          "default",
+          1,
+          2,
+          3,
+          "max"
+        ]
       }
     }
   },

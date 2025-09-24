@@ -62,8 +62,8 @@
       "name": "沙滩",
       "help": ""
     },
-    "Event": {
-      "name": "活动",
+    "TimeOdyssey": {
+      "name": "活动图",
       "help": ""
     },
     "Dungeon": {
@@ -1713,14 +1713,14 @@
       "False": "False"
     }
   },
-  "Event": {
+  "TimeOdyssey": {
     "_info": {
-      "name": "Event._info.name",
-      "help": "Event._info.help"
+      "name": "TimeOdyssey._info.name",
+      "help": "TimeOdyssey._info.help"
     },
     "Enable": {
-      "name": "Event.Enable.name",
-      "help": "Event.Enable.help",
+      "name": "TimeOdyssey.Enable.name",
+      "help": "TimeOdyssey.Enable.help",
       "True": "True",
       "False": "False"
     }
@@ -1755,6 +1755,30 @@
       "a-ac2": "疯狂古迹[飞机]（高等级)",
       "a-aa2": "白金蔷薇[防空炮]（高等级)",
       "a-eq2": "族群特性[设备]（高等级)"
+    }
+  },
+  "TimeOdysseyModeSetting": {
+    "_info": {
+      "name": "活动难度",
+      "help": ""
+    },
+    "Mode": {
+      "name": "难度选择",
+      "help": "地图难度选择",
+      "default": "使用默认",
+      "normal": "普通",
+      "hard": "困难",
+      "hell": "地狱",
+      "hell_ex": "地狱EX"
+    },
+    "Times": {
+      "name": "多倍战斗",
+      "help": "",
+      "default": "使用默认",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "max": "默认最高"
     }
   },
   "Gui": {

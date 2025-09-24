@@ -448,7 +448,7 @@ Beach:
     type: checkbox
     value: true
     option: [true, false]
-Event:
+TimeOdyssey:
   Enable:
     type: checkbox
     value: true
@@ -462,3 +462,12 @@ DungeonSetting:
     type: select
     value: a-ng1
     option: [a-ng1,a-tp1,a-ac1,a-aa1,a-eq1,a-ng2,a-tp2,a-ac2,a-aa2,a-eq2]
+TimeOdysseyModeSetting:
+  Mode:
+    type: select
+    value: default
+    option: [default,normal, hard, hell, hell_ex]
+  Times:
+    type: select
+    value: default
+    option: [default,1,2,3,max]

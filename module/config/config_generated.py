@@ -253,9 +253,13 @@ class GeneratedConfig:
     # Group `Beach`
     Beach_Enable = True  # True, False
 
-    # Group `Event`
-    Event_Enable = True  # True, False
+    # Group `TimeOdyssey`
+    TimeOdyssey_Enable = True  # True, False
 
     # Group `DungeonSetting`
     DungeonSetting_BattleField = 'nv1'  # nv1, sv1, ma1, ns1, nv2, sv2, ma2, ns2
     DungeonSetting_ArmTransport = 'a-ng1'  # a-ng1, a-tp1, a-ac1, a-aa1, a-eq1, a-ng2, a-tp2, a-ac2, a-aa2, a-eq2
+
+    # Group `TimeOdysseyModeSetting`
+    TimeOdysseyModeSetting_Mode = 'default'  # default, normal, hard, hell, hell_ex
+    TimeOdysseyModeSetting_Times = 'default'  # default, 1, 2, 3, max

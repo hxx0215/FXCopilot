@@ -62,9 +62,9 @@
       "name": "Task.Beach.name",
       "help": "Task.Beach.help"
     },
-    "Event": {
-      "name": "Task.Event.name",
-      "help": "Task.Event.help"
+    "TimeOdyssey": {
+      "name": "Task.TimeOdyssey.name",
+      "help": "Task.TimeOdyssey.help"
     },
     "Dungeon": {
       "name": "每日副本",
@@ -1713,14 +1713,14 @@
       "False": "False"
     }
   },
-  "Event": {
+  "TimeOdyssey": {
     "_info": {
-      "name": "Event._info.name",
-      "help": "Event._info.help"
+      "name": "TimeOdyssey._info.name",
+      "help": "TimeOdyssey._info.help"
     },
     "Enable": {
-      "name": "Event.Enable.name",
-      "help": "Event.Enable.help",
+      "name": "TimeOdyssey.Enable.name",
+      "help": "TimeOdyssey.Enable.help",
       "True": "True",
       "False": "False"
     }
@@ -1755,6 +1755,30 @@
       "a-ac2": "a-ac2",
       "a-aa2": "a-aa2",
       "a-eq2": "a-eq2"
+    }
+  },
+  "TimeOdysseyModeSetting": {
+    "_info": {
+      "name": "TimeOdysseyModeSetting._info.name",
+      "help": "TimeOdysseyModeSetting._info.help"
+    },
+    "Mode": {
+      "name": "TimeOdysseyModeSetting.Mode.name",
+      "help": "TimeOdysseyModeSetting.Mode.help",
+      "default": "default",
+      "normal": "normal",
+      "hard": "hard",
+      "hell": "hell",
+      "hell_ex": "hell_ex"
+    },
+    "Times": {
+      "name": "TimeOdysseyModeSetting.Times.name",
+      "help": "TimeOdysseyModeSetting.Times.help",
+      "default": "default",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "max": "max"
     }
   },
   "Gui": {

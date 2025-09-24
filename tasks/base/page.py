@@ -235,3 +235,15 @@ page_temp.link(HOME_BUTTON, destination=page_main)
 
 page_stage_failed = Page(STAGE_FAILED_PAGE)
 page_stage_failed.link(STAGE_FAILED_PAGE, destination=page_main_line)
+
+page_time_odyssey = Page(TIME_ODYSSEY_PAGE)
+page_main.link(TO_EVENT_PAGE_BUTTON, destination=page_time_odyssey)
+page_time_odyssey.link(HOME_BUTTON, destination=page_main)
+
+
+page_time_odyssey_map = Page(TIME_ODYSSEY_MAP_BUTTON)
+page_time_odyssey.link(TIME_ODYSSEY_SAIL_BUTTON, destination=page_time_odyssey_map)
+page_time_odyssey_map.link(HOME_BUTTON, destination=page_main)
+
+page_decommissioning = Page(DECOMMISSIONING_PAGE)
+page_decommissioning.link(HOME_BUTTON, destination=page_main)
