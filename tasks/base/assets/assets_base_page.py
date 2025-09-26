@@ -1562,6 +1562,13 @@ TIME_ODYSSEY_SAIL_BUTTON=ButtonWrapper(
         file='./assets/share/event/time_odyssey/TIME_ODYSSEY_SAIL_BUTTON.png'
     )
 )
+TIME_ODYSSEY_REMAIN_TIME=ButtonWrapper(
+    name='TIME_ODYSSEY_REMAIN_TIME',
+    share=Button.default_init(
+        area=(229,95,347,126),color=(169,170,171),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_REMAIN_TIME.png'
+    )
+)
 TIME_ODYSSEY_MAP_BUTTON=ButtonWrapper(
     name='TIME_ODYSSEY_MAP_BUTTON',
     share=Button.default_init(
@@ -1637,6 +1644,13 @@ TIME_ODYSSEY_TIMES_DATA=ButtonWrapper(
     share=Button.default_init(
         area=(818,423,933,570),color=(214,214,214),
         file='./assets/share/event/time_odyssey/TIME_ODYSSEY_TIMES_DATA.png'
+    )
+)
+TIME_ODYSSEY_CONTINUE_HOSTING=ButtonWrapper(
+    name='TIME_ODYSSEY_CONTINUE_HOSTING',
+    share=Button.default_init(
+        area=(618,616,814,674),color=(137,173,180),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_CONTINUE_HOSTING.png'
     )
 )
 TIME_ODYSSEY_TIMES_SELECT=ButtonWrapper(

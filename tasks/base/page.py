@@ -241,7 +241,7 @@ page_main.link(TO_EVENT_PAGE_BUTTON, destination=page_time_odyssey)
 page_time_odyssey.link(HOME_BUTTON, destination=page_main)
 
 
-page_time_odyssey_map = Page(TIME_ODYSSEY_MAP_BUTTON)
+page_time_odyssey_map = Page(TIME_ODYSSEY_REMAIN_TIME)
 page_time_odyssey.link(TIME_ODYSSEY_SAIL_BUTTON, destination=page_time_odyssey_map)
 page_time_odyssey_map.link(HOME_BUTTON, destination=page_main)
 

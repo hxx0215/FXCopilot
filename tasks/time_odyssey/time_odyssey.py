@@ -1,7 +1,7 @@
 from tasks.base.ui import UI
 from tasks.base.page import page_time_odyssey_map
 from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_TIMES_DATA,TIME_ODYSSEY_TIMES_SELECT,STAGE_HOSTING,STAGE_HOSTING_FINISH_DECOMMISIONING,
-                                                STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,
+                                                STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,
                                                 TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START)
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,OcrResultButton
@@ -15,8 +15,20 @@ class TimeOdyssey(UI):
             return
     
     def start_hosting(self):
-        self.ui_click(TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_SAIL_HOSTING_BUTTON)
-        self.ui_click(TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START)
+        current_state = 'map'
+        for _ in self.loop():
+            if self.appear(TIME_ODYSSEY_MAP_BUTTON):
+                current_state = 'map'
+                break
+            if self.appear(TIME_ODYSSEY_CONTINUE_HOSTING):
+                current_state = 'continue'
+                break
+        logger.info(f'current state is {current_state}')
+        if current_state == 'map':
+            self.ui_click(TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_SAIL_HOSTING_BUTTON)
+            self.ui_click(TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START)
+        else:
+            self.ui_click(TIME_ODYSSEY_CONTINUE_HOSTING,TIME_ODYSSEY_HOSTING_START)
         times = self.config.TimeOdysseyModeSetting_Times
         ocr = Ocr(TIME_ODYSSEY_TIMES_DATA)
         timer = Timer(3).start()
@@ -57,7 +69,7 @@ if __name__ == '__main__':
     task = TimeOdyssey('fxc', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test.png")
+    image_path = os.path.join(path,"test2.png")
     task.image_file=image_path
-    b = task.appear(TIME_ODYSSEY_PAGE)
+    b = task.appear(TIME_ODYSSEY_CONTINUE_HOSTING)
     print(b)
