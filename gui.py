@@ -5,7 +5,7 @@ from module.logger import logger
 from module.webui.setting import State
 
 
-def func(ev: threading.Event):
+def func(ev: threading.Event | None):
     import argparse
     import asyncio
     import sys
