@@ -1779,6 +1779,12 @@
       "2": "2",
       "3": "3",
       "max": "默认最高"
+    },
+    "AutoDecommissioning": {
+      "name": "自动退役",
+      "help": "船坞满了自动退役,默认为自动选择当前批量退役的设置",
+      "True": "True",
+      "False": "False"
     }
   },
   "Gui": {

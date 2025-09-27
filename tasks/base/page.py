@@ -250,3 +250,7 @@ page_decommissioning.link(HOME_BUTTON, destination=page_main)
 
 page_stage_prepare = Page(STAGE_SET_SAIL)
 page_stage_prepare.link(HOME_BUTTON, destination=page_main)
+
+page_decommissioning_batch = Page(DECOMMISSIONING_BATCH_SELECT_PAGE)
+page_decommissioning_batch.link(DECOMMISSIONING_BATCH_CLOSE, destination=page_decommissioning)
+page_decommissioning.link(DECOMMISSIONING_BATCH_SELECT, destination=page_decommissioning_batch)

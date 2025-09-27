@@ -1,10 +1,12 @@
 from tasks.base.resource_check import ResourceCheck
-from tasks.base.page import page_time_odyssey_map
+from tasks.base.page import page_time_odyssey_map,page_decommissioning_batch
 from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_TIMES_DATA,TIME_ODYSSEY_TIMES_SELECT,STAGE_HOSTING,STAGE_HOSTING_FINISH_DECOMMISIONING,
                                                 STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,
-                                                TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START)
+                                                TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,
+                                                DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS
+                                                )
 from module.logger.logger import logger
-from module.ocr.ocr import Ocr,OcrResultButton
+from module.ocr.ocr import Ocr,OcrResultButton,DigitCounter
 from module.base.timer import Timer
 
 class TimeOdyssey(ResourceCheck):
@@ -68,6 +70,24 @@ class TimeOdyssey(ResourceCheck):
         self.device.screenshot_interval_set()
         if finish_reason == 'depot_full':
             self.ui_click(STAGE_HOSTING_CLOSE, DECOMMISSIONING_PAGE)
+            if self.config.TimeOdysseyModeSetting_AutoDecommissioning:
+                current = -1
+                while current != 0:
+                    self.ui_goto(page_decommissioning_batch)
+                    #make sure choose right rarity
+                    self.ui_click(DECOMMISSIONING_BATCH_CONFIRM, DECOMMISSIONING_PAGE)
+                    counter = DigitCounter(DECOMMISSIONING_SELECTED_DATA)
+                    image = self.device.screenshot()
+                    (current,remain,total) = counter.ocr_single_line(image)
+                    if current == 0:
+                        break
+                    self.ui_click(DECOMMISSIONING_CONFIRM, GET_ITEMS)
+                    timer=Timer(3).start()
+                    for _ in self.loop():
+                        if self.appear_then_click(GET_ITEMS):
+                            continue
+                        if (not self.appear(GET_ITEMS)) and timer.reached():
+                            break
         elif finish_reason == 'insufficient_fuel':
             self.ui_click(STAGE_HOSTING_CLOSE, STAGE_SET_SAIL)
         self.ui_goto_main()
@@ -81,8 +101,7 @@ if __name__ == '__main__':
     task = TimeOdyssey('fxc', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test.png")
+    image_path = os.path.join(path,"test5.png")
     task.image_file=image_path
-    result = task.get_current_resources()
-    if result:
-        print(result)
+    b = task.appear(DECOMMISSIONING_PAGE)
+    print(b)

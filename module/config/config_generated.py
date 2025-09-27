@@ -263,3 +263,4 @@ class GeneratedConfig:
     # Group `TimeOdysseyModeSetting`
     TimeOdysseyModeSetting_Mode = 'default'  # default, normal, hard, hell, hell_ex
     TimeOdysseyModeSetting_Times = 'default'  # default, 1, 2, 3, max
+    TimeOdysseyModeSetting_AutoDecommissioning = False  # True, False

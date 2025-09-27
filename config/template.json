@@ -112,7 +112,8 @@
     },
     "TimeOdysseyModeSetting": {
       "Mode": "default",
-      "Times": "default"
+      "Times": "default",
+      "AutoDecommissioning": false
     }
   },
   "Dungeon": {

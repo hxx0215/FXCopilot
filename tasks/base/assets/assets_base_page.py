@@ -1675,9 +1675,9 @@ STAGE_HOSTING_CLOSE=ButtonWrapper(
 DECOMMISSIONING_PAGE=ButtonWrapper(
     name='DECOMMISSIONING_PAGE',
     share=Button.default_init(
-        area=(36,495,204,541),color=(209,213,213),
-        file='./assets/share/depot/DECOMMISSIONING_PAGE.png',
-        button=(740,436,924,485)
+        #area=(36,495,204,541),color=(209,213,213),
+        area=(140,207,222,535),color=(85,85,86),
+        file='./assets/share/depot/DECOMMISSIONING_PAGE.png'
     )
 )
 STAGE_HOSTING_FINISH_FUEL=ButtonWrapper(
@@ -1702,5 +1702,47 @@ RESOURCE_DATA=ButtonWrapper(
     share=Button.default_init(
         area=(825,28,1250,50),color=(58,67,73),
         file='./assets/share/base/main_page/RESOURCE_DATA.png'
+    )
+)
+DECOMMISSIONING_BATCH_SELECT=ButtonWrapper(
+    name='DECOMMISSIONING_BATCH_SELECT',
+    share=Button.default_init(
+        area=(902,625,1085,670),color=(100,196,196),
+        file='./assets/share/depot/DECOMMISIONING_BATCH_SELECT.png'
+    )
+)
+DECOMMISSIONING_BATCH_SELECT_PAGE=ButtonWrapper(
+    name='DECOMMISSIONING_BATCH_SELECT_PAGE',
+    share=Button.default_init(
+        area=(208,222,373,369),color=(55,55,55),
+        file='./assets/share/depot/DECOMMISSIONING_BATCH_SELECT_PAGE.png',
+    )
+)
+DECOMMISSIONING_BATCH_CLOSE=ButtonWrapper(
+    name='DECOMMISSIONING_BATCH_CLOSE',
+    share=Button.default_init(
+        area=(1053,171,1089,209),color=(108,103,102),
+        file='./assets/share/depot/DECOMMISSIONING_BATCH_CLOSE.png'
+    )
+)
+DECOMMISSIONING_BATCH_CONFIRM=ButtonWrapper(
+    name='DECOMMISSIONING_BATCH_CONFIRM',
+    share=Button.default_init(
+        area=(889,442,1073,488),color=(96,195,196),
+        file='./assets/share/depot/DECOMMISSIONING_BATCH_CONFIRM.png'
+    )
+)
+DECOMMISSIONING_SELECTED_DATA=ButtonWrapper(
+    name='DECOMMISSIONING_SELECTED_DATA',
+    share=Button.default_init(
+        area=(322,628,432,666),color=(96,96,96),
+        file='./assets/share/depot/DECOMMISSIONING_SELECTED_DATA.png'
+    )
+)
+DECOMMISSIONING_CONFIRM=ButtonWrapper(
+    name='DECOMMISSIONING_CONFIRM',
+    share=Button.default_init(
+        area=(1108,625,1278,670),color=(188,170,79),
+        file='./assets/share/depot/DECOMMISSIONING_CONFIRM.png'
     )
 )

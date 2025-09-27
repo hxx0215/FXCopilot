@@ -1779,6 +1779,12 @@
       "2": "2",
       "3": "3",
       "max": "max"
+    },
+    "AutoDecommissioning": {
+      "name": "TimeOdysseyModeSetting.AutoDecommissioning.name",
+      "help": "TimeOdysseyModeSetting.AutoDecommissioning.help",
+      "True": "True",
+      "False": "False"
     }
   },
   "Gui": {

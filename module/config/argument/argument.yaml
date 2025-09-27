@@ -471,3 +471,7 @@ TimeOdysseyModeSetting:
     type: select
     value: default
     option: [default,1,2,3,max]
+  AutoDecommissioning:
+    type: checkbox
+    value: false
+    option: [true, false]
