@@ -96,7 +96,7 @@ class Competition(UI):
     def wait_competition_finish(self):
         timer = Timer(120).start()
         for _ in self.loop():
-            if self.appear_then_click(ARENA_SET_SAIL):
+            if self.appear_then_click(STAGE_SET_SAIL):
                 continue
             if self.appear_then_click(CLICK_TO_CONTINUE):
                 timer.reset()

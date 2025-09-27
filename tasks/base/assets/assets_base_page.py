@@ -940,15 +940,6 @@ ARENA_LARGE_CLASS_SELECTED=ButtonWrapper(
         file='./assets/share/attack/competition/ARENA_LARGE_CLASS_SELECTED.png'
     )
 )
-ARENA_SET_SAIL=ButtonWrapper(
-    name='ARENA_SET_SAIL',
-    share=Button(
-        area=(1171,579,1266,646),color=(141,127,67),
-        search=(1151,550,1280,666),
-        button=(1071,579,1266,646),
-        file='./assets/share/attack/competition/ARENA_SET_SAIL.png'
-    )
-)
 ARENA_ADVANCE_POPUP=ButtonWrapper(
     name='ARENA_ADVANCE_POPUP',
     share=Button.default_init(
@@ -1685,6 +1676,31 @@ DECOMMISSIONING_PAGE=ButtonWrapper(
     name='DECOMMISSIONING_PAGE',
     share=Button.default_init(
         area=(36,495,204,541),color=(209,213,213),
-        file='./assets/share/depot/DECOMMISSIONING_PAGE.png'
+        file='./assets/share/depot/DECOMMISSIONING_PAGE.png',
+        button=(740,436,924,485)
+    )
+)
+STAGE_HOSTING_FINISH_FUEL=ButtonWrapper(
+    name='STAGE_HOSTING_FINISH_FUEL',
+    share=Button.default_init(
+        area=(554,327,726,351),color=(144,144,144),
+        file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_FUEL.png',
+        button=(741,436,925,484)
+    )
+)
+STAGE_SET_SAIL=ButtonWrapper(
+    name='STAGE_SET_SAIL',
+    share=Button(
+        area=(1171,579,1266,646),color=(141,127,67),
+        search=(1151,550,1280,666),
+        button=(1071,579,1266,646),
+        file='./assets/share/base/main_page/STAGE_SET_SAIL.png'
+    )
+)
+RESOURCE_DATA=ButtonWrapper(
+    name='RESOURCE_DATA',
+    share=Button.default_init(
+        area=(825,28,1250,50),color=(58,67,73),
+        file='./assets/share/base/main_page/RESOURCE_DATA.png'
     )
 )

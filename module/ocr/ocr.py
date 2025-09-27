@@ -79,7 +79,6 @@ class Ocr:
 
     @cached_property
     def model(self) -> TextSystem:
-        logger.info(f'current lang is {self.lang}')
         return OCR_MODEL.get_by_lang(self.lang)
 
     def pre_process(self, image):
@@ -152,7 +151,7 @@ class Ocr:
         """
         return True
 
-    def detect_and_ocr(self, image, direct_ocr=False) -> list[BoxedResult]:
+    def detect_and_ocr(self, image, direct_ocr=False, show_log=True) -> list[BoxedResult]:
         """
         Args:
             image:
@@ -179,7 +178,8 @@ class Ocr:
         for result in results:
             result.ocr_text = self.after_process(result.ocr_text)
 
-        logger.attr(name='%s %ss' % (self.name, float2str(time.time() - start_time)),
+        if show_log:
+            logger.attr(name='%s %ss' % (self.name, float2str(time.time() - start_time)),
                     text=str([result.ocr_text for result in results]))
         return results
 
@@ -510,4 +510,9 @@ class ItemOcr(Ocr):
         return super().ocr_single_line(image, direct_ocr, area=target_area)
     def after_process(self, result):
         result = re.sub(r'\D','',result)
+        return super().after_process(result)
+class DataDigit(Digit):
+    def after_process(self, result):
+        result = re.sub(r'[l|]', '1', result)
+        result = re.sub(r'[oO]', '0', result)
         return super().after_process(result)

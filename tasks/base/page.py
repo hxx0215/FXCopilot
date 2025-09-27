@@ -247,3 +247,6 @@ page_time_odyssey_map.link(HOME_BUTTON, destination=page_main)
 
 page_decommissioning = Page(DECOMMISSIONING_PAGE)
 page_decommissioning.link(HOME_BUTTON, destination=page_main)
+
+page_stage_prepare = Page(STAGE_SET_SAIL)
+page_stage_prepare.link(HOME_BUTTON, destination=page_main)

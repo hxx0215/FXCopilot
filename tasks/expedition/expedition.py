@@ -34,26 +34,6 @@ class Expedition(UI):
             if has_item_finished or len(deltas) != 0:
                 break
         return (has_item_finished, deltas)
-        ocr = DataDigit(EXPEDITION_TIME_DATA)
-        for _ in self.loop():
-            remain_time = ocr.detect_and_ocr(self.device.image)
-            if (len(remain_time) > 0):
-                ls = [item.ocr_text for item in remain_time]
-                time_str = "".join(ls)
-                has_item_finished = '完成' in time_str
-                time_str = time_str.replace('完成','')
-                only_digits = re.sub(r'\D','', time_str)
-                if only_digits == '':
-                    #有可能完全没有远征
-                    return(True, [])
-                time_parts = [int(only_digits[i:i+2]) for i in range(0, len(only_digits), 2)]
-                current = datetime.datetime.now()
-                times = [current + datetime.timedelta(hours=time_parts[i],minutes=time_parts[i+1],seconds=time_parts[i+2]) for i in range(0,len(time_parts),3)]
-                logger.info(f"target times:{times}")
-                return (has_item_finished, times)
-            if self.appear(EXPEDITION_READY):
-                return (True,[])
-        return (False,[])
     def collect_reward(self) -> int:
         def current_available_team():
             r = ocr.detect_and_ocr(self.device.image)

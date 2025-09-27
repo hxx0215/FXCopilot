@@ -1,13 +1,13 @@
-from tasks.base.ui import UI
+from tasks.base.resource_check import ResourceCheck
 from tasks.base.page import page_time_odyssey_map
 from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_TIMES_DATA,TIME_ODYSSEY_TIMES_SELECT,STAGE_HOSTING,STAGE_HOSTING_FINISH_DECOMMISIONING,
-                                                STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,
+                                                STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,
                                                 TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START)
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,OcrResultButton
 from module.base.timer import Timer
 
-class TimeOdyssey(UI):
+class TimeOdyssey(ResourceCheck):
     def setup_mode(self):
         mode = self.config.TimeOdysseyModeSetting_Mode
         logger.info(f"start time oddysey mode: {mode}")
@@ -51,13 +51,25 @@ class TimeOdyssey(UI):
             if timer.reached():
                 break
         self.device.screenshot_interval_set(1.0)
+        finish_reason = ''
         for image in self.loop():
             if self.appear(STAGE_HOSTING):
                 self.device.stuck_timer.reset()
             if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
-                self.device.screenshot_interval_set()
+                finish_reason = 'depot_full'
                 break
-        self.ui_click(STAGE_HOSTING_CLOSE, DECOMMISSIONING_PAGE)
+            if self.appear_then_click(STAGE_HOSTING_FINISH_FUEL):
+                # fuel not enough
+                finish_reason = 'insufficient_fuel'
+                break
+            ocr_result = self.get_current_resources()
+            if ocr_result:
+                fuel, money, diamond = ocr_result
+        self.device.screenshot_interval_set()
+        if finish_reason == 'depot_full':
+            self.ui_click(STAGE_HOSTING_CLOSE, DECOMMISSIONING_PAGE)
+        elif finish_reason == 'insufficient_fuel':
+            self.ui_click(STAGE_HOSTING_CLOSE, STAGE_SET_SAIL)
         self.ui_goto_main()
         self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
 
@@ -69,7 +81,8 @@ if __name__ == '__main__':
     task = TimeOdyssey('fxc', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test2.png")
+    image_path = os.path.join(path,"test.png")
     task.image_file=image_path
-    b = task.appear(TIME_ODYSSEY_CONTINUE_HOSTING)
-    print(b)
+    result = task.get_current_resources()
+    if result:
+        print(result)

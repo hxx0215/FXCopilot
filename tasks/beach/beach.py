@@ -1,6 +1,5 @@
 
 from tasks.base.ui import UI
-from tasks.base.remain_time_mixin import RemainTimeMixin
 from tasks.base.page import page_reward, page_beach
 from module.ocr.ocr import QuickClaimTimeOcr,ItemOcr
 from module.logger.logger import logger
@@ -9,7 +8,7 @@ from tasks.base.assets.assets_base_page import BEACH_TIME_DATA,BEACH_CONTINUE_TR
 from module.base.timer import Timer
 import datetime
 
-class Beach(UI, RemainTimeMixin):
+class Beach(UI):
     def find_food(self, food: ItemWrapper) -> int:
         ocr = ItemOcr(food)
         timer = Timer(5).start()
