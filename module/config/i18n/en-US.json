@@ -1785,6 +1785,16 @@
       "help": "TimeOdysseyModeSetting.AutoDecommissioning.help",
       "True": "True",
       "False": "False"
+    },
+    "EnableContinuous": {
+      "name": "TimeOdysseyModeSetting.EnableContinuous.name",
+      "help": "TimeOdysseyModeSetting.EnableContinuous.help",
+      "True": "True",
+      "False": "False"
+    },
+    "MinimalFuel": {
+      "name": "TimeOdysseyModeSetting.MinimalFuel.name",
+      "help": "TimeOdysseyModeSetting.MinimalFuel.help"
     }
   },
   "Gui": {

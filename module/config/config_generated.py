@@ -264,3 +264,5 @@ class GeneratedConfig:
     TimeOdysseyModeSetting_Mode = 'default'  # default, normal, hard, hell, hell_ex
     TimeOdysseyModeSetting_Times = 'default'  # default, 1, 2, 3, max
     TimeOdysseyModeSetting_AutoDecommissioning = False  # True, False
+    TimeOdysseyModeSetting_EnableContinuous = False  # True, False
+    TimeOdysseyModeSetting_MinimalFuel = 1000

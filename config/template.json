@@ -113,7 +113,9 @@
     "TimeOdysseyModeSetting": {
       "Mode": "default",
       "Times": "default",
-      "AutoDecommissioning": false
+      "AutoDecommissioning": false,
+      "EnableContinuous": false,
+      "MinimalFuel": 1000
     }
   },
   "Dungeon": {

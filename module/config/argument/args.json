@@ -471,6 +471,18 @@
           true,
           false
         ]
+      },
+      "EnableContinuous": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "MinimalFuel": {
+        "type": "input",
+        "value": 1000
       }
     }
   },
