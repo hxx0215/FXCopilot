@@ -254,3 +254,8 @@ page_stage_prepare.link(HOME_BUTTON, destination=page_main)
 page_decommissioning_batch = Page(DECOMMISSIONING_BATCH_SELECT_PAGE)
 page_decommissioning_batch.link(DECOMMISSIONING_BATCH_CLOSE, destination=page_decommissioning)
 page_decommissioning.link(DECOMMISSIONING_BATCH_SELECT, destination=page_decommissioning_batch)
+
+page_battle=Page(BATTLE_PAGE)
+page_battle_pause = Page(BATTLE_PAUSE_PAGE)
+page_battle.link(BATTLE_PAUSE, destination=page_battle_pause)
+page_battle_pause.link(BATTLE_ABORT, destination=page_main)

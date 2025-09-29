@@ -1682,9 +1682,21 @@ DECOMMISSIONING_PAGE=ButtonWrapper(
 )
 STAGE_HOSTING_FINISH_FUEL=ButtonWrapper(
     name='STAGE_HOSTING_FINISH_FUEL',
-    share=Button.default_init(
+    share=[Button.default_init(
+        area=(554,327,726,351),color=(144,144,144),
+        file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_FUEL_1.png',
+        button=(741,436,925,484)
+    ),Button.default_init(
         area=(554,327,726,351),color=(144,144,144),
         file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_FUEL.png',
+        button=(741,436,925,484)
+    )]
+)
+STAGE_HOSTING_FINISH_REACH_TIMES=ButtonWrapper(
+    name='STAGE_HOSTING_FINISH_REACH_TIMES',
+    share=Button.default_init(
+        area=(518,320,760,354),color=(158,158,158),
+        file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_REACH_TIMES.png',
         button=(741,436,925,484)
     )
 )
@@ -1713,9 +1725,10 @@ DECOMMISSIONING_BATCH_SELECT=ButtonWrapper(
 )
 DECOMMISSIONING_BATCH_SELECT_PAGE=ButtonWrapper(
     name='DECOMMISSIONING_BATCH_SELECT_PAGE',
-    share=Button.default_init(
+    share=Button(
         area=(208,222,373,369),color=(55,55,55),
         file='./assets/share/depot/DECOMMISSIONING_BATCH_SELECT_PAGE.png',
+        button=(208,222,373,369),search=(203,217,378,369)
     )
 )
 DECOMMISSIONING_BATCH_CLOSE=ButtonWrapper(
@@ -1727,9 +1740,11 @@ DECOMMISSIONING_BATCH_CLOSE=ButtonWrapper(
 )
 DECOMMISSIONING_BATCH_CONFIRM=ButtonWrapper(
     name='DECOMMISSIONING_BATCH_CONFIRM',
-    share=Button.default_init(
+    share=Button(
         area=(889,442,1073,488),color=(96,195,196),
-        file='./assets/share/depot/DECOMMISSIONING_BATCH_CONFIRM.png'
+        file='./assets/share/depot/DECOMMISSIONING_BATCH_CONFIRM.png',
+        button=(889,442,1073,488),search=(884,437,1078,493)
+
     )
 )
 DECOMMISSIONING_SELECTED_DATA=ButtonWrapper(
@@ -1744,5 +1759,40 @@ DECOMMISSIONING_CONFIRM=ButtonWrapper(
     share=Button.default_init(
         area=(1108,625,1278,670),color=(188,170,79),
         file='./assets/share/depot/DECOMMISSIONING_CONFIRM.png'
+    )
+)
+BATTLE_PAUSE=ButtonWrapper(
+    name='BATTLE_PAUSE',
+    share=Button.default_init(
+        area=(1221,28,1256,51),color=(92,94,102),
+        file='./assets/share/battle/BATTLE_PAUSE.png'
+    )
+)
+STOP_HOSTING=ButtonWrapper(
+    name='STOP_HOSTING',
+    share=Button.default_init(
+        area=(1115,594,1165,643),color=(186,110,110),
+        file='./assets/share/base/main_page/STOP_HOSTING.png'
+    )
+)
+BATTLE_ABORT=ButtonWrapper(
+    name='BATTLE_ABORT',
+    share=Button.default_init(
+        area=(793,593,977,640),color=(168,132,132),
+        file='./assets/share/battle/BATTLE_ABORT.png'
+    )
+)
+BATTLE_PAUSE_PAGE=ButtonWrapper(
+    name='BATTLE_PAUSE_PAGE',
+    share=Button.default_init(
+        area=(109,70,226,114),color=(143,143,143),
+        file='./assets/share/battle/BATTLE_PAUSE_PAGE.png'
+    )
+)
+BATTLE_PAGE=ButtonWrapper(
+    name='BATTLE_PAGE',
+    share=Button.default_init(
+        area=(1041,228,1069,255),color=(95,57,69),
+        file='./assets/share/battle/BATTLE_PAGE.png'
     )
 )

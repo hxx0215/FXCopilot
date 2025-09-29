@@ -40,7 +40,7 @@ FX:
       - Scheduler
     TimeOdyssey:
       - Scheduler
-      - TimeOdysseyModeSetting
+      - TimeOdysseySetting
 Daily:
   menu: 'list'
   page: 'setting'

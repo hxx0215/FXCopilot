@@ -441,7 +441,7 @@
         "display": "hide"
       }
     },
-    "TimeOdysseyModeSetting": {
+    "TimeOdysseySetting": {
       "Mode": {
         "type": "select",
         "value": "default",
@@ -482,7 +482,8 @@
       },
       "MinimalFuel": {
         "type": "input",
-        "value": 1000
+        "value": 1000,
+        "valuetype": "int"
       }
     }
   },

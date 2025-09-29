@@ -260,9 +260,9 @@ class GeneratedConfig:
     DungeonSetting_BattleField = 'nv1'  # nv1, sv1, ma1, ns1, nv2, sv2, ma2, ns2
     DungeonSetting_ArmTransport = 'a-ng1'  # a-ng1, a-tp1, a-ac1, a-aa1, a-eq1, a-ng2, a-tp2, a-ac2, a-aa2, a-eq2
 
-    # Group `TimeOdysseyModeSetting`
-    TimeOdysseyModeSetting_Mode = 'default'  # default, normal, hard, hell, hell_ex
-    TimeOdysseyModeSetting_Times = 'default'  # default, 1, 2, 3, max
-    TimeOdysseyModeSetting_AutoDecommissioning = False  # True, False
-    TimeOdysseyModeSetting_EnableContinuous = False  # True, False
-    TimeOdysseyModeSetting_MinimalFuel = 1000
+    # Group `TimeOdysseySetting`
+    TimeOdysseySetting_Mode = 'default'  # default, normal, hard, hell, hell_ex
+    TimeOdysseySetting_Times = 'default'  # default, 1, 2, 3, max
+    TimeOdysseySetting_AutoDecommissioning = False  # True, False
+    TimeOdysseySetting_EnableContinuous = False  # True, False
+    TimeOdysseySetting_MinimalFuel = 1000

@@ -462,7 +462,7 @@ DungeonSetting:
     type: select
     value: a-ng1
     option: [a-ng1,a-tp1,a-ac1,a-aa1,a-eq1,a-ng2,a-tp2,a-ac2,a-aa2,a-eq2]
-TimeOdysseyModeSetting:
+TimeOdysseySetting:
   Mode:
     type: select
     value: default
@@ -482,3 +482,4 @@ TimeOdysseyModeSetting:
   MinimalFuel:
     type: input
     value: 1000
+    valuetype: 'int'

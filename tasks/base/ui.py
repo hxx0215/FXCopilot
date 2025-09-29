@@ -5,7 +5,7 @@ from module.exception import GameNotRunningError, GamePageUnknownError, HandledE
 from module.logger import logger
 from module.ocr.ocr import Ocr,OcrResultButton
 from tasks.base.assets.assets_base_main_page import ROGUE_LEAVE_FOR_NOW, ROGUE_LEAVE_FOR_NOW_OE
-from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_EXIT, MAP_EXIT_OE, MAIN_PAGE
+from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_EXIT, MAP_EXIT_OE, MAIN_PAGE,HOME_BUTTON
 from tasks.base.assets.assets_base_popup import POPUP_STORY_LATER
 from tasks.base.main_page import MainPage
 from tasks.base.page import Page, page_gacha, page_main
@@ -277,7 +277,6 @@ class UI(MainPage):
         """
         if appear_button is None:
             appear_button = click_button
-        logger.info(f'UI click: {appear_button} -> {check_button}')
 
         def process_appear(button):
             if isinstance(button, ButtonWrapper):
@@ -378,8 +377,15 @@ class UI(MainPage):
             raise HandledError
         return False
 
-    def ui_goto_main(self):
-        return self.ui_ensure(destination=page_main)
+    def ui_goto_main(self, extra_default=True):
+        result = self.ui_ensure(destination=page_main)
+        if not result:
+            if extra_default:
+                return self.appear_then_click(HOME_BUTTON)
+            else:
+                return False
+        else:
+            return result
 
     def ui_additional(self) -> bool:
         """

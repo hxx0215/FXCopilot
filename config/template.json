@@ -110,7 +110,7 @@
       "Command": "TimeOdyssey",
       "ServerUpdate": "00:00"
     },
-    "TimeOdysseyModeSetting": {
+    "TimeOdysseySetting": {
       "Mode": "default",
       "Times": "default",
       "AutoDecommissioning": false,

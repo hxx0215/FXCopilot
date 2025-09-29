@@ -1757,14 +1757,14 @@
       "a-eq2": "a-eq2"
     }
   },
-  "TimeOdysseyModeSetting": {
+  "TimeOdysseySetting": {
     "_info": {
-      "name": "TimeOdysseyModeSetting._info.name",
-      "help": "TimeOdysseyModeSetting._info.help"
+      "name": "TimeOdysseySetting._info.name",
+      "help": "TimeOdysseySetting._info.help"
     },
     "Mode": {
-      "name": "TimeOdysseyModeSetting.Mode.name",
-      "help": "TimeOdysseyModeSetting.Mode.help",
+      "name": "TimeOdysseySetting.Mode.name",
+      "help": "TimeOdysseySetting.Mode.help",
       "default": "default",
       "normal": "normal",
       "hard": "hard",
@@ -1772,8 +1772,8 @@
       "hell_ex": "hell_ex"
     },
     "Times": {
-      "name": "TimeOdysseyModeSetting.Times.name",
-      "help": "TimeOdysseyModeSetting.Times.help",
+      "name": "TimeOdysseySetting.Times.name",
+      "help": "TimeOdysseySetting.Times.help",
       "default": "default",
       "1": "1",
       "2": "2",
@@ -1781,20 +1781,20 @@
       "max": "max"
     },
     "AutoDecommissioning": {
-      "name": "TimeOdysseyModeSetting.AutoDecommissioning.name",
-      "help": "TimeOdysseyModeSetting.AutoDecommissioning.help",
+      "name": "TimeOdysseySetting.AutoDecommissioning.name",
+      "help": "TimeOdysseySetting.AutoDecommissioning.help",
       "True": "True",
       "False": "False"
     },
     "EnableContinuous": {
-      "name": "TimeOdysseyModeSetting.EnableContinuous.name",
-      "help": "TimeOdysseyModeSetting.EnableContinuous.help",
+      "name": "TimeOdysseySetting.EnableContinuous.name",
+      "help": "TimeOdysseySetting.EnableContinuous.help",
       "True": "True",
       "False": "False"
     },
     "MinimalFuel": {
-      "name": "TimeOdysseyModeSetting.MinimalFuel.name",
-      "help": "TimeOdysseyModeSetting.MinimalFuel.help"
+      "name": "TimeOdysseySetting.MinimalFuel.name",
+      "help": "TimeOdysseySetting.MinimalFuel.help"
     }
   },
   "Gui": {

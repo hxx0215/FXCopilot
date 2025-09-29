@@ -1757,9 +1757,9 @@
       "a-eq2": "族群特性[设备]（高等级)"
     }
   },
-  "TimeOdysseyModeSetting": {
+  "TimeOdysseySetting": {
     "_info": {
-      "name": "活动难度",
+      "name": "活动托管设置",
       "help": ""
     },
     "Mode": {
