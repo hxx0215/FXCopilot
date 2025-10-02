@@ -116,6 +116,10 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.time_odyssey.time_odyssey import TimeOdyssey
         TimeOdyssey(self.config, self.device, task="TimeOdyssey").run()
 
+    def tactical_academy(self):
+        from tasks.tactical_academy.tactical_academy import TacticalAcademy
+        TacticalAcademy(self.config, self.device, task="TacticalAcademy").run()
+
 
 if __name__ == '__main__':
     src = StarRailCopilot('fxc')
