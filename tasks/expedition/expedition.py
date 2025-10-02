@@ -1,4 +1,4 @@
-from tasks.base.ui import UI
+from tasks.base.quick_claim_check import QuickClaimCheck
 from tasks.base.page import page_expedition,page_reward
 from tasks.base.assets.assets_base_page import EXPEDITION_FINISH_FLAG,EXPEDITION_WAITING,EXPEDITION_COLLECT_ALL,EXPEDITION_FINISH_REWARD,EXPEDITION_WAITING2,EXPEDITION_TIME_DATA,EXPEDITION_READY,EXPEDITION_CURRENT_TEAMS_DATA,EXPEDITION_TIME_SELECT_DATA,EXPEDITION_DEPLOY_ICON_BUTTON,EXPEDITION_AUTO_DEPLOY,EXPEDITION_SAIL,EXPEDITION_RECALL,EXPEDITION_LIMITED_TIME_SELECT_DATA
 from module.logger import logger
@@ -25,15 +25,18 @@ class TimeExpeditionKeyword(Keyword):
     @classmethod
     def init(cls,id: int, name: str):
         return cls(id,name,cn = name,en = name,jp = name, cht = '',es = '')
-class Expedition(UI):
-    def check_remain_time(self):
-        self.ui_ensure(page_reward)
-        ocr = QuickClaimTimeOcr(EXPEDITION_TIME_DATA)
-        for image in self.loop():
-            (has_item_finished, deltas) = ocr.ocr_single_line(image)
-            if has_item_finished or len(deltas) != 0:
-                break
-        return (has_item_finished, deltas)
+class Expedition(QuickClaimCheck):
+    def __init__(self, config, device=None, task=None):
+        super().__init__(config, device=device, task=task, ocr_data=EXPEDITION_TIME_DATA)
+
+    # def check_remain_time(self):
+    #     self.ui_ensure(page_reward)
+    #     ocr = QuickClaimTimeOcr(EXPEDITION_TIME_DATA)
+    #     for image in self.loop():
+    #         (has_item_finished, deltas) = ocr.ocr_single_line(image)
+    #         if has_item_finished or len(deltas) != 0:
+    #             break
+    #     return (has_item_finished, deltas)
     def collect_reward(self) -> int:
         def current_available_team():
             r = ocr.detect_and_ocr(self.device.image)
@@ -157,7 +160,7 @@ class Expedition(UI):
         # else:
         team_num = self.collect_reward()
         self.deploy_next_expedition(team_num)
-        (_, times) = self.check_remain_time()
+        (_, times) = self.check_if_finished()
         target = [datetime.datetime.now() + d for d in times]
         self.config.task_delay(target= target)
 

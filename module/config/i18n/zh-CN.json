@@ -66,6 +66,10 @@
       "name": "活动图",
       "help": "默认情况下刷到自动托管停止（目前仅支持了仓库满和没油）如果想一直刷需要开启低于油量"
     },
+    "TacticalAcademy": {
+      "name": "技能学院",
+      "help": ""
+    },
     "Dungeon": {
       "name": "每日副本",
       "help": ""
@@ -1795,6 +1799,18 @@
     "MinimalFuel": {
       "name": "最小油量",
       "help": "仅在持续托管启用时有效"
+    }
+  },
+  "TacticalAcademy": {
+    "_info": {
+      "name": "TacticalAcademy._info.name",
+      "help": "TacticalAcademy._info.help"
+    },
+    "Enable": {
+      "name": "TacticalAcademy.Enable.name",
+      "help": "TacticalAcademy.Enable.help",
+      "True": "True",
+      "False": "False"
     }
   },
   "Gui": {

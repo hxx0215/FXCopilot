@@ -66,6 +66,10 @@
       "name": "Task.TimeOdyssey.name",
       "help": "Task.TimeOdyssey.help"
     },
+    "TacticalAcademy": {
+      "name": "Task.TacticalAcademy.name",
+      "help": "Task.TacticalAcademy.help"
+    },
     "Dungeon": {
       "name": "Dungeon",
       "help": ""
@@ -1795,6 +1799,18 @@
     "MinimalFuel": {
       "name": "TimeOdysseySetting.MinimalFuel.name",
       "help": "TimeOdysseySetting.MinimalFuel.help"
+    }
+  },
+  "TacticalAcademy": {
+    "_info": {
+      "name": "TacticalAcademy._info.name",
+      "help": "TacticalAcademy._info.help"
+    },
+    "Enable": {
+      "name": "TacticalAcademy.Enable.name",
+      "help": "TacticalAcademy.Enable.help",
+      "True": "True",
+      "False": "False"
     }
   },
   "Gui": {

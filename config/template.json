@@ -118,6 +118,14 @@
       "MinimalFuel": 1000
     }
   },
+  "TacticalAcademy": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "TacticalAcademy",
+      "ServerUpdate": "00:00"
+    }
+  },
   "Dungeon": {
     "Scheduler": {
       "Enable": false,

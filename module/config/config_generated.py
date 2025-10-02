@@ -266,3 +266,6 @@ class GeneratedConfig:
     TimeOdysseySetting_AutoDecommissioning = False  # True, False
     TimeOdysseySetting_EnableContinuous = False  # True, False
     TimeOdysseySetting_MinimalFuel = 1000
+
+    # Group `TacticalAcademy`
+    TacticalAcademy_Enable = True  # True, False

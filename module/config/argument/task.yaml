@@ -41,6 +41,8 @@ FX:
     TimeOdyssey:
       - Scheduler
       - TimeOdysseySetting
+    TacticalAcademy:
+      - Scheduler
 Daily:
   menu: 'list'
   page: 'setting'

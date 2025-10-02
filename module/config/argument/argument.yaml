@@ -483,3 +483,8 @@ TimeOdysseySetting:
     type: input
     value: 1000
     valuetype: 'int'
+TacticalAcademy:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]

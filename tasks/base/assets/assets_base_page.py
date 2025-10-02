@@ -1116,9 +1116,10 @@ DAILY_BATTLE_FIELD_BUTTON=ButtonWrapper(
 )
 DAILY_BATTLE_FIELD_ACTIVE=ButtonWrapper(
     name='DAILY_BATTLE_FIELD_ACTIVE',
-    share=Button.default_init(
+    share=Button(
         file='./assets/share/attack/daily_routine/BATTLE_FIELD_ACTIVE.png',
-        area=(1185,537,1226,648),color=(117,98,73)
+        area=(1185,537,1226,648),color=(117,98,73),
+        button=(1185,537,1226,648),search=(1180,532,1231,653)
     )
 )
 DAILY_BATTLE_FIELD_START=ButtonWrapper(
@@ -1794,5 +1795,245 @@ BATTLE_PAGE=ButtonWrapper(
     share=Button.default_init(
         area=(1041,228,1069,255),color=(95,57,69),
         file='./assets/share/battle/BATTLE_PAGE.png'
+    )
+)
+TACTICAL_ACADEMY_TIME_DATA=ButtonWrapper(
+    name='TACTICAL_ACADEMY_TIME_DATA',
+    share=Button.default_init(
+        area=(724,564,1094,578),color=(181,181,181),
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_TIME_DATA.png'
+    )
+)
+TACTICAL_ACADEMY_PAGE=ButtonWrapper(
+    name='TACTICAL_ACADEMY_PAGE',
+    share=Button.default_init(
+        # area=(63,226,137,267),color=(156,121,78),
+        area=(1110,305,1155,350),color=(107,75,45),
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_PAGE.png'
+    )
+)
+TACTICAL_ACADEMY_BUTTON=ButtonWrapper(
+    name='TACTICAL_ACADEMY_BUTTON',
+    share=Button.default_init(
+        area=(580,503,662,580),color=(144,144,144),
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_BUTTON.png'
+    )
+)
+TACTICAL_ACADEMY_CONTINUE_TRAINING=ButtonWrapper(
+    name='TACTICAL_ACADEMY_CONTINUE_TRAINING',
+    share=Button(
+        area=(217,268,358,314),color=(180,113,179),
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_CONTINUE_TRAINING.png',
+        button=(217,268,358,314),search=(128,72,1152,690)
+    )
+)
+TACTICAL_ACADEMY_GET_EXP=ButtonWrapper(
+    name='TACTICAL_ACADEMY_GET_EXP',
+    share=Button.default_init(
+        area=(444,155,886,214),color=(176,160,106),
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_GET_EXP.png',
+        button=(509,465,811,571)
+    )
+)
+TACTICAL_ACADEMY_START_TRAINING=ButtonWrapper(
+    name='TACTICAL_ACADEMY_START_TRAINING',
+    share=Button.default_init(
+        area=(950,591,1146,643),color=(114,202,202),
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_START_TRAINING.png'
+    )
+)
+TACTICAL_ACADEMY_CURRENT_LEVEL=ButtonWrapper(
+    name='TACTICAL_ACADEMY_CURRENT_LEVEL',
+    share=Button.default_init(
+        area=(359,72,405,120),color=(220,220,220),
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_CURRENT_LEVEL.png'
+    )
+)
+TACTICAL_ACADEMY_CURRENT_EXP=ButtonWrapper(
+    name='TACTICAL_ACADEMY_CURRENT_EXP',
+    share=Button.default_init(
+        area=(554,80,846,101),color=(221,223,222),
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_CURRENT_EXP.png'
+    )
+)
+TACTICAL_ACADEMY_EXP_UP=ButtonWrapper(
+    name='TACTICAL_ACADEMY_EXP_UP',
+    share=Button(
+        area=(368,321,396,340),color=(83,118,73),
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_EXP_UP.png',
+        button=(378,324,478,424),search=(135,308,1112,346)
+    )
+)
+TACTICAL_ACADEMY_BASIC_GUNNERY=ItemWrapper(
+    name='TACTICAL_ACADEMY_BASIC_GUNNERY',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_BASIC_GUNNERY.png',
+        area=(399,339,454,406),color=(118,145,161),
+        button=(377,323,478,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(377,402,478,422)
+)
+TACTICAL_ACADEMY_BASIC_TORPEDO=ItemWrapper(
+    name='TACTICAL_ACADEMY_BASIC_TORPEDO',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_BASIC_TORPEDO.png',
+        area=(399,339,454,406),color=(118,145,161),
+        button=(377,323,478,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(377,402,478,422)
+)
+TACTICAL_ACADEMY_BASIC_AUXILIARY=ItemWrapper(
+    name='TACTICAL_ACADEMY_BASIC_AUXILIARY',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_BASIC_AUXILIARY.png',
+        area=(399,339,454,406),color=(119,146,162),
+        button=(377,323,478,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(377,402,478,422)
+)
+TACTICAL_ACADEMY_BASIC_COMMAND=ItemWrapper(
+    name='TACTICAL_ACADEMY_BASIC_COMMAND',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_BASIC_COMMAND.png',
+        area=(399,339,454,406),color=(153,137,136),
+        button=(377,323,478,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(377,402,478,422)
+)
+TACTICAL_ACADEMY_BASIC_SUPPORT=ItemWrapper(
+    name='TACTICAL_ACADEMY_BASIC_SUPPORT',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_BASIC_SUPPORT.png',
+        area=(399,339,454,406),color=(126,147,157),
+        button=(377,323,478,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(377,402,478,422)
+)
+TACTICAL_ACADEMY_INTERMEDIATE_GUNNERY=ItemWrapper(
+    name='TACTICAL_ACADEMY_INTERMEDIATE_GUNNERY',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_INTERMEDIATE_GUNNERY.png',
+        area=(287,339,342,406),color=(164,116,167),
+        button=(264,323,365,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(264,402,365,422)
+)
+TACTICAL_ACADEMY_INTERMEDIATE_TORPEDO=ItemWrapper(
+    name='TACTICAL_ACADEMY_INTERMEDIATE_TORPEDO',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_INTERMEDIATE_TORPEDO.png',
+        area=(287,339,342,406),color=(164,116,167),
+        button=(264,323,365,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(264,402,365,422)
+)
+TACTICAL_ACADEMY_INTERMEDIATE_COMMAND=ItemWrapper(
+    name='TACTICAL_ACADEMY_INTERMEDIATE_COMMAND',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_INTERMEDIATE_COMMAND.png',
+        area=(287,339,342,406),color=(183,139,138),
+        button=(264,323,365,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(264,402,365,422)
+)
+TACTICAL_ACADEMY_INTERMEDIATE_AUXILIARY=ItemWrapper(
+    name='TACTICAL_ACADEMY_INTERMEDIATE_AUXILIARY',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_INTERMEDIATE_AUXILIARY.png',
+        area=(287,339,342,406),color=(164,116,167),
+        button=(264,323,365,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(264,402,365,422)
+)
+TACTICAL_ACADEMY_INTERMEDIATE_SUPPORT=ItemWrapper(
+    name='TACTICAL_ACADEMY_INTERMEDIATE_SUPPORT',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_INTERMEDIATE_SUPPORT.png',
+        area=(287,339,342,406),color=(131,160,185),
+        button=(264,323,365,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(264,402,365,422)
+)
+
+TACTICAL_ACADEMY_ADVANCED_GUNNERY=ItemWrapper(
+    name='TACTICAL_ACADEMY_ADVANCED_GUNNERY',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_ADVANCED_GUNNERY.png',
+        area=(175,339,230,406),color=(195,168,90),
+        button=(152,323,253,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(152,402,253,422)
+)
+TACTICAL_ACADEMY_ADVANCED_TORPEDO=ItemWrapper(
+    name='TACTICAL_ACADEMY_ADVANCED_TORPEDO',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_ADVANCED_TORPEDO.png',
+        area=(175,339,230,406),color=(195,168,90),
+        button=(152,323,253,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(152,402,253,422)
+)
+TACTICAL_ACADEMY_ADVANCED_AUXILIARY=ItemWrapper(
+    name='TACTICAL_ACADEMY_ADVANCED_AUXILIARY',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_ADVANCED_AUXILIARY.png',
+        area=(175,339,230,406),color=(195,168,90),
+        button=(152,323,253,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(152,402,253,422)
+)
+TACTICAL_ACADEMY_ADVANCED_COMMAND=ItemWrapper(
+    name='TACTICAL_ACADEMY_ADVANCED_COMMAND',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_ADVANCED_COMMAND.png',
+        area=(175,339,230,406),color=(195,146,151),
+        button=(152,323,253,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(152,402,253,422)
+)
+TACTICAL_ACADEMY_ADVANCED_SUPPORT=ItemWrapper(
+    name='TACTICAL_ACADEMY_ADVANCED_SUPPORT',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_ADVANCED_SUPPORT.png',
+        area=(175,339,230,406),color=(132,158,194),
+        button=(152,323,253,422),search=(152,334,1144,411)
+    ),
+    ocr_area=(152,402,253,422)
+)
+
+TACTICAL_ACADEMY_CLASS_SUPPORT=ButtonWrapper(
+    name='TACTICAL_ACADEMY_CLASS_SUPPORT',
+    share=Button.default_init(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_CLASS_SUPPORT.png',
+        area=(129,81,294,247),color=(108,145,132)
+    )
+)
+TACTICAL_ACADEMY_CLASS_COMMAND=ButtonWrapper(
+    name='TACTICAL_ACADEMY_CLASS_COMMAND',
+    share=Button.default_init(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_CLASS_COMMAND.png',
+        area=(129,81,294,247),color=(153,152,118)
+    )
+)
+TACTICAL_ACADEMY_CLASS_PRIMARY=ButtonWrapper(
+    name='TACTICAL_ACADEMY_CLASS_PRIMARY',
+    share=Button.default_init(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_CLASS_PRIMARY.png',
+        area=(129,81,294,247),color=(121,123,147)
+    )
+)
+TACTICAL_ACADEMY_CLASS_ULTIMATE=ButtonWrapper(
+    name='TACTICAL_ACADEMY_CLASS_ULTIMATE',
+    share=Button.default_init(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_CLASS_ULTIMATE.png',
+        area=(129,81,294,247),color=(148,112,117)
+    )
+)
+TACTICAL_ACADEMY_BOOK_TYPE_DATA=ButtonWrapper(
+    name='TACTICAL_ACADEMY_BOOK_TYPE_DATA',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_BOOK_TYPE_DATA.png',
+        area=(259,287,337,310),color=(178,213,185),
+        button=(259,287,337,310),search=(254,287,342,310)
     )
 )

@@ -1,58 +1,29 @@
 
-from tasks.base.ui import UI
-from tasks.base.page import page_reward, page_beach
-from module.ocr.ocr import QuickClaimTimeOcr,ItemOcr
+from tasks.base.quick_claim_check import QuickClaimCheck
+from tasks.base.page import  page_beach
+from module.ocr.ocr import ItemOcr
 from module.logger.logger import logger
 from module.base.button import ItemWrapper
 from tasks.base.assets.assets_base_page import BEACH_TIME_DATA,BEACH_CONTINUE_TRAINING,GET_ITEMS,BEACH_START_TRAINING,BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN,BEACH_PAGE,BEACH_FOOD_SEAFOOD,BEACH_FOOD_SHRIMP
 from module.base.timer import Timer
 import datetime
 
-class Beach(UI):
-    def find_food(self, food: ItemWrapper) -> int:
-        ocr = ItemOcr(food)
-        timer = Timer(5).start()
-        for image in self.loop():
-            if self.appear(food):
-                ocr_result = ocr.ocr_single_line(image)
-                if ocr_result.isdigit():
-                    cnt = int(ocr_result)
-                else:
-                    continue
-                if cnt > 0:
-                    return cnt
-                else:
-                    continue
-            if timer.reached():
-                return 0
-        return 0
-    def add_food(self, foods: list[tuple[ItemWrapper,int]]):
-        target_search_area = (144,507,826,619)
-        idx = 0
-        for image in self.loop():
-            (food, cnt) = foods[idx]
-            added_food = food.temp_multi_match(image, target_search_area)
-            if len(added_food) == cnt:
-                idx = idx + 1
-                if idx == len(foods):
-                    break
-                else:
-                    continue
-            if self.appear_then_click(food, interval=1):
-                continue
+class Beach(QuickClaimCheck):
+    def __init__(self, config, device=None, task=None):
+        super().__init__(config, BEACH_TIME_DATA, device, task)
     def process_pick_food(self):
         foods = [BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN, BEACH_FOOD_SEAFOOD, BEACH_FOOD_SHRIMP]
         total = 6
         pick_food: list[tuple[ItemWrapper, int]] = []
         for food in foods:
-            cnt = self.find_food(food)
+            cnt = self.find_item(food)
             if cnt >= total:
                 pick_food.append((food, total))
                 break
             else:
                 pick_food.append((food, cnt))
                 total = total - cnt
-        self.add_food(pick_food)
+        self.add_item(pick_food,(144,507,826,619))
         self.ui_click(BEACH_START_TRAINING, BEACH_PAGE)
 
     def process_continue_training(self):
@@ -74,14 +45,14 @@ class Beach(UI):
                 self.ui_click(GET_ITEMS, BEACH_START_TRAINING)
                 self.process_pick_food()
                 
-    def check_if_finished(self):
-        self.ui_ensure(page_reward)
-        ocr = QuickClaimTimeOcr(BEACH_TIME_DATA)
-        for image in self.loop():
-            (has_finished, deltas) = ocr.ocr_single_line(image)
-            if has_finished or len(deltas) != 0:
-                break
-        return (has_finished, deltas)
+    # def check_if_finished(self):
+    #     self.ui_ensure(page_reward)
+    #     ocr = QuickClaimTimeOcr(BEACH_TIME_DATA)
+    #     for image in self.loop():
+    #         (has_finished, deltas) = ocr.ocr_single_line(image)
+    #         if has_finished or len(deltas) != 0:
+    #             break
+    #     return (has_finished, deltas)
 
     def run(self):
         # self.ui_ensure(page_temp)

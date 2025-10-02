@@ -31,6 +31,9 @@ Expedition:
 Beach:
   Scheduler:
     Enable: true
+TacticalAcademy:
+  Scheduler:
+    Enable: true
 
 
 # ==================== Weekly ====================

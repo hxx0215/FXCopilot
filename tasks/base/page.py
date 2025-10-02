@@ -259,3 +259,10 @@ page_battle=Page(BATTLE_PAGE)
 page_battle_pause = Page(BATTLE_PAUSE_PAGE)
 page_battle.link(BATTLE_PAUSE, destination=page_battle_pause)
 page_battle_pause.link(BATTLE_ABORT, destination=page_main)
+
+page_tactical_academy=Page(TACTICAL_ACADEMY_PAGE)
+page_tactical_academy.link(HOME_BUTTON, destination=page_main)
+
+page_reward.link(TACTICAL_ACADEMY_BUTTON, destination=page_tactical_academy)
+
+page_temp = Page(TACTICAL_ACADEMY_START_TRAINING)
