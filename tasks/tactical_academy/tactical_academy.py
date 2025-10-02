@@ -139,12 +139,12 @@ class TacticalAcademy(QuickClaimCheck):
             self.process_continue_training()
             (_, deltas) = self.check_if_finished()
         target = [datetime.datetime.now() + d for d in deltas]
+        logger.info(f'delay: {target}')
         if len(target) > 0:
             self.config.task_delay(target=target)
         else:
             #beach没有舰灵2小时后再来检测
             self.config.task_delay(minute=120)
-        self.config.task_delay(target=target)
 
         # self.ui_ensure(page_tactical_academy)
         # self.process_continue_training()
