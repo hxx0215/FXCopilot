@@ -119,7 +119,7 @@ class TacticalAcademy(QuickClaimCheck):
                 if len(btns) > 0:
                     break
                 if timer.reached():
-                    break
+                    return
             for btn in btns:
                 for _ in self.loop():
                     if not self.appear(TACTICAL_ACADEMY_GET_EXP):

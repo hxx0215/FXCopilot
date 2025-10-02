@@ -45,19 +45,8 @@ class Beach(QuickClaimCheck):
                 self.ui_click(GET_ITEMS, BEACH_START_TRAINING)
                 self.process_pick_food()
                 
-    # def check_if_finished(self):
-    #     self.ui_ensure(page_reward)
-    #     ocr = QuickClaimTimeOcr(BEACH_TIME_DATA)
-    #     for image in self.loop():
-    #         (has_finished, deltas) = ocr.ocr_single_line(image)
-    #         if has_finished or len(deltas) != 0:
-    #             break
-    #     return (has_finished, deltas)
 
     def run(self):
-        # self.ui_ensure(page_temp)
-        # self.process_pick_food()
-        # self.config.task_delay(minute=1)
         (has_finished, deltas) = self.check_if_finished()
         if has_finished:
             self.ui_ensure(page_beach)
