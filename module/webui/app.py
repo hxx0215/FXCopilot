@@ -1092,8 +1092,8 @@ class AlasGUI(Frame):
             def get_unused_name():
                 all_name = alas_instance()
                 for i in range(2, 100):
-                    if f"src{i}" not in all_name:
-                        return f"src{i}"
+                    if f"fxc{i}" not in all_name:
+                        return f"fxc{i}"
                 else:
                     return ""
 
@@ -1132,7 +1132,7 @@ class AlasGUI(Frame):
                     name="AddAlas_copyfrom",
                     label=t("Gui.AddAlas.CopyFrom"),
                     options=alas_template() + alas_instance(),
-                    value=origin or "template-src",
+                    value=origin or "template-fxc",
                     scope=s,
                 ),
                 put_button(label=t("Gui.AddAlas.Confirm"), onclick=add, scope=s)
@@ -1183,8 +1183,8 @@ class AlasGUI(Frame):
             # show something
             put_markdown(
                 """
-            SRC is a free open source software, if you paid for SRC from any channel, please refund.
-            SRC 是一款免费开源软件，如果你在任何渠道付费购买了SRC，请退款。
+            FXC is a free open source software, if you paid for SRC from any channel, please refund.
+            FXC 是一款免费开源软件，如果你在任何渠道付费购买了FXC，请退款。
             Project repository 项目地址：`https://github.com/LmeSzinc/StarRailCopilot`
             """
             ).style("text-align: center")

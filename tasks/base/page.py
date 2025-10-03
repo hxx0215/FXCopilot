@@ -69,7 +69,7 @@ class Page:
 
 
 # Main page
-page_main = Page(MAIN_GOTO_CHARACTER)
+# page_main = Page(MAIN_GOTO_CHARACTER)
 page_main = Page(MAIN_PAGE)
 # page_home = Page(MAIN_PAGE)
 
@@ -164,3 +164,105 @@ page_rogue.link(CLOSE, destination=page_main)
 # Planner result
 page_planner = Page(PLANNER_CHECK)
 page_planner.link(CLOSE, destination=page_menu)
+
+
+# FX
+page_main = Page(MAIN_PAGE)
+page_reward = Page(REWARD_CHECK)
+
+page_reward.link(REWARD_CHECK_CLOSE, destination=page_main)
+page_main.link(REWARD_CHECK_OPEN, destination=page_reward)
+
+page_refinery = Page(REFINERY)
+page_reward.link(REFINERY_OPEN, destination=page_refinery)
+page_refinery.link(HOME_BUTTON, destination=page_main)
+
+page_refinery_schedule = Page(REFINERY_SCHEDULE_PAGE)
+page_refinery.link(SCHEDULE_BUTTON, destination=page_refinery_schedule)
+
+page_convenience_store = Page(CONVENIENCE_STORE)
+page_convenience_store.link(HOME_BUTTON, destination=page_main)
+page_reward.link(CONVENIENCE_STORE_OPEN, destination=page_convenience_store)
+
+page_convenience_store_schedule = Page(CONVENIENCE_STORE_SCHEDULE_PAGE)
+page_convenience_store.link(SCHEDULE_BUTTON, destination=page_convenience_store_schedule)
+
+page_naval_port = Page(NAVAL_PORT_PAGE)
+page_main.link(NAVAL_PORT_BUTTON, destination=page_naval_port)
+page_naval_port.link(HOME_BUTTON, destination=page_main)
+
+page_quiz_center = Page(QUIZ_CENTER_PAGE)
+page_naval_port.link(QUIZ_CENTER_BUTTON, destination=page_quiz_center)
+page_quiz_center.link(HOME_BUTTON, destination=page_main)
+
+page_main_line = Page(MAIN_LINE_PAGE)
+page_main.link(ATTACK_BUTTON, destination=page_main_line)
+page_main_line.link(HOME_BUTTON, destination=page_main)
+
+page_exercise = Page(EXERCISE_PAGE)
+page_main_line.link(EXERCISE_BUTTON, destination=page_exercise)
+page_exercise.link(HOME_BUTTON, destination=page_main)
+
+page_competition = Page(COMPETITION_PAGE)
+page_main_line.link(COMPETITION_BUTTON, destination=page_competition)
+page_competition.link(HOME_BUTTON, destination=page_main)
+page_exercise.link(COMPETITION_BUTTON, destination=page_competition)
+page_competition.link(EXERCISE_BUTTON, destination=page_exercise)
+
+page_arena = Page(ARENA_PAGE)
+page_arena.link(HOME_BUTTON, destination=page_main)
+
+page_daily_routine = Page(DAILY_ROUTINE_PAGE)
+page_daily_routine.link(HOME_BUTTON, destination=page_main)
+page_main_line.link(DAILY_ROUTINE_BUTTON, destination=page_daily_routine)
+
+page_expedition = Page(EXPEDITION_PAGE)
+page_expedition.link(HOME_BUTTON, destination=page_main)
+page_reward.link(EXPEDITION_BUTTON, destination=page_expedition)
+
+page_beach = Page(BEACH_PAGE)
+page_beach.link(HOME_BUTTON, destination=page_main)
+page_reward.link(BEACH_BUTTON, destination=page_beach)
+
+# page_default = Page(HOME_BUTTON)
+# page_default.link(HOME_BUTTON, destination=page_main)
+
+page_daily_reward = Page(DAILY_REWARD)
+page_daily_reward.link(DAILY_REWARD, destination=page_main)
+
+page_temp = Page(BEACH_START_TRAINING)
+page_temp.link(HOME_BUTTON, destination=page_main)
+
+page_stage_failed = Page(STAGE_FAILED_PAGE)
+page_stage_failed.link(STAGE_FAILED_PAGE, destination=page_main_line)
+
+page_time_odyssey = Page(TIME_ODYSSEY_PAGE)
+page_main.link(TO_EVENT_PAGE_BUTTON, destination=page_time_odyssey)
+page_time_odyssey.link(HOME_BUTTON, destination=page_main)
+
+
+page_time_odyssey_map = Page(TIME_ODYSSEY_REMAIN_TIME)
+page_time_odyssey.link(TIME_ODYSSEY_SAIL_BUTTON, destination=page_time_odyssey_map)
+page_time_odyssey_map.link(HOME_BUTTON, destination=page_main)
+
+page_decommissioning = Page(DECOMMISSIONING_PAGE)
+page_decommissioning.link(HOME_BUTTON, destination=page_main)
+
+page_stage_prepare = Page(STAGE_SET_SAIL)
+page_stage_prepare.link(HOME_BUTTON, destination=page_main)
+
+page_decommissioning_batch = Page(DECOMMISSIONING_BATCH_SELECT_PAGE)
+page_decommissioning_batch.link(DECOMMISSIONING_BATCH_CLOSE, destination=page_decommissioning)
+page_decommissioning.link(DECOMMISSIONING_BATCH_SELECT, destination=page_decommissioning_batch)
+
+page_battle=Page(BATTLE_PAGE)
+page_battle_pause = Page(BATTLE_PAUSE_PAGE)
+page_battle.link(BATTLE_PAUSE, destination=page_battle_pause)
+page_battle_pause.link(BATTLE_ABORT, destination=page_main)
+
+page_tactical_academy=Page(TACTICAL_ACADEMY_PAGE)
+page_tactical_academy.link(HOME_BUTTON, destination=page_main)
+
+page_reward.link(TACTICAL_ACADEMY_BUTTON, destination=page_tactical_academy)
+
+page_temp = Page(TACTICAL_ACADEMY_START_TRAINING)

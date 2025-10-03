@@ -80,7 +80,47 @@ class StarRailCopilot(AzurLaneAutoScript):
         from tasks.planner.scan import PlannerScan
         PlannerScan(config=self.config, device=self.device, task="PlannerScan").run()
 
+    def reward(self):
+        from tasks.reward.reward import Reward
+        Reward(config=self.config, device=self.device, task="Reward").run()
+
+    def rescheduler(self):
+        from tasks.rescheduler.rescheduler import Rescheduler
+        Rescheduler(config=self.config, device=self.device, task="Rescheduler").run()
+
+    def exercise(self):
+        from tasks.exercise.exercise import Exercise
+        Exercise(self.config,self.device, task="Exercise").run()
+
+    def quiz_center(self):
+        from tasks.quiz_center.quiz_center import QuizCenter
+        QuizCenter(self.config, self.device, task="QuizCenter").run()
+
+    def competition(self):
+        from tasks.competition.competition import Competition
+        Competition(self.config, self.device, task="Competition").run()
+
+    def daily_routine(self):
+        from tasks.daily_routine.daily_routine import DailyRoutine
+        DailyRoutine(self.config, self.device, task="DailyRoutine").run()
+
+    def expedition(self):
+        from tasks.expedition.expedition import Expedition
+        Expedition(self.config, self.device, task="Expedition").run()
+
+    def beach(self):
+        from tasks.beach.beach import Beach
+        Beach(self.config, self.device, task="Beach").run()
+
+    def time_odyssey(self):
+        from tasks.time_odyssey.time_odyssey import TimeOdyssey
+        TimeOdyssey(self.config, self.device, task="TimeOdyssey").run()
+
+    def tactical_academy(self):
+        from tasks.tactical_academy.tactical_academy import TacticalAcademy
+        TacticalAcademy(self.config, self.device, task="TacticalAcademy").run()
+
 
 if __name__ == '__main__':
-    src = StarRailCopilot('src')
+    src = StarRailCopilot('fxc')
     src.loop()

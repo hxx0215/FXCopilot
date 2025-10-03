@@ -4,6 +4,10 @@
       "name": "Menu.Alas.name",
       "help": "Menu.Alas.help"
     },
+    "FX": {
+      "name": "Menu.FX.name",
+      "help": "Menu.FX.help"
+    },
     "Daily": {
       "name": "Menu.Daily.name",
       "help": "Menu.Daily.help"
@@ -25,6 +29,46 @@
     "Restart": {
       "name": "再起動設定",
       "help": ""
+    },
+    "Reward": {
+      "name": "Task.Reward.name",
+      "help": "Task.Reward.help"
+    },
+    "Rescheduler": {
+      "name": "Task.Rescheduler.name",
+      "help": "Task.Rescheduler.help"
+    },
+    "Exercise": {
+      "name": "Task.Exercise.name",
+      "help": "Task.Exercise.help"
+    },
+    "QuizCenter": {
+      "name": "Task.QuizCenter.name",
+      "help": "Task.QuizCenter.help"
+    },
+    "Competition": {
+      "name": "Task.Competition.name",
+      "help": "Task.Competition.help"
+    },
+    "DailyRoutine": {
+      "name": "Task.DailyRoutine.name",
+      "help": "Task.DailyRoutine.help"
+    },
+    "Expedition": {
+      "name": "Task.Expedition.name",
+      "help": "Task.Expedition.help"
+    },
+    "Beach": {
+      "name": "Task.Beach.name",
+      "help": "Task.Beach.help"
+    },
+    "TimeOdyssey": {
+      "name": "Task.TimeOdyssey.name",
+      "help": "Task.TimeOdyssey.help"
+    },
+    "TacticalAcademy": {
+      "name": "Task.TacticalAcademy.name",
+      "help": "Task.TacticalAcademy.help"
     },
     "Dungeon": {
       "name": "Task.Dungeon.name",
@@ -106,27 +150,18 @@
     },
     "GameClient": {
       "name": "Emulator.GameClient.name",
-      "help": "Emulator.GameClient.help",
-      "android": "android",
-      "cloud_android": "cloud_android"
+      "help": "Emulator.GameClient.help"
     },
     "PackageName": {
       "name": "Emulator.PackageName.name",
       "help": "Emulator.PackageName.help",
       "auto": "auto",
       "CN-Official": "CN-Official",
-      "CN-Bilibili": "CN-Bilibili",
-      "OVERSEA-America": "OVERSEA-America",
-      "OVERSEA-Asia": "OVERSEA-Asia",
-      "OVERSEA-Europe": "OVERSEA-Europe",
-      "OVERSEA-TWHKMO": "OVERSEA-TWHKMO"
+      "CN-Bilibili": "CN-Bilibili"
     },
     "GameLanguage": {
       "name": "Emulator.GameLanguage.name",
-      "help": "Emulator.GameLanguage.help",
-      "auto": "auto",
-      "cn": "cn",
-      "en": "en"
+      "help": "Emulator.GameLanguage.help"
     },
     "ScreenshotMethod": {
       "name": "Emulator.ScreenshotMethod.name",
@@ -1529,7 +1564,7 @@
     "Dungeon": {
       "name": "Ornament.Dungeon.name",
       "help": "Ornament.Dungeon.help",
-      "Divergent_Universe_Moonlit_Blood": "飾品：（月下朱殷）",
+      "Divergent_Universe_Moonlit_Blood": "飾品：妖精 & 酩酊（月下朱殷）",
       "Divergent_Universe_Unceasing_Strife": "飾品：拾骨地 & 巨樹（絶えぬ紛争）",
       "Divergent_Universe_Famished_Worker": "飾品：海に沈 & 奇想（飢えた虫卒）",
       "Divergent_Universe_Eternal_Comedy": "飾品：奔狼 & 蓮灯（永遠の喜劇）",
@@ -1539,7 +1574,7 @@
       "Divergent_Universe_Permafrost": "飾品：ベロブルグ & ったサルソット（永久凍土）",
       "Divergent_Universe_Gentle_Words": "飾品：商事会社 & 階差機関（優しい言葉）",
       "Divergent_Universe_Smelted_Heart": "飾品：盗賊 & ウェンワーク（鋼の意志）",
-      "Divergent_Universe_Untoppled_Walls": "飾品：宇宙 & 仙舟 & 妖精 & 酩酊（不動の砦）"
+      "Divergent_Universe_Untoppled_Walls": "飾品：宇宙 & 仙舟（不動の砦）"
     },
     "UseImmersifier": {
       "name": "Ornament.UseImmersifier.name",
@@ -1564,7 +1599,8 @@
     "Enable": {
       "name": "Daemon.Enable.name",
       "help": "Daemon.Enable.help",
-      "True": "True"
+      "True": "True",
+      "False": "False"
     },
     "AimClicker": {
       "name": "Daemon.AimClicker.name",
@@ -1583,6 +1619,198 @@
     "ResultAdd": {
       "name": "PlannerScan.ResultAdd.name",
       "help": "PlannerScan.ResultAdd.help"
+    }
+  },
+  "Reward": {
+    "_info": {
+      "name": "Reward._info.name",
+      "help": "Reward._info.help"
+    },
+    "Enable": {
+      "name": "Reward.Enable.name",
+      "help": "Reward.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Rescheduler": {
+    "_info": {
+      "name": "Rescheduler._info.name",
+      "help": "Rescheduler._info.help"
+    },
+    "Enable": {
+      "name": "Rescheduler.Enable.name",
+      "help": "Rescheduler.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "QuizCenter": {
+    "_info": {
+      "name": "QuizCenter._info.name",
+      "help": "QuizCenter._info.help"
+    },
+    "Enable": {
+      "name": "QuizCenter.Enable.name",
+      "help": "QuizCenter.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Competition": {
+    "_info": {
+      "name": "Competition._info.name",
+      "help": "Competition._info.help"
+    },
+    "Enable": {
+      "name": "Competition.Enable.name",
+      "help": "Competition.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Exercise": {
+    "_info": {
+      "name": "Exercise._info.name",
+      "help": "Exercise._info.help"
+    },
+    "Enable": {
+      "name": "Exercise.Enable.name",
+      "help": "Exercise.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Expedition": {
+    "_info": {
+      "name": "Expedition._info.name",
+      "help": "Expedition._info.help"
+    },
+    "Enable": {
+      "name": "Expedition.Enable.name",
+      "help": "Expedition.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "DailyRoutine": {
+    "_info": {
+      "name": "DailyRoutine._info.name",
+      "help": "DailyRoutine._info.help"
+    },
+    "Enable": {
+      "name": "DailyRoutine.Enable.name",
+      "help": "DailyRoutine.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Beach": {
+    "_info": {
+      "name": "Beach._info.name",
+      "help": "Beach._info.help"
+    },
+    "Enable": {
+      "name": "Beach.Enable.name",
+      "help": "Beach.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "TimeOdyssey": {
+    "_info": {
+      "name": "TimeOdyssey._info.name",
+      "help": "TimeOdyssey._info.help"
+    },
+    "Enable": {
+      "name": "TimeOdyssey.Enable.name",
+      "help": "TimeOdyssey.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "DungeonSetting": {
+    "_info": {
+      "name": "DungeonSetting._info.name",
+      "help": "DungeonSetting._info.help"
+    },
+    "BattleField": {
+      "name": "DungeonSetting.BattleField.name",
+      "help": "DungeonSetting.BattleField.help",
+      "nv1": "nv1",
+      "sv1": "sv1",
+      "ma1": "ma1",
+      "ns1": "ns1",
+      "nv2": "nv2",
+      "sv2": "sv2",
+      "ma2": "ma2",
+      "ns2": "ns2"
+    },
+    "ArmTransport": {
+      "name": "DungeonSetting.ArmTransport.name",
+      "help": "DungeonSetting.ArmTransport.help",
+      "a-ng1": "a-ng1",
+      "a-tp1": "a-tp1",
+      "a-ac1": "a-ac1",
+      "a-aa1": "a-aa1",
+      "a-eq1": "a-eq1",
+      "a-ng2": "a-ng2",
+      "a-tp2": "a-tp2",
+      "a-ac2": "a-ac2",
+      "a-aa2": "a-aa2",
+      "a-eq2": "a-eq2"
+    }
+  },
+  "TimeOdysseySetting": {
+    "_info": {
+      "name": "TimeOdysseySetting._info.name",
+      "help": "TimeOdysseySetting._info.help"
+    },
+    "Mode": {
+      "name": "TimeOdysseySetting.Mode.name",
+      "help": "TimeOdysseySetting.Mode.help",
+      "default": "default",
+      "normal": "normal",
+      "hard": "hard",
+      "hell": "hell",
+      "hell_ex": "hell_ex"
+    },
+    "Times": {
+      "name": "TimeOdysseySetting.Times.name",
+      "help": "TimeOdysseySetting.Times.help",
+      "default": "default",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "max": "max"
+    },
+    "AutoDecommissioning": {
+      "name": "TimeOdysseySetting.AutoDecommissioning.name",
+      "help": "TimeOdysseySetting.AutoDecommissioning.help",
+      "True": "True",
+      "False": "False"
+    },
+    "EnableContinuous": {
+      "name": "TimeOdysseySetting.EnableContinuous.name",
+      "help": "TimeOdysseySetting.EnableContinuous.help",
+      "True": "True",
+      "False": "False"
+    },
+    "MinimalFuel": {
+      "name": "TimeOdysseySetting.MinimalFuel.name",
+      "help": "TimeOdysseySetting.MinimalFuel.help"
+    }
+  },
+  "TacticalAcademy": {
+    "_info": {
+      "name": "TacticalAcademy._info.name",
+      "help": "TacticalAcademy._info.help"
+    },
+    "Enable": {
+      "name": "TacticalAcademy.Enable.name",
+      "help": "TacticalAcademy.Enable.help",
+      "True": "True",
+      "False": "False"
     }
   },
   "Gui": {

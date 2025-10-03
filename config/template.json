@@ -4,7 +4,7 @@
       "Serial": "auto",
       "GameClient": "android",
       "PackageName": "auto",
-      "GameLanguage": "auto",
+      "GameLanguage": "cn",
       "ScreenshotMethod": "scrcpy",
       "ControlMethod": "MaaTouch",
       "CloudPriorQueue": false,
@@ -32,15 +32,106 @@
       "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Restart",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
+    }
+  },
+  "Reward": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Reward",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "Rescheduler": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Rescheduler",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "Exercise": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Exercise",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "QuizCenter": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "QuizCenter",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "Competition": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Competition",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "DailyRoutine": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "DailyRoutine",
+      "ServerUpdate": "00:00"
+    },
+    "DungeonSetting": {
+      "BattleField": "nv1",
+      "ArmTransport": "a-ng1"
+    }
+  },
+  "Expedition": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Expedition",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "Beach": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Beach",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "TimeOdyssey": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "TimeOdyssey",
+      "ServerUpdate": "00:00"
+    },
+    "TimeOdysseySetting": {
+      "Mode": "default",
+      "Times": "default",
+      "AutoDecommissioning": false,
+      "EnableContinuous": false,
+      "MinimalFuel": 1000
+    }
+  },
+  "TacticalAcademy": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "TacticalAcademy",
+      "ServerUpdate": "00:00"
     }
   },
   "Dungeon": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Dungeon",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
     },
     "Planner": {
       "PlannerOverall": {},
@@ -155,7 +246,7 @@
       "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Ornament",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
     },
     "Ornament": {
       "Dungeon": "Divergent_Universe_Eternal_Comedy",
@@ -176,10 +267,10 @@
   },
   "DailyQuest": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "DailyQuest",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
     },
     "DailyStorage": {
       "DailyActivity": {},
@@ -188,10 +279,10 @@
   },
   "BattlePass": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "BattlePass",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
     },
     "BattlePassStorage": {
       "BattlePassLevel": {},
@@ -208,10 +299,10 @@
   },
   "Assignment": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Assignment",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
     },
     "Assignment": {
       "ClaimAll": true,
@@ -229,7 +320,7 @@
       "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "DataUpdate",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
     },
     "ItemStorage": {
       "Credit": {},
@@ -243,10 +334,10 @@
   },
   "Freebies": {
     "Scheduler": {
-      "Enable": true,
+      "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Freebies",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
     },
     "Freebies": {
       "SupportReward": true,
@@ -260,7 +351,7 @@
       "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Weekly",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
     },
     "Weekly": {
       "Name": "Echo_of_War_Divine_Seed",
@@ -276,7 +367,7 @@
       "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Rogue",
-      "ServerUpdate": "04:00"
+      "ServerUpdate": "00:00"
     },
     "RogueWorld": {
       "World": "Simulated_Universe_World_8",
@@ -304,7 +395,7 @@
   },
   "Daemon": {
     "Daemon": {
-      "Enable": true,
+      "Enable": false,
       "AimClicker": "do_not_click"
     }
   },

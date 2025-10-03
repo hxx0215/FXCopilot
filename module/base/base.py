@@ -128,7 +128,7 @@ class ModuleBase:
                 self.device.dump_hierarchy()
             yield self.device.image, self.device.hierarchy
 
-    def match_template(self, button, interval=0, similarity=0.85):
+    def match_template(self, button, interval: int | float=0, similarity=0.85):
         """
         Args:
             button (ButtonWrapper):
@@ -239,7 +239,7 @@ class ModuleBase:
         else:
             return xpath
 
-    def xpath_appear(self, xpath: str, interval=0):
+    def xpath_appear(self, xpath: str, interval: int| float=0):
         button = self.xpath(xpath)
 
         self.device.stuck_record_add(button)
@@ -254,7 +254,7 @@ class ModuleBase:
 
         return appear
 
-    def appear(self, button, interval=0, similarity=0.85):
+    def appear(self, button, interval: int| float=0, similarity=0.85):
         """
         Args:
             button (Button, ButtonWrapper, HierarchyButton, str):
@@ -281,7 +281,7 @@ class ModuleBase:
         else:
             return self.match_template(button, interval=interval, similarity=similarity)
 
-    def appear_then_click(self, button, interval=5, similarity=0.85):
+    def appear_then_click(self, button, interval : int | float = 5, similarity=0.85):
         button = self.xpath(button)
         appear = self.appear(button, interval=interval, similarity=similarity)
         if appear:
@@ -373,7 +373,7 @@ class ModuleBase:
         button_area = area_offset((-encourage, -encourage, encourage, encourage), offset=point)
         return ClickButton(area=button_area, name=name)
 
-    def get_interval_timer(self, button, interval=5, renew=False) -> Timer:
+    def get_interval_timer(self, button, interval: int | float=5, renew=False) -> Timer:
         if hasattr(button, 'name'):
             name = button.name
         elif callable(button):
@@ -392,7 +392,7 @@ class ModuleBase:
             self.interval_timer[name] = timer
             return timer
 
-    def interval_reset(self, button, interval=5):
+    def interval_reset(self, button, interval: int | float=5):
         if isinstance(button, (list, tuple)):
             for b in button:
                 self.interval_reset(b, interval)
@@ -410,7 +410,7 @@ class ModuleBase:
         if button is not None:
             self.get_interval_timer(button, interval=interval).clear()
 
-    def interval_is_reached(self, button, interval=5):
+    def interval_is_reached(self, button, interval: int | float=5):
         return self.get_interval_timer(button, interval=interval, renew=True).reached()
 
     _image_file = ''

@@ -2,7 +2,8 @@ import re
 import typing as t
 from copy import deepcopy
 
-from cached_property import cached_property
+#from cached_property import cached_property
+from functools import cached_property
 
 from deploy.Windows.utils import DEPLOY_TEMPLATE, poor_yaml_read, poor_yaml_write
 from module.base.timer import timer
@@ -924,6 +925,10 @@ class ConfigUpdater:
             yield 'Dungeon.TrailblazePower.FuelReserve', value
         if key == 'Ornament.TrailblazePower.FuelOnlyPlanner':
             yield 'Dungeon.TrailblazePower.FuelOnlyPlanner', value
+        if key == 'TimeOdyssey.TimeOdysseyModeSetting.EnableContinuous' and value is True:
+            yield 'TimeOdyssey.TimeOdysseyModeSetting.AutoDecommissioning', True
+        if key == 'TimeOdyssey.TimeOdysseyModeSetting.AutoDecommissioning' and value is False:
+            yield 'TimeOdyssey.TimeOdysseyModeSetting.EnableContinuous', False
 
     def iter_hidden_args(self, data) -> t.Iterator[str]:
         """

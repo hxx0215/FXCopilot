@@ -7,6 +7,22 @@
       "Restart"
     ]
   },
+  "FX": {
+    "menu": "list",
+    "page": "setting",
+    "tasks": [
+      "Reward",
+      "Rescheduler",
+      "Exercise",
+      "QuizCenter",
+      "Competition",
+      "DailyRoutine",
+      "Expedition",
+      "Beach",
+      "TimeOdyssey",
+      "TacticalAcademy"
+    ]
+  },
   "Daily": {
     "menu": "list",
     "page": "setting",

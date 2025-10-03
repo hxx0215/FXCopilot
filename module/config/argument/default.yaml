@@ -24,7 +24,17 @@ Assignment:
     Enable: true
 Freebies:
   Scheduler:
+    Enable: false
+Expedition:
+  Scheduler:
     Enable: true
+Beach:
+  Scheduler:
+    Enable: true
+TacticalAcademy:
+  Scheduler:
+    Enable: true
+
 
 # ==================== Weekly ====================
 

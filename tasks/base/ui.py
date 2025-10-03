@@ -1,11 +1,11 @@
-from module.base.button import ButtonWrapper
+from module.base.button import ButtonWrapper,ClickButton
 from module.base.decorator import run_once
 from module.base.timer import Timer
 from module.exception import GameNotRunningError, GamePageUnknownError, HandledError
 from module.logger import logger
-from module.ocr.ocr import Ocr
+from module.ocr.ocr import Ocr,OcrResultButton
 from tasks.base.assets.assets_base_main_page import ROGUE_LEAVE_FOR_NOW, ROGUE_LEAVE_FOR_NOW_OE
-from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_EXIT, MAP_EXIT_OE, MAIN_PAGE
+from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_EXIT, MAP_EXIT_OE, MAIN_PAGE,HOME_BUTTON
 from tasks.base.assets.assets_base_popup import POPUP_STORY_LATER
 from tasks.base.main_page import MainPage
 from tasks.base.page import Page, page_gacha, page_main
@@ -121,7 +121,7 @@ class UI(MainPage):
         logger.warning("Starting from current page is not supported")
         logger.warning(f"Supported page: {[str(page) for page in Page.iter_pages()]}")
         logger.warning('Supported page: Any page with a "HOME" button on the upper-right')
-        logger.critical("Please switch to a supported page before starting SRC")
+        logger.critical("Please switch to a supported page before starting FXC")
         raise GamePageUnknownError
 
     def ui_goto(self, destination, skip_first_screenshot=True):
@@ -263,7 +263,7 @@ class UI(MainPage):
             check_button,
             appear_button=None,
             additional=None,
-            retry_wait=5,
+            retry_wait: int | float=5,
             skip_first_screenshot=True,
     ):
         """
@@ -277,7 +277,6 @@ class UI(MainPage):
         """
         if appear_button is None:
             appear_button = click_button
-        logger.info(f'UI click: {appear_button} -> {check_button}')
 
         def process_appear(button):
             if isinstance(button, ButtonWrapper):
@@ -292,7 +291,8 @@ class UI(MainPage):
             else:
                 return self.appear(button)
 
-        click_timer = Timer(retry_wait, count=retry_wait // 0.5)
+        # changed to fix count to be int
+        click_timer = Timer(retry_wait, count=int(retry_wait // 0.5))
         while 1:
             if skip_first_screenshot:
                 skip_first_screenshot = False
@@ -377,8 +377,15 @@ class UI(MainPage):
             raise HandledError
         return False
 
-    def ui_goto_main(self):
-        return self.ui_ensure(destination=page_main)
+    def ui_goto_main(self, extra_default=True):
+        result = self.ui_ensure(destination=page_main)
+        if not result:
+            if extra_default:
+                return self.appear_then_click(HOME_BUTTON)
+            else:
+                return False
+        else:
+            return result
 
     def ui_additional(self) -> bool:
         """
@@ -509,3 +516,24 @@ class UI(MainPage):
                 logger.info(f'{EFFECT_NOTIFICATION} -> {RUN_BUTTON}')
                 self.device.click(RUN_BUTTON)
                 continue
+    def ui_button_click(self, button: ClickButton, interval=3) -> bool:
+        if not isinstance(button, ClickButton):
+            logger.warning(f"handle_ocr_button received a non-click-button object: {button}")
+            return False
+        if self.interval_is_reached(button, interval):
+            self.device.click(button)
+            self.interval_reset(button)
+            return True
+        else:
+            return False
+
+    def ui_ocr_button_click(self, button: OcrResultButton, interval=3) -> bool:
+        if not isinstance(button, OcrResultButton):
+            logger.warning(f"handle_ocr_button received a non-OcrResultButton object: {button}")
+            return False
+        if self.interval_is_reached(button, interval):
+            self.device.click(button)
+            self.interval_reset(button)
+            return True
+        else:
+            return False

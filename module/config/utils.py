@@ -142,7 +142,7 @@ def alas_template():
     for file in os.listdir('./config'):
         name, extension = os.path.splitext(file)
         if name == 'template' and extension == '.json':
-            out.append(f'{name}-src')
+            out.append(f'{name}-fxc')
 
     # out.extend(mod_template())
 
@@ -165,7 +165,7 @@ def alas_instance():
     # out.extend(mod_instance())
 
     if not len(out):
-        out = ['src']
+        out = ['fxc']
 
     return out
 
@@ -286,7 +286,8 @@ def server_time_offset() -> timedelta:
     To convert server time to local time:
         local_time = server_time - server_time_offset()
     """
-    return datetime.now(timezone.utc).astimezone().utcoffset() - server_timezone()
+    offset = datetime.now(timezone.utc).astimezone().utcoffset()
+    return offset - server_timezone() if offset else timedelta()
 
 
 def random_normal_distribution_int(a, b, n=3):
@@ -386,7 +387,7 @@ def get_server_next_update(daily_trigger):
 
     diff = server_time_offset()
     local_now = datetime.now()
-    trigger = []
+    trigger: list[datetime] = []
     for t in daily_trigger:
         h, m = [int(x) for x in t.split(':')]
         future = local_now.replace(hour=h, minute=m, second=0, microsecond=0) + diff
@@ -507,6 +508,9 @@ def get_server_weekday():
     result = server_now.weekday()
     return result
 
+def get_server_now():
+    diff = server_time_offset()
+    return datetime.now() - diff
 
 def random_id(length=32):
     """

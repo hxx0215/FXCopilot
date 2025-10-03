@@ -13,7 +13,9 @@ class ManualConfig:
     > Weekly > Ornament > Dungeon > Assignment
     > BattlePass > DailyQuest
     > Freebies > DataUpdate
-    > Rogue
+    > Rogue 
+    > DailyRoutine > Exercise > Competition > QuizCenter > Expedition > Beach > TacticalAcademy > TimeOdyssey
+    > Reward > Rescheduler
     """
 
     """

@@ -7,12 +7,10 @@
         "valuetype": "str"
       },
       "GameClient": {
-        "type": "select",
+        "type": "input",
         "value": "android",
-        "option": [
-          "android",
-          "cloud_android"
-        ]
+        "readonly": true,
+        "display": "hide"
       },
       "PackageName": {
         "type": "select",
@@ -20,21 +18,13 @@
         "option": [
           "auto",
           "CN-Official",
-          "CN-Bilibili",
-          "OVERSEA-America",
-          "OVERSEA-Asia",
-          "OVERSEA-Europe",
-          "OVERSEA-TWHKMO"
+          "CN-Bilibili"
         ]
       },
       "GameLanguage": {
-        "type": "select",
-        "value": "auto",
-        "option": [
-          "auto",
-          "cn",
-          "en"
-        ]
+        "type": "input",
+        "value": "cn",
+        "readonly": true
       },
       "ScreenshotMethod": {
         "type": "select",
@@ -171,12 +161,12 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     }
   },
-  "Dungeon": {
+  "Reward": {
     "Scheduler": {
       "Enable": {
         "type": "checkbox",
@@ -193,12 +183,364 @@
       },
       "Command": {
         "type": "input",
+        "value": "Reward",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Rescheduler": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Rescheduler",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Exercise": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Exercise",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "QuizCenter": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "QuizCenter",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Competition": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Competition",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "DailyRoutine": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "DailyRoutine",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "DungeonSetting": {
+      "BattleField": {
+        "type": "select",
+        "value": "nv1",
+        "option": [
+          "nv1",
+          "sv1",
+          "ma1",
+          "ns1",
+          "nv2",
+          "sv2",
+          "ma2",
+          "ns2"
+        ]
+      },
+      "ArmTransport": {
+        "type": "select",
+        "value": "a-ng1",
+        "option": [
+          "a-ng1",
+          "a-tp1",
+          "a-ac1",
+          "a-aa1",
+          "a-eq1",
+          "a-ng2",
+          "a-tp2",
+          "a-ac2",
+          "a-aa2",
+          "a-eq2"
+        ]
+      }
+    }
+  },
+  "Expedition": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Expedition",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Beach": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ],
+        "style": "display: block"
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Beach",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "TimeOdyssey": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "TimeOdyssey",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "TimeOdysseySetting": {
+      "Mode": {
+        "type": "select",
+        "value": "default",
+        "option": [
+          "default",
+          "normal",
+          "hard",
+          "hell",
+          "hell_ex"
+        ]
+      },
+      "Times": {
+        "type": "select",
+        "value": "default",
+        "option": [
+          "default",
+          1,
+          2,
+          3,
+          "max"
+        ]
+      },
+      "AutoDecommissioning": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "EnableContinuous": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "MinimalFuel": {
+        "type": "input",
+        "value": 1000,
+        "valuetype": "int"
+      }
+    }
+  },
+  "TacticalAcademy": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "TacticalAcademy",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Dungeon": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ],
+        "option_bold": [
+          true
+        ],
+        "display": "display"
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
         "value": "Dungeon",
         "display": "hide"
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1297,7 +1639,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1464,7 +1806,11 @@
         "option": [
           true,
           false
-        ]
+        ],
+        "option_bold": [
+          true
+        ],
+        "display": "display"
       },
       "NextRun": {
         "type": "datetime",
@@ -1478,7 +1824,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1507,7 +1853,11 @@
         "option": [
           true,
           false
-        ]
+        ],
+        "option_bold": [
+          true
+        ],
+        "display": "display"
       },
       "NextRun": {
         "type": "datetime",
@@ -1521,7 +1871,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1598,7 +1948,11 @@
         "option": [
           true,
           false
-        ]
+        ],
+        "option_bold": [
+          true
+        ],
+        "display": "display"
       },
       "NextRun": {
         "type": "datetime",
@@ -1612,7 +1966,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1758,14 +2112,16 @@
   "DataUpdate": {
     "Scheduler": {
       "Enable": {
-        "type": "state",
+        "type": "checkbox",
         "value": true,
         "option": [
-          true
+          true,
+          false
         ],
         "option_bold": [
           true
-        ]
+        ],
+        "display": "display"
       },
       "NextRun": {
         "type": "datetime",
@@ -1779,7 +2135,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1793,22 +2149,6 @@
         "color": "#ab7cf2"
       },
       "StallerJade": {
-        "type": "stored",
-        "value": {},
-        "display": "display",
-        "stored": "StoredInt",
-        "order": 8,
-        "color": "#fc8f8b"
-      },
-      "Oil":{
-        "type": "stored",
-        "value": {},
-        "display": "display",
-        "stored": "StoredInt",
-        "order": 7,
-        "color": "#ab7cf2"
-      },
-      "Money":{
         "type": "stored",
         "value": {},
         "display": "display",
@@ -1860,7 +2200,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -1906,7 +2246,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -2057,7 +2397,7 @@
       },
       "ServerUpdate": {
         "type": "input",
-        "value": "04:00",
+        "value": "00:00",
         "display": "hide"
       }
     },
@@ -2190,6 +2530,9 @@
         "option": [
           true,
           false
+        ],
+        "option_bold": [
+          true
         ]
       },
       "AimClicker": {

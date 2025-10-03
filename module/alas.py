@@ -3,7 +3,8 @@ import time
 from datetime import datetime, timedelta
 
 import inflection
-from cached_property import cached_property
+#from cached_property import cached_property
+from functools import cached_property
 
 from module.base.decorator import del_cached_property
 from module.config.config import AzurLaneConfig, TaskEnd
@@ -11,6 +12,7 @@ from module.config.deep import deep_get, deep_set
 from module.exception import *
 from module.logger import logger, save_error_log
 from module.notify import handle_notify
+from module.device.device import Device
 
 
 class AzurLaneAutoScript:
@@ -26,7 +28,7 @@ class AzurLaneAutoScript:
         self.failure_record = {}
 
     @cached_property
-    def config(self):
+    def config(self) -> AzurLaneConfig:
         try:
             config = AzurLaneConfig(config_name=self.config_name)
             return config
@@ -38,9 +40,8 @@ class AzurLaneAutoScript:
             exit(1)
 
     @cached_property
-    def device(self):
+    def device(self) -> Device:
         try:
-            from module.device.device import Device
             device = Device(config=self.config)
             return device
         except RequestHumanTakeover:
@@ -88,14 +89,14 @@ class AzurLaneAutoScript:
             logger.error(e)
             self.save_error_log()
             logger.warning(f'Game stuck, {self.device.package} will be restarted in 10 seconds')
-            logger.warning('If you are playing by hand, please stop Src')
+            logger.warning('If you are playing by hand, please stop FXC')
             self.config.task_call('Restart')
             self.device.sleep(10)
             return False
         except GameBugError as e:
             logger.warning(e)
             self.save_error_log()
-            logger.warning('An error has occurred in Star Rail game client, Src is unable to handle')
+            logger.warning('An error has occurred in Star Rail game client, FXC is unable to handle')
             logger.warning(f'Restarting {self.device.package} to fix it')
             self.config.task_call('Restart')
             self.device.sleep(10)
@@ -108,7 +109,7 @@ class AzurLaneAutoScript:
                 self.save_error_log()
                 handle_notify(
                     self.config.Error_OnePushConfig,
-                    title=f"Src <{self.config_name}> crashed",
+                    title=f"FXC <{self.config_name}> crashed",
                     content=f"<{self.config_name}> GamePageUnknownError",
                 )
                 exit(1)
@@ -125,7 +126,7 @@ class AzurLaneAutoScript:
             self.save_error_log()
             handle_notify(
                 self.config.Error_OnePushConfig,
-                title=f"Src <{self.config_name}> crashed",
+                title=f"FXC <{self.config_name}> crashed",
                 content=f"<{self.config_name}> ScriptError",
             )
             exit(1)
@@ -134,7 +135,7 @@ class AzurLaneAutoScript:
             self.error_postprocess()
             handle_notify(
                 self.config.Error_OnePushConfig,
-                title=f"Src <{self.config_name}> crashed",
+                title=f"FXC <{self.config_name}> crashed",
                 content=f"<{self.config_name}> RequestHumanTakeover",
             )
             exit(1)
@@ -144,7 +145,7 @@ class AzurLaneAutoScript:
             self.save_error_log()
             handle_notify(
                 self.config.Error_OnePushConfig,
-                title=f"Src <{self.config_name}> crashed",
+                title=f"FXC <{self.config_name}> crashed",
                 content=f"<{self.config_name}> Exception occured",
             )
             exit(1)
@@ -195,6 +196,7 @@ class AzurLaneAutoScript:
         """
         while 1:
             task = self.config.get_next()
+            logger.info(f"next run task {task}")
             self.config.task = task
             self.config.bind(task)
 
@@ -321,7 +323,7 @@ class AzurLaneAutoScript:
                 logger.critical('Request human takeover')
                 handle_notify(
                     self.config.Error_OnePushConfig,
-                    title=f"Src <{self.config_name}> crashed",
+                    title=f"FXC <{self.config_name}> crashed",
                     content=f"<{self.config_name}> RequestHumanTakeover\nTask `{task}` failed 3 or more times.",
                 )
                 exit(1)

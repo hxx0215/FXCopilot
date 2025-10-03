@@ -1,7 +1,11 @@
 {
   "Menu": {
     "Alas": {
-      "name": "SRC",
+      "name": "FXC",
+      "help": ""
+    },
+    "FX": {
+      "name": "拂晓",
       "help": ""
     },
     "Daily": {
@@ -19,11 +23,51 @@
   },
   "Task": {
     "Alas": {
-      "name": "SRC设置",
+      "name": "FXC设置",
       "help": ""
     },
     "Restart": {
       "name": "异常处理",
+      "help": ""
+    },
+    "Reward": {
+      "name": "奖励领取",
+      "help": ""
+    },
+    "Rescheduler": {
+      "name": "重新排班",
+      "help": ""
+    },
+    "Exercise": {
+      "name": "演习",
+      "help": ""
+    },
+    "QuizCenter": {
+      "name": "咨询中心",
+      "help": ""
+    },
+    "Competition": {
+      "name": "竞技",
+      "help": ""
+    },
+    "DailyRoutine": {
+      "name": "日常",
+      "help": ""
+    },
+    "Expedition": {
+      "name": "远征",
+      "help": ""
+    },
+    "Beach": {
+      "name": "沙滩",
+      "help": ""
+    },
+    "TimeOdyssey": {
+      "name": "活动图",
+      "help": "默认情况下刷到自动托管停止（目前仅支持了仓库满和没油）如果想一直刷需要开启低于油量"
+    },
+    "TacticalAcademy": {
+      "name": "技能学院",
       "help": ""
     },
     "Dungeon": {
@@ -106,27 +150,18 @@
     },
     "GameClient": {
       "name": "游戏客户端",
-      "help": "选择云游戏时，将自动排队登录，云游戏目前仅有国服",
-      "android": "安卓端",
-      "cloud_android": "云游戏安卓端"
+      "help": "选择云游戏时，将自动排队登录，云游戏目前仅有国服"
     },
     "PackageName": {
       "name": "游戏服务器",
       "help": "无法区分国际服的不同地区，请手动选择服务器",
       "auto": "自动检测",
       "CN-Official": "[国服]-官服",
-      "CN-Bilibili": "[国服]-B服 ",
-      "OVERSEA-America": "[国际服]-美洲",
-      "OVERSEA-Asia": "[国际服]-亚洲",
-      "OVERSEA-Europe": "[国际服]-欧洲",
-      "OVERSEA-TWHKMO": "[国际服]-港澳台"
+      "CN-Bilibili": "[国服]-B服 "
     },
     "GameLanguage": {
       "name": "游戏内文本语言",
-      "help": "目前仅支持简体中文和英文，请将游戏内设置文本语言设置为其中的一种",
-      "auto": "自动检测",
-      "cn": "简体中文",
-      "en": "English"
+      "help": "拂晓目前只支持简体中文，繁体中文，然而FX Copilot目前只支持简体中文"
     },
     "ScreenshotMethod": {
       "name": "模拟器截图方案",
@@ -1529,7 +1564,7 @@
     "Dungeon": {
       "name": "副本名称",
       "help": "",
-      "Divergent_Universe_Moonlit_Blood": "饰品：（月下朱殷）",
+      "Divergent_Universe_Moonlit_Blood": "饰品：妖精 & 沉醉（月下朱殷）",
       "Divergent_Universe_Unceasing_Strife": "饰品：拾骨地 & 巨树（纷争不休）",
       "Divergent_Universe_Famished_Worker": "饰品：海域 & 奇想（蠹役饥肠）",
       "Divergent_Universe_Eternal_Comedy": "饰品：奔狼 & 火宫（永恒笑剧）",
@@ -1539,7 +1574,7 @@
       "Divergent_Universe_Permafrost": "饰品：贝洛伯格 & 萨尔索图（百年冻土）",
       "Divergent_Universe_Gentle_Words": "饰品：商业公司 & 差分机（温柔话语）",
       "Divergent_Universe_Smelted_Heart": "饰品：盗贼 & 翁瓦克（浴火钢心）",
-      "Divergent_Universe_Untoppled_Walls": "饰品：太空 & 仙舟 & 妖精 & 沉醉（坚城不倒）"
+      "Divergent_Universe_Untoppled_Walls": "饰品：太空 & 仙舟（坚城不倒）"
     },
     "UseImmersifier": {
       "name": "使用沉浸器领取遗器",
@@ -1564,7 +1599,8 @@
     "Enable": {
       "name": "剧情连点器",
       "help": "监听画面自动点击剧情、手机聊天、模拟宇宙祝福（遵循模拟宇宙任务设置）",
-      "True": "已启用"
+      "True": "已启用",
+      "False": "False"
     },
     "AimClicker": {
       "name": "点击被瞄准破坏物和敌人",
@@ -1583,6 +1619,198 @@
     "ResultAdd": {
       "name": "累加多次扫描结果",
       "help": "需要养成多个角色时勾选，同时养成多个角色\n仅养成一个角色不勾选，每次扫描时刷新养成目标"
+    }
+  },
+  "Reward": {
+    "_info": {
+      "name": "Reward._info.name",
+      "help": "Reward._info.help"
+    },
+    "Enable": {
+      "name": "Reward.Enable.name",
+      "help": "Reward.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Rescheduler": {
+    "_info": {
+      "name": "Rescheduler._info.name",
+      "help": "Rescheduler._info.help"
+    },
+    "Enable": {
+      "name": "Rescheduler.Enable.name",
+      "help": "Rescheduler.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "QuizCenter": {
+    "_info": {
+      "name": "QuizCenter._info.name",
+      "help": "QuizCenter._info.help"
+    },
+    "Enable": {
+      "name": "QuizCenter.Enable.name",
+      "help": "QuizCenter.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Competition": {
+    "_info": {
+      "name": "Competition._info.name",
+      "help": "Competition._info.help"
+    },
+    "Enable": {
+      "name": "Competition.Enable.name",
+      "help": "Competition.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Exercise": {
+    "_info": {
+      "name": "Exercise._info.name",
+      "help": "Exercise._info.help"
+    },
+    "Enable": {
+      "name": "Exercise.Enable.name",
+      "help": "Exercise.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Expedition": {
+    "_info": {
+      "name": "Expedition._info.name",
+      "help": "Expedition._info.help"
+    },
+    "Enable": {
+      "name": "Expedition.Enable.name",
+      "help": "Expedition.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "DailyRoutine": {
+    "_info": {
+      "name": "DailyRoutine._info.name",
+      "help": "DailyRoutine._info.help"
+    },
+    "Enable": {
+      "name": "DailyRoutine.Enable.name",
+      "help": "DailyRoutine.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Beach": {
+    "_info": {
+      "name": "Beach._info.name",
+      "help": "Beach._info.help"
+    },
+    "Enable": {
+      "name": "Beach.Enable.name",
+      "help": "Beach.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "TimeOdyssey": {
+    "_info": {
+      "name": "TimeOdyssey._info.name",
+      "help": "TimeOdyssey._info.help"
+    },
+    "Enable": {
+      "name": "TimeOdyssey.Enable.name",
+      "help": "TimeOdyssey.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "DungeonSetting": {
+    "_info": {
+      "name": "副本设置",
+      "help": ""
+    },
+    "BattleField": {
+      "name": "战场探索",
+      "help": "改造图纸选择",
+      "nv1": "纳尔维克的影-驱逐(1-2)",
+      "sv1": "萨沃岛子夜-巡洋(1-2)",
+      "ma1": "马里亚纳飞鸟-航母(1-2)",
+      "ns1": "北海勘探-战列(1-2)",
+      "nv2": "纳尔维克的光-驱逐(2-3)",
+      "sv2": "萨沃岛黎明-巡洋(2-3)",
+      "ma2": "马里亚纳黑影-航母(2-3)",
+      "ns2": "北海寻踪-战列(2-3)"
+    },
+    "ArmTransport": {
+      "name": "武器运输",
+      "help": "装备选择",
+      "a-ng1": "重返故乡[主炮]（低等级)",
+      "a-tp1": "奇妙幻象[鱼雷]（低等级)",
+      "a-ac1": "原始山脉[飞机]（低等级)",
+      "a-aa1": "绿色石像[防空炮]（低等级)",
+      "a-eq1": "安身之地[设备]（低等级)",
+      "a-ng2": "商会请求[主炮]（高等级)",
+      "a-tp2": "新型生物[鱼雷]（高等级)",
+      "a-ac2": "疯狂古迹[飞机]（高等级)",
+      "a-aa2": "白金蔷薇[防空炮]（高等级)",
+      "a-eq2": "族群特性[设备]（高等级)"
+    }
+  },
+  "TimeOdysseySetting": {
+    "_info": {
+      "name": "活动托管设置",
+      "help": ""
+    },
+    "Mode": {
+      "name": "难度选择",
+      "help": "地图难度选择",
+      "default": "使用默认",
+      "normal": "普通",
+      "hard": "困难",
+      "hell": "地狱",
+      "hell_ex": "地狱EX"
+    },
+    "Times": {
+      "name": "多倍战斗",
+      "help": "",
+      "default": "使用默认",
+      "1": "1",
+      "2": "2",
+      "3": "3",
+      "max": "默认最高"
+    },
+    "AutoDecommissioning": {
+      "name": "自动退役",
+      "help": "船坞满了自动退役,默认为自动选择当前批量退役的设置",
+      "True": "True",
+      "False": "False"
+    },
+    "EnableContinuous": {
+      "name": "持续托管",
+      "help": "一直托管到油量低于下面的输入框",
+      "True": "True",
+      "False": "False"
+    },
+    "MinimalFuel": {
+      "name": "最小油量",
+      "help": "仅在持续托管启用时有效"
+    }
+  },
+  "TacticalAcademy": {
+    "_info": {
+      "name": "TacticalAcademy._info.name",
+      "help": "TacticalAcademy._info.help"
+    },
+    "Enable": {
+      "name": "TacticalAcademy.Enable.name",
+      "help": "TacticalAcademy.Enable.help",
+      "True": "True",
+      "False": "False"
     }
   },
   "Gui": {

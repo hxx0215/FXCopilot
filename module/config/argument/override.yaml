@@ -18,48 +18,57 @@ Restart:
       value: true
       option: [ true, ]
       option_bold: [ true, ]
-    ServerUpdate: 04:00
+    ServerUpdate: 00:00
 
 # ==================== Daily ====================
 
 Dungeon:
   Scheduler:
     Enable:
-      type: state
-      value: true
-      option: [ true, ]
+      type: checkbox
+      value: false
+      option: [ true,false ]
       option_bold: [ true, ]
+      display: display
   DungeonSupport:
     Use:
       option: [ when_daily, always_use ]
 DailyQuest:
   Scheduler:
     Enable:
-      type: state
-      value: true
-      option: [ true, ]
+      type: checkbox
+      value: false
+      option: [ true, false ]
       option_bold: [ true, ]
+      display: display
 BattlePass:
   Scheduler:
     Enable:
-      type: state
-      value: true
-      option: [ true, ]
+      type: checkbox
+      value: false
+      option: [ true, false ]
       option_bold: [ true, ]
+      display: display
 Assignment:
   Scheduler:
     Enable:
-      type: state
-      value: true
-      option: [ true, ]
+      type: checkbox
+      value: false
+      option: [ true, false ]
       option_bold: [ true, ]
+      display: display
 DataUpdate:
   Scheduler:
     Enable:
-      type: state
+      type: checkbox
       value: true
-      option: [ true, ]
+      option: [ true,false ]
       option_bold: [ true, ]
+      display: display
+Beach:
+  Scheduler:
+    Enable:
+      style: 'display: block'
 
 # ==================== Weekly ====================
 

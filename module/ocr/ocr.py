@@ -5,7 +5,7 @@ import numpy as np
 from pponnxcr.predict_system import BoxedResult
 
 import module.config.server as server
-from module.base.button import ButtonWrapper
+from module.base.button import ButtonWrapper,ItemWrapper,Button
 from module.base.decorator import cached_property
 from module.base.utils import *
 from module.exception import ScriptError
@@ -16,7 +16,7 @@ from module.ocr.utils import merge_buttons
 
 
 class OcrResultButton:
-    def __init__(self, boxed_result: BoxedResult, matched_keyword):
+    def __init__(self, boxed_result: BoxedResult, matched_keyword: Keyword | None):
         """
         Args:
             boxed_result: BoxedResult from ppocr-onnx
@@ -79,7 +79,6 @@ class Ocr:
 
     @cached_property
     def model(self) -> TextSystem:
-        logger.info(f'current lang is {self.lang}')
         return OCR_MODEL.get_by_lang(self.lang)
 
     def pre_process(self, image):
@@ -100,8 +99,6 @@ class Ocr:
         Returns:
             str:
         """
-        if result.startswith('UID'):
-            result = 'UID'
         return result
 
     def format_result(self, result):
@@ -116,11 +113,14 @@ class Ocr:
             logger.attr(f'{self.name} {attr}', f'{before} -> {after}')
         return after
 
-    def ocr_single_line(self, image, direct_ocr=False):
+    def ocr_single_line(self, image, direct_ocr=False, area: tuple[int, int, int, int]|None = None):
         # pre process
         start_time = time.time()
         if not direct_ocr:
-            image = crop(image, self.button.area, copy=False)
+            if area:
+                image = crop(image, area, copy=False)
+            else:
+                image = crop(image, self.button.area, copy=False)
         image = self.pre_process(image)
         # ocr
         result, _ = self.model.ocr_single_line(image)
@@ -151,7 +151,7 @@ class Ocr:
         """
         return True
 
-    def detect_and_ocr(self, image, direct_ocr=False) -> list[BoxedResult]:
+    def detect_and_ocr(self, image, direct_ocr=False, show_log=True) -> list[BoxedResult]:
         """
         Args:
             image:
@@ -178,7 +178,8 @@ class Ocr:
         for result in results:
             result.ocr_text = self.after_process(result.ocr_text)
 
-        logger.attr(name='%s %ss' % (self.name, float2str(time.time() - start_time)),
+        if show_log:
+            logger.attr(name='%s %ss' % (self.name, float2str(time.time() - start_time)),
                     text=str([result.ocr_text for result in results]))
         return results
 
@@ -186,9 +187,9 @@ class Ocr:
             self,
             result: str,
             keyword_classes,
-            lang: str = None,
+            lang: str | None = None,
             ignore_punctuation=True,
-            ignore_digit=True):
+            ignore_digit=True) -> Keyword | None:
         """
         Args:
             result (str):
@@ -224,9 +225,9 @@ class Ocr:
             self,
             image,
             keyword_classes,
-            lang: str = None,
+            lang: str | None = None,
             ignore_punctuation=True
-    ) -> Keyword:
+    ) -> Keyword | None:
         """
         Args:
             image: Image to detect
@@ -254,7 +255,7 @@ class Ocr:
             self,
             image_list,
             keyword_classes,
-            lang: str = None,
+            lang: str | None = None,
             ignore_punctuation=True
     ) -> list[Keyword]:
         """
@@ -275,8 +276,8 @@ class Ocr:
             keyword_classes=keyword_classes,
             lang=lang,
             ignore_punctuation=ignore_punctuation,
-        ) for result in results]
-        results = [result for result in results if result.is_keyword_matched]
+        ) for (result,_) in results]
+        results = [result for result in results if result]
 
         logger.attr(name=f'{self.name} matched',
                     text=results)
@@ -286,7 +287,7 @@ class Ocr:
             self,
             boxed_result: BoxedResult,
             keyword_classes,
-            lang: str = None,
+            lang: str|None = None,
             ignore_punctuation=True,
             ignore_digit=True
     ) -> OcrResultButton:
@@ -472,10 +473,46 @@ class OcrWhiteLetterOnComplexBackground(Ocr):
             dt_boxes = self.enlarge_boxes(dt_boxes)
             return dt_boxes, elapse
 
-        self.model.text_detector = text_detector_with_min_box
+        # TODO: make a class wrapper
+        self.model.text_detector = text_detector_with_min_box # type: ignore
         try:
             result = super().detect_and_ocr(*args, **kwargs)
         finally:
             self.model.text_detector.box_thresh = backup
             self.model.text_detector = text_detector
         return result
+class QuickClaimTimeOcr(Ocr):
+    def after_process(self, result):
+        result = re.sub(r'[l|]', '1', result)
+        result = re.sub(r'[oO]', '0', result)
+        return super().after_process(result)
+
+    def format_result(self, result: str):
+        has_finished = '完成' in result
+        only_digits = re.sub(r'\D', '', result)
+        if only_digits == '':
+            return (has_finished, [])
+        if len(only_digits) % 6 != 0:
+            return (False, [])
+        time_parts = [int(only_digits[i:i+2]) for i in range(0, len(only_digits), 2)]
+        import datetime
+        deltas = [datetime.timedelta(hours=time_parts[i], minutes=time_parts[i+1],seconds=time_parts[i+2]) for i in range(0, len(time_parts), 3)]
+        logger.info(f'delta is {time_parts}')
+        return (has_finished, deltas)
+class ItemOcr(Ocr):
+    def __init__(self, button: ItemWrapper, lang=None, name=None):
+        self.item = button
+        super().__init__(button, lang, name)
+        self.button = button
+    def ocr_single_line(self, image, direct_ocr=False):
+        from module.base.utils import area_offset
+        target_area = area_offset(self.item.ocr_area, self.item.button_offset)
+        return super().ocr_single_line(image, direct_ocr, area=target_area)
+    def after_process(self, result):
+        result = re.sub(r'\D','',result)
+        return super().after_process(result)
+class DataDigit(Digit):
+    def after_process(self, result):
+        result = re.sub(r'[l|]', '1', result)
+        result = re.sub(r'[oO]', '0', result)
+        return super().after_process(result)

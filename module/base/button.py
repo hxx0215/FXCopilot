@@ -24,6 +24,11 @@ class Button(Resource):
 
         self.resource_add(self.file)
         self._button_offset: t.Tuple[int, int] = (0, 0)
+    @classmethod
+    def default_init(cls,file, area,color, button= None, posi = None):
+        left,top,right,bottom = area
+        search = (min(0, left - 20), min(0, top - 20), max(right +20 ,1280), max(bottom+20, 1280))
+        return cls(file, area, search, color, button if button else (left,top,right,bottom), posi)
 
     @property
     def button(self):
@@ -261,7 +266,7 @@ class ButtonWrapper(Resource):
                 return True
         return False
 
-    def match_multi_template(self, image, similarity=0.85, threshold=5, direct_match=False):
+    def match_multi_template(self, image, similarity=0.85, threshold=5, direct_match=False) -> list['ClickButton']:
         """
         Detects assets by template matching, return multiple results
 
@@ -376,7 +381,7 @@ class ButtonWrapper(Resource):
         In ALAS:
             if self.appear(BUTTON, offset=(20, 20)):
                 pass
-        In SRC:
+        In FXC:
             BUTTON.set_search_offset((20, 20))
             if self.appear(BUTTON):
                 pass
@@ -397,7 +402,17 @@ class ButtonWrapper(Resource):
                 bottom_right_x + right,
                 bottom_right_y + bottom,
             )
+class ItemWrapper(ButtonWrapper):
+    def __init__(self, ocr_area:tuple[int,int,int,int], **kwargs):
+        self.ocr_area = ocr_area
+        super().__init__(**kwargs)
 
+    def temp_multi_match(self, image ,search: tuple[int,int,int,int]):
+        temp_search = self.matched_button.search
+        self.matched_button.search = search
+        result = self.match_multi_template(image)
+        self.matched_button.search = temp_search
+        return result
 
 class ClickButton:
     def __init__(self, area, button=None, name='CLICK_BUTTON'):

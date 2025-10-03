@@ -112,6 +112,7 @@ class PopupHandler(ModuleBase):
             If handled.
         """
         if self.appear_then_click(POPUP_CONFIRM, interval=interval):
+            self.device.sleep((0.5,1))
             return True
 
         return False

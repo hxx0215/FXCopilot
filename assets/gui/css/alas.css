@@ -533,6 +533,9 @@ pre.rich-traceback-code {
 .form-check-input[id*="ch_S"] {
     display: none;
 }
+.form-check-input[id*="Beach_S"]{
+    display: inline-block;
+}
 
 [id^="pywebio-scope-arg_container-"] {
     display: grid;

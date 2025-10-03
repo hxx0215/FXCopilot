@@ -220,7 +220,6 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
             if not isinstance(func.next_run, datetime):
                 error.append(func)
             elif func.next_run < now:
-                logger.info(f'add func {func}')
                 pending.append(func)
             else:
                 waiting.append(func)
@@ -244,7 +243,6 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
             Function: Command to run
         """
         self.get_next_task()
-
         if self.pending_task:
             AzurLaneConfig.is_hoarding_task = False
             logger.info(f"Pending tasks: {[f.command for f in self.pending_task]}")
@@ -303,6 +301,7 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
 
         limit_next_run(['BattlePass'], limit=now + timedelta(days=40, seconds=-1))
         limit_next_run(['Weekly'], limit=now + timedelta(days=7, seconds=-1))
+        limit_next_run(['TacticalAcademy'], limit=now + timedelta(hours=72, seconds=-1))
         limit_next_run(self.args.keys(), limit=now + timedelta(hours=24, seconds=-1))
 
     def override(self, **kwargs):
