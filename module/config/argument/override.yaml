@@ -22,49 +22,38 @@ Restart:
 
 # ==================== Daily ====================
 
-Dungeon:
-  Scheduler:
-    Enable:
-      type: checkbox
-      value: false
-      option: [ true,false ]
-      option_bold: [ true, ]
-      display: display
-  DungeonSupport:
-    Use:
-      option: [ when_daily, always_use ]
-DailyQuest:
-  Scheduler:
-    Enable:
-      type: checkbox
-      value: false
-      option: [ true, false ]
-      option_bold: [ true, ]
-      display: display
-BattlePass:
-  Scheduler:
-    Enable:
-      type: checkbox
-      value: false
-      option: [ true, false ]
-      option_bold: [ true, ]
-      display: display
-Assignment:
-  Scheduler:
-    Enable:
-      type: checkbox
-      value: false
-      option: [ true, false ]
-      option_bold: [ true, ]
-      display: display
-DataUpdate:
-  Scheduler:
-    Enable:
-      type: checkbox
-      value: true
-      option: [ true,false ]
-      option_bold: [ true, ]
-      display: display
+# DailyQuest:
+#   Scheduler:
+#     Enable:
+#       type: checkbox
+#       value: false
+#       option: [ true, false ]
+#       option_bold: [ true, ]
+#       display: display
+# BattlePass:
+#   Scheduler:
+#     Enable:
+#       type: checkbox
+#       value: false
+#       option: [ true, false ]
+#       option_bold: [ true, ]
+#       display: display
+# Assignment:
+#   Scheduler:
+#     Enable:
+#       type: checkbox
+#       value: false
+#       option: [ true, false ]
+#       option_bold: [ true, ]
+#       display: display
+# DataUpdate:
+#   Scheduler:
+#     Enable:
+#       type: checkbox
+#       value: true
+#       option: [ true,false ]
+#       option_bold: [ true, ]
+#       display: display
 Beach:
   Scheduler:
     Enable:
@@ -72,11 +61,11 @@ Beach:
 
 # ==================== Weekly ====================
 
-Weekly:
-  DungeonSupport:
-    Use:
-      option: [ always_use, do_not_use ]
-Ornament:
-  DungeonSupport:
-    Use:
-      option: [ when_daily, always_use ]
+# Weekly:
+#   DungeonSupport:
+#     Use:
+#       option: [ always_use, do_not_use ]
+# Ornament:
+#   DungeonSupport:
+#     Use:
+#       option: [ when_daily, always_use ]
