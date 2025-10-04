@@ -61,10 +61,17 @@ class DailyRoutine(UI):
             if self.handle_popup_confirm():
                 logger.info("次数用完")
                 return
+            for (index,(k,v)) in enumerate(self.ARM_TRANSPORT_KV):
+                if self.appear(v):
+                    idx = index
+                    break
             (_ , button) = self.ARM_TRANSPORT_KV[idx]
             if idx < target_idx:
                 if self.appear(button) and self.appear_then_click(NEXT_STAGE_BUTTON,1):
-                    idx = idx + 1
+                    pass
+            elif idx > target_idx:
+                if self.appear(button) and self.appear_then_click(PREVIOUS_STAGE_BUTTON,1):
+                    pass
             else:
                 if self.appear(button):
                     break
