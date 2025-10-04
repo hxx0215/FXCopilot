@@ -142,6 +142,7 @@ class ConfigGenerator:
             if arg['type'] in ['stored', 'planner']:
                 value['value'] = {}
                 arg['display'] = 'hide'  # Hide `stored` by default
+            print(value)
             if isinstance(value['value'], datetime):
                 arg['type'] = 'datetime'
                 arg['validate'] = 'datetime'

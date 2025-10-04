@@ -382,39 +382,39 @@ class AlasGUI(Frame):
             color="navigator",
         )
 
-    def set_dashboard(self, arg, arg_dict, config):
-        i18n = arg_dict.get('i18n')
-        if i18n:
-            name = t(i18n)
-        else:
-            name = arg
-        color = arg_dict.get("color", "#777777")
-        nodata = t("Gui.Dashboard.NoData")
+    # def set_dashboard(self, arg, arg_dict, config):
+    #     i18n = arg_dict.get('i18n')
+    #     if i18n:
+    #         name = t(i18n)
+    #     else:
+    #         name = arg
+    #     color = arg_dict.get("color", "#777777")
+    #     nodata = t("Gui.Dashboard.NoData")
 
-        def set_value(dic):
-            if "total" in dic.get("attrs", []) and config.get("total") is not None:
-                return [
-                    put_text(config.get("value", nodata)).style("--dashboard-value--"),
-                    put_text(f' / {config.get("total", "")}').style("--dashboard-time--"),
-                ]
-            elif "comment" in dic.get("attrs", []) and config.get("comment") is not None:
-                return [
-                    put_text(config.get("value", nodata)).style("--dashboard-value--"),
-                    put_text(f' {config.get("comment", "")}').style("--dashboard-time--"),
-                ]
-            else:
-                return [
-                    put_text(config.get("value", nodata)).style("--dashboard-value--"),
-                ]
+    #     def set_value(dic):
+    #         if "total" in dic.get("attrs", []) and config.get("total") is not None:
+    #             return [
+    #                 put_text(config.get("value", nodata)).style("--dashboard-value--"),
+    #                 put_text(f' / {config.get("total", "")}').style("--dashboard-time--"),
+    #             ]
+    #         elif "comment" in dic.get("attrs", []) and config.get("comment") is not None:
+    #             return [
+    #                 put_text(config.get("value", nodata)).style("--dashboard-value--"),
+    #                 put_text(f' {config.get("comment", "")}').style("--dashboard-time--"),
+    #             ]
+    #         else:
+    #             return [
+    #                 put_text(config.get("value", nodata)).style("--dashboard-value--"),
+    #             ]
 
-        with use_scope(f"dashboard-row-{arg}", clear=True):
-            put_html(f'<div><div class="dashboard-icon" style="background-color:{color}"></div>'),
-            put_scope(f"dashboard-content-{arg}", [
-                put_scope(f"dashboard-value-{arg}", set_value(arg_dict)),
-                put_scope(f"dashboard-time-{arg}", [
-                    put_text(f"{name} - {lang.readable_time(config.get('time', ''))}").style("--dashboard-time--"),
-                ])
-            ])
+    #     with use_scope(f"dashboard-row-{arg}", clear=True):
+    #         put_html(f'<div><div class="dashboard-icon" style="background-color:{color}"></div>'),
+    #         put_scope(f"dashboard-content-{arg}", [
+    #             put_scope(f"dashboard-value-{arg}", set_value(arg_dict)),
+    #             put_scope(f"dashboard-time-{arg}", [
+    #                 put_text(f"{name} - {lang.readable_time(config.get('time', ''))}").style("--dashboard-time--"),
+    #             ])
+    #         ])
 
     @use_scope("content", clear=True)
     def alas_overview(self) -> None:
@@ -481,14 +481,14 @@ class AlasGUI(Frame):
                     put_scope("log-title-btns", [
                         put_scope("log_scroll_btn"),
                     ]),
-                ]),
-                put_html('<hr class="hr-group">'),
-                put_scope("dashboard", [
-                    # Empty dashboard, values will be updated in alas_update_overview_task()
-                    put_scope(f"dashboard-row-{arg}", [])
-                    for arg in self.ALAS_STORED.keys() if deep_get(self.ALAS_STORED, keys=[arg, "order"], default=0)
-                    # Empty content to left-align last row
-                ] + [put_html("<i></i>")] * min(len(self.ALAS_STORED), 4))
+                ])
+                # put_html('<hr class="hr-group">'),
+                # put_scope("dashboard", [
+                #     # Empty dashboard, values will be updated in alas_update_overview_task()
+                #     put_scope(f"dashboard-row-{arg}", [])
+                #     for arg in self.ALAS_STORED.keys() if deep_get(self.ALAS_STORED, keys=[arg, "order"], default=0)
+                #     # Empty content to left-align last row
+                # ] + [put_html("<i></i>")] * min(len(self.ALAS_STORED), 4))
             ])
             put_scope("log", [put_html("")])
 
@@ -657,16 +657,16 @@ class AlasGUI(Frame):
                 else:
                     put_text(t("Gui.Overview.NoTask")).style("--overview-notask-text--")
 
-        for arg, arg_dict in self.ALAS_STORED.items():
-            # Skip order=0
-            if not arg_dict.get("order", 0):
-                continue
-            path = arg_dict["path"]
-            if self.scope_expired_then_add(f"dashboard-time-value-{arg}", [
-                deep_get(self.alas_config.data, keys=f"{path}.value"),
-                lang.readable_time(deep_get(self.alas_config.data, keys=f"{path}.time")),
-            ]):
-                self.set_dashboard(arg, arg_dict, deep_get(self.alas_config.data, keys=path, default={}))
+        # for arg, arg_dict in self.ALAS_STORED.items():
+        #     # Skip order=0
+        #     if not arg_dict.get("order", 0):
+        #         continue
+        #     path = arg_dict["path"]
+        #     if self.scope_expired_then_add(f"dashboard-time-value-{arg}", [
+        #         deep_get(self.alas_config.data, keys=f"{path}.value"),
+        #         lang.readable_time(deep_get(self.alas_config.data, keys=f"{path}.time")),
+        #     ]):
+        #         self.set_dashboard(arg, arg_dict, deep_get(self.alas_config.data, keys=path, default={}))
 
     @use_scope("content", clear=True)
     def alas_daemon_overview(self, task: str) -> None:
