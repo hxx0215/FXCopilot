@@ -10,11 +10,20 @@ class Rescheduler(UI):
         #因为涉及到popup出现时编辑按钮和开始排班按钮并不会被覆盖所以检查逻辑如下：
         #假设一开始是编辑按钮那么点击编辑按钮时按钮瞬间被切换至开始排班，这个时候点击开始排班是无效的。所以开始排班需要可以被点击多次这就是为什么第一个if不要加not started
         #todo change similary to escape popup
+        state = ''
         for _ in self.loop():
-            if self.appear_then_click(SCHEDULE_EDIT_BUTTON):
-                continue
-            if self.handle_popup_confirm():
+            if self.appear(SCHEDULE_EDIT_BUTTON):
+                state='edit'
                 break
+            if self.appear(SCHEDULE_START_BUTTON):
+                state='start'
+                break
+        if state == 'edit':
+            for _ in self.loop():
+                if self.appear_then_click(SCHEDULE_EDIT_BUTTON):
+                    continue
+                if self.handle_popup_confirm():
+                    break
         for _ in self.loop():
             if self.appear_then_click(SCHEDULE_START_BUTTON):
                 continue

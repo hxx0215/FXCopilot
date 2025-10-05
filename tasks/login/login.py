@@ -2,17 +2,13 @@ from module.base.timer import Timer
 from module.exception import GameNotRunningError
 from module.logger import logger
 from tasks.base.page import page_main
-from tasks.combat.assets.assets_combat_interact import MAP_LOADING
-from tasks.login.agreement import AgreementHandler
 from tasks.login.assets.assets_login import *
 from tasks.base.assets.assets_base_page import GET_REWARD
 from tasks.login.assets.assets_login_popup import ADVERTISE_Castorice, UNITY_ENGINE_ERROR
-from tasks.login.cloud import LoginAndroidCloud
-from tasks.login.uid import UIDHandler
-from tasks.rogue.blessing.ui import RogueUI
 from module.ocr.ocr import Ocr
+from tasks.base.ui import UI
 
-class Login(LoginAndroidCloud, RogueUI, AgreementHandler, UIDHandler):
+class Login(UI):
     def _handle_app_login(self):
         """
         Pages:
@@ -79,16 +75,12 @@ class Login(LoginAndroidCloud, RogueUI, AgreementHandler, UIDHandler):
             if self.appear_then_click(GET_REWARD):
                 continue
             continue
-            if self.handle_user_agreement():
-                continue
             # Additional
             if self.handle_popup_single():
                 continue
             if self.ui_additional():
                 continue
             if self.handle_login_popup():
-                continue
-            if self.handle_blessing():
                 continue
 
         return True
@@ -130,8 +122,6 @@ class Login(LoginAndroidCloud, RogueUI, AgreementHandler, UIDHandler):
 
     def app_stop(self):
         logger.hr('App stop')
-        if self.config.is_cloud_game:
-            self.cloud_exit()
         self.device.app_stop()
 
     def app_start(self):

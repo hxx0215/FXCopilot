@@ -67,28 +67,27 @@ class ConfigGenerator:
         # Insert packages
         option_add(keys='Emulator.PackageName.option', options=list(VALID_SERVER.keys()))
         # Insert dungeons
-        from tasks.dungeon.keywords import DungeonList
         calyx_golden = []
         # calyx_golden = [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Golden_Memories]
         # calyx_golden += [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Calyx_Golden_Aether]
         # calyx_golden += [dungeon.name for dungeon in DungeonList.instances.values() if
         #                  dungeon.is_Calyx_Golden_Treasures]
         # calyx_crimson
-        from tasks.rogue.keywords import KEYWORDS_ROGUE_PATH as Path
-        order = [Path.Destruction, Path.Preservation, Path.The_Hunt, Path.Abundance,
-                 Path.Erudition, Path.Harmony, Path.Nihility, Path.Remembrance]
-        calyx_crimson = []
-        for path in order:
-            calyx_crimson += [dungeon.name for dungeon in DungeonList.instances.values()
-                              if dungeon.Calyx_Crimson_Path == path]
+        # from tasks.rogue.keywords import KEYWORDS_ROGUE_PATH as Path
+        # order = [Path.Destruction, Path.Preservation, Path.The_Hunt, Path.Abundance,
+        #          Path.Erudition, Path.Harmony, Path.Nihility, Path.Remembrance]
+        # calyx_crimson = []
+        # for path in order:
+        #     calyx_crimson += [dungeon.name for dungeon in DungeonList.instances.values()
+        #                       if dungeon.Calyx_Crimson_Path == path]
         # stagnant_shadow
-        from tasks.character.keywords import CombatType
-        stagnant_shadow = []
-        for type_ in CombatType.instances.values():
-            stagnant_shadow += [dungeon.name for dungeon in DungeonList.instances.values()
-                                if dungeon.Stagnant_Shadow_Combat_Type == type_]
-        cavern_of_corrosion = [dungeon.name for dungeon in DungeonList.instances.values() if
-                               dungeon.is_Cavern_of_Corrosion]
+        # from tasks.character.keywords import CombatType
+        # stagnant_shadow = []
+        # for type_ in CombatType.instances.values():
+        #     stagnant_shadow += [dungeon.name for dungeon in DungeonList.instances.values()
+        #                         if dungeon.Stagnant_Shadow_Combat_Type == type_]
+        # cavern_of_corrosion = [dungeon.name for dungeon in DungeonList.instances.values() if
+        #                        dungeon.is_Cavern_of_Corrosion]
         # option_add(
         #     keys='Dungeon.Name.option',
         #     options=cavern_of_corrosion + calyx_golden + calyx_crimson + stagnant_shadow
@@ -100,22 +99,22 @@ class ConfigGenerator:
         #     keys='Weekly.Name.option',
         #     options=[dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Echo_of_War])
         # OrnamentExtraction
-        ornament = [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Ornament_Extraction]
+        # ornament = [dungeon.name for dungeon in DungeonList.instances.values() if dungeon.is_Ornament_Extraction]
         # option_add(keys='Ornament.Dungeon.option', options=ornament)
         # Insert characters
-        from tasks.character.aired_version import list_support_characters
-        unsupported_characters = []
-        characters = [character.name for character in list_support_characters()
-                      if character.name not in unsupported_characters]
+        # from tasks.character.aired_version import list_support_characters
+        # unsupported_characters = []
+        # characters = [character.name for character in list_support_characters()
+        #               if character.name not in unsupported_characters]
         # option_add(keys='DungeonSupport.Character.option', options=characters)
         # option_add(keys='PlannerTarget.Character.option', options=characters)
         # Insert cones
-        from tasks.cone.aired_version import list_cones
-        cones = [cone.name for cone in list_cones()]
+        # from tasks.cone.aired_version import list_cones
+        # cones = [cone.name for cone in list_cones()]
         # option_add(keys='PlannerTarget.Cone.option', options=cones)
         # Insert assignments
-        from tasks.assignment.keywords import AssignmentEntry
-        assignments = [entry.name for entry in AssignmentEntry.instances.values()]
+        # from tasks.assignment.keywords import AssignmentEntry
+        # assignments = [entry.name for entry in AssignmentEntry.instances.values()]
         # for i in range(4):
         #     option_add(keys=f'Assignment.Name_{i + 1}.option', options=assignments)
         # Insert planner items
@@ -326,9 +325,9 @@ class ConfigGenerator:
 
         gen.write('module/config/stored/stored_generated.py')
 
-    @cached_property
-    def relics_nickname(self):
-        return read_file('tasks/relics/keywords/relicset_nickname.json')
+    # @cached_property
+    # def relics_nickname(self):
+    #     return read_file('tasks/relics/keywords/relicset_nickname.json')
 
     @timer
     def generate_i18n(self, lang):
@@ -387,60 +386,60 @@ class ConfigGenerator:
         #         prefix = '国服' if prefix == 'CN' else prefix
         #         deep_set(new, keys=path, value=f'[{prefix}] {_list[index]}')
 
-        ingame_lang = gui_lang_to_ingame_lang(lang)
-        dailies = deep_get(self.argument, keys='Dungeon.Name.option')
-        # Dungeon names
-        i18n_memories = {
-            'cn': '材料：角色经验（{dungeon} {world}）',
-            'cht': '材料：角色經驗（{dungeon} {world}）',
-            'jp': '素材：役割経験（{dungeon} {world}）：',
-            'en': 'Material: Character EXP ({dungeon}, {world})',
-            'es': 'Material: EXP de personaje ({dungeon}, {world})',
-        }
-        i18n_aether = {
-            'cn': '材料：武器经验（{dungeon} {world}）',
-            'cht': '材料：武器經驗（{dungeon} {world}）',
-            'jp': '素材：武器経験（{dungeon} {world}）',
-            'en': 'Material: Light Cone EXP ({dungeon}, {world})',
-            'es': 'Material: EXP de conos de luz ({dungeon}, {world})',
-        }
-        i18n_treasure = {
-            'cn': '材料：信用点（{dungeon} {world}）',
-            'cht': '材料：信用點（{dungeon} {world}）',
-            'jp': '素材：クレジット（{dungeon} {world}）',
-            'en': 'Material: Credit ({dungeon}, {world})',
-            'es': 'Material: Créditos ({dungeon}, {world})',
-        }
-        i18n_crimson = {
-            'cn': '行迹材料：{path}（{plane}）',
-            'cht': '行跡材料：{path}（{plane}）',
-            'jp': '軌跡素材：{path}（{plane}）',
-            'en': 'Trace: {path} ({plane})',
-            'es': 'Rastros: {path} ({plane})',
-        }
-        i18n_relic = {
-            'cn': '遗器：{relic}（{dungeon}）',
-            'cht': '遺器：{relic}（{dungeon}）',
-            'jp': '遺器：{relic}（{dungeon}）',
-            'en': 'Relics: {relic} ({dungeon})',
-            'es': 'Artefactos: {relic} ({dungeon})',
-        }
-        i18n_ornament = {
-            'cn': '饰品：{relic}（{dungeon}）',
-            'cht': '飾品：{relic}（{dungeon}）',
-            'jp': '飾品：{relic}（{dungeon}）',
-            'en': 'Ornament: {relic} ({dungeon})',
-            'es': 'Ornamentos: {relic} ({dungeon})',
-        }
+        # ingame_lang = gui_lang_to_ingame_lang(lang)
+        # dailies = deep_get(self.argument, keys='Dungeon.Name.option')
+        # # Dungeon names
+        # i18n_memories = {
+        #     'cn': '材料：角色经验（{dungeon} {world}）',
+        #     'cht': '材料：角色經驗（{dungeon} {world}）',
+        #     'jp': '素材：役割経験（{dungeon} {world}）：',
+        #     'en': 'Material: Character EXP ({dungeon}, {world})',
+        #     'es': 'Material: EXP de personaje ({dungeon}, {world})',
+        # }
+        # i18n_aether = {
+        #     'cn': '材料：武器经验（{dungeon} {world}）',
+        #     'cht': '材料：武器經驗（{dungeon} {world}）',
+        #     'jp': '素材：武器経験（{dungeon} {world}）',
+        #     'en': 'Material: Light Cone EXP ({dungeon}, {world})',
+        #     'es': 'Material: EXP de conos de luz ({dungeon}, {world})',
+        # }
+        # i18n_treasure = {
+        #     'cn': '材料：信用点（{dungeon} {world}）',
+        #     'cht': '材料：信用點（{dungeon} {world}）',
+        #     'jp': '素材：クレジット（{dungeon} {world}）',
+        #     'en': 'Material: Credit ({dungeon}, {world})',
+        #     'es': 'Material: Créditos ({dungeon}, {world})',
+        # }
+        # i18n_crimson = {
+        #     'cn': '行迹材料：{path}（{plane}）',
+        #     'cht': '行跡材料：{path}（{plane}）',
+        #     'jp': '軌跡素材：{path}（{plane}）',
+        #     'en': 'Trace: {path} ({plane})',
+        #     'es': 'Rastros: {path} ({plane})',
+        # }
+        # i18n_relic = {
+        #     'cn': '遗器：{relic}（{dungeon}）',
+        #     'cht': '遺器：{relic}（{dungeon}）',
+        #     'jp': '遺器：{relic}（{dungeon}）',
+        #     'en': 'Relics: {relic} ({dungeon})',
+        #     'es': 'Artefactos: {relic} ({dungeon})',
+        # }
+        # i18n_ornament = {
+        #     'cn': '饰品：{relic}（{dungeon}）',
+        #     'cht': '飾品：{relic}（{dungeon}）',
+        #     'jp': '飾品：{relic}（{dungeon}）',
+        #     'en': 'Ornament: {relic} ({dungeon})',
+        #     'es': 'Ornamentos: {relic} ({dungeon})',
+        # }
 
-        from tasks.dungeon.keywords import DungeonList, DungeonDetailed
-        def relicdungeon2name(dun: DungeonList):
-            dungeon_id = dun.dungeon_id
-            relic_list = []
-            for name, row in self.relics_nickname.items():
-                if row.get('dungeon_id') == dungeon_id:
-                    relic_list.append(row.get(ingame_lang, ''))
-            return ' & '.join(relic_list)
+        # from tasks.dungeon.keywords import DungeonList, DungeonDetailed
+        # def relicdungeon2name(dun: DungeonList):
+        #     dungeon_id = dun.dungeon_id
+        #     relic_list = []
+        #     for name, row in self.relics_nickname.items():
+        #         if row.get('dungeon_id') == dungeon_id:
+        #             relic_list.append(row.get(ingame_lang, ''))
+        #     return ' & '.join(relic_list)
 
         # for dungeon in DungeonList.instances.values():
         #     dungeon: DungeonList = dungeon
@@ -890,22 +889,6 @@ class ConfigUpdater:
             str: Key path to set config json, such as "Main.Emotion.Fleet1Record"
             any: Value to set, such as "2020-01-01 00:00:00"
         """
-        if key.startswith('Dungeon.Dungeon') or key.startswith('Dungeon.DungeonDaily'):
-            from tasks.dungeon.keywords.dungeon import DungeonList
-            from module.exception import ScriptError
-            try:
-                dungeon = DungeonList.find(value)
-            except ScriptError:
-                return
-            if key.endswith('Name'):
-                if dungeon.is_Calyx_Golden:
-                    yield 'Dungeon.Dungeon.NameAtDoubleCalyx', value
-                elif dungeon.is_Calyx_Crimson:
-                    yield 'Dungeon.Dungeon.NameAtDoubleCalyx', value
-                elif dungeon.is_Cavern_of_Corrosion:
-                    yield 'Dungeon.Dungeon.NameAtDoubleRelic', value
-            elif key.endswith('CavernOfCorrosion'):
-                yield 'Dungeon.Dungeon.NameAtDoubleRelic', value
         if key == 'Rogue.RogueWorld.UseImmersifier' and value is False:
             yield 'Rogue.RogueWorld.UseStamina', False
         if key == 'Rogue.RogueWorld.UseStamina' and value is True:

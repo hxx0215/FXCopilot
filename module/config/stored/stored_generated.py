@@ -12,7 +12,6 @@ from module.config.stored.classes import (
     StoredBattlePassSimulatedUniverse,
     StoredBattlePassWeeklyQuest,
     StoredCounter,
-    StoredDaily,
     StoredDailyActivity,
     StoredDungeonDouble,
     StoredEchoOfWar,
