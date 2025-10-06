@@ -5,6 +5,7 @@ from tasks.base.assets.assets_base_page import (TACTICAL_ACADEMY_TIME_DATA,TACTI
                                                 TACTICAL_ACADEMY_BASIC_GUNNERY,TACTICAL_ACADEMY_INTERMEDIATE_GUNNERY,TACTICAL_ACADEMY_ADVANCED_GUNNERY,
                                                 TACTICAL_ACADEMY_BASIC_TORPEDO,TACTICAL_ACADEMY_INTERMEDIATE_TORPEDO,TACTICAL_ACADEMY_ADVANCED_TORPEDO,
                                                 TACTICAL_ACADEMY_BASIC_AUXILIARY,TACTICAL_ACADEMY_INTERMEDIATE_AUXILIARY,TACTICAL_ACADEMY_ADVANCED_AUXILIARY,
+                                                TACTICAL_ACADEMY_BASIC_AVIATION,TACTICAL_ACADEMY_INTERMEDIATE_AVIATION,TACTICAL_ACADEMY_ADVANCED_AVIATION,
                                                 TACTICAL_ACADEMY_BASIC_SUPPORT,TACTICAL_ACADEMY_INTERMEDIATE_SUPPORT,TACTICAL_ACADEMY_ADVANCED_SUPPORT,
                                                 TACTICAL_ACADEMY_BASIC_COMMAND,TACTICAL_ACADEMY_INTERMEDIATE_COMMAND,TACTICAL_ACADEMY_ADVANCED_COMMAND,
                                                 TACTICAL_ACADEMY_CLASS_COMMAND,TACTICAL_ACADEMY_CLASS_PRIMARY,TACTICAL_ACADEMY_CLASS_ULTIMATE,TACTICAL_ACADEMY_CLASS_SUPPORT,
@@ -22,6 +23,7 @@ BOOK_DICT= {
     "【炮击】":[TACTICAL_ACADEMY_BASIC_GUNNERY,TACTICAL_ACADEMY_INTERMEDIATE_GUNNERY,TACTICAL_ACADEMY_ADVANCED_GUNNERY],
     "【雷击】":[TACTICAL_ACADEMY_BASIC_TORPEDO,TACTICAL_ACADEMY_INTERMEDIATE_TORPEDO,TACTICAL_ACADEMY_ADVANCED_TORPEDO],
     "【辅助】":[TACTICAL_ACADEMY_BASIC_AUXILIARY,TACTICAL_ACADEMY_INTERMEDIATE_AUXILIARY,TACTICAL_ACADEMY_ADVANCED_AUXILIARY],
+    "【航空】":[TACTICAL_ACADEMY_BASIC_AVIATION,TACTICAL_ACADEMY_INTERMEDIATE_AVIATION,TACTICAL_ACADEMY_ADVANCED_AVIATION],
     'support': [TACTICAL_ACADEMY_BASIC_SUPPORT,TACTICAL_ACADEMY_INTERMEDIATE_SUPPORT,TACTICAL_ACADEMY_ADVANCED_SUPPORT],
     'command': [TACTICAL_ACADEMY_BASIC_COMMAND,TACTICAL_ACADEMY_INTERMEDIATE_COMMAND,TACTICAL_ACADEMY_ADVANCED_COMMAND]
 }
@@ -48,7 +50,8 @@ class TacticalAcademy(QuickClaimCheck):
             if not (current == 0  and remain == 0 and total == 0):
                 current_exp = current
                 break
-        current_acc_exp = LEVEL_ACCUMULATE_EXP[current_level] + current_exp
+        logger.info(f'current level{current_level}')
+        current_acc_exp = LEVEL_ACCUMULATE_EXP[current_level - 1] + current_exp
         tactical_class = ''
         for image in self.loop():
             if self.appear(TACTICAL_ACADEMY_CLASS_SUPPORT):
@@ -81,6 +84,9 @@ class TacticalAcademy(QuickClaimCheck):
             ls = list(max_count)
             ls[idx] = cnt
             max_count = cast(tuple[int,int,int],tuple(ls))
+        if max_count == (0,0,0):
+            self.device.adb_shell(['input', 'keyevent', '4'])
+            return
         if combat:
             pick_count = self.pick_book_count(exp, (1,2,8), 93, max_count)
         else:
@@ -156,7 +162,7 @@ if __name__ == '__main__':
     task = TacticalAcademy('fxc', task='Beach')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test3.png")
+    image_path = os.path.join(path,"test4.png")
     task.image_file=image_path
-    print(f"{TACTICAL_ACADEMY_ADVANCED_COMMAND.match_multi_template(image=task.device.image)}")
-    print(task.pick_book_count(48,(1,2,8),93,(9,90,1)))
+    b = task.appear(TACTICAL_ACADEMY_ADVANCED_GUNNERY)
+    print(b)
