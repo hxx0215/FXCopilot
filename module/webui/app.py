@@ -1369,14 +1369,14 @@ def app():
     lang.LANG = State.deploy_config.Language
     key = args.key or State.deploy_config.Password
     cdn = args.cdn if args.cdn else State.deploy_config.CDN
-    runs = None
+    runs: List[str]| None = None
     if args.run:
         runs = args.run
     elif State.deploy_config.Run:
         # TODO: refactor poor_yaml_read() to support list
         tmp = State.deploy_config.Run.split(",")
         runs = [l.strip(" ['\"]") for l in tmp if len(l)]
-    instances: List[str] = runs
+    instances: List[str] = runs if runs else []
 
     logger.hr("Webui configs")
     logger.attr("Theme", State.deploy_config.Theme)

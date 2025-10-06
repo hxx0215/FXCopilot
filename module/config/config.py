@@ -60,7 +60,7 @@ def name_to_function(name):
 
 
 class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher):
-    stop_event: threading.Event = None
+    stop_event: threading.Event | None = None
     bound = {}
 
     # Class property
