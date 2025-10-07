@@ -84,6 +84,7 @@ class TacticalAcademy(QuickClaimCheck):
             ls = list(max_count)
             ls[idx] = cnt
             max_count = cast(tuple[int,int,int],tuple(ls))
+        logger.info(f'book count:{max_count}')
         if max_count == (0,0,0):
             self.device.adb_shell(['input', 'keyevent', '4'])
             return
@@ -162,7 +163,7 @@ if __name__ == '__main__':
     task = TacticalAcademy('fxc', task='Beach')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test4.png")
+    image_path = os.path.join(path,"test5.png")
     task.image_file=image_path
     b = task.appear(TACTICAL_ACADEMY_ADVANCED_GUNNERY)
     print(b)

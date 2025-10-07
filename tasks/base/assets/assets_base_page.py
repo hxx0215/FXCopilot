@@ -1982,9 +1982,10 @@ TACTICAL_ACADEMY_INTERMEDIATE_SUPPORT=ItemWrapper(
 TACTICAL_ACADEMY_ADVANCED_GUNNERY=ItemWrapper(
     name='TACTICAL_ACADEMY_ADVANCED_GUNNERY',
     share=Button(
+        # file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_ADVANCED_GUNNERY.png',
         file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_ADVANCED_GUNNERY.png',
         # area=(175,339,230,406),color=(195,168,90),
-        area=(192,367,216,391),color=(235,193,50),
+        area=(192,367,216,391),color=(240,198,51),
         button=(152,323,253,422),search=(152,334,1144,411)
     ),
     ocr_area=(152,402,253,422)
