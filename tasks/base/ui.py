@@ -9,13 +9,7 @@ from tasks.base.assets.assets_base_page import CLOSE, MAIN_GOTO_CHARACTER, MAP_E
 from tasks.base.assets.assets_base_popup import POPUP_STORY_LATER
 from tasks.base.main_page import MainPage
 from tasks.base.page import Page, page_gacha, page_main
-from tasks.combat.assets.assets_combat_finish import COMBAT_EXIT
-from tasks.combat.assets.assets_combat_interact import MAP_LOADING
-from tasks.combat.assets.assets_combat_prepare import COMBAT_PREPARE
-from tasks.daily.assets.assets_daily_trial import INFO_CLOSE, START_TRIAL
-from tasks.forgotten_hall.assets.assets_forgotten_hall_ui import EFFECT_NOTIFICATION
 from tasks.login.assets.assets_login import LOGIN_CONFIRM
-from tasks.map.assets.assets_map_control import RUN_BUTTON
 
 
 class UI(MainPage):
@@ -60,14 +54,6 @@ class UI(MainPage):
         def rotation_check():
             self.device.get_orientation()
 
-        @run_once
-        def cloud_login():
-            if self.config.is_cloud_game:
-                from tasks.login.login import Login
-                login = Login(config=self.config, device=self.device)
-                self.device.dump_hierarchy()
-                login.cloud_try_enter_game()
-
         timeout = Timer(10, count=20).start()
         while 1:
             if skip_first_screenshot:
@@ -103,15 +89,15 @@ class UI(MainPage):
                 continue
             if self.handle_login_confirm():
                 continue
-            if self.appear(MAP_LOADING, similarity=0.75, interval=2):
-                logger.info('Map loading')
-                timeout.reset()
-                continue
+            # TODO: change it to fx map loading
+            # if self.appear(MAP_LOADING, similarity=0.75, interval=2):
+            #     logger.info('Map loading')
+            #     timeout.reset()
+            #     continue
 
             app_check()
             minicap_check()
             rotation_check()
-            cloud_login()
 
         # Unknown page, need manual switching
         logger.warning("Unknown ui page")
@@ -402,12 +388,6 @@ class UI(MainPage):
             return True
         if self.handle_get_light_cone():
             return True
-        if self.handle_ui_close(COMBAT_PREPARE, interval=5):
-            return True
-        if self.appear_then_click(COMBAT_EXIT, interval=5):
-            return True
-        if self.appear_then_click(INFO_CLOSE, interval=5):
-            return True
         # Popup story that advice you watch it, but no, later
         if self.appear_then_click(POPUP_STORY_LATER, interval=5):
             return True
@@ -499,11 +479,6 @@ class UI(MainPage):
             if self.handle_popup_confirm():
                 clicked = True
                 continue
-            if self.match_template_color(START_TRIAL, interval=2):
-                logger.info(f'{START_TRIAL} -> {CLOSE}')
-                self.device.click(CLOSE)
-                clicked = True
-                continue
             if self.handle_ui_close(page_gacha.check_button, interval=2):
                 continue
             if self.appear_then_click(ROGUE_LEAVE_FOR_NOW, interval=2):
@@ -511,10 +486,6 @@ class UI(MainPage):
                 continue
             if self.appear_then_click(ROGUE_LEAVE_FOR_NOW_OE, interval=2):
                 clicked = True
-                continue
-            if self.appear(EFFECT_NOTIFICATION, interval=2):
-                logger.info(f'{EFFECT_NOTIFICATION} -> {RUN_BUTTON}')
-                self.device.click(RUN_BUTTON)
                 continue
     def ui_button_click(self, button: ClickButton, interval=3) -> bool:
         if not isinstance(button, ClickButton):

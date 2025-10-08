@@ -1,5 +1,4 @@
 import time
-import typing as t
 
 import numpy as np
 from rich.table import Table
@@ -129,7 +128,7 @@ class Benchmark(DaemonBase):
             )
         logger.print(table, justify='center')
 
-    def benchmark(self, screenshot: t.Tuple[str] = (), click: t.Tuple[str] = ()):
+    def benchmark(self, screenshot: tuple[str,...]| tuple = (), click: tuple[str,...] | tuple = ()):
         logger.hr('Benchmark', level=1)
         logger.info(f'Testing screenshot methods: {screenshot}')
         logger.info(f'Testing click methods: {click}')
@@ -172,7 +171,7 @@ class Benchmark(DaemonBase):
 
         return fastest_screenshot, fastest_click
 
-    def get_test_methods(self) -> t.Tuple[t.Tuple[str], t.Tuple[str]]:
+    def get_test_methods(self) -> tuple[tuple[str,...], tuple[str,...]]:
         # device = self.config.Benchmark_DeviceType
         device = 'emulator'
         screenshot = ['ADB', 'ADB_nc', 'uiautomator2', 'aScreenCap', 'aScreenCap_nc', 'DroidCast', 'DroidCast_raw']
@@ -204,6 +203,7 @@ class Benchmark(DaemonBase):
         if 'click' not in scene:
             click = []
 
+        
         return tuple(screenshot), tuple(click)
 
     def run(self):

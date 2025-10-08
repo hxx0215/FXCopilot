@@ -8,7 +8,6 @@ from module.ocr.ocr import OcrWhiteLetterOnComplexBackground
 from tasks.base.assets.assets_base_main_page import OCR_MAP_NAME
 from tasks.base.page import Page, page_main
 from tasks.base.popup import PopupHandler
-from tasks.map.keywords import KEYWORDS_MAP_PLANE, MapPlane
 
 
 class OcrPlaneName(OcrWhiteLetterOnComplexBackground):
@@ -76,70 +75,14 @@ class OcrPlaneName(OcrWhiteLetterOnComplexBackground):
 
 class MainPage(PopupHandler):
     # Same as BigmapPlane class
-    # Current plane
-    plane: MapPlane = KEYWORDS_MAP_PLANE.Herta_ParlorCar
 
     _lang_checked = False
     _lang_check_success = True
-
-    def update_plane(self, lang=None) -> MapPlane | None:
-        """
-        Pages:
-            in: page_main
-        """
-        if lang is None:
-            lang = server.lang
-        ocr = OcrPlaneName(OCR_MAP_NAME, lang=lang)
-        result = ocr.ocr_single_line(self.device.image)
-        # Try to match
-        keyword = ocr._match_result(result, keyword_classes=MapPlane, lang=lang)
-        if keyword is not None:
-            self.plane = keyword
-            logger.attr('CurrentPlane', keyword)
-            return keyword
-        # Try to remove suffix
-        for suffix in range(1, 5):
-            keyword = ocr._match_result(result[:-suffix], keyword_classes=MapPlane, lang=lang)
-            if keyword is not None:
-                self.plane = keyword
-                logger.attr('CurrentPlane', keyword)
-                return keyword
-
-        return None
 
     def check_lang_from_map_plane(self) -> str | None:
         logger.info('check_lang_from_map_plane')
         # no need check fx is always cn
         return "cn"
-        lang_unknown = self.config.Emulator_GameLanguage == 'auto'
-
-        if lang_unknown:
-            lang_list = VALID_LANG
-        else:
-            # Try current lang first
-            lang_list = [server.lang] if server.lang != 'auto' else []
-            lang_list += [lang for lang in VALID_LANG if lang != server.lang]
-
-        for lang in lang_list:
-            logger.info(f'Try ocr in lang {lang}')
-            keyword = self.update_plane(lang)
-            if keyword is not None:
-                logger.info(f'check_lang_from_map_plane matched lang: {lang}')
-                if lang_unknown or lang != server.lang:
-                    self.config.Emulator_GameLanguage = lang
-                    server.set_lang(lang)
-                MainPage._lang_checked = True
-                MainPage._lang_check_success = True
-                return lang
-
-        if lang_unknown:
-            logger.critical('Cannot detect in-game text language, please set it to 简体中文 or English')
-            raise RequestHumanTakeover
-        else:
-            logger.warning(f'Cannot detect in-game text language, assume current lang={server.lang} is correct')
-            MainPage._lang_checked = True
-            MainPage._lang_check_success = False
-            return server.lang
 
     def handle_lang_check(self, page: Page):
         """

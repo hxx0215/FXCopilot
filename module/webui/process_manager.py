@@ -3,10 +3,11 @@ import os
 import queue
 import threading
 from multiprocessing import Process
-from typing import Dict, List, Union
+from typing import Dict, List, Union,Sequence
 
 import inflection
 from rich.console import Console, ConsoleRenderable
+from rich.text import Text
 
 from module.logger import logger, set_file_logger, set_func_logger
 from module.webui.fake import get_config_mod, mod_instance
@@ -23,11 +24,11 @@ class ProcessManager:
         self.renderables: List[ConsoleRenderable] = []
         self.renderables_max_length = 400
         self.renderables_reduce_length = 80
-        self._process: Process = None
+        self._process: Process | None = None
         self._process_locks: Dict[str, threading.Lock] = {}
-        self.thd_log_queue_handler: threading.Thread = None
+        self.thd_log_queue_handler: threading.Thread|None = None
 
-    def start(self, func, ev: threading.Event = None) -> None:
+    def start(self, func, ev: threading.Event|None = None) -> None:
         if not self.alive:
             if func is None:
                 func = get_config_mod(self.config_name)
@@ -62,10 +63,10 @@ class ProcessManager:
             self._process_locks[self.config_name] = lock
 
         with lock:
-            if self.alive:
+            if self.alive and self._process:
                 self._process.kill()
                 self.renderables.append(
-                    f"[{self.config_name}] exited. Reason: Manual stop\n"
+                    Text(f"[{self.config_name}] exited. Reason: Manual stop\n")
                 )
             if self.thd_log_queue_handler is not None:
                 self.thd_log_queue_handler.join(timeout=1)
@@ -124,7 +125,7 @@ class ProcessManager:
 
     @staticmethod
     def run_process(
-        config_name, func: str, q: queue.Queue, e: threading.Event = None
+        config_name, func: str, q: queue.Queue, e: threading.Event | None = None
     ) -> None:
         parser = argparse.ArgumentParser()
         parser.add_argument(
@@ -149,20 +150,20 @@ class ProcessManager:
             # Run alas
             if func == "alas":
                 from module.alas import AzurLaneAutoScript
-                from src import StarRailCopilot
+                from fxc import FuXiaoCopilot
 
                 if e is not None:
                     AzurLaneAutoScript.stop_event = e
-                StarRailCopilot(config_name=config_name).loop()
+                FuXiaoCopilot(config_name=config_name).loop()
             elif func in get_available_func():
-                from src import StarRailCopilot
+                from fxc import FuXiaoCopilot
 
-                StarRailCopilot(config_name=config_name).run(inflection.underscore(func))
+                FuXiaoCopilot(config_name=config_name).run(inflection.underscore(func))
             else:
                 logger.critical(f"No function matched: {func}")
             logger.info(f"[{config_name}] exited. Reason: Finish\n")
-        except Exception as e:
-            logger.exception(e)
+        except Exception as error:
+            logger.exception(error)
 
     @classmethod
     def running_instances(cls) -> List["ProcessManager"]:
@@ -174,7 +175,7 @@ class ProcessManager:
 
     @staticmethod
     def restart_processes(
-        instances: List[Union["ProcessManager", str]] = None, ev: threading.Event = None
+        instances: Sequence[Union["ProcessManager", str]] = [], ev: threading.Event | None = None
     ):
         """
         After update and reload, or failed to perform an update,
@@ -185,8 +186,8 @@ class ProcessManager:
         # Load MOD_CONFIG_DICT
         mod_instance()
 
-        if instances is None:
-            instances = []
+        # if instances is None:
+        #     instances = []
 
         _instances = set()
 

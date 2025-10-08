@@ -10,21 +10,18 @@ Alas:
 
 # ==================== Daily ====================
 
-Dungeon:
-  Scheduler:
-    Enable: true
-DailyQuest:
-  Scheduler:
-    Enable: true
-BattlePass:
-  Scheduler:
-    Enable: true
-Assignment:
-  Scheduler:
-    Enable: true
-Freebies:
-  Scheduler:
-    Enable: false
+# DailyQuest:
+#   Scheduler:
+#     Enable: true
+# BattlePass:
+#   Scheduler:
+#     Enable: true
+# Assignment:
+#   Scheduler:
+#     Enable: true
+# Freebies:
+#   Scheduler:
+#     Enable: false
 Expedition:
   Scheduler:
     Enable: true
@@ -38,6 +35,6 @@ TacticalAcademy:
 
 # ==================== Weekly ====================
 
-Weekly:
-  DungeonSupport:
-    Use: do_not_use
+# Weekly:
+#   DungeonSupport:
+#     Use: do_not_use

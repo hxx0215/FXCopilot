@@ -60,7 +60,7 @@ def name_to_function(name):
 
 
 class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher):
-    stop_event: threading.Event = None
+    stop_event: threading.Event | None = None
     bound = {}
 
     # Class property
@@ -302,6 +302,7 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
         limit_next_run(['BattlePass'], limit=now + timedelta(days=40, seconds=-1))
         limit_next_run(['Weekly'], limit=now + timedelta(days=7, seconds=-1))
         limit_next_run(['TacticalAcademy'], limit=now + timedelta(hours=72, seconds=-1))
+        limit_next_run(['Beach'], limit=now + timedelta(hours=72, seconds=-1))
         limit_next_run(self.args.keys(), limit=now + timedelta(hours=24, seconds=-1))
 
     def override(self, **kwargs):
