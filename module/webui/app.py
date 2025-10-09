@@ -326,6 +326,8 @@ class AlasGUI(Frame):
             value = deep_get(
                 config, [task, group_name, arg_name], output_kwargs["value"]
             )
+            # TODO: use deep_get?
+            feed_back = output_kwargs["feed_back"] if 'feed_back' in output_kwargs else None
             # idk
             value = str(value) if isinstance(value, datetime) else value
             # Default value
@@ -343,7 +345,7 @@ class AlasGUI(Frame):
                 arg_help = None
             output_kwargs["help"] = arg_help
             # Invalid feedback
-            output_kwargs["invalid_feedback"] = t("Gui.Text.InvalidFeedBack", value)
+            output_kwargs["invalid_feedback"] = t("Gui.Text.InvalidFeedBack", feed_back if feed_back else value)
 
             o = put_output(output_kwargs)
             if o is not None:
@@ -565,11 +567,14 @@ class AlasGUI(Frame):
                     modified[k] = v
                     valid.append(k)
 
-                    for set_key, set_value in config_updater.save_callback(k, v):
-                        modified[set_key] = set_value
-                        deep_set(config, set_key, set_value)
-                        valid.append(set_key)
-                        pin["_".join(set_key.split("."))] = to_pin_value(set_value)
+                    for set_key, set_value, is_valid in config_updater.save_callback(k, v):
+                        if is_valid:
+                            modified[set_key] = set_value
+                            deep_set(config, set_key, set_value)
+                            valid.append(set_key)
+                            pin["_".join(set_key.split("."))] = to_pin_value(set_value)
+                        else:
+                            invalid.append(k)
                 else:
                     modified.pop(k)
                     invalid.append(k)
@@ -583,7 +588,7 @@ class AlasGUI(Frame):
                 self.pin_remove_hidden_arg(k, type_=deep_get(self.ALAS_ARGS, f"{k}.type"))
             self.alas_config_hidden = new_hidden_args
 
-            if modified:
+            if modified and len(invalid) == 0:
                 toast(
                     t("Gui.Toast.ConfigSaved"),
                     duration=1,

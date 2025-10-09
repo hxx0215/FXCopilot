@@ -125,5 +125,16 @@
       "Command": "TacticalAcademy",
       "ServerUpdate": "00:00"
     }
+  },
+  "Mainline": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Mainline",
+      "ServerUpdate": "00:00"
+    },
+    "MainlineSetting": {
+      "Stage": null
+    }
   }
 }

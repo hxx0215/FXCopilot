@@ -81,3 +81,9 @@ class GeneratedConfig:
 
     # Group `TacticalAcademy`
     TacticalAcademy_Enable = True  # True, False
+
+    # Group `MainLine`
+    MainLine_Enable = True  # True, False
+
+    # Group `MainlineSetting`
+    MainlineSetting_Stage = None

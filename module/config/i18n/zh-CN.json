@@ -57,6 +57,10 @@
     "TacticalAcademy": {
       "name": "技能学院",
       "help": ""
+    },
+    "Mainline": {
+      "name": "主线",
+      "help": ""
     }
   },
   "Scheduler": {
@@ -405,6 +409,28 @@
       "help": "TacticalAcademy.Enable.help",
       "True": "True",
       "False": "False"
+    }
+  },
+  "MainLine": {
+    "_info": {
+      "name": "MainLine._info.name",
+      "help": "MainLine._info.help"
+    },
+    "Enable": {
+      "name": "MainLine.Enable.name",
+      "help": "MainLine.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "MainlineSetting": {
+    "_info": {
+      "name": "主线设置",
+      "help": ""
+    },
+    "Stage": {
+      "name": "主线关卡设置",
+      "help": "填入第X章第Y关如: 5-10"
     }
   },
   "Gui": {

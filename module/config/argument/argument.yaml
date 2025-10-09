@@ -426,3 +426,12 @@ TacticalAcademy:
     type: checkbox
     value: true
     option: [true, false]
+MainLine:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+MainlineSetting:
+  Stage:
+    type: input
+    feed_back: '10-10'

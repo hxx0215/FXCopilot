@@ -879,7 +879,7 @@ class ConfigUpdater:
 
         # return data
 
-    def save_callback(self, key: str, value: t.Any) -> t.Iterable[t.Tuple[str, t.Any]]:
+    def save_callback(self, key: str, value: t.Any) -> t.Iterable[t.Tuple[str, t.Any, bool]]:
         """
         Args:
             key: Key path in config json, such as "Main.Emotion.Fleet1Value"
@@ -889,36 +889,54 @@ class ConfigUpdater:
             str: Key path to set config json, such as "Main.Emotion.Fleet1Record"
             any: Value to set, such as "2020-01-01 00:00:00"
         """
-        if key == 'Rogue.RogueWorld.UseImmersifier' and value is False:
-            yield 'Rogue.RogueWorld.UseStamina', False
-        if key == 'Rogue.RogueWorld.UseStamina' and value is True:
-            yield 'Rogue.RogueWorld.UseImmersifier', True
-        if key == 'Rogue.RogueWorld.DoubleEvent' and value is True:
-            yield 'Rogue.RogueWorld.UseImmersifier', True
-        if key == 'Alas.Emulator.GameClient' and value == 'cloud_android':
-            yield 'Alas.Emulator.PackageName', 'CN-Official'
-            yield 'Alas.Optimization.WhenTaskQueueEmpty', 'close_game'
+        # if key == 'Rogue.RogueWorld.UseImmersifier' and value is False:
+        #     yield 'Rogue.RogueWorld.UseStamina', False
+        # if key == 'Rogue.RogueWorld.UseStamina' and value is True:
+        #     yield 'Rogue.RogueWorld.UseImmersifier', True
+        # if key == 'Rogue.RogueWorld.DoubleEvent' and value is True:
+        #     yield 'Rogue.RogueWorld.UseImmersifier', True
+        # if key == 'Alas.Emulator.GameClient' and value == 'cloud_android':
+        #     yield 'Alas.Emulator.PackageName', 'CN-Official'
+        #     yield 'Alas.Optimization.WhenTaskQueueEmpty', 'close_game'
         # Sync Dungeon.TrailblazePower and Ornament.TrailblazePower
-        if key == 'Dungeon.TrailblazePower.ExtractReservedTrailblazePower':
-            yield 'Ornament.TrailblazePower.ExtractReservedTrailblazePower', value
-        if key == 'Dungeon.TrailblazePower.UseFuel':
-            yield 'Ornament.TrailblazePower.UseFuel', value
-        if key == 'Dungeon.TrailblazePower.FuelReserve':
-            yield 'Ornament.TrailblazePower.FuelReserve', value
-        if key == 'Dungeon.TrailblazePower.FuelOnlyPlanner':
-            yield 'Ornament.TrailblazePower.FuelOnlyPlanner', value
-        if key == 'Ornament.TrailblazePower.ExtractReservedTrailblazePower':
-            yield 'Dungeon.TrailblazePower.ExtractReservedTrailblazePower', value
-        if key == 'Ornament.TrailblazePower.UseFuel':
-            yield 'Dungeon.TrailblazePower.UseFuel', value
-        if key == 'Ornament.TrailblazePower.FuelReserve':
-            yield 'Dungeon.TrailblazePower.FuelReserve', value
-        if key == 'Ornament.TrailblazePower.FuelOnlyPlanner':
-            yield 'Dungeon.TrailblazePower.FuelOnlyPlanner', value
+        # if key == 'Dungeon.TrailblazePower.ExtractReservedTrailblazePower':
+        #     yield 'Ornament.TrailblazePower.ExtractReservedTrailblazePower', value
+        # if key == 'Dungeon.TrailblazePower.UseFuel':
+        #     yield 'Ornament.TrailblazePower.UseFuel', value
+        # if key == 'Dungeon.TrailblazePower.FuelReserve':
+        #     yield 'Ornament.TrailblazePower.FuelReserve', value
+        # if key == 'Dungeon.TrailblazePower.FuelOnlyPlanner':
+        #     yield 'Ornament.TrailblazePower.FuelOnlyPlanner', value
+        # if key == 'Ornament.TrailblazePower.ExtractReservedTrailblazePower':
+        #     yield 'Dungeon.TrailblazePower.ExtractReservedTrailblazePower', value
+        # if key == 'Ornament.TrailblazePower.UseFuel':
+        #     yield 'Dungeon.TrailblazePower.UseFuel', value
+        # if key == 'Ornament.TrailblazePower.FuelReserve':
+        #     yield 'Dungeon.TrailblazePower.FuelReserve', value
+        # if key == 'Ornament.TrailblazePower.FuelOnlyPlanner':
+        #     yield 'Dungeon.TrailblazePower.FuelOnlyPlanner', value
         if key == 'TimeOdyssey.TimeOdysseyModeSetting.EnableContinuous' and value is True:
-            yield 'TimeOdyssey.TimeOdysseyModeSetting.AutoDecommissioning', True
+            yield 'TimeOdyssey.TimeOdysseyModeSetting.AutoDecommissioning', True, True
         if key == 'TimeOdyssey.TimeOdysseyModeSetting.AutoDecommissioning' and value is False:
-            yield 'TimeOdyssey.TimeOdysseyModeSetting.EnableContinuous', False
+            yield 'TimeOdyssey.TimeOdysseyModeSetting.EnableContinuous', False, True
+        if key == 'Mainline.MainlineSetting.Stage':
+            if self.is_mainline_setting_valid(str(value)):
+                yield 'Mainline.MainlineSetting.Stage', value, True
+            else:
+                from pywebio.output import toast
+                toast('save failed', duration=1, position='right',color='error')
+                yield 'Mainline.MainlineSetting.Stage', '5-10', False
+
+    def is_mainline_setting_valid(self, value: str) -> bool:
+        parts = value.split('-')
+        if len(parts) != 2:
+            return False
+        if (not parts[0].isdigit()) or (not parts[1].isdigit()):
+            return False
+        chapter = int(parts[0])
+        stage = int(parts[1])
+        return 1 <= stage <= 10 and chapter >= 1
+
 
     def iter_hidden_args(self, data) -> t.Iterator[str]:
         """

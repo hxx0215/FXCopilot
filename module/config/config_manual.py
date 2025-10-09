@@ -10,13 +10,18 @@ class ManualConfig:
 
     SCHEDULER_PRIORITY = """
     Restart
-    > Weekly > Ornament > Dungeon > Assignment
-    > BattlePass > DailyQuest
-    > Freebies > DataUpdate
-    > Rogue 
-    > DailyRoutine > Exercise > Competition > QuizCenter > Expedition > Beach > TacticalAcademy > TimeOdyssey
+    > DailyRoutine > Exercise > Competition > QuizCenter > Expedition > Beach > TacticalAcademy > TimeOdyssey > Mainline
     > Reward > Rescheduler
     """
+    # SCHEDULER_PRIORITY = """
+    # Restart
+    # > Weekly > Ornament > Dungeon > Assignment
+    # > BattlePass > DailyQuest
+    # > Freebies > DataUpdate
+    # > Rogue 
+    # > DailyRoutine > Exercise > Competition > QuizCenter > Expedition > Beach > TacticalAcademy > TimeOdyssey
+    # > Reward > Rescheduler
+    # """
 
     """
     module.assets

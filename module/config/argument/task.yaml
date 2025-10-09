@@ -43,6 +43,9 @@ FX:
       - TimeOdysseySetting
     TacticalAcademy:
       - Scheduler
+    Mainline:
+      - Scheduler
+      - MainlineSetting
 # Daily:
 #   menu: 'list'
 #   page: 'setting'
