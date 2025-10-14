@@ -1701,6 +1701,14 @@ STAGE_HOSTING_FINISH_REACH_TIMES=ButtonWrapper(
         button=(741,436,925,484)
     )
 )
+STAGE_HOSTING_FINISH_SINK=ButtonWrapper(
+    name='STAGE_HOSTING_FINISH_SINK',
+    share=Button.default_init(
+        area=(545,323,736,353),color=(154,154,154),
+        file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_SINK.png',
+        button=(741,436,925,484)
+    )
+)
 STAGE_SET_SAIL=ButtonWrapper(
     name='STAGE_SET_SAIL',
     share=Button(
@@ -1708,6 +1716,14 @@ STAGE_SET_SAIL=ButtonWrapper(
         search=(1151,550,1280,666),
         button=(1071,579,1266,646),
         file='./assets/share/base/main_page/STAGE_SET_SAIL.png'
+    )
+)
+STAGE_TO_PORT=ButtonWrapper(
+    name='STAGE_TO_PORT',
+    share=Button.default_init(
+        area=(967,563,1061,634),color=(55,126,126),
+        file='./assets/share/base/main_page/STAGE_TO_PORT.png',
+        button=(865,563,1065,634)
     )
 )
 RESOURCE_DATA=ButtonWrapper(

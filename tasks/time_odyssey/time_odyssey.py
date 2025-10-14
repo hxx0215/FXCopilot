@@ -1,7 +1,7 @@
 from tasks.base.resource_check import ResourceCheck
 from tasks.base.page import page_time_odyssey_map,page_decommissioning_batch
 from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_TIMES_DATA,TIME_ODYSSEY_TIMES_SELECT,STAGE_HOSTING,STAGE_HOSTING_FINISH_DECOMMISIONING,
-                                                STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,
+                                                STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,STAGE_TO_PORT,STAGE_HOSTING_FINISH_SINK,
                                                 TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,
                                                 DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_REACH_TIMES
                                                 )
@@ -70,6 +70,9 @@ class TimeOdyssey(ResourceCheck):
             if self.appear_then_click(STAGE_HOSTING_FINISH_REACH_TIMES):
                 finish_reason = 'reach_times'
                 break
+            if self.appear_then_click(STAGE_HOSTING_FINISH_SINK):
+                finish_reason = 'sink'
+                break
             ocr_result = self.get_current_resources()
             if ocr_result:
                 fuel, _, _ = ocr_result
@@ -122,6 +125,14 @@ class TimeOdyssey(ResourceCheck):
                 self.config.task_delay(minute=5)
             else:
                 self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
+        elif finish_reason == 'sink':
+            self.ui_click(STAGE_HOSTING_CLOSE, STAGE_TO_PORT)
+            for image in self.loop():
+                if self.appear_then_click(STAGE_TO_PORT):
+                    continue
+                if self.handle_popup_confirm():
+                    break
+            self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
         else:
             self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
         self.ui_goto_main()
