@@ -4,6 +4,7 @@ from tasks.base.page import page_reward
 from module.ocr.ocr import QuickClaimTimeOcr,ItemOcr
 from module.base.button import ItemWrapper
 from module.base.timer import Timer
+from datetime import timedelta
 
 
 class QuickClaimCheck(UI):
@@ -14,10 +15,13 @@ class QuickClaimCheck(UI):
     def check_if_finished(self):
         self.ui_ensure(page_reward)
         ocr = QuickClaimTimeOcr(self.ocr_data)
+        timer = Timer(5).start()
         for image in self.loop():
             (has_finished, deltas) = ocr.ocr_single_line(image)
             if has_finished or len(deltas) != 0:
                 break
+            if timer.reached():
+                return (False, [timedelta(hours=2)])
         return (has_finished, deltas)
 
     def find_item(self, item: ItemWrapper) -> int:

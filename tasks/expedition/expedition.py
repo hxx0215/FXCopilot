@@ -152,14 +152,14 @@ class Expedition(QuickClaimCheck):
         
 
     def run(self):
-        # (has_finished,times) = self.check_remain_time()
-        # target = [datetime.datetime.now() + d for d in times]
-        # logger.info(f"{(has_finished, times)}")
-        # if not has_finished:
-        #     self.config.task_delay(target= target)
-        # else:
-        team_num = self.collect_reward()
-        self.deploy_next_expedition(team_num)
+        (has_finished,times) = self.check_if_finished()
+        target = [datetime.datetime.now() + d for d in times]
+        logger.info(f"{(has_finished, times)}")
+        if not has_finished:
+            self.config.task_delay(target= target)
+        else:
+            team_num = self.collect_reward()
+            self.deploy_next_expedition(team_num)
         (_, times) = self.check_if_finished()
         target = [datetime.datetime.now() + d for d in times]
         self.config.task_delay(target= target)
