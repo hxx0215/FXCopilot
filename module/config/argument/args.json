@@ -218,6 +218,16 @@
         "value": "00:00",
         "display": "hide"
       }
+    },
+    "FrequencySetting": {
+      "Frequence": {
+        "type": "select",
+        "value": "spring",
+        "option": [
+          "spring",
+          "longest"
+        ]
+      }
     }
   },
   "Exercise": {

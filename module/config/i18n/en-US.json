@@ -433,6 +433,18 @@
       "help": "MainlineSetting.Stage.help"
     }
   },
+  "FrequencySetting": {
+    "_info": {
+      "name": "FrequencySetting._info.name",
+      "help": "FrequencySetting._info.help"
+    },
+    "Frequence": {
+      "name": "FrequencySetting.Frequence.name",
+      "help": "FrequencySetting.Frequence.help",
+      "spring": "spring",
+      "longest": "longest"
+    }
+  },
   "Gui": {
     "Aside": {
       "Install": "Install",

@@ -25,6 +25,7 @@ FX:
       - Scheduler
     Rescheduler:
       - Scheduler
+      - FrequencySetting
     Exercise:
       - Scheduler
     QuizCenter:

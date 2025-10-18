@@ -87,3 +87,6 @@ class GeneratedConfig:
 
     # Group `MainlineSetting`
     MainlineSetting_Stage = None
+
+    # Group `FrequencySetting`
+    FrequencySetting_Frequence = 'spring'  # spring, longest

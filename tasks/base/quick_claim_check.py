@@ -21,8 +21,8 @@ class QuickClaimCheck(UI):
             if has_finished or len(deltas) != 0:
                 break
             if timer.reached():
-                return (False, [timedelta(hours=2)])
-        return (has_finished, deltas)
+                return (False, [timedelta(hours=2)], False)
+        return (has_finished, deltas, True)
 
     def find_item(self, item: ItemWrapper) -> int:
         ocr = ItemOcr(item)

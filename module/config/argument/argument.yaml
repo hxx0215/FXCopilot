@@ -435,3 +435,9 @@ MainlineSetting:
   Stage:
     type: input
     feed_back: '10-10'
+
+FrequencySetting:
+  Frequence:
+    type: select
+    value: spring
+    option: [spring, longest]

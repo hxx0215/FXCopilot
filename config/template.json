@@ -49,6 +49,9 @@
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Rescheduler",
       "ServerUpdate": "00:00"
+    },
+    "FrequencySetting": {
+      "Frequence": "spring"
     }
   },
   "Exercise": {

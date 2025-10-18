@@ -95,7 +95,6 @@ class Expedition(QuickClaimCheck):
         current_time = get_server_now()
         server_special_expedition_start_time = current_time.replace(hour=18)
         server_special_expedition_end_time = current_time.replace(hour=23,minute=59,second=59)
-        delay = 0
         if current_time < server_special_expedition_start_time:
             delta = server_special_expedition_start_time - current_time
             eight_hour = 8 * 60 * 60
@@ -105,39 +104,34 @@ class Expedition(QuickClaimCheck):
                 next_time = get_server_next_update('18:00')
                 self.config.task_delay(target=next_time)
             if delta.total_seconds() > eight_hour:
-                delay = 8
                 self.select_expedition_page('8小时',EXPEDITION_TIME_SELECT_DATA)
             elif delta.total_seconds() > four_hour:
                 self.select_expedition_page('4小时',EXPEDITION_TIME_SELECT_DATA)
-                delay = 4
             else:
-                delay = 2
                 self.select_expedition_page('2小时',EXPEDITION_TIME_SELECT_DATA)
         if current_time >= server_special_expedition_start_time and current_time < server_special_expedition_end_time:
             self.select_expedition_page('12小时',EXPEDITION_LIMITED_TIME_SELECT_DATA)
         team_to_deploy = available_team
-        logger.info(f"begin to deploy {team_to_deploy}")
         while team_to_deploy > 0:
+            logger.info(f"begin to deploy {team_to_deploy}")
             timer = Timer(5).start()
-            for image in self.loop():
-                buttons = EXPEDITION_DEPLOY_ICON_BUTTON.match_multi_template(image, similarity=0.75)
-                logger.info(f'buttons : {buttons}')
-                if len(buttons) == 3 or len(buttons) >= team_to_deploy:
-                    break
+            item_clicked = False
+            for _ in self.loop():
+                if self.appear_then_click(EXPEDITION_DEPLOY_ICON_BUTTON,similarity=0.75):
+                    continue
                 if timer.reached():
+                    logger.info("time reached")
                     break
-            if len(buttons) > 0:
-                btn = buttons[0]
-                logger.info(f'process btn:{btn}')
-                for _ in self.loop():
-                    if self.ui_button_click(btn):
-                        continue
-                    if self.appear(EXPEDITION_RECALL):
-                        continue
-                    if self.appear(EXPEDITION_SAIL):
-                        break
-                    if self.appear_then_click(EXPEDITION_AUTO_DEPLOY):
-                        continue
+                if self.appear(EXPEDITION_RECALL):
+                    continue
+                if self.appear(EXPEDITION_SAIL):
+                    item_clicked = True
+                    break
+                if self.appear_then_click(EXPEDITION_AUTO_DEPLOY):
+                    continue
+                if self.handle_popup_cancel():
+                    continue
+            if item_clicked:
                 for _ in self.loop():
                     if self.appear_then_click(EXPEDITION_SAIL):
                         continue
@@ -148,19 +142,18 @@ class Expedition(QuickClaimCheck):
                 vector = (0,-500)
                 box = (746,169,1252,484)
                 self.device.swipe_vector(vector,box=box)
-        return delay
         
 
     def run(self):
-        (has_finished,times) = self.check_if_finished()
+        (has_finished,times, has_time) = self.check_if_finished()
         target = [datetime.datetime.now() + d for d in times]
         logger.info(f"{(has_finished, times)}")
-        if not has_finished:
+        if not has_finished and has_time:
             self.config.task_delay(target= target)
         else:
             team_num = self.collect_reward()
             self.deploy_next_expedition(team_num)
-        (_, times) = self.check_if_finished()
+        (_, times,_) = self.check_if_finished()
         target = [datetime.datetime.now() + d for d in times]
         self.config.task_delay(target= target)
 

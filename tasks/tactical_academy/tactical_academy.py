@@ -139,12 +139,12 @@ class TacticalAcademy(QuickClaimCheck):
 
 
     def run(self):
-        (has_finished, deltas) = self.check_if_finished()
+        (has_finished, deltas,_) = self.check_if_finished()
         if has_finished:
             # continue learning
             self.ui_ensure(page_tactical_academy)
             self.process_continue_training()
-            (_, deltas) = self.check_if_finished()
+            (_, deltas,_) = self.check_if_finished()
         target = [datetime.datetime.now() + d for d in deltas]
         logger.info(f'delay: {target}')
         if len(target) > 0:
