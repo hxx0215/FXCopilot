@@ -1,0 +1,7 @@
+{
+  "name": "fxc-root",
+  "private": true,
+  "nano-staged": {
+    "*": "echo nano-staged ok"
+  }
+}
