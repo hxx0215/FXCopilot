@@ -3,7 +3,7 @@ from tasks.base.page import page_expedition,page_reward
 from tasks.base.assets.assets_base_page import EXPEDITION_FINISH_FLAG,EXPEDITION_WAITING,EXPEDITION_COLLECT_ALL,EXPEDITION_FINISH_REWARD,EXPEDITION_WAITING2,EXPEDITION_TIME_DATA,EXPEDITION_READY,EXPEDITION_CURRENT_TEAMS_DATA,EXPEDITION_TIME_SELECT_DATA,EXPEDITION_DEPLOY_ICON_BUTTON,EXPEDITION_AUTO_DEPLOY,EXPEDITION_SAIL,EXPEDITION_RECALL,EXPEDITION_LIMITED_TIME_SELECT_DATA
 from module.logger import logger
 from module.base.timer import Timer
-from module.ocr.ocr import Digit,Ocr,OcrResultButton,QuickClaimTimeOcr
+from module.ocr.ocr import DigitCounter,Ocr,OcrResultButton,QuickClaimTimeOcr
 from module.config.utils import server_time_offset, get_server_now,get_server_next_update
 from module.base.button import ButtonWrapper
 import re
@@ -12,11 +12,6 @@ from dataclasses import dataclass
 from typing import ClassVar
 from module.ocr.keyword import Keyword
 
-class DataDigit(Digit):
-    def after_process(self, result):
-        result = re.sub(r'[l|]', '1', result)
-        result = re.sub(r'[oO]', '0', result)
-        return super().after_process(result)
 class TimeExpeditionOcr(Ocr):
     pass
 @dataclass(repr=False)
@@ -28,6 +23,7 @@ class TimeExpeditionKeyword(Keyword):
 class Expedition(QuickClaimCheck):
     def __init__(self, config, device=None, task=None):
         super().__init__(config, device=device, task=task, ocr_data=EXPEDITION_TIME_DATA)
+        self.ocr = DigitCounter(EXPEDITION_CURRENT_TEAMS_DATA)
 
     # def check_remain_time(self):
     #     self.ui_ensure(page_reward)
@@ -37,27 +33,14 @@ class Expedition(QuickClaimCheck):
     #         if has_item_finished or len(deltas) != 0:
     #             break
     #     return (has_item_finished, deltas)
-    def collect_reward(self) -> int:
-        def current_available_team():
-            r = ocr.detect_and_ocr(self.device.image)
-            txt = [re.sub(r'\D','', item.ocr_text) for item in r]
-            cnt = sum(1 for x in txt if x != '')
-            ocr_text = r[0].ocr_text.split('/')
-            if cnt > 0 and len(ocr_text) == 2:
-                cur_team = int(ocr_text[0])
-                total_team = int(ocr_text[1])
-                logger.info(f'total {total_team} current {cur_team}')
-                if total_team > cur_team:
-                    return total_team - cur_team
-            return 0
+    def collect_reward(self):
         self.ui_ensure(page_expedition)
-        ocr = DataDigit(EXPEDITION_CURRENT_TEAMS_DATA)
-        for _ in self.loop():
+        for image in self.loop():
             if self.appear(EXPEDITION_FINISH_FLAG):
                 break
-            ts = current_available_team()
-            if ts > 0:
-                return ts
+            (current, remain, total) = self.ocr.ocr_single_line(image)
+            if remain > 0:
+                return
         self.ui_click(EXPEDITION_COLLECT_ALL,EXPEDITION_FINISH_REWARD)
         cnt = 0
         check = False
@@ -73,12 +56,11 @@ class Expedition(QuickClaimCheck):
                     continue
         timer = Timer(3, 10).start()
         for _ in self.loop():
-            ts = current_available_team()
-            if ts > 0:
-                return ts
+            (current, remain, total) = self.ocr.ocr_single_line(image)
+            if remain > 0:
+                return
             if timer.reached():
-                return 0
-        return 0
+                break
     def select_expedition_page(self, page_name: str, button: ButtonWrapper):
         keywords_str = ['2小时','4小时','8小时','12小时']
         keywords = [TimeExpeditionKeyword.init(idx,k) for (idx,k) in enumerate(keywords_str)]
@@ -91,7 +73,7 @@ class Expedition(QuickClaimCheck):
                     self.ui_ocr_button_click(btn)
                     return
                 
-    def deploy_next_expedition(self, available_team: int):
+    def deploy_next_expedition(self):
         current_time = get_server_now()
         server_special_expedition_start_time = current_time.replace(hour=18)
         server_special_expedition_end_time = current_time.replace(hour=23,minute=59,second=59)
@@ -111,9 +93,15 @@ class Expedition(QuickClaimCheck):
                 self.select_expedition_page('2小时',EXPEDITION_TIME_SELECT_DATA)
         if current_time >= server_special_expedition_start_time and current_time < server_special_expedition_end_time:
             self.select_expedition_page('12小时',EXPEDITION_LIMITED_TIME_SELECT_DATA)
-        team_to_deploy = available_team
-        while team_to_deploy > 0:
-            logger.info(f"begin to deploy {team_to_deploy}")
+        while 1:
+            for image in self.loop():
+                (c, team_to_deploy, total) = self.ocr.ocr_single_line(image)
+                if c == 0 and team_to_deploy == 0 and total == 0:
+                    continue
+                if team_to_deploy == 0:
+                    return
+                else:
+                    break
             timer = Timer(5).start()
             item_clicked = False
             for _ in self.loop():
@@ -137,7 +125,6 @@ class Expedition(QuickClaimCheck):
                         continue
                     if self.appear(EXPEDITION_RECALL):
                         break
-                team_to_deploy = team_to_deploy - 1
             else:
                 vector = (0,-500)
                 box = (746,169,1252,484)
@@ -151,8 +138,8 @@ class Expedition(QuickClaimCheck):
         if not has_finished and has_time:
             self.config.task_delay(target= target)
         else:
-            team_num = self.collect_reward()
-            self.deploy_next_expedition(team_num)
+            self.collect_reward()
+            self.deploy_next_expedition()
         (_, times,_) = self.check_if_finished()
         target = [datetime.datetime.now() + d for d in times]
         self.config.task_delay(target= target)

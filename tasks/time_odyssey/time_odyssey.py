@@ -79,6 +79,10 @@ class TimeOdyssey(ResourceCheck):
                 if fuel < self.config.TimeOdysseySetting_MinimalFuel:
                     finish_reason = 'less_than_minimal_fuel'
                     break
+            priority_exist = self.check_if_priorty_exist()
+            if priority_exist:
+                finish_reason = 'task_interrupt'
+                break
         return finish_reason
     def post_hosting(self, finish_reason):
         self.device.screenshot_interval_set()
@@ -133,6 +137,8 @@ class TimeOdyssey(ResourceCheck):
                 if self.handle_popup_confirm():
                     break
             self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
+        elif finish_reason == 'task_interrupt':
+            self.config.task_delay(minute=5)
         else:
             self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
         self.ui_goto_main()

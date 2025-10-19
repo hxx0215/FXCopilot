@@ -508,3 +508,13 @@ class UI(MainPage):
             return True
         else:
             return False
+
+    def check_if_priorty_exist(self):
+        self.config.get_next_task()
+        ls = self.config.get_priority_list()
+        idx = ls.index(self.config.task.command.lower())
+        for pend in self.config.pending_task:
+            p_idx = ls.index(pend.command.lower())
+            if p_idx < idx:
+                return True
+        return False

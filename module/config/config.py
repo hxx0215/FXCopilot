@@ -94,7 +94,7 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
         # Scheduler queue, will be updated in `get_next_task()`, list of Function objects
         # pending_task: Run time has been reached, but haven't been run due to task scheduling.
         # waiting_task: Run time haven't been reached, wait needed.
-        self.pending_task = []
+        self.pending_task: list[Function] = []
         self.waiting_task = []
         # Task to run and bind.
         # Task means the name of the function to run in AzurLaneAutoScript class.
@@ -236,6 +236,12 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
 
         self.pending_task = pending
         self.waiting_task = waiting
+
+    def get_priority_list(self) -> list[str]:
+        f = Filter(regex=r"(.*)", attr=["command"])
+        f.load(self.SCHEDULER_PRIORITY)
+        flatten = [item for items in f.filter for item in items]
+        return [item for item in flatten if item is not None]
 
     def get_next(self):
         """
