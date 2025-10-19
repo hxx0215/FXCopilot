@@ -1,6 +1,6 @@
 import {app} from 'electron';
 import {isMacintosh} from './env';
-import fs from 'fs';
+import * as fs from 'fs';
 /**
  * Get the absolute path of the project root directory
  * @param files
