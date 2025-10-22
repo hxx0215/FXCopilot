@@ -138,6 +138,9 @@ class TimeOdyssey(ResourceCheck):
                     break
             self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
         elif finish_reason == 'task_interrupt':
+            self.ui_click(STAGE_HOSTING,STOP_HOSTING)
+            self.ui_click(STOP_HOSTING, BATTLE_PAGE)
+            self.ui_goto_main(extra_default=False)
             self.config.task_delay(minute=5)
         else:
             self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
