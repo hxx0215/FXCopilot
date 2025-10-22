@@ -133,7 +133,7 @@ class QuizCenter(UI):
             if self.appear_then_click(DIALOGUE_NEXT):
                 break
         return False
-    def find_question(self) -> QuizItem:
+    def find_question(self) -> QuizItem | None:
         question_ocr = QuizOcr(QUIZ_QUESTION_DATA)
         detected_question = set()
         max_question_similary = 0.85
@@ -172,9 +172,9 @@ class QuizCenter(UI):
                 logger.info(f"current cnt: {cnt}")
                 if cnt >= 10:
                     break
-        if not max_question:
-            self.device.save_screenshot(genre='quiz_center')
-            raise RequestHumanTakeover
+        # if not max_question:
+        #     self.device.save_screenshot(genre='quiz_center')
+        #     raise RequestHumanTakeover
         return max_question
     
     def special_answer(self, question: QuizItem) -> int:
@@ -251,7 +251,13 @@ class QuizCenter(UI):
         empty = self.choose_quiz_ship()
         if empty:
             return True
+        #if not find
         question = self.find_question()
+        if not question:
+            logger.warning("find question failed reroll quiz")
+            self.device.adb_shell(['input', 'keyevent', '4'])
+            return False
+
         answer = self.find_answer(question)
         match answer:
             case 1:
