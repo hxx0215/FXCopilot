@@ -117,13 +117,12 @@ class QuizCenter(UI):
                 break
             elif self.appear(QUIZ_EMPTY_PAGE):
                 return True
-        cnt = 0
         ocr_btn = result[0]
-        while cnt != 10:
+        filtered_result = [x for x in result if x not in ['爱','永恒']]
+        if filtered_result:
+            ocr_btn = random.choice(filtered_result)
+        else:
             ocr_btn = random.choice(result)
-            if ocr_btn.text != '爱':
-                break
-            cnt = cnt + 1
         for _ in self.loop():
             if self.handle_popup_confirm():
                 break
