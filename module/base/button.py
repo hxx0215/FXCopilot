@@ -102,6 +102,16 @@ class Button(Resource):
             threshold=threshold
         )
 
+    def match_template_sim(self, image, direct_match=False) -> float:
+        if not direct_match:
+            image = crop(image, self.search, copy=False)
+        res = cv2.matchTemplate(self.image, image, cv2.TM_CCOEFF_NORMED)
+        _, sim, _, point = cv2.minMaxLoc(res)
+
+        self._button_offset = np.array(point) + self.search[:2] - self.area[:2]
+        return sim
+
+
     def match_template(self, image, similarity=0.85, direct_match=False) -> bool:
         """
         Detects assets by template matching.
@@ -116,12 +126,13 @@ class Button(Resource):
         Returns:
             bool.
         """
-        if not direct_match:
-            image = crop(image, self.search, copy=False)
-        res = cv2.matchTemplate(self.image, image, cv2.TM_CCOEFF_NORMED)
-        _, sim, _, point = cv2.minMaxLoc(res)
+        # if not direct_match:
+        #     image = crop(image, self.search, copy=False)
+        # res = cv2.matchTemplate(self.image, image, cv2.TM_CCOEFF_NORMED)
+        # _, sim, _, point = cv2.minMaxLoc(res)
 
-        self._button_offset = np.array(point) + self.search[:2] - self.area[:2]
+        # self._button_offset = np.array(point) + self.search[:2] - self.area[:2]
+        sim = self.match_template_sim(image, direct_match)
         return sim > similarity
 
     def match_template_luma(self, image, similarity=0.85, direct_match=False) -> bool:
@@ -251,6 +262,9 @@ class ButtonWrapper(Resource):
                 self._matched_button = assets
                 return True
         return False
+
+    def match_template_sim(self, image, direct_match=False) -> list[float]:
+        return [b.match_template_sim(image, direct_match) for b in self.buttons]
 
     def match_template(self, image, similarity=0.85, direct_match=False) -> bool:
         for assets in self.buttons:

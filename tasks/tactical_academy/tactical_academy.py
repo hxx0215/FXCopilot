@@ -36,7 +36,7 @@ class TacticalAcademy(QuickClaimCheck):
         level_ocr = DataDigit(TACTICAL_ACADEMY_CURRENT_LEVEL)
         for image in self.loop():
             level = level_ocr.ocr_single_line(image)
-            if level != 0:
+            if level and level != 0:
                 current_level = level
                 break
         if current_level == 9:

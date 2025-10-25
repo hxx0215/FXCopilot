@@ -47,6 +47,8 @@ FX:
     Mainline:
       - Scheduler
       - MainlineSetting
+    Mail:
+      - Scheduler
 # Daily:
 #   menu: 'list'
 #   page: 'setting'

@@ -265,4 +265,8 @@ page_tactical_academy.link(HOME_BUTTON, destination=page_main)
 
 page_reward.link(TACTICAL_ACADEMY_BUTTON, destination=page_tactical_academy)
 
+page_mail=Page(MAIL_PAGE)
+page_main.link(MAIL_BUTTON, destination=page_mail)
+page_mail.link(HOME_BUTTON, destination=page_main)
+
 page_temp = Page(TACTICAL_ACADEMY_START_TRAINING)

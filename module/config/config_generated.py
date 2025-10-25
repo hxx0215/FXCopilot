@@ -85,6 +85,9 @@ class GeneratedConfig:
     # Group `MainLine`
     MainLine_Enable = True  # True, False
 
+    # Group `Mail`
+    Mail_Enable = True  # True, False
+
     # Group `MainlineSetting`
     MainlineSetting_Stage = None
 

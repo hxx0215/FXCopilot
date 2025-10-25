@@ -2090,3 +2090,17 @@ TACTICAL_ACADEMY_BOOK_TYPE_DATA=ButtonWrapper(
         button=(259,287,337,310),search=(254,287,342,310)
     )
 )
+MAIL_BUTTON = ButtonWrapper(
+    name='MAIL_BUTTON',
+    share=Button.default_init(
+        area=(15,158,48,183),color=(177,190,196),
+        file='./assets/share/mail/MAIL_BUTTON.png'
+    )
+)
+MAIL_PAGE = ButtonWrapper(
+    name='MAIL_PAGE',
+    share=Button.default_init(
+        area=(363,35,430,54),color=(129,129,129),
+        file='./assets/share/mail/MAIL_PAGE.png'
+    )
+)

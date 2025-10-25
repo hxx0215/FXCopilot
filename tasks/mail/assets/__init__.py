@@ -1,0 +1,1 @@
+from .assets_mail import *

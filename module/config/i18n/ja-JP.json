@@ -61,6 +61,10 @@
     "Mainline": {
       "name": "Task.Mainline.name",
       "help": "Task.Mainline.help"
+    },
+    "Mail": {
+      "name": "Task.Mail.name",
+      "help": "Task.Mail.help"
     }
   },
   "Scheduler": {
@@ -419,6 +423,18 @@
     "Enable": {
       "name": "MainLine.Enable.name",
       "help": "MainLine.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Mail": {
+    "_info": {
+      "name": "Mail._info.name",
+      "help": "Mail._info.help"
+    },
+    "Enable": {
+      "name": "Mail.Enable.name",
+      "help": "Mail.Enable.help",
       "True": "True",
       "False": "False"
     }

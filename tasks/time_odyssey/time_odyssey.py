@@ -16,7 +16,7 @@ class TimeOdyssey(ResourceCheck):
         if mode == 'default':
             return
 
-    def time_odyssey_map(self):
+    def time_odyssey_map(self) -> str:
         current_state = 'map'
         for _ in self.loop():
             if self.appear(TIME_ODYSSEY_MAP_BUTTON):
@@ -31,12 +31,13 @@ class TimeOdyssey(ResourceCheck):
             self.ui_click(TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START)
         else:
             self.ui_click(TIME_ODYSSEY_CONTINUE_HOSTING,TIME_ODYSSEY_HOSTING_START)
+        return current_state
 
-    def hosting_prepare(self):
+    def hosting_prepare(self, current_state: str):
         times = self.config.TimeOdysseySetting_Times
         ocr = Ocr(TIME_ODYSSEY_TIMES_DATA)
         timer = Timer(3).start()
-        if times != 'default':
+        if times != 'default' and current_state != 'continue':
             times = '默认最高' if times == 'max' else str(times)
             self.ui_click(TIME_ODYSSEY_TIMES_SELECT, TIME_ODYSSEY_TIMES_DATA)
             timer.reset()
@@ -148,8 +149,8 @@ class TimeOdyssey(ResourceCheck):
     
     def hosting(self):
         #确认当前石油
-        self.time_odyssey_map()
-        self.hosting_prepare()
+        current = self.time_odyssey_map()
+        self.hosting_prepare(current)
         finish_reason = self.start_hosting()
         self.post_hosting(finish_reason=finish_reason)
 

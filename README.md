@@ -12,6 +12,7 @@ Fork 自[StarRailCopilot](https://github.com/LmeSzinc/StarRailCopilot)
 # TODO
 - [ ] 主线挂机
 - [ ] 远征10小时1600油检查
+- [ ] 邮件检查
 - [ ] 初始代码删除，部分代码重构
 - [ ] 活动挂机精细控制(针对船捞满后打到油点自动退出)
 - [ ] 活动挂机超过X油启动？

@@ -329,7 +329,7 @@ class Digit(Ocr):
     def __init__(self, button: ButtonWrapper, lang=None, name=None):
         super().__init__(button, lang=lang, name=name)
 
-    def format_result(self, result) -> int:
+    def format_result(self, result) -> int | None:
         """
         Returns:
             int:
@@ -342,7 +342,7 @@ class Digit(Ocr):
             return int(res.group(1))
         else:
             logger.warning(f'No digit found in {result}')
-            return 0
+            return None
 
 
 class DigitCounter(Ocr):

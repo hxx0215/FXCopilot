@@ -251,6 +251,7 @@ class UI(MainPage):
             additional=None,
             retry_wait: int | float=5,
             skip_first_screenshot=True,
+            similarity = 0.85
     ):
         """
         Args:
@@ -266,16 +267,16 @@ class UI(MainPage):
 
         def process_appear(button):
             if isinstance(button, ButtonWrapper):
-                return self.appear(button)
+                return self.appear(button, similarity=similarity)
             elif callable(button):
                 return button()
             elif isinstance(button, (list, tuple)):
                 for b in button:
-                    if self.appear(b):
+                    if self.appear(b, similarity=similarity):
                         return True
                 return False
             else:
-                return self.appear(button)
+                return self.appear(button, similarity=similarity)
 
         # changed to fix count to be int
         click_timer = Timer(retry_wait, count=int(retry_wait // 0.5))

@@ -139,5 +139,13 @@
     "MainlineSetting": {
       "Stage": null
     }
+  },
+  "Mail": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Mail",
+      "ServerUpdate": "00:00"
+    }
   }
 }

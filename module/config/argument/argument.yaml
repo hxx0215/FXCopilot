@@ -431,6 +431,11 @@ MainLine:
     type: checkbox
     value: true
     option: [true, false]
+Mail:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
 MainlineSetting:
   Stage:
     type: input
