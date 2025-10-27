@@ -118,7 +118,8 @@ class QuizCenter(UI):
             elif self.appear(QUIZ_EMPTY_PAGE):
                 return True
         ocr_btn = result[0]
-        filtered_result = [x for x in result if x not in ['爱','永恒']]
+        filtered_result = [x for x in result if x.text not in ['爱','永恒']]
+        logger.info(f'filtered result {filtered_result}')
         if filtered_result:
             ocr_btn = random.choice(filtered_result)
         else:
