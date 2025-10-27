@@ -681,8 +681,7 @@ EXERCISE_REMAIN_COUNT_DATA=ButtonWrapper(
     name='EXERCISE_REMAIN_COUNT_DATA',
     share=Button.default_init(
         file='./assets/share/attack/exercise/REMAIN_COUNT_DATA.png',
-        area=(234,457,286,515),
-        color=(34,59,79)
+        area=(235,458,371,519),color=(61,83,98)
     )
 )
 CHANGE_OPPONENT=ButtonWrapper(
@@ -2103,5 +2102,48 @@ MAIL_PAGE = ButtonWrapper(
     share=Button.default_init(
         area=(363,35,430,54),color=(129,129,129),
         file='./assets/share/mail/MAIL_PAGE.png'
+    )
+)
+SEASON_PASS_BUTTON = ButtonWrapper(
+    name='SEASON_PASS_BUTTON',
+    share=Button.default_init(
+        area=(1048,421,1099,470),color=(187,188,219),
+        file='./assets/share/pass/SEASON_PASS_BUTTON.png',
+        button=(958,426,1119,503)
+    )
+)
+SEASON_PASS_PAGE = ButtonWrapper(
+    name='SEASON_PASS_PAGE',
+    share=Button.default_init(
+        area=(247,112,321,131),color=(131,131,131),
+        file='./assets/share/pass/SEASON_PASS_PAGE.png'
+    )
+)
+SEASON_PASS_DAILY1=ButtonWrapper(
+    name='SEASON_PASS_DAILY1',
+    share=Button.default_init(
+        area=(92,249,332,274),color=(212,212,212),
+        file='./assets/share/pass/SEASON_PASS_DAILY1.png'
+    )
+)
+SEASON_PASS_DAILY2=ButtonWrapper(
+    name='SEASON_PASS_DAILY2',
+    share=Button.default_init(
+        area=(92,406,332,430),color=(210,210,210),
+        file='./assets/share/pass/SEASON_PASS_DAILY2.png'
+    )
+)
+SEASON_PASS_DAILY3=ButtonWrapper(
+    name='SEASON_PASS_DAILY3',
+    share=Button.default_init(
+        area=(92,560,332,584),color=(208,208,208),
+        file='./assets/share/pass/SEASON_PASS_DAILY3.png'
+    )
+)
+SEASON_PASS_REMAIN=ButtonWrapper(
+    name='SEASON_PASS_REMAIN',
+    share=Button.default_init(
+        area=(1059,120,1197,144),color=(63,63,63),
+        file='./assets/share/pass/SEASON_PASS_REMAIN.png'
     )
 )
