@@ -11,9 +11,7 @@ VALID_SERVER = {
     'CN-Bilibili': 'com.baitian.fx.bt.bilibili'
 }
 VALID_PACKAGE = set(list(VALID_SERVER.values()))
-VALID_CLOUD_SERVER = {
-    'CN-Official': 'com.miHoYo.cloudgames.hkrpg',
-}
+VALID_CLOUD_SERVER = {}
 VALID_CLOUD_PACKAGE = set(list(VALID_CLOUD_SERVER.values()))
 
 DICT_PACKAGE_TO_ACTIVITY = {

@@ -1199,7 +1199,7 @@ class Connection(ConnectionAttr):
             list[str]: List of package names
         """
         packages = self.list_package(show_log=show_log)
-        packages = [p for p in packages if p in server_.VALID_PACKAGE or p in server_.VALID_CLOUD_PACKAGE]
+        packages = [p for p in packages if p in server_.VALID_PACKAGE]
         return packages
 
     def detect_package(self, set_config=True):
@@ -1230,34 +1230,17 @@ class Connection(ConnectionAttr):
             if set_config:
                 with self.config.multi_set():
                     self.config.Emulator_PackageName = server_.to_server(self.package)
-                    if self.package in server_.VALID_CLOUD_PACKAGE:
-                        if self.config.Emulator_GameClient != 'cloud_android':
-                            self.config.Emulator_GameClient = 'cloud_android'
-                    else:
-                        if self.config.Emulator_GameClient != 'android':
-                            self.config.Emulator_GameClient = 'android'
-            # Set server
-            # logger.info('Server changed, release resources')
-            # set_server(self.package)
+                    self.config.Emulator_GameClient = 'android'
             return
         else:
-            if self.config.is_cloud_game:
-                packages = [p for p in packages if p in server_.VALID_CLOUD_PACKAGE]
-                if len(packages) == 1:
-                    logger.info('Auto package detection found only one package, using it')
-                    self.package = packages[0]
-                    if set_config:
-                        self.config.Emulator_PackageName = server_.to_server(self.package)
-                    return
-            else:
-                packages = [p for p in packages if p in server_.VALID_PACKAGE]
-                if len(packages) == 1:
-                    logger.info('Auto package detection found only one package, using it')
-                    self.package = packages[0]
-                    if set_config:
-                        self.config.Emulator_PackageName = server_.to_server(self.package)
-                    return
+            packages = [p for p in packages if p in server_.VALID_PACKAGE]
+            if len(packages) == 1:
+                logger.info('Auto package detection found only one package, using it')
+                self.package = packages[0]
+                if set_config:
+                    self.config.Emulator_PackageName = server_.to_server(self.package)
+                return
             logger.critical(
-                f'Multiple Star Rail packages found, auto package detection cannot decide which to choose, '
+                f'Multiple FuXiao packages found, auto package detection cannot decide which to choose, '
                 'please copy one of the available devices listed above to Alas.Emulator.PackageName')
             raise RequestHumanTakeover
