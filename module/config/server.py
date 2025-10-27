@@ -19,6 +19,7 @@ DICT_PACKAGE_TO_ACTIVITY = {
     'com.miHoYo.hkrpg.bilibili': 'com.mihoyo.combosdk.ComboSDKActivity',
     'com.HoYoverse.hkrpgoversea': 'com.mihoyo.combosdk.ComboSDKActivity',
     'com.miHoYo.cloudgames.hkrpg': 'com.mihoyo.cloudgame.ui.SplashActivity',
+    'com.nineyou.fuxiao': 'com.you9.gamesdk.activity.JyPrivacyPolicyActivity'
 }
 
 

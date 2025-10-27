@@ -1810,7 +1810,8 @@ BATTLE_PAGE=ButtonWrapper(
     name='BATTLE_PAGE',
     share=Button.default_init(
         area=(1041,228,1069,255),color=(95,57,69),
-        file='./assets/share/battle/BATTLE_PAGE.png'
+        file='./assets/share/battle/BATTLE_PAGE.png',
+        button=(389,230,963,442) # just for reset device when run hosting
     )
 )
 TACTICAL_ACADEMY_TIME_DATA=ButtonWrapper(

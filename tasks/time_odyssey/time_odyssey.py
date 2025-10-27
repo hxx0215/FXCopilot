@@ -8,6 +8,7 @@ from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_M
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,OcrResultButton,DigitCounter
 from module.base.timer import Timer
+import random
 
 class TimeOdyssey(ResourceCheck):
     def setup_mode(self):
@@ -58,8 +59,14 @@ class TimeOdyssey(ResourceCheck):
                 break
         self.device.screenshot_interval_set(1.0)
         finish_reason = ''
+        cnt = 0
+        max_cnt = random.randrange(10, 20)
         for image in self.loop():
             if self.appear(STAGE_HOSTING):
+                cnt += 1
+                if cnt > max_cnt and self.appear_then_click(BATTLE_PAGE, silent = True):
+                    cnt = 0
+                    max_cnt = random.randrange(10, 20)
                 self.device.stuck_timer.reset()
             if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
                 finish_reason = 'depot_full'
