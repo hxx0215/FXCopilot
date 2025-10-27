@@ -3,16 +3,18 @@ from module.base.button import Button, ButtonWrapper,ItemWrapper
 
 MAIL_WILL_EXPIRED_SELECTED=ButtonWrapper(
     name='MAIL_WILL_EXPIRED_SELECTED',
-    share=Button.default_init(
+    share=Button(
         file='./assets/share/mail/MAIL_WILL_EXPIRED_SELECTED.png',
-        area=(220,116,237,130),color=(129,165,171)
+        area=(220,116,237,130),color=(129,165,171),
+        search=(215,111,242,135),button=(220,116,237,130)
     )
 )
 MAIL_WILL_EXPIRED_UNSELECTED=ButtonWrapper(
     name='MAIL_WILL_EXPIRED_UNSELECTED',
-    share=Button.default_init(
+    share=Button(
         file='./assets/share/mail/MAIL_WILL_EXPIRED_UNSELECTED.png',
-        area=(220,116,237,130),color=(129,165,171)
+        area=(220,116,237,130),color=(129,165,171),
+        search=(215,111,242,135),button=(220,116,237,130)
     )
 )
 MAIL_REMAIN_DAYS=ButtonWrapper(

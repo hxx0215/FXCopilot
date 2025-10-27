@@ -46,6 +46,7 @@ class Mail(UI):
 
     def run(self):
         self.ui_ensure(page_mail)
+        self.device.screenshot()
         self.ui_click(MAIL_WILL_EXPIRED_UNSELECTED, MAIL_WILL_EXPIRED_SELECTED, similarity=0.98)
         while 1:
             days = self.check_current_mail_remain_days()
@@ -61,5 +62,6 @@ if __name__ == '__main__':
     path = os.path.dirname(__file__)
     image_path = os.path.join(path,"test.png")
     task.image_file=image_path
-    print(MAIL_WILL_EXPIRED_SELECTED.match_template_sim(task.device.image))
-    print(MAIL_WILL_EXPIRED_UNSELECTED.match_template_sim(task.device.image))
+    b = task.appear(MAIL_WILL_EXPIRED_UNSELECTED)
+    print(b)
+    print(MAIL_WILL_EXPIRED_UNSELECTED.button)
