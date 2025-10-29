@@ -2147,3 +2147,17 @@ SEASON_PASS_REMAIN=ButtonWrapper(
         file='./assets/share/pass/SEASON_PASS_REMAIN.png'
     )
 )
+SEASON_PASS_DAILY_TASK=ButtonWrapper(
+    name='SEASON_PASS_DAILY_TASK',
+    share=Button.default_init(
+        area=(42,156,171,189),color=(209,201,157),
+        file='./assets/share/pass/SEASON_PASS_DAILY_TASK.png'
+    )
+)
+SEASON_PASS_SWITCH_TASK=ButtonWrapper(
+    name='SEASON_PASS_SWITCH_TASK',
+    share=Button.default_init(
+        area=(920,109,964,132),color=(105,105,105),
+        file='./assets/share/pass/SEANSON_PASS_SWITCH_TASK.png'
+    )
+)

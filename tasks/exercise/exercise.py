@@ -5,7 +5,7 @@ from module.exception import GameStuckError, RequestHumanTakeover
 from tasks.base.ui import UI
 from module.logger import logger
 from tasks.base.page import page_main_line, page_exercise,page_season_pass
-from tasks.base.assets.assets_base_page import EXERCISE_PAGE,CONTINUOUS_CHALLENGE_BUTTON,CONTINUOUS_CHALLENGE_ON_BUTTON,EXERCISE_ALL_BUTTON,EXERCISE_ALL_CHECKBOX,EXERCISE_START_HOSTING,EXERCISE_REMAIN_COUNT_DATA,CHANGE_OPPONENT,CLICK_TO_CONTINUE, SEASON_PASS_DAILY1,SEASON_PASS_DAILY2,SEASON_PASS_DAILY3,SEASON_PASS_REMAIN
+from tasks.base.assets.assets_base_page import EXERCISE_PAGE,CONTINUOUS_CHALLENGE_BUTTON,CONTINUOUS_CHALLENGE_ON_BUTTON,EXERCISE_ALL_BUTTON,EXERCISE_ALL_CHECKBOX,EXERCISE_START_HOSTING,EXERCISE_REMAIN_COUNT_DATA,CHANGE_OPPONENT,CLICK_TO_CONTINUE, SEASON_PASS_DAILY1,SEASON_PASS_DAILY2,SEASON_PASS_DAILY3,SEASON_PASS_REMAIN,SEASON_PASS_DAILY_TASK,SEASON_PASS_SWITCH_TASK
 from module.ocr.ocr import Ocr,DigitCounter
 from module.base.timer import Timer
 
@@ -70,6 +70,7 @@ class Exercise(UI):
 
     def check_season_pass(self) -> int:
         self.ui_ensure(page_season_pass)
+        self.ui_click(SEASON_PASS_SWITCH_TASK,SEASON_PASS_DAILY_TASK)
         ls = [SEASON_PASS_DAILY1,SEASON_PASS_DAILY2,SEASON_PASS_DAILY3]
         refresh = [self.check_should_refresh(item) for item in ls]
         if any(refresh):
