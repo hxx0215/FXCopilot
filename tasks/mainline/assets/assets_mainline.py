@@ -15,3 +15,10 @@ MAINLINE_NORMAL_INACTIVE=ButtonWrapper(
         file='./assets/share/attack/mainline/MAINLINE_NORMAL_INACTIVE.png'
     )
 )
+MAINLINE_CHAPTER=ButtonWrapper(
+    name='MAINLINE_CHAPTER',
+    share=Button.default_init(
+        area=(364,23,463,61),color=(177,177,177),
+        file='./assets/share/attack/mainline/MAINLINE_CHATPER'
+    )
+)

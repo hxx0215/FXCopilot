@@ -89,7 +89,7 @@ class GeneratedConfig:
     Mail_Enable = True  # True, False
 
     # Group `MainlineSetting`
-    MainlineSetting_Stage = None
+    MainlineSetting_Stage = '5-10'
 
     # Group `FrequencySetting`
     FrequencySetting_Frequence = 'spring'  # spring, longest
