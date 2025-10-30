@@ -133,6 +133,7 @@ class Button(Resource):
 
         # self._button_offset = np.array(point) + self.search[:2] - self.area[:2]
         sim = self.match_template_sim(image, direct_match)
+        print(sim)
         return sim > similarity
 
     def match_template_luma(self, image, similarity=0.85, direct_match=False) -> bool:

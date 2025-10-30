@@ -5,7 +5,8 @@ from module.exception import GameStuckError, RequestHumanTakeover
 from tasks.base.ui import UI
 from module.logger import logger
 from tasks.base.page import page_main_line, page_exercise,page_season_pass
-from tasks.base.assets.assets_base_page import EXERCISE_PAGE,CONTINUOUS_CHALLENGE_BUTTON,CONTINUOUS_CHALLENGE_ON_BUTTON,EXERCISE_ALL_BUTTON,EXERCISE_ALL_CHECKBOX,EXERCISE_START_HOSTING,EXERCISE_REMAIN_COUNT_DATA,CHANGE_OPPONENT,CLICK_TO_CONTINUE, SEASON_PASS_DAILY1,SEASON_PASS_DAILY2,SEASON_PASS_DAILY3,SEASON_PASS_REMAIN,SEASON_PASS_DAILY_TASK,SEASON_PASS_SWITCH_TASK
+from tasks.base.assets.assets_base_page import (EXERCISE_PAGE,CONTINUOUS_CHALLENGE_BUTTON,CONTINUOUS_CHALLENGE_CANCEL,EXERCISE_ALL_BUTTON,EXERCISE_ALL_CHECKBOX,EXERCISE_START_HOSTING,EXERCISE_REMAIN_COUNT_DATA,CHANGE_OPPONENT,CLICK_TO_CONTINUE, SEASON_PASS_DAILY1,SEASON_PASS_DAILY2,SEASON_PASS_DAILY3,SEASON_PASS_REMAIN,SEASON_PASS_DAILY_TASK,SEASON_PASS_SWITCH_TASK,
+                                                SEASON_PASS_DAILY1_REFRESH,SEASON_PASS_DAILY2_REFRESH,SEASON_PASS_DAILY3_REFRESH, SEASON_PASS_TASK_REFRESH)
 from module.ocr.ocr import Ocr,DigitCounter
 from module.base.timer import Timer
 
@@ -64,18 +65,18 @@ class Exercise(UI):
     def check_should_refresh(self, btn: ButtonWrapper):
         ocr = Ocr(btn)
         for image in self.loop():
-            r = ocr.ocr_single_line(image)
+            r = ''.join([item.ocr_text for item in ocr.detect_and_ocr(image)])
             if r!= '':
-                return '演习' in r and r != '于演习出战'
+                return '演习' in r and r.strip() != '于演习出战'
 
     def check_season_pass(self) -> int:
         self.ui_ensure(page_season_pass)
         self.ui_click(SEASON_PASS_SWITCH_TASK,SEASON_PASS_DAILY_TASK)
-        ls = [SEASON_PASS_DAILY1,SEASON_PASS_DAILY2,SEASON_PASS_DAILY3]
-        refresh = [self.check_should_refresh(item) for item in ls]
-        if any(refresh):
-            logger.info('季票有任务需要手动刷新')
-            raise RequestHumanTakeover
+        ls = [(SEASON_PASS_DAILY1, SEASON_PASS_DAILY1_REFRESH),(SEASON_PASS_DAILY2, SEASON_PASS_DAILY2_REFRESH),(SEASON_PASS_DAILY3,SEASON_PASS_DAILY3_REFRESH)]
+        for (ocr,refresh_btn) in ls:
+            while self.check_should_refresh(ocr):
+                self.ui_click(SEASON_PASS_TASK_REFRESH, refresh_btn)
+                self.ui_click(refresh_btn, SEASON_PASS_TASK_REFRESH)
         ocr = Ocr(SEASON_PASS_REMAIN)
         for image in self.loop():
             remain = ocr.ocr_single_line(image)
@@ -99,7 +100,7 @@ class Exercise(UI):
         #至少测一次是否还能进行演习
         remain_count = self._get_remain_count()
         while remain_count > keep_time:
-            self.ui_click(CONTINUOUS_CHALLENGE_BUTTON, CONTINUOUS_CHALLENGE_ON_BUTTON)
+            self.ui_click(CONTINUOUS_CHALLENGE_BUTTON, CONTINUOUS_CHALLENGE_CANCEL)
             self.ui_click(EXERCISE_ALL_BUTTON, EXERCISE_ALL_CHECKBOX)
             self.start_hosting()
             remain_count = self._get_remain_count()
@@ -116,7 +117,7 @@ if __name__ == '__main__':
     task = Exercise('src', task='Exercise')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test2.png")
+    image_path = os.path.join(path,"test6.png")
     task.image_file=image_path
-    b = task.appear(CHANGE_OPPONENT)
+    b = task.appear(CONTINUOUS_CHALLENGE_BUTTON)
     print(b)

@@ -156,7 +156,7 @@ if __name__ == '__main__':
     task = Competition('src', task='Exercise')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test","test4.png")
+    image_path = os.path.join(path,"test","test7.png")
     task.image_file=image_path
     b = task.appear(ARENA_SMALL_CLASS_SELECTED)
     print(b)

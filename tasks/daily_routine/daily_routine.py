@@ -178,8 +178,8 @@ if __name__ == '__main__':
     task = DailyRoutine('src', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test7.png")
+    image_path = os.path.join(path,"test9.png")
     task.image_file=image_path
-    b = task.appear(GET_REWARD)
+    b = task.appear(DAILY_BATTLE_FIELD_BUTTON)
     print(b)
     

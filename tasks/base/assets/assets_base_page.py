@@ -639,18 +639,32 @@ EXERCISE_BUTTON=ButtonWrapper(
 
 CONTINUOUS_CHALLENGE_BUTTON=ButtonWrapper(
     name='CONTINUOUS_CHALLENGE_BUTTON',
-    share=Button.default_init(
+    share=[Button.default_init(
+        file='./assets/share/attack/exercise/CONTINUOUS_CHALLENGE_LEGACY.png',
+        area=(431,466,578,500),
+        color=(0,137,227)
+    ),
+    Button.default_init(
+        area=(481,467,575,496),color=(77,122,163),
         file='./assets/share/attack/exercise/CONTINUOUS_CHALLENGE.png',
-        area=(431,466,578,500),
-        color=(0,137,227)
+        button=(430,462,582,502)
     )
+    ]
 )
-CONTINUOUS_CHALLENGE_ON_BUTTON=ButtonWrapper(
-    name='CONTINUOUS_CHALLENGE_ON_BUTTON',
+# CONTINUOUS_CHALLENGE_ON_BUTTON=ButtonWrapper(
+#     name='CONTINUOUS_CHALLENGE_ON_BUTTON',
+#     share=[Button.default_init(
+#         file='./assets/share/attack/exercise/CONTINUOUS_CHALLENGE_ON_LEGACY.png',
+#         area=(431,466,578,500),
+#         color=(0,137,227)
+#     )]
+# )
+CONTINUOUS_CHALLENGE_CANCEL=ButtonWrapper(
+    name='CONTINUOUS_CHALLENGE_CANCEL',
     share=Button.default_init(
-        file='./assets/share/attack/exercise/CONTINUOUS_CHALLENGE_ON.png',
-        area=(431,466,578,500),
-        color=(0,137,227)
+        area=(1089,680,1140,705),color=(138,73,73),
+        file='./assets/share/attack/exercise/CONTINUOUS_CHALLENGE_CANCEL.png',
+        button=(1002,673,1155,711)
     )
 )
 EXERCISE_ALL_BUTTON=ButtonWrapper(
@@ -671,11 +685,15 @@ EXERCISE_ALL_CHECKBOX=ButtonWrapper(
 )
 EXERCISE_START_HOSTING=ButtonWrapper(
     name='EXERCISE_START_HOSTING',
-    share=Button.default_init(
-        file='./assets/share/attack/exercise/EXERCISE_START_HOSTING.png',
+    share=[Button.default_init(
+        file='./assets/share/attack/exercise/EXERCISE_START_HOSTING_LEGACY.png',
         area=(833,676,980,708),
         color=(96,249,181)
-    )
+    ),Button.default_init(
+        area=(880,679,977,703),color=(77,144,120),
+        file='./assets/share/attack/exercise/EXERCISE_START_HOSTING.png',
+        button=(829,673,983,711)
+    )]
 )
 EXERCISE_REMAIN_COUNT_DATA=ButtonWrapper(
     name='EXERCISE_REMAIN_COUNT_DATA',
@@ -686,11 +704,16 @@ EXERCISE_REMAIN_COUNT_DATA=ButtonWrapper(
 )
 CHANGE_OPPONENT=ButtonWrapper(
     name='CHANGE_OPPONENT',
-    share=Button.default_init(
-        file='./assets/share/attack/exercise/CHANGE_OPPONENT.png',
+    share=[Button.default_init(
+        file='./assets/share/attack/exercise/CHANGE_OPPONENT_LEGACY.png',
         area=(618,466,756,501),
         color=(105,211,211)
+    ),
+    Button.default_init(
+        area=(664,469,756,495),color=(79,146,121),
+        file='./assets/share/attack/exercise/CHANGE_OPPONENT.png'
     )
+    ]
 )
 NAVAL_PORT_PAGE=ButtonWrapper(
     name='NAVAL_PORT_PAGE',
@@ -899,45 +922,63 @@ ARENA_OPPOSITE_COURSE=ButtonWrapper(
 )
 ARENA_MIDDLE_CLASS=ButtonWrapper(
     name='ARENA_MIDDLE_CLASS',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(1184,208,1280,295),color=(64,77,79),
+        file='./assets/share/attack/competition/ARENA_MIDDLE_CLASS_LEGACY.png'
+    ),Button.default_init(
+        area=(1183,188,1279,258),color=(60,73,78),
         file='./assets/share/attack/competition/ARENA_MIDDLE_CLASS.png'
-    )
+    )]
 )
 ARENA_LARGE_CLASS=ButtonWrapper(
     name='ARENA_LARGE_CLASS',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(1184,315,1280,402),color=(68,81,79),
+        file='./assets/share/attack/competition/ARENA_LARGE_CLASS_LEGACY.png'
+    ),Button.default_init(
+        area=(1184,281,1280,351),color=(61,73,74),
         file='./assets/share/attack/competition/ARENA_LARGE_CLASS.png'
-    )
+    )]
 )
 ARENA_SMALL_CLASS=ButtonWrapper(
     name='ARENA_SMALL_CLASS',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(1184,101,1280,182),color=(55,68,75),
+        file='./assets/share/attack/competition/ARENA_SMALL_CLASS_LEGACY.png'
+    ),Button.default_init(
+        area=(1184,95,1280,164),color=(51,63,70),
         file='./assets/share/attack/competition/ARENA_SMALL_CLASS.png'
-    )
+    )]
 )
 ARENA_MIDDLE_CLASS_SELECTED=ButtonWrapper(
     name='ARENA_MIDDLE_CLASS_SELECTED',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(1160,186,1280,287),color=(98,123,128),
+        file='./assets/share/attack/competition/ARENA_MIDDLE_CLASS_SELECTED_LEGACY.png'
+    ),Button.default_init(
+        area=(1160,170,1280,271),color=(84,105,110),
         file='./assets/share/attack/competition/ARENA_MIDDLE_CLASS_SELECTED.png'
-    )
+    )]
 )
 ARENA_SMALL_CLASS_SELECTED=ButtonWrapper(
     name='ARENA_SMALL_CLASS_SELECTED',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(1160,78,1280,178),color=(89,114,120),
+        file='./assets/share/attack/competition/ARENA_SMALL_CLASS_SELECTED_LEGACY.png'
+    ),Button.default_init(
+        area=(1160,78,1280,178),color=(76,96,103),
         file='./assets/share/attack/competition/ARENA_SMALL_CLASS_SELECTED.png'
-    )
+    )]
 )
 ARENA_LARGE_CLASS_SELECTED=ButtonWrapper(
     name='ARENA_LARGE_CLASS_SELECTED',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(1160,295,1280,396),color=(99,124,126),
+        file='./assets/share/attack/competition/ARENA_LARGE_CLASS_SELECTED_LEGACY.png'
+    ),Button.default_init(
+        area=(1160,260,1280,361),color=(84,105,107),
         file='./assets/share/attack/competition/ARENA_LARGE_CLASS_SELECTED.png'
-    )
+    )]
 )
 ARENA_ADVANCE_POPUP=ButtonWrapper(
     name='ARENA_ADVANCE_POPUP',
@@ -1108,18 +1149,27 @@ DAILY_ARM_TRANSPORT_START2=ButtonWrapper(
 )
 DAILY_BATTLE_FIELD_BUTTON=ButtonWrapper(
     name='DAILY_BATTLE_FIELD_BUTTON',
-    share=Button.default_init(
+    share=[Button.default_init(
+        file='./assets/share/attack/daily_routine/BATTLE_FIELD_BUTTON_LEGACY.png',
+        area=(1195,567,1227,633),color=(202,151,113),
+    ),Button.default_init(
         file='./assets/share/attack/daily_routine/BATTLE_FIELD_BUTTON.png',
-        area=(1195,567,1227,633),color=(202,151,113)
+        area=(1195,567,1227,633),color=(216,165,127)
     )
+    ]
 )
 DAILY_BATTLE_FIELD_ACTIVE=ButtonWrapper(
     name='DAILY_BATTLE_FIELD_ACTIVE',
-    share=Button(
-        file='./assets/share/attack/daily_routine/BATTLE_FIELD_ACTIVE.png',
+    share=[Button(
+        file='./assets/share/attack/daily_routine/BATTLE_FIELD_ACTIVE_LEGACY.png',
         area=(1185,537,1226,648),color=(117,98,73),
         button=(1185,537,1226,648),search=(1180,532,1231,653)
+    ),Button(
+        file='./assets/share/attack/daily_routine/BATTLE_FIELD_ACTIVE.png',
+        area=(1185,537,1226,648),color=(136,119,94),
+        button=(1185,537,1226,648),search=(1180,532,1231,653)
     )
+    ]
 )
 DAILY_BATTLE_FIELD_START=ButtonWrapper(
     name='DAILY_BATTLE_FIELD_START',
@@ -2122,22 +2172,42 @@ SEASON_PASS_PAGE = ButtonWrapper(
 SEASON_PASS_DAILY1=ButtonWrapper(
     name='SEASON_PASS_DAILY1',
     share=Button.default_init(
-        area=(92,249,332,274),color=(212,212,212),
+        area=(95,249,280,331),color=(211,211,211),
         file='./assets/share/pass/SEASON_PASS_DAILY1.png'
+    )
+)
+SEASON_PASS_DAILY1_REFRESH=ButtonWrapper(
+    name='SEASON_PASS_DAILY1_REFRESH',
+    share=Button.default_init(
+        area=(313,244,345,263),color=(102,121,138),
+        file='./assets/share/pass/SEASON_PASS_DAILY1_REFRESH.png'
     )
 )
 SEASON_PASS_DAILY2=ButtonWrapper(
     name='SEASON_PASS_DAILY2',
     share=Button.default_init(
-        area=(92,406,332,430),color=(210,210,210),
+        area=(95,404,280,485),color=(222,222,222),
         file='./assets/share/pass/SEASON_PASS_DAILY2.png'
+    )
+)
+SEASON_PASS_DAILY2_REFRESH=ButtonWrapper(
+    name='SEASON_PASS_DAILY2_REFRESH',
+    share=Button.default_init(
+        area=(313,400,345,419),color=(104,123,140),
+        file='./assets/share/pass/SEASON_PASS_DAILY2_REFRESH.png'
     )
 )
 SEASON_PASS_DAILY3=ButtonWrapper(
     name='SEASON_PASS_DAILY3',
     share=Button.default_init(
-        area=(92,560,332,584),color=(208,208,208),
+        area=(95,560,280,641),color=(227,227,227),
         file='./assets/share/pass/SEASON_PASS_DAILY3.png'
+    )
+)
+SEASON_PASS_DAILY3_REFRESH=ButtonWrapper(
+    share=Button.default_init(
+        area=(313,554,345,575),color=(102,120,138),
+        file='./assets/share/pass/SEASON_PASS_DAILY3_REFRESH.png'
     )
 )
 SEASON_PASS_REMAIN=ButtonWrapper(
@@ -2159,5 +2229,12 @@ SEASON_PASS_SWITCH_TASK=ButtonWrapper(
     share=Button.default_init(
         area=(920,109,964,132),color=(105,105,105),
         file='./assets/share/pass/SEANSON_PASS_SWITCH_TASK.png'
+    )
+)
+SEASON_PASS_TASK_REFRESH=ButtonWrapper(
+    name='SEASON_PASS_TASK_REFRESH',
+    share=Button.default_init(
+        area=(494,101,589,122),color=(88,168,168),
+        file='./assets/share/pass/SEASON_PASS_TASK_REFRESH.png'
     )
 )
