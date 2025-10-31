@@ -22,3 +22,45 @@ MAINLINE_CHAPTER=ButtonWrapper(
         file='./assets/share/attack/mainline/MAINLINE_CHATPER'
     )
 )
+MAINLINE_PREV_CHAPTER=ButtonWrapper(
+    name='MAINLINE_PREV_CHAPTER',
+    share=Button.default_init(
+        area=(245,334,263,387),color=(72,111,131),
+        file='./assets/share/attack/mainline/MAINLINE_PREV_CHAPTER.png'
+    )
+)
+MAINLINE_NEXT_CHAPTER=ButtonWrapper(
+    name='MAINLINE_NEXT_CHAPTER',
+    share=Button.default_init(
+        area=(1196,336,1214,389),color=(133,174,189),
+        file='./assets/share/attack/mainline/MAINLINE_NEXT_CHAPTER.png'
+    )
+)
+MAINLINE_STAGE_START=ButtonWrapper(
+    name='MAINLINE_STAGE_START',
+    share=Button.default_init(
+        area=(464,179,496,213),color=(46,106,122),
+        file='./assets/share/attack/mainline/MAINLINE_STAGE_START.png'
+    )
+)
+MAINLINE_STAGE_NAME=ButtonWrapper(
+    name='MAINLINE_STAGE_NAME',
+    share=Button.default_init(
+        area=(140,157,534,217),color=(81,81,81),
+        file='./assets/share/attack/mainline/MAINLINE_STAGE_NAME.png'
+    )
+)
+MAINLINE_HOSTING=ButtonWrapper(
+    name='MAINLINE_HOSTING',
+    share=Button.default_init(
+        area=(790,563,851,622),color=(35,116,149),
+        file='./assets/share/attack/mainline/MAINLINE_HOSTING.png'
+    )
+)
+MAINLINE_START_HOSTING=ButtonWrapper(
+    name='MAINLINE_START_HOSTING',
+    share=Button.default_init(
+        area=(1039,603,1140,634),color=(147,213,214),
+        file='./assets/share/attack/mainline/MAINLINE_START_HOSTING.png'
+    )
+)

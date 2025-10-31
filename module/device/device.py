@@ -259,7 +259,7 @@ class Device(Screenshot, Control, AppControl):
         Raises:
             GameTooManyClickError:
         """
-        excluded = ['BATTLE_PAGE']
+        excluded = ['BATTLE_PAGE','MAINLINE_PREV_CHAPTER','MAINLINE_NEXT_CHAPTER']
         first15 = itertools.islice(self.click_record, 0, 15)
         filtered = [item for item in first15 if item not in excluded]
         count = collections.Counter(filtered).most_common(2)
