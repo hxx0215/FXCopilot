@@ -1,7 +1,10 @@
 from tasks.base.ui import UI
 from tasks.base.page import page_main_line
 from .assets import *
-from tasks.base.assets.assets_base_page import NEXT_STAGE_BUTTON,PREVIOUS_STAGE_BUTTON,STAGE_HOSTING,STOP_HOSTING,BATTLE_PAGE
+from tasks.base.assets.assets_base_page import (NEXT_STAGE_BUTTON,PREVIOUS_STAGE_BUTTON,STAGE_HOSTING,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_DECOMMISIONING,STAGE_HOSTING_CLOSE,
+                                                DECOMMISSIONING_PAGE,DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,
+                                                STAGE_HOSTING_GET_SSR)
+from tasks.base.assets.assets_base_popup import POPUP_CANCEL,POPUP_CONFIRM
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr
 from module.base.timer import Timer
@@ -108,6 +111,13 @@ class Mainline(UI):
                     cnt = 0
                     max_cnt = random.randrange(10, 20)
                 self.device.stuck_timer.reset()
+            if self.appear(MAINLINE_STOP_HOSTING_FUEL):
+                if self.handle_popup_cancel():
+                    finish_reason = 'insufficient_fuel'
+                    break
+            if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
+                finish_reason = 'depot_full'
+                break
             priority_exist = self.check_if_priorty_exist()
             if priority_exist:
                 finish_reason = 'task_interrupt'
@@ -115,12 +125,50 @@ class Mainline(UI):
         return finish_reason
     def post_hosting(self, finish_reason):
         self.device.screenshot_interval_set()
-        if finish_reason == 'task_interrupt':
+        decommission_times = 0
+        if finish_reason == 'depot_full':
+            self.ui_click(STAGE_HOSTING_CLOSE, DECOMMISSIONING_PAGE)
+            if self.config.TimeOdysseySetting_AutoDecommissioning:
+                current = -1
+                while current != 0:
+                    self.ui_goto(page_decommissioning_batch)
+                    #make sure choose right rarity
+                    self.ui_click(DECOMMISSIONING_BATCH_CONFIRM, DECOMMISSIONING_PAGE)
+                    counter = DigitCounter(DECOMMISSIONING_SELECTED_DATA)
+                    image = self.device.screenshot()
+                    (current,remain,total) = counter.ocr_single_line(image)
+                    if current == 0:
+                        break
+                    decommission_times+=1
+                    self.ui_click(DECOMMISSIONING_CONFIRM, GET_ITEMS)
+                    timer=Timer(3).start()
+                    for _ in self.loop():
+                        if self.appear_then_click(GET_ITEMS):
+                            continue
+                        if (not self.appear(GET_ITEMS)) and timer.reached():
+                            break
+                self.ui_goto_main()
+            #FIXME: not TimeOdysseySetting_EnableContinuous
+            if decommission_times != 0 and self.config.TimeOdysseySetting_EnableContinuous:
+                #等5分钟让调度器自己启动, TODO: 如何设定下次启动时间
+                self.config.task_delay(minute=5)
+            else:
+                #如果一次批量退役也没有表示仓库里没有格子放白色和绿色的舰灵了只能停下来了
+                self.config.cross_set('Mainline.Scheduler.Enable',False)
+        elif finish_reason == 'insufficient_fuel':
+            self.ui_click(MAINLINE_FINISH_HOSTING_FUEL_POPUP, STAGE_HOSTING_GET_SSR)
+            self.ui_click(STAGE_HOSTING_CLOSE, MAINLINE_STAGE_FINISH)
+            self.ui_click(MAINLINE_STAGE_FINISH, GET_ITEMS)
+            self.ui_click(GET_ITEMS, MAINLINE_STAGE_FINISH_EXIT)
+            for _ in self.loop():
+                if self.appear_then_click(MAINLINE_STAGE_FINISH_EXIT):
+                    break
+            self.config.cross_set('Mainline.Scheduler.Enable',False)
+        elif finish_reason == 'task_interrupt':
             self.ui_click(STAGE_HOSTING,STOP_HOSTING)
             self.ui_click(STOP_HOSTING, BATTLE_PAGE)
             self.ui_goto_main(extra_default=False)
-            self.config.cross_set('Mainline.Scheduler.Enable',False)
-
+            self.config.task_delay(minute=5)
 
     def run(self):
         (validate,chapter,stage) = self.validate_stage_setting()
@@ -133,8 +181,6 @@ class Mainline(UI):
             self.post_hosting(finish_reason)
         else:
             logger.warning('the stage setting is not right please make sure it is x-x')
-        # self.device.sleep(60)
-        # self.config.task_delay(minute=1)
 if __name__ == '__main__':
     task = Mainline('fxc', task='QuizCenter')
     import os

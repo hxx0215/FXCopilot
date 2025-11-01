@@ -1722,13 +1722,23 @@ STAGE_HOSTING_CLOSE=ButtonWrapper(
         file='./assets/share/base/main_page/STAGE_HOSTING_CLOSE.png'
     )
 )
+STAGE_HOSTING_GET_SSR=ButtonWrapper(
+    name='STAGE_HOSTING_GET_SSR',
+    share=Button.default_init(
+        area=(533,286,613,312),color=(213,203,188),
+        file='./assets/share/base/main_page/STAGE_HOSTING_GET_SSR.png'
+    )
+)
 DECOMMISSIONING_PAGE=ButtonWrapper(
     name='DECOMMISSIONING_PAGE',
-    share=Button.default_init(
+    share=[Button.default_init(
         #area=(36,495,204,541),color=(209,213,213),
         area=(140,207,222,535),color=(85,85,86),
+        file='./assets/share/depot/DECOMMISSIONING_PAGE_LEGACY.png'
+    ),Button.default_init(
+        area=(136,117,206,621),color=(98,101,103),
         file='./assets/share/depot/DECOMMISSIONING_PAGE.png'
-    )
+    )]
 )
 STAGE_HOSTING_FINISH_FUEL=ButtonWrapper(
     name='STAGE_HOSTING_FINISH_FUEL',

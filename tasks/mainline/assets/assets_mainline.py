@@ -64,3 +64,34 @@ MAINLINE_START_HOSTING=ButtonWrapper(
         file='./assets/share/attack/mainline/MAINLINE_START_HOSTING.png'
     )
 )
+MAINLINE_STOP_HOSTING_FUEL=ButtonWrapper(
+    name='MAINLINE_STOP_HOSTING_FUEL',
+    share=Button.default_init(
+        area=(444,323,523,351),color=(167,167,167),
+        file='./assets/share/attack/mainline/MAINLINE_FINISH_HOSTING_FUEL.png'
+    )
+)
+MAINLINE_FINISH_HOSTING_FUEL_POPUP=ButtonWrapper(
+    name='MAINLINE_FINISH_HOSTING_FUEL_POPUP',
+    share=Button.default_init(
+        area=(450,321,829,352),color=(166,166,166),
+        file='./assets/share/attack/mainline/MAINLINE_FINISH_HOSTING_FUEL_POPUP.png',
+        button=(740,437,925,483)
+    )
+)
+MAINLINE_STAGE_FINISH=ButtonWrapper(
+    name='MAINLINE_STAGE_FINISH',
+    share=Button.default_init(
+        area=(616,513,694,534),color=(96,96,98),
+        file='./assets/share/attack/mainline/MAINLINE_STAGE_FINISH.png',
+        button=(578,262,1063,490)
+    )
+)
+MAINLINE_STAGE_FINISH_EXIT=ButtonWrapper(
+    name='MAINLINE_STAGE_FINISH_EXIT',
+    share=Button.default_init(
+        area=(856,650,903,676),color=(117,125,134),
+        file='./assets/share/attack/mainline/MAINLINE_STAGE_FINISH_EXIT.png',
+        button=(770,645,918,684)
+    )
+)
