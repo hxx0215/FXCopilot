@@ -441,6 +441,11 @@ MainlineSetting:
     type: input
     value: '5-10'
     feed_back: '10-10'
+  AutoDecommissioning:
+    type: checkbox
+    value: false
+    option: [true, false]
+
 
 FrequencySetting:
   Frequence:

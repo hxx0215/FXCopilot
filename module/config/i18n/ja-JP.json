@@ -447,6 +447,12 @@
     "Stage": {
       "name": "MainlineSetting.Stage.name",
       "help": "MainlineSetting.Stage.help"
+    },
+    "AutoDecommissioning": {
+      "name": "MainlineSetting.AutoDecommissioning.name",
+      "help": "MainlineSetting.AutoDecommissioning.help",
+      "True": "True",
+      "False": "False"
     }
   },
   "FrequencySetting": {

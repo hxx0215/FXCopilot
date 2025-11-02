@@ -137,7 +137,8 @@
       "ServerUpdate": "00:00"
     },
     "MainlineSetting": {
-      "Stage": "5-10"
+      "Stage": "5-10",
+      "AutoDecommissioning": false
     }
   },
   "Mail": {

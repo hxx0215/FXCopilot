@@ -1,12 +1,12 @@
 from tasks.base.ui import UI
-from tasks.base.page import page_main_line
+from tasks.base.page import page_main_line,page_decommissioning_batch
 from .assets import *
 from tasks.base.assets.assets_base_page import (NEXT_STAGE_BUTTON,PREVIOUS_STAGE_BUTTON,STAGE_HOSTING,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_DECOMMISIONING,STAGE_HOSTING_CLOSE,
                                                 DECOMMISSIONING_PAGE,DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,
                                                 STAGE_HOSTING_GET_SSR)
 from tasks.base.assets.assets_base_popup import POPUP_CANCEL,POPUP_CONFIRM
 from module.logger.logger import logger
-from module.ocr.ocr import Ocr
+from module.ocr.ocr import Ocr,DigitCounter
 from module.base.timer import Timer
 import cn2an
 import re
@@ -128,12 +128,12 @@ class Mainline(UI):
         decommission_times = 0
         if finish_reason == 'depot_full':
             self.ui_click(STAGE_HOSTING_CLOSE, DECOMMISSIONING_PAGE)
-            if self.config.TimeOdysseySetting_AutoDecommissioning:
+            if self.config.MainlineSetting_AutoDecommissioning:
                 current = -1
                 while current != 0:
                     self.ui_goto(page_decommissioning_batch)
                     #make sure choose right rarity
-                    self.ui_click(DECOMMISSIONING_BATCH_CONFIRM, DECOMMISSIONING_PAGE)
+                    self.ui_click(DECOMMISSIONING_BATCH_CONFIRM, DECOMMISSIONING_PAGE, similarity=0.9)
                     counter = DigitCounter(DECOMMISSIONING_SELECTED_DATA)
                     image = self.device.screenshot()
                     (current,remain,total) = counter.ocr_single_line(image)
@@ -149,9 +149,9 @@ class Mainline(UI):
                             break
                 self.ui_goto_main()
             #FIXME: not TimeOdysseySetting_EnableContinuous
-            if decommission_times != 0 and self.config.TimeOdysseySetting_EnableContinuous:
+            if decommission_times != 0 and self.config.MainlineSetting_AutoDecommissioning:
                 #等5分钟让调度器自己启动, TODO: 如何设定下次启动时间
-                self.config.task_delay(minute=5)
+                self.config.task_delay(minute=1)
             else:
                 #如果一次批量退役也没有表示仓库里没有格子放白色和绿色的舰灵了只能停下来了
                 self.config.cross_set('Mainline.Scheduler.Enable',False)
@@ -185,7 +185,7 @@ if __name__ == '__main__':
     task = Mainline('fxc', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test.png")
+    image_path = os.path.join(path,"test2.png")
     task.image_file=image_path
-    b = task.appear(NEXT_STAGE_BUTTON)
+    b = task.appear(DECOMMISSIONING_PAGE)
     print(b)

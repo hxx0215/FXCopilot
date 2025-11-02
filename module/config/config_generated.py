@@ -90,6 +90,7 @@ class GeneratedConfig:
 
     # Group `MainlineSetting`
     MainlineSetting_Stage = '5-10'
+    MainlineSetting_AutoDecommissioning = False  # True, False
 
     # Group `FrequencySetting`
     FrequencySetting_Frequence = 'spring'  # spring, longest

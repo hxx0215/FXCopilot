@@ -1826,7 +1826,8 @@ DECOMMISSIONING_BATCH_CONFIRM=ButtonWrapper(
 DECOMMISSIONING_SELECTED_DATA=ButtonWrapper(
     name='DECOMMISSIONING_SELECTED_DATA',
     share=Button.default_init(
-        area=(322,628,432,666),color=(96,96,96),
+        # area=(322,628,432,666),color=(96,96,96),
+        area=(270,629,358,667),color=(139,145,151),
         file='./assets/share/depot/DECOMMISSIONING_SELECTED_DATA.png'
     )
 )
