@@ -1717,10 +1717,16 @@ STAGE_HOSTING_FINISH_DECOMMISIONING=ButtonWrapper(
 )
 STAGE_HOSTING_CLOSE=ButtonWrapper(
     name='STAGE_HOSTING_CLOSE',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(1148,10,1179,43),color=(74,74,76),
         file='./assets/share/base/main_page/STAGE_HOSTING_CLOSE.png'
+    ),
+    Button.default_init(
+        area=(845,72,924,105),color=(107,107,107),
+        file='./assets/share/base/main_page/STAGE_HOSTING_CLOSE2.png',
+        button=(1150,9,1184,42)
     )
+    ]
 )
 STAGE_HOSTING_GET_SSR=ButtonWrapper(
     name='STAGE_HOSTING_GET_SSR',
@@ -2254,5 +2260,12 @@ SHOP_GOLD_EXCHANGE_PAGE=ButtonWrapper(
     share=Button.default_init(
         area=(156,177,186,436),color=(121,121,121),
         file='./assets/share/shop/SHOP_GOLD_EXCHANGE.png'
+    )
+)
+STAGE_INFO_PAGE=ButtonWrapper(
+    name='STAGE_INFO_PAGE',
+    share=Button.default_init(
+        area=(575,305,653,328),color=(83,83,83),
+        file='./assets/share/base/main_page/STAGE_INFO_PAGE.png'
     )
 )

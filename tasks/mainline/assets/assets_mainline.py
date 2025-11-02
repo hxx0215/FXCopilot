@@ -76,7 +76,7 @@ MAINLINE_FINISH_HOSTING_FUEL_POPUP=ButtonWrapper(
     share=Button.default_init(
         area=(450,321,829,352),color=(166,166,166),
         file='./assets/share/attack/mainline/MAINLINE_FINISH_HOSTING_FUEL_POPUP.png',
-        button=(740,437,925,483)
+        button=(740,437,925,479)
     )
 )
 MAINLINE_STAGE_FINISH=ButtonWrapper(

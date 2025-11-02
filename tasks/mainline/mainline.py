@@ -3,7 +3,7 @@ from tasks.base.page import page_main_line,page_decommissioning_batch
 from .assets import *
 from tasks.base.assets.assets_base_page import (NEXT_STAGE_BUTTON,PREVIOUS_STAGE_BUTTON,STAGE_HOSTING,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_DECOMMISIONING,STAGE_HOSTING_CLOSE,
                                                 DECOMMISSIONING_PAGE,DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,
-                                                STAGE_HOSTING_GET_SSR)
+                                                STAGE_HOSTING_GET_SSR, STAGE_INFO_PAGE,STAGE_CLOSE_BUTTON,MAIN_LINE_PAGE)
 from tasks.base.assets.assets_base_popup import POPUP_CANCEL,POPUP_CONFIRM
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,DigitCounter
@@ -102,19 +102,22 @@ class Mainline(UI):
                 break
         self.device.screenshot_interval_set(1.0)
         finish_reason = ''
-        cnt = 0
+        cnt = -1
         max_cnt = random.randrange(10, 20)
         for _ in self.loop():
+            if self.appear(MAINLINE_STOP_HOSTING_FUEL):
+                if self.handle_popup_cancel():
+                    if cnt == -1:
+                        finish_reason = 'not_begin_insufficient_fuel'
+                    else:
+                        finish_reason = 'insufficient_fuel'
+                    break
             if self.appear(STAGE_HOSTING):
                 cnt += 1
                 if cnt > max_cnt and self.appear_then_click(BATTLE_PAGE, silent = True):
                     cnt = 0
                     max_cnt = random.randrange(10, 20)
                 self.device.stuck_timer.reset()
-            if self.appear(MAINLINE_STOP_HOSTING_FUEL):
-                if self.handle_popup_cancel():
-                    finish_reason = 'insufficient_fuel'
-                    break
             if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
                 finish_reason = 'depot_full'
                 break
@@ -156,6 +159,9 @@ class Mainline(UI):
                 #如果一次批量退役也没有表示仓库里没有格子放白色和绿色的舰灵了只能停下来了
                 self.config.cross_set('Mainline.Scheduler.Enable',False)
         elif finish_reason == 'insufficient_fuel':
+            for _ in self.loop():
+                if self.appear(MAINLINE_FINISH_HOSTING_FUEL_POPUP):
+                    break
             self.ui_click(MAINLINE_FINISH_HOSTING_FUEL_POPUP, STAGE_HOSTING_GET_SSR)
             self.ui_click(STAGE_HOSTING_CLOSE, MAINLINE_STAGE_FINISH)
             self.ui_click(MAINLINE_STAGE_FINISH, GET_ITEMS)
@@ -163,6 +169,14 @@ class Mainline(UI):
             for _ in self.loop():
                 if self.appear_then_click(MAINLINE_STAGE_FINISH_EXIT):
                     break
+            self.config.cross_set('Mainline.Scheduler.Enable',False)
+        elif finish_reason == 'not_begin_insufficient_fuel':
+            for _ in self.loop():
+                if self.appear(MAINLINE_FINISH_HOSTING_FUEL_POPUP):
+                    break
+            self.ui_click(MAINLINE_FINISH_HOSTING_FUEL_POPUP, STAGE_INFO_PAGE)
+            self.ui_click(STAGE_CLOSE_BUTTON, MAIN_LINE_PAGE)
+            self.ui_goto_main()
             self.config.cross_set('Mainline.Scheduler.Enable',False)
         elif finish_reason == 'task_interrupt':
             self.ui_click(STAGE_HOSTING,STOP_HOSTING)
@@ -185,7 +199,7 @@ if __name__ == '__main__':
     task = Mainline('fxc', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test2.png")
+    image_path = os.path.join(path,"test4.png")
     task.image_file=image_path
-    b = task.appear(DECOMMISSIONING_PAGE)
+    b = task.appear(STAGE_HOSTING_CLOSE)
     print(b)
