@@ -2248,3 +2248,10 @@ SEASON_PASS_TASK_REFRESH=ButtonWrapper(
         file='./assets/share/pass/SEASON_PASS_TASK_REFRESH.png'
     )
 )
+SHOP_GOLD_EXCHANGE_PAGE=ButtonWrapper(
+    name='SHOP_GOLD_EXCHANGE_PAGE',
+    share=Button.default_init(
+        area=(156,177,186,436),color=(121,121,121),
+        file='./assets/share/shop/SHOP_GOLD_EXCHANGE.png'
+    )
+)
