@@ -218,6 +218,16 @@
         "value": "00:00",
         "display": "hide"
       }
+    },
+    "FrequencySetting": {
+      "Frequence": {
+        "type": "select",
+        "value": "spring",
+        "option": [
+          "spring",
+          "longest"
+        ]
+      }
     }
   },
   "Exercise": {
@@ -505,6 +515,75 @@
       "Command": {
         "type": "input",
         "value": "TacticalAcademy",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "Mainline": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Mainline",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    },
+    "MainlineSetting": {
+      "Stage": {
+        "type": "input",
+        "value": "5-10",
+        "feed_back": "10-10"
+      },
+      "AutoDecommissioning": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      }
+    }
+  },
+  "Mail": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "Mail",
         "display": "hide"
       },
       "ServerUpdate": {

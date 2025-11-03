@@ -57,6 +57,14 @@
     "TacticalAcademy": {
       "name": "Task.TacticalAcademy.name",
       "help": "Task.TacticalAcademy.help"
+    },
+    "Mainline": {
+      "name": "Task.Mainline.name",
+      "help": "Task.Mainline.help"
+    },
+    "Mail": {
+      "name": "Task.Mail.name",
+      "help": "Task.Mail.help"
     }
   },
   "Scheduler": {
@@ -405,6 +413,58 @@
       "help": "TacticalAcademy.Enable.help",
       "True": "True",
       "False": "False"
+    }
+  },
+  "MainLine": {
+    "_info": {
+      "name": "MainLine._info.name",
+      "help": "MainLine._info.help"
+    },
+    "Enable": {
+      "name": "MainLine.Enable.name",
+      "help": "MainLine.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Mail": {
+    "_info": {
+      "name": "Mail._info.name",
+      "help": "Mail._info.help"
+    },
+    "Enable": {
+      "name": "Mail.Enable.name",
+      "help": "Mail.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "MainlineSetting": {
+    "_info": {
+      "name": "MainlineSetting._info.name",
+      "help": "MainlineSetting._info.help"
+    },
+    "Stage": {
+      "name": "MainlineSetting.Stage.name",
+      "help": "MainlineSetting.Stage.help"
+    },
+    "AutoDecommissioning": {
+      "name": "MainlineSetting.AutoDecommissioning.name",
+      "help": "MainlineSetting.AutoDecommissioning.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "FrequencySetting": {
+    "_info": {
+      "name": "FrequencySetting._info.name",
+      "help": "FrequencySetting._info.help"
+    },
+    "Frequence": {
+      "name": "FrequencySetting.Frequence.name",
+      "help": "FrequencySetting.Frequence.help",
+      "spring": "spring",
+      "longest": "longest"
     }
   },
   "Gui": {

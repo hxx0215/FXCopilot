@@ -47,11 +47,11 @@ class Beach(QuickClaimCheck):
                 
 
     def run(self):
-        (has_finished, deltas) = self.check_if_finished()
+        (has_finished, deltas,_) = self.check_if_finished()
         if has_finished:
             self.ui_ensure(page_beach)
             self.process_continue_training()
-            (_, deltas) = self.check_if_finished()
+            (_, deltas, _) = self.check_if_finished()
         target = [datetime.datetime.now() + d for d in deltas]
         if len(target) > 0:
             self.config.task_delay(target=target)

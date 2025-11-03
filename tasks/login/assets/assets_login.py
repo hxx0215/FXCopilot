@@ -86,3 +86,27 @@ LOGIN_NOTIFICATION=ButtonWrapper(
         button=(1118,48,1155,84)
     )
 )
+
+LOGIN_LOADING = ButtonWrapper(
+    name='LOGIN_LOADING',
+    share=Button.default_init(
+        area=(551,691,730,710),color=(117,121,133),
+        file='./assets/share/login/LOGIN_LOADING.png'
+    ),
+)
+
+SERVER_MAINTAIN = ButtonWrapper(
+    name='SERVER_MAINTAIN',
+    share=Button.default_init(
+        area=(579,325,701,354),color=(148,148,148),
+        file='./assets/share/login/SERVER_MAINTAIN.png'
+    )
+)
+APP_UPDATE = ButtonWrapper(
+    name='APP_UPDATE',
+    share=Button.default_init(
+        area=(501,342,777,369),color=(168,168,174),
+        file='./assets/share/login/APP_UPDATE.png',
+        button=(689,423,872,468)
+    )
+)

@@ -57,6 +57,14 @@
     "TacticalAcademy": {
       "name": "技能学院",
       "help": ""
+    },
+    "Mainline": {
+      "name": "主线",
+      "help": ""
+    },
+    "Mail": {
+      "name": "邮件领取",
+      "help": ""
     }
   },
   "Scheduler": {
@@ -405,6 +413,58 @@
       "help": "TacticalAcademy.Enable.help",
       "True": "True",
       "False": "False"
+    }
+  },
+  "MainLine": {
+    "_info": {
+      "name": "MainLine._info.name",
+      "help": "MainLine._info.help"
+    },
+    "Enable": {
+      "name": "MainLine.Enable.name",
+      "help": "MainLine.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "Mail": {
+    "_info": {
+      "name": "邮件领取",
+      "help": ""
+    },
+    "Enable": {
+      "name": "Mail.Enable.name",
+      "help": "Mail.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "MainlineSetting": {
+    "_info": {
+      "name": "主线设置",
+      "help": ""
+    },
+    "Stage": {
+      "name": "主线关卡设置",
+      "help": "填入第X章第Y关如: 5-10"
+    },
+    "AutoDecommissioning": {
+      "name": "自动退役",
+      "help": "船坞满了自动退役,默认为自动选择当前批量退役的设置",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "FrequencySetting": {
+    "_info": {
+      "name": "频率设置",
+      "help": ""
+    },
+    "Frequence": {
+      "name": "频率",
+      "help": "原理：温泉8分钟恢复一次体力，油厂、小卖部10分钟扣除一点体力，所以： 白嫖温泉会每隔8-10分钟重新排班白嫖温泉的恢复，而较低频率则是选择一个最长合适的时间进行排班",
+      "spring": "白嫖温泉",
+      "longest": "较低频率"
     }
   },
   "Gui": {

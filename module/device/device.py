@@ -259,8 +259,12 @@ class Device(Screenshot, Control, AppControl):
         Raises:
             GameTooManyClickError:
         """
+        excluded = ['BATTLE_PAGE','MAINLINE_PREV_CHAPTER','MAINLINE_NEXT_CHAPTER']
         first15 = itertools.islice(self.click_record, 0, 15)
-        count = collections.Counter(first15).most_common(2)
+        filtered = [item for item in first15 if item not in excluded]
+        count = collections.Counter(filtered).most_common(2)
+        if len(count) == 0:
+            return
         if count[0][1] >= 12:
             # TODO: REMOVE ME Allow more clicks in Ruan Mei event
             if 'CHOOSE_OPTION_CONFIRM' in self.click_record and 'BLESSING_CONFIRM' in self.click_record:

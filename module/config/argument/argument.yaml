@@ -426,3 +426,29 @@ TacticalAcademy:
     type: checkbox
     value: true
     option: [true, false]
+MainLine:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+Mail:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+MainlineSetting:
+  Stage:
+    type: input
+    value: '5-10'
+    feed_back: '10-10'
+  AutoDecommissioning:
+    type: checkbox
+    value: false
+    option: [true, false]
+
+
+FrequencySetting:
+  Frequence:
+    type: select
+    value: spring
+    option: [spring, longest]

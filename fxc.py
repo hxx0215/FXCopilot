@@ -80,6 +80,14 @@ class FuXiaoCopilot(AzurLaneAutoScript):
         from tasks.tactical_academy.tactical_academy import TacticalAcademy
         TacticalAcademy(self.config, self.device, task="TacticalAcademy").run()
 
+    def mainline(self):
+        from tasks.mainline.mainline import Mainline
+        Mainline(self.config, self.device, task="Mainline").run()
+
+    def mail(self):
+        from tasks.mail.mail import Mail
+        Mail(self.config, self.device, task="Mail").run()
+
 
 if __name__ == '__main__':
     src = FuXiaoCopilot('fxc')

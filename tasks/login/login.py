@@ -4,7 +4,7 @@ from module.logger import logger
 from tasks.base.page import page_main
 from tasks.login.assets.assets_login import *
 from tasks.base.assets.assets_base_page import GET_REWARD
-from tasks.login.assets.assets_login_popup import ADVERTISE_Castorice, UNITY_ENGINE_ERROR
+from tasks.login.assets.assets_login_popup import ADVERTISE_Castorice
 from module.ocr.ocr import Ocr
 from tasks.base.ui import UI
 
@@ -52,14 +52,28 @@ class Login(UI):
                     logger.info('Login to main confirm')
                     break
 
+            if self.appear(SERVER_MAINTAIN):
+                self.handle_popup_confirm()
+                logger.info('server is in maintain wait 600s to check')
+                self.device.stuck_record_clear()
+                app_timer.reset()
+                orientation_timer.reset()
+                self.device.sleep(600)
+                continue
+
+            if self.appear_then_click(APP_UPDATE):
+                logger.info('app should update')
+                continue
+
             # Watch resource downloading and loading
             if self.appear(LOGIN_LOADING, interval=5):
                 logger.info('Game resources downloading or loading')
                 self.device.stuck_record_clear()
                 app_timer.reset()
                 orientation_timer.reset()
+                continue
 
-            if login_confirm_appeared:
+            if login_confirm_appeared and (not login_success):
                 text = ocr.ocr_single_line(self.device.image)
                 if '成功' in text:
                     login_success = True

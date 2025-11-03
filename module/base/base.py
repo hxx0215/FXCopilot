@@ -281,11 +281,11 @@ class ModuleBase:
         else:
             return self.match_template(button, interval=interval, similarity=similarity)
 
-    def appear_then_click(self, button, interval : int | float = 5, similarity=0.85):
+    def appear_then_click(self, button, interval : int | float = 5, similarity=0.85, silent: bool = False):
         button = self.xpath(button)
         appear = self.appear(button, interval=interval, similarity=similarity)
         if appear:
-            self.device.click(button)
+            self.device.click(button,silent = silent)
         return appear
 
     def wait_until_stable(self, button, timer=Timer(0.3, count=1), timeout=Timer(5, count=10)):

@@ -1,13 +1,14 @@
 from tasks.base.resource_check import ResourceCheck
 from tasks.base.page import page_time_odyssey_map,page_decommissioning_batch
 from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_TIMES_DATA,TIME_ODYSSEY_TIMES_SELECT,STAGE_HOSTING,STAGE_HOSTING_FINISH_DECOMMISIONING,
-                                                STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,
+                                                STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,STAGE_TO_PORT,STAGE_HOSTING_FINISH_SINK,
                                                 TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,
                                                 DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_REACH_TIMES
                                                 )
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,OcrResultButton,DigitCounter
 from module.base.timer import Timer
+import random
 
 class TimeOdyssey(ResourceCheck):
     def setup_mode(self):
@@ -16,7 +17,7 @@ class TimeOdyssey(ResourceCheck):
         if mode == 'default':
             return
 
-    def time_odyssey_map(self):
+    def time_odyssey_map(self) -> str:
         current_state = 'map'
         for _ in self.loop():
             if self.appear(TIME_ODYSSEY_MAP_BUTTON):
@@ -31,12 +32,13 @@ class TimeOdyssey(ResourceCheck):
             self.ui_click(TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START)
         else:
             self.ui_click(TIME_ODYSSEY_CONTINUE_HOSTING,TIME_ODYSSEY_HOSTING_START)
+        return current_state
 
-    def hosting_prepare(self):
+    def hosting_prepare(self, current_state: str):
         times = self.config.TimeOdysseySetting_Times
         ocr = Ocr(TIME_ODYSSEY_TIMES_DATA)
         timer = Timer(3).start()
-        if times != 'default':
+        if times != 'default' and current_state != 'continue':
             times = '默认最高' if times == 'max' else str(times)
             self.ui_click(TIME_ODYSSEY_TIMES_SELECT, TIME_ODYSSEY_TIMES_DATA)
             timer.reset()
@@ -57,8 +59,14 @@ class TimeOdyssey(ResourceCheck):
                 break
         self.device.screenshot_interval_set(1.0)
         finish_reason = ''
+        cnt = 0
+        max_cnt = random.randrange(10, 20)
         for image in self.loop():
             if self.appear(STAGE_HOSTING):
+                cnt += 1
+                if cnt > max_cnt and self.appear_then_click(BATTLE_PAGE, silent = True):
+                    cnt = 0
+                    max_cnt = random.randrange(10, 20)
                 self.device.stuck_timer.reset()
             if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
                 finish_reason = 'depot_full'
@@ -70,12 +78,19 @@ class TimeOdyssey(ResourceCheck):
             if self.appear_then_click(STAGE_HOSTING_FINISH_REACH_TIMES):
                 finish_reason = 'reach_times'
                 break
+            if self.appear_then_click(STAGE_HOSTING_FINISH_SINK):
+                finish_reason = 'sink'
+                break
             ocr_result = self.get_current_resources()
             if ocr_result:
                 fuel, _, _ = ocr_result
                 if fuel < self.config.TimeOdysseySetting_MinimalFuel:
                     finish_reason = 'less_than_minimal_fuel'
                     break
+            priority_exist = self.check_if_priorty_exist()
+            if priority_exist:
+                finish_reason = 'task_interrupt'
+                break
         return finish_reason
     def post_hosting(self, finish_reason):
         self.device.screenshot_interval_set()
@@ -122,14 +137,27 @@ class TimeOdyssey(ResourceCheck):
                 self.config.task_delay(minute=5)
             else:
                 self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
+        elif finish_reason == 'sink':
+            self.ui_click(STAGE_HOSTING_CLOSE, STAGE_TO_PORT)
+            for image in self.loop():
+                if self.appear_then_click(STAGE_TO_PORT):
+                    continue
+                if self.handle_popup_confirm():
+                    break
+            self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
+        elif finish_reason == 'task_interrupt':
+            self.ui_click(STAGE_HOSTING,STOP_HOSTING)
+            self.ui_click(STOP_HOSTING, BATTLE_PAGE)
+            self.ui_goto_main(extra_default=False)
+            self.config.task_delay(minute=5)
         else:
             self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
         self.ui_goto_main()
     
     def hosting(self):
         #确认当前石油
-        self.time_odyssey_map()
-        self.hosting_prepare()
+        current = self.time_odyssey_map()
+        self.hosting_prepare(current)
         finish_reason = self.start_hosting()
         self.post_hosting(finish_reason=finish_reason)
 

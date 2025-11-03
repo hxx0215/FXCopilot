@@ -25,6 +25,7 @@ FX:
       - Scheduler
     Rescheduler:
       - Scheduler
+      - FrequencySetting
     Exercise:
       - Scheduler
     QuizCenter:
@@ -42,6 +43,11 @@ FX:
       - Scheduler
       - TimeOdysseySetting
     TacticalAcademy:
+      - Scheduler
+    Mainline:
+      - Scheduler
+      - MainlineSetting
+    Mail:
       - Scheduler
 # Daily:
 #   menu: 'list'

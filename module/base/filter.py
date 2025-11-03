@@ -94,7 +94,7 @@ class Filter:
 
         return True
 
-    def parse_filter(self, string):
+    def parse_filter(self, string) -> list[str | None]:
         """
         Args:
             string (str):

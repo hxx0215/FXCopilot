@@ -49,6 +49,9 @@
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Rescheduler",
       "ServerUpdate": "00:00"
+    },
+    "FrequencySetting": {
+      "Frequence": "spring"
     }
   },
   "Exercise": {
@@ -123,6 +126,26 @@
       "Enable": true,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "TacticalAcademy",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "Mainline": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Mainline",
+      "ServerUpdate": "00:00"
+    },
+    "MainlineSetting": {
+      "Stage": "5-10",
+      "AutoDecommissioning": false
+    }
+  },
+  "Mail": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "Mail",
       "ServerUpdate": "00:00"
     }
   }

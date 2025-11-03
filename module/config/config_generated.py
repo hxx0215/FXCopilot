@@ -81,3 +81,16 @@ class GeneratedConfig:
 
     # Group `TacticalAcademy`
     TacticalAcademy_Enable = True  # True, False
+
+    # Group `MainLine`
+    MainLine_Enable = True  # True, False
+
+    # Group `Mail`
+    Mail_Enable = True  # True, False
+
+    # Group `MainlineSetting`
+    MainlineSetting_Stage = '5-10'
+    MainlineSetting_AutoDecommissioning = False  # True, False
+
+    # Group `FrequencySetting`
+    FrequencySetting_Frequence = 'spring'  # spring, longest

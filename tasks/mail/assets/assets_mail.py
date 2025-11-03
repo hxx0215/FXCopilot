@@ -1,0 +1,49 @@
+from module.base.button import Button, ButtonWrapper,ItemWrapper
+
+
+MAIL_WILL_EXPIRED_SELECTED=ButtonWrapper(
+    name='MAIL_WILL_EXPIRED_SELECTED',
+    share=Button(
+        file='./assets/share/mail/MAIL_WILL_EXPIRED_SELECTED.png',
+        area=(220,116,237,130),color=(129,165,171),
+        search=(215,111,242,135),button=(220,116,237,130)
+    )
+)
+MAIL_WILL_EXPIRED_UNSELECTED=ButtonWrapper(
+    name='MAIL_WILL_EXPIRED_UNSELECTED',
+    share=Button(
+        file='./assets/share/mail/MAIL_WILL_EXPIRED_UNSELECTED.png',
+        area=(220,116,237,130),color=(129,165,171),
+        search=(215,111,242,135),button=(220,116,237,130)
+    )
+)
+MAIL_REMAIN_DAYS=ButtonWrapper(
+    name='MAIL_REMAIN_DAYS',
+    share=Button.default_init(
+        file='./assets/share/mail/MAIL_REMAIN_DAYS',
+        area=(253,198,348,222),color=(172,172,172)
+    )
+)
+MAIL_OPEN=ButtonWrapper(
+    name='MAIL_OPEN',
+    share=Button.default_init(
+        file='./assets/share/mail/MAIL_OPEN.png',
+        area=(1146,590,1194,614),color=(131,131,131),
+        button=(1093,578,1240,624)
+    )
+)
+MAIL_REMAIN_COUNT=ButtonWrapper(
+    name='MAIN_REMAIN_COUNT',
+    share=Button.default_init(
+        file='./assets/share/mail/MAIL_REMAIN_COUNT.png',
+        area=(126,638,206,660),color=(111,111,111)
+    )
+)
+MAIL_DELETE=ButtonWrapper(
+    name='MAIL_DELETE',
+    share=Button.default_init(
+        file='./assets/share/mail/MAIL_DELETE.png',
+        area=(37,582,139,607),color=(94,54,54),
+        button=(22,574,146,620)
+    )
+)
