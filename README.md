@@ -13,6 +13,7 @@ Fork 自[StarRailCopilot](https://github.com/LmeSzinc/StarRailCopilot)
 4. uv sync
 5. python ./gui.py 
 6. 访问 http://localhost:22367/
+
 exe打包coming soon
 
 让MLXR多些时间陪家人，少些时间玩二游
