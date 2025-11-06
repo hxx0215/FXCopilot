@@ -275,4 +275,7 @@ page_season_pass.link(HOME_BUTTON, destination=page_main)
 
 page_shop_gold_exchange=Page(SHOP_GOLD_EXCHANGE_PAGE)
 page_shop_gold_exchange.link(HOME_BUTTON, destination=page_main)
+page_shop_montly_pass = Page(SHOP_MONTHLY_PASS)
+page_shop_montly_pass.link(HOME_BUTTON, destination=page_main)
 page_temp = Page(TACTICAL_ACADEMY_START_TRAINING)
+

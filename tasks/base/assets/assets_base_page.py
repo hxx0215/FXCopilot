@@ -2269,3 +2269,10 @@ STAGE_INFO_PAGE=ButtonWrapper(
         file='./assets/share/base/main_page/STAGE_INFO_PAGE.png'
     )
 )
+SHOP_MONTHLY_PASS=ButtonWrapper(
+    name='SHOP_MONTHLY_PASS',
+    share=Button.default_init(
+        area=(668,229,799,295),color=(130,130,131),
+        file='./assets/share/shop/SHOP_MONTHLY_PASS.png'
+    )
+)
