@@ -102,7 +102,13 @@ class TimeOdyssey(ResourceCheck):
                 while current != 0:
                     self.ui_goto(page_decommissioning_batch)
                     #make sure choose right rarity
-                    self.ui_click(DECOMMISSIONING_BATCH_CONFIRM, DECOMMISSIONING_PAGE)
+                    for image in self.loop():
+                        if self.appear_then_click(DECOMMISSIONING_BATCH_CONFIRM):
+                            continue
+                        if self.appear(DECOMMISSIONING_PAGE):
+                            break
+                    # self.ui_click(DECOMMISSIONING_BATCH_CONFIRM, DECOMMISSIONING_PAGE)
+                    logger.info('demission batch confirm')
                     counter = DigitCounter(DECOMMISSIONING_SELECTED_DATA)
                     image = self.device.screenshot()
                     (current,remain,total) = counter.ocr_single_line(image)
@@ -169,9 +175,7 @@ if __name__ == '__main__':
     task = TimeOdyssey('fxc', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test7.png")
+    image_path = os.path.join(path,"test8.png")
     task.image_file=image_path
-    b = task.appear(DECOMMISSIONING_BATCH_CONFIRM)
+    b = task.appear(STAGE_HOSTING)
     print(b)
-    print(DECOMMISSIONING_BATCH_CONFIRM.button)
-    print(DECOMMISSIONING_BATCH_CONFIRM.button_offset)

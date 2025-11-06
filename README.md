@@ -5,6 +5,16 @@ Fork 自[StarRailCopilot](https://github.com/LmeSzinc/StarRailCopilot)
 
 ![截图](./screenshot.png)
 
+
+# 运行方法
+1. git clone 该项目
+2. 本地准备好uv
+3. 使用uv创建好本地的python 虚拟环境 v3.10
+4. uv sync
+5. python ./gui.py 
+6. 访问 http://localhost:22367/
+exe打包coming soon
+
 让MLXR多些时间陪家人，少些时间玩二游
 
 最后， 有男不玩
@@ -20,3 +30,5 @@ Fork 自[StarRailCopilot](https://github.com/LmeSzinc/StarRailCopilot)
 - [ ] 每日任务
 - [X] 通行证任务
 - [X] 登陆相关
+- [ ] 活动后台适配
+- [ ] exe打包
