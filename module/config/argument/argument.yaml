@@ -26,6 +26,9 @@ Emulator:
   PackageName:
     value: auto
     option: [ auto, ]
+  Server:
+    value: 岚之洋
+    option: [镜之洋,岚之洋,珊瑚海,星星海]
   GameLanguage:
     value: cn
     readonly: true

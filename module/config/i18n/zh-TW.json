@@ -111,6 +111,14 @@
       "CN-Official": "[國服]-官服",
       "CN-Bilibili": "[國服]-B服 "
     },
+    "Server": {
+      "name": "Emulator.Server.name",
+      "help": "Emulator.Server.help",
+      "镜之洋": "镜之洋",
+      "岚之洋": "岚之洋",
+      "珊瑚海": "珊瑚海",
+      "星星海": "星星海"
+    },
     "GameLanguage": {
       "name": "遊戲內文本語言",
       "help": "目前僅支援簡體中文和英文，請在遊戲內設定文本語言為其中的一種"

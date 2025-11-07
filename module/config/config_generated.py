@@ -19,6 +19,7 @@ class GeneratedConfig:
     Emulator_Serial = 'auto'
     Emulator_GameClient = 'android'
     Emulator_PackageName = 'auto'  # auto, CN-Official, CN-Bilibili
+    Emulator_Server = '岚之洋'  # 镜之洋, 岚之洋, 珊瑚海, 星星海
     Emulator_GameLanguage = 'cn'
     Emulator_ScreenshotMethod = 'auto'  # auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy, nemu_ipc, ldopengl
     Emulator_ControlMethod = 'MaaTouch'  # minitouch, MaaTouch

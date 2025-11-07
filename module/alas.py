@@ -55,7 +55,7 @@ class AzurLaneAutoScript:
     def checker(self):
         try:
             from module.server_checker import ServerChecker
-            checker = ServerChecker(server=self.config.Emulator_PackageName)
+            checker = ServerChecker(server=self.config.Emulator_Server)
             return checker
         except Exception as e:
             logger.exception(e)

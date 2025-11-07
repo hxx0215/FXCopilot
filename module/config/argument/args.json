@@ -21,6 +21,16 @@
           "CN-Bilibili"
         ]
       },
+      "Server": {
+        "type": "select",
+        "value": "岚之洋",
+        "option": [
+          "镜之洋",
+          "岚之洋",
+          "珊瑚海",
+          "星星海"
+        ]
+      },
       "GameLanguage": {
         "type": "input",
         "value": "cn",

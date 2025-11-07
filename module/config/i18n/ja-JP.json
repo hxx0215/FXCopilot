@@ -111,6 +111,14 @@
       "CN-Official": "CN-Official",
       "CN-Bilibili": "CN-Bilibili"
     },
+    "Server": {
+      "name": "Emulator.Server.name",
+      "help": "Emulator.Server.help",
+      "镜之洋": "镜之洋",
+      "岚之洋": "岚之洋",
+      "珊瑚海": "珊瑚海",
+      "星星海": "星星海"
+    },
     "GameLanguage": {
       "name": "Emulator.GameLanguage.name",
       "help": "Emulator.GameLanguage.help"

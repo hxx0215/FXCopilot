@@ -111,6 +111,14 @@
       "CN-Official": "[CN]-Oficial",
       "CN-Bilibili": "[CN]-Bilibili"
     },
+    "Server": {
+      "name": "Emulator.Server.name",
+      "help": "Emulator.Server.help",
+      "镜之洋": "镜之洋",
+      "岚之洋": "岚之洋",
+      "珊瑚海": "珊瑚海",
+      "星星海": "星星海"
+    },
     "GameLanguage": {
       "name": "Idioma dentro del juego",
       "help": "En la actualidad, solo funcionan el Chino simplificado y el inglés."

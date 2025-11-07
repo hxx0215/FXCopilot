@@ -111,6 +111,14 @@
       "CN-Official": "[国服]-官服",
       "CN-Bilibili": "[国服]-B服 "
     },
+    "Server": {
+      "name": "Emulator.Server.name",
+      "help": "Emulator.Server.help",
+      "镜之洋": "镜之洋",
+      "岚之洋": "岚之洋",
+      "珊瑚海": "珊瑚海",
+      "星星海": "星星海"
+    },
     "GameLanguage": {
       "name": "游戏内文本语言",
       "help": "拂晓目前只支持简体中文，繁体中文，然而FX Copilot目前只支持简体中文"

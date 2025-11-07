@@ -4,6 +4,7 @@
       "Serial": "auto",
       "GameClient": "android",
       "PackageName": "auto",
+      "Server": "岚之洋",
       "GameLanguage": "cn",
       "ScreenshotMethod": "scrcpy",
       "ControlMethod": "MaaTouch",
