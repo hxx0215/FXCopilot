@@ -74,11 +74,13 @@ class GeneratedConfig:
     DungeonSetting_ArmTransport = 'a-ng1'  # a-ng1, a-tp1, a-ac1, a-aa1, a-eq1, a-ng2, a-tp2, a-ac2, a-aa2, a-eq2
 
     # Group `TimeOdysseySetting`
+    TimeOdysseySetting_HostingMode = 'foreground'  # foreground, background, manual
     TimeOdysseySetting_Mode = 'default'  # default, normal, hard, hell, hell_ex
     TimeOdysseySetting_Times = 'default'  # default, 1, 2, 3, max
     TimeOdysseySetting_AutoDecommissioning = False  # True, False
     TimeOdysseySetting_EnableContinuous = False  # True, False
     TimeOdysseySetting_MinimalFuel = 1000
+    TimeOdysseySetting_ReturnPoint = 'A'
 
     # Group `TacticalAcademy`
     TacticalAcademy_Enable = True  # True, False

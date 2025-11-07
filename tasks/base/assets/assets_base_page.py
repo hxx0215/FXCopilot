@@ -1701,6 +1701,29 @@ TIME_ODYSSEY_TIMES_SELECT=ButtonWrapper(
         file='./assets/share/event/time_odyssey/TIME_ODYSSEY_TIMES_SELECT.png'
     )
 )
+TIME_ODYSSEY_SAIL_SET_SAIL=ButtonWrapper(
+    name='TIME_ODYSSEY_SAIL_SET_SAIL',
+    share=Button.default_init(
+        area=(1202,614,1270,661),color=(139,126,67),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_SAIL_SET_SAIL.png'
+    )
+)
+TIME_ODYSSEY_STAGE_SET_SAIL=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_SET_SAIL',
+    share=Button.default_init(
+        area=(1176,565,1273,633),color=(143,128,68),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_STAGE_SET_SAIL.png',
+        button=(1078,563,1276,632)
+    )
+)
+TIME_ODYSSEY_STAGE_POSITION=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_POSITION',
+    share=Button.default_init(
+        area=(795,210,851,253),color=(56,56,56),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_STAGE_POSITION.png'
+    )
+
+)
 STAGE_HOSTING=ButtonWrapper(
     name='STAGE_HOSTING',
     share=Button.default_init(

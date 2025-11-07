@@ -2,7 +2,7 @@ from tasks.base.resource_check import ResourceCheck
 from tasks.base.page import page_time_odyssey_map,page_decommissioning_batch
 from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_TIMES_DATA,TIME_ODYSSEY_TIMES_SELECT,STAGE_HOSTING,STAGE_HOSTING_FINISH_DECOMMISIONING,
                                                 STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,STAGE_TO_PORT,STAGE_HOSTING_FINISH_SINK,
-                                                TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,
+                                                TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,TIME_ODYSSEY_SAIL_SET_SAIL,TIME_ODYSSEY_STAGE_SET_SAIL,TIME_ODYSSEY_STAGE_POSITION,
                                                 DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_REACH_TIMES
                                                 )
 from module.logger.logger import logger
@@ -17,7 +17,7 @@ class TimeOdyssey(ResourceCheck):
         if mode == 'default':
             return
 
-    def time_odyssey_map(self) -> str:
+    def check_current_map_state(self) -> str:
         current_state = 'map'
         for _ in self.loop():
             if self.appear(TIME_ODYSSEY_MAP_BUTTON):
@@ -27,6 +27,10 @@ class TimeOdyssey(ResourceCheck):
                 current_state = 'continue'
                 break
         logger.info(f'current state is {current_state}')
+        return current_state
+
+    def time_odyssey_map(self) -> str:
+        current_state = self.check_current_map_state()
         if current_state == 'map':
             self.ui_click(TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_SAIL_HOSTING_BUTTON)
             self.ui_click(TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START)
@@ -159,13 +163,41 @@ class TimeOdyssey(ResourceCheck):
         else:
             self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
         self.ui_goto_main()
+
+    def manual_hosting(self):
+        current = self.check_current_map_state()
+        if current == 'map':
+            self.ui_click(TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_SAIL_HOSTING_BUTTON)
+            for _ in self.loop():
+                if self.appear_then_click(TIME_ODYSSEY_SAIL_SET_SAIL):
+                    break
+            while 1:
+                for _ in self.loop():
+                    if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
+                        break
+                ocr = Ocr(TIME_ODYSSEY_STAGE_POSITION)
+                for image in self.loop():
+                    r = ocr.ocr_single_line(image)
+                    # implement me
+                    if isinstance(r, str) and r.endswith('点') and len(r) == 2:
+                        letter = r[0]  # 提取字母部分
+                        print(letter)  # 打印字母
+                    if len(r) > 0:
+                        self.device.sleep(60)
+                self.device.sleep(60)
+        else:
+            pass
+        pass
     
     def hosting(self):
         #确认当前石油
-        current = self.time_odyssey_map()
-        self.hosting_prepare(current)
-        finish_reason = self.start_hosting()
-        self.post_hosting(finish_reason=finish_reason)
+        if self.config.TimeOdysseySetting_HostingMode == 'foreground':
+            current = self.time_odyssey_map()
+            self.hosting_prepare(current)
+            finish_reason = self.start_hosting()
+            self.post_hosting(finish_reason=finish_reason)
+        elif self.config.TimeOdysseySetting_HostingMode == 'manual':
+            self.manual_hosting()
 
     def run(self):
         self.ui_ensure(page_time_odyssey_map)

@@ -462,6 +462,15 @@
       }
     },
     "TimeOdysseySetting": {
+      "HostingMode": {
+        "type": "select",
+        "value": "foreground",
+        "option": [
+          "foreground",
+          "background",
+          "manual"
+        ]
+      },
       "Mode": {
         "type": "select",
         "value": "default",
@@ -504,6 +513,10 @@
         "type": "input",
         "value": 1000,
         "valuetype": "int"
+      },
+      "ReturnPoint": {
+        "type": "input",
+        "value": "A"
       }
     }
   },

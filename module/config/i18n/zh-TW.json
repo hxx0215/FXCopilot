@@ -376,6 +376,13 @@
       "name": "TimeOdysseySetting._info.name",
       "help": "TimeOdysseySetting._info.help"
     },
+    "HostingMode": {
+      "name": "TimeOdysseySetting.HostingMode.name",
+      "help": "TimeOdysseySetting.HostingMode.help",
+      "foreground": "foreground",
+      "background": "background",
+      "manual": "manual"
+    },
     "Mode": {
       "name": "TimeOdysseySetting.Mode.name",
       "help": "TimeOdysseySetting.Mode.help",
@@ -409,6 +416,10 @@
     "MinimalFuel": {
       "name": "TimeOdysseySetting.MinimalFuel.name",
       "help": "TimeOdysseySetting.MinimalFuel.help"
+    },
+    "ReturnPoint": {
+      "name": "TimeOdysseySetting.ReturnPoint.name",
+      "help": "TimeOdysseySetting.ReturnPoint.help"
     }
   },
   "TacticalAcademy": {
