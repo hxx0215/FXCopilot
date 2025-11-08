@@ -239,7 +239,7 @@ class ModuleBase:
         else:
             return xpath
 
-    def xpath_appear(self, xpath: str, interval: int| float=0):
+    def xpath_appear(self, xpath: str | HierarchyButton, interval: int| float=0):
         button = self.xpath(xpath)
 
         self.device.stuck_record_add(button)
