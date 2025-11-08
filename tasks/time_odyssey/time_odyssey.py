@@ -3,12 +3,23 @@ from tasks.base.page import page_time_odyssey_map,page_decommissioning_batch
 from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_TIMES_DATA,TIME_ODYSSEY_TIMES_SELECT,STAGE_HOSTING,STAGE_HOSTING_FINISH_DECOMMISIONING,
                                                 STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,STAGE_TO_PORT,STAGE_HOSTING_FINISH_SINK,
                                                 TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,TIME_ODYSSEY_SAIL_SET_SAIL,TIME_ODYSSEY_STAGE_SET_SAIL,TIME_ODYSSEY_STAGE_POSITION,
-                                                DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_REACH_TIMES
+                                                DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_REACH_TIMES,
+                                                TIME_ODYSSEY_STAGE_TO_PORT,TIME_ODYSSEY_STAGE_SUCCESS,TIME_ODYSSEY_STAGE_FAIL,TIME_ODYSSEY_S_WIN
                                                 )
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,OcrResultButton,DigitCounter
 from module.base.timer import Timer
 import random
+import re
+
+class PositionOcr(Ocr):
+    def format_result(self, result):
+        match = re.match(r'^([A-Za-z])\s*点\s*$', result.strip())
+        if match:
+            letter = match.group(1)  # 提取字母部分
+            logger.info(f'current position = {letter}')  
+            return letter
+        return None
 
 class TimeOdyssey(ResourceCheck):
     def setup_mode(self):
@@ -19,12 +30,15 @@ class TimeOdyssey(ResourceCheck):
 
     def check_current_map_state(self) -> str:
         current_state = 'map'
+        timer = Timer(3).start()
         for _ in self.loop():
             if self.appear(TIME_ODYSSEY_MAP_BUTTON):
                 current_state = 'map'
                 break
             if self.appear(TIME_ODYSSEY_CONTINUE_HOSTING):
                 current_state = 'continue'
+                break
+            if timer.reached():
                 break
         logger.info(f'current state is {current_state}')
         return current_state
@@ -96,43 +110,46 @@ class TimeOdyssey(ResourceCheck):
                 finish_reason = 'task_interrupt'
                 break
         return finish_reason
+    def decommission(self):
+        decommission_times = 0
+        if self.config.TimeOdysseySetting_AutoDecommissioning:
+            current = -1
+            while current != 0:
+                self.ui_goto(page_decommissioning_batch)
+                #make sure choose right rarity
+                for image in self.loop():
+                    if self.appear_then_click(DECOMMISSIONING_BATCH_CONFIRM):
+                        continue
+                    if self.appear(DECOMMISSIONING_PAGE):
+                        break
+                # self.ui_click(DECOMMISSIONING_BATCH_CONFIRM, DECOMMISSIONING_PAGE)
+                logger.info('demission batch confirm')
+                counter = DigitCounter(DECOMMISSIONING_SELECTED_DATA)
+                image = self.device.screenshot()
+                (current,remain,total) = counter.ocr_single_line(image)
+                if current == 0:
+                    break
+                decommission_times+=1
+                self.ui_click(DECOMMISSIONING_CONFIRM, GET_ITEMS)
+                timer=Timer(3).start()
+                for _ in self.loop():
+                    if self.appear_then_click(GET_ITEMS):
+                        continue
+                    if (not self.appear(GET_ITEMS)) and timer.reached():
+                        break
+            self.ui_goto_main()
+        if decommission_times != 0 and self.config.TimeOdysseySetting_EnableContinuous:
+            #等5分钟让调度器自己启动, TODO: 如何设定下次启动时间
+            self.config.task_delay(minute=5)
+        else:
+            #如果一次批量退役也没有表示仓库里没有格子放白色和绿色的舰灵了只能停下来了
+            self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
+
     def post_hosting(self, finish_reason):
         self.device.screenshot_interval_set()
-        decommission_times = 0
         if finish_reason == 'depot_full':
             self.ui_click(STAGE_HOSTING_CLOSE, DECOMMISSIONING_PAGE)
-            if self.config.TimeOdysseySetting_AutoDecommissioning:
-                current = -1
-                while current != 0:
-                    self.ui_goto(page_decommissioning_batch)
-                    #make sure choose right rarity
-                    for image in self.loop():
-                        if self.appear_then_click(DECOMMISSIONING_BATCH_CONFIRM):
-                            continue
-                        if self.appear(DECOMMISSIONING_PAGE):
-                            break
-                    # self.ui_click(DECOMMISSIONING_BATCH_CONFIRM, DECOMMISSIONING_PAGE)
-                    logger.info('demission batch confirm')
-                    counter = DigitCounter(DECOMMISSIONING_SELECTED_DATA)
-                    image = self.device.screenshot()
-                    (current,remain,total) = counter.ocr_single_line(image)
-                    if current == 0:
-                        break
-                    decommission_times+=1
-                    self.ui_click(DECOMMISSIONING_CONFIRM, GET_ITEMS)
-                    timer=Timer(3).start()
-                    for _ in self.loop():
-                        if self.appear_then_click(GET_ITEMS):
-                            continue
-                        if (not self.appear(GET_ITEMS)) and timer.reached():
-                            break
-                self.ui_goto_main()
-            if decommission_times != 0 and self.config.TimeOdysseySetting_EnableContinuous:
-                #等5分钟让调度器自己启动, TODO: 如何设定下次启动时间
-                self.config.task_delay(minute=5)
-            else:
-                #如果一次批量退役也没有表示仓库里没有格子放白色和绿色的舰灵了只能停下来了
-                self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
+            self.decommission()
         elif finish_reason == 'insufficient_fuel':
             self.ui_click(STAGE_HOSTING_CLOSE, STAGE_SET_SAIL)
             self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
@@ -164,40 +181,109 @@ class TimeOdyssey(ResourceCheck):
             self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
         self.ui_goto_main()
 
-    def manual_hosting(self):
+    def manual_hosting(self) -> str:
         current = self.check_current_map_state()
         if current == 'map':
             self.ui_click(TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_SAIL_HOSTING_BUTTON)
             for _ in self.loop():
                 if self.appear_then_click(TIME_ODYSSEY_SAIL_SET_SAIL):
+                    continue
+                if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
+                    continue
+                if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
                     break
+                if self.appear(DECOMMISSIONING_PAGE):
+                    return 'depot_full'
             while 1:
                 for _ in self.loop():
                     if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
                         break
-                ocr = Ocr(TIME_ODYSSEY_STAGE_POSITION)
+                ocr = PositionOcr(TIME_ODYSSEY_STAGE_POSITION)
                 for image in self.loop():
-                    r = ocr.ocr_single_line(image)
-                    # implement me
-                    if isinstance(r, str) and r.endswith('点') and len(r) == 2:
-                        letter = r[0]  # 提取字母部分
-                        print(letter)  # 打印字母
-                    if len(r) > 0:
-                        self.device.sleep(60)
-                self.device.sleep(60)
-        else:
-            pass
-        pass
+                    position = ocr.ocr_single_line(image)
+                    if position:
+                        logger.info(f'current position = {position}')  
+                        if position == self.config.TimeOdysseySetting_ReturnPoint:
+                            return 'arrive_position'
+                        else:
+                            break
+                for _ in self.loop():
+                    if self.appear_then_click(TIME_ODYSSEY_STAGE_SET_SAIL):
+                        continue
+                    if self.appear(BATTLE_PAGE):
+                        break
+                    if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
+                        return 'depot_full'
+                # self.ui_click(TIME_ODYSSEY_STAGE_SET_SAIL, BATTLE_PAGE)
+                stage_result = ''
+                self.device.screenshot_interval_set(1.0)
+                for _ in self.loop():
+                    if self.appear_then_click(BATTLE_PAGE, silent=True):
+                        continue
+                    if self.appear(TIME_ODYSSEY_S_WIN):
+                        stage_result = 's-win'
+                        break
+                    if self.appear(TIME_ODYSSEY_STAGE_SUCCESS):
+                        stage_result = 'win'
+                        break
+                    if self.appear(TIME_ODYSSEY_STAGE_FAIL):
+                        stage_result = 'lose'
+                        break
+                self.device.screenshot_interval_set()
+                if stage_result == 'lose':
+                    for _ in self.loop():
+                        if self.appear_then_click(TIME_ODYSSEY_STAGE_FAIL):
+                            continue
+                        if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
+                            return 'lose_in_stage'
+                if stage_result == 'win':
+                    for _ in self.loop():
+                        if self.appear_then_click(TIME_ODYSSEY_STAGE_SUCCESS):
+                            continue
+                        if self.appear(GET_ITEMS):
+                            continue
+                        if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
+                            return 'not_s_win'
+                if stage_result == 's-win':
+                    for _ in self.loop():
+                        if self.appear_then_click(TIME_ODYSSEY_S_WIN):
+                            continue
+                        if self.appear_then_click(GET_ITEMS):
+                            continue
+                        if self.handle_popup_confirm():
+                            continue
+                        if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
+                            break
+        return '???'
+    def manual_hosting_back_port(self):
+        for _ in self.loop():
+            if self.appear_then_click(TIME_ODYSSEY_STAGE_TO_PORT):
+                break
+        confirm_clicked = False
+        timer = Timer(3)
+        for _ in self.loop():
+            if self.handle_popup_confirm():
+                confirm_clicked = True
+                timer.start()
+                continue
+            if confirm_clicked and timer.reached():
+                break
     
     def hosting(self):
         #确认当前石油
+        finish_reason = ''
         if self.config.TimeOdysseySetting_HostingMode == 'foreground':
             current = self.time_odyssey_map()
             self.hosting_prepare(current)
             finish_reason = self.start_hosting()
             self.post_hosting(finish_reason=finish_reason)
         elif self.config.TimeOdysseySetting_HostingMode == 'manual':
-            self.manual_hosting()
+            finish_reason = self.manual_hosting()
+            if finish_reason == 'arrive_position':
+                self.manual_hosting_back_port()
+                self.ui_goto_main()
+            if finish_reason == 'depot_full':
+                self.decommission()
 
     def run(self):
         self.ui_ensure(page_time_odyssey_map)

@@ -1724,6 +1724,47 @@ TIME_ODYSSEY_STAGE_POSITION=ButtonWrapper(
     )
 
 )
+TIME_ODYSSEY_STAGE_TO_PORT=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_TO_PORT',
+    share=Button.default_init(
+        area=(969,565,1060,634),color=(53,124,124),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_STAGE_TO_PORT.png'
+    )
+)
+TIME_ODYSSEY_STAGE_SUCCESS=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_SUCCESS',
+    share=[
+    #     Button.default_init(
+    #     area=(573,524,711,591),color=(169,165,128),
+    #     file='./assets/share/event/time_odyssey/TIME_ODYSSEY_S_WIN.png',
+    #     button=(562,262,774,425)
+    # ),
+    Button.default_init(
+        area=(556,526,696,600),color=(172,166,127),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_A_WIN.png',
+        button=(562,262,774,425)
+    ),Button.default_init(
+        area=(561,526,699,593),color=(156,136,96),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_B_WIN.png',
+        button=(562,262,774,425)
+    )]
+)
+TIME_ODYSSEY_S_WIN=ButtonWrapper(
+    name='TIME_ODYSSEY_S_WIN',
+    share=Button.default_init(
+        area=(573,524,711,591),color=(169,165,128),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_S_WIN.png',
+        button=(562,262,774,425)
+    )
+)
+TIME_ODYSSEY_STAGE_FAIL=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_FAIL',
+    share=Button.default_init(
+        area=(551,525,689,592),color=(116,117,119),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_D_LOSE.png',
+        button=(562,262,774,425)
+    )
+)
 STAGE_HOSTING=ButtonWrapper(
     name='STAGE_HOSTING',
     share=Button.default_init(
@@ -1733,9 +1774,11 @@ STAGE_HOSTING=ButtonWrapper(
 )
 STAGE_HOSTING_FINISH_DECOMMISIONING=ButtonWrapper(
     name='STAGE_HOSTING_FINISH_DECOMMISIONING',
-    share=Button.default_init(
+    share=Button(
         area=(548,434,734,480),color=(114,114,114),
-        file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_DECOMMISIONING.png'
+        file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_DECOMMISIONING.png',
+        button=(548,434,734,480),
+        search=(546,432,736,482)
     )
 )
 STAGE_HOSTING_CLOSE=ButtonWrapper(
