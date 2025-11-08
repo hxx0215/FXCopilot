@@ -560,22 +560,6 @@ REFINERY_SCHEDULE_PAGE = ButtonWrapper(
         color=(52,64,86)
     )
 )
-SCHEDULE_EDIT_BUTTON=ButtonWrapper(
-    name='SCHEDULE_EDIT_BUTTON',
-    share=Button.default_init(
-        file='./assets/share/rescheduler/SCHEDULE_EDIT_BUTTON.png',
-        area=(795,607,995,644),
-        color=(0,104,163)
-    )
-)
-SCHEDULE_START_BUTTON=ButtonWrapper(
-    name='SCHEDULE_EDIT_BUTTON',
-    share=Button.default_init(
-        file='./assets/share/rescheduler/SCHEDULE_START_BUTTON.png',
-        area=(800,607,993,644),
-        color=(4, 124, 97)
-    )
-)
 CONVENIENCE_STORE_OPEN=ButtonWrapper(
     name='CONVENIENCE_STORE_OPEN',
     share=Button.default_init(
