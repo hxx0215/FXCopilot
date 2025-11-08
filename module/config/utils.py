@@ -450,6 +450,23 @@ def get_server_next_monday_update(daily_trigger):
     return update
 
 
+def get_server_next_weekday_update(daily_trigger, weekday=0):
+    """
+    Get the next update time of a specific weekday.
+    
+    Args:
+        daily_trigger (list[str], str): [ "00:00", "12:00", "18:00",]
+        weekday (int): Target weekday (0=Monday, 1=Tuesday, 2=Wednesday, 3=Thursday, 4=Friday, 5=Saturday, 6=Sunday)
+
+    Returns:
+        datetime.datetime
+    """
+    update = get_server_next_update(daily_trigger)
+    diff = (weekday - update.weekday()) % 7
+    update = update + timedelta(days=diff)
+    return update
+
+
 def nearest_future(future, interval=120):
     """
     Get the neatest future time.
