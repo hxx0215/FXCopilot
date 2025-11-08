@@ -446,6 +446,16 @@ Mail:
     type: checkbox
     value: true
     option: [true, false]
+DailyShop:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+WeeklyShop:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
 MainlineSetting:
   Stage:
     type: input

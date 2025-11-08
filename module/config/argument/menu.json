@@ -22,7 +22,9 @@
       "TimeOdyssey",
       "TacticalAcademy",
       "Mainline",
-      "Mail"
+      "Mail",
+      "DailyShop",
+      "WeeklyShop"
     ]
   }
 }

@@ -2326,3 +2326,17 @@ SHOP_MONTHLY_PASS=ButtonWrapper(
         file='./assets/share/shop/SHOP_MONTHLY_PASS.png'
     )
 )
+SHOP_BUTTON=ButtonWrapper(
+    name='SHOP_BUTTON',
+    share=Button.default_init(
+        area=(123,659,150,692),color=(107,108,110),
+        file='./assets/share/shop/SHOP_BUTTON.png'
+    )
+)
+SHOP_GIFT_SHOP=ButtonWrapper(
+    name='SHOP_GIFT_SHOP',
+    share=Button.default_init(
+        area=(354,91,412,132),color=(197,210,212),
+        file='./assets/share/shop/SHOP_GIFT_SHOP.png'
+    )
+)

@@ -374,6 +374,11 @@ def get_os_reset_remain():
     return remain
 
 
+def _daily_trigger_parse(daily_trigger):
+    if isinstance(daily_trigger, str):
+        return daily_trigger.replace(' ', '').split(',')
+    return daily_trigger
+
 def get_server_next_update(daily_trigger):
     """
     Args:
@@ -382,8 +387,7 @@ def get_server_next_update(daily_trigger):
     Returns:
         datetime.datetime
     """
-    if isinstance(daily_trigger, str):
-        daily_trigger = daily_trigger.replace(' ', '').split(',')
+    daily_trigger = _daily_trigger_parse(daily_trigger)
 
     diff = server_time_offset()
     local_now = datetime.now()
@@ -406,9 +410,7 @@ def get_server_last_update(daily_trigger):
     Returns:
         datetime.datetime
     """
-    if isinstance(daily_trigger, str):
-        daily_trigger = daily_trigger.replace(' ', '').split(',')
-
+    daily_trigger = _daily_trigger_parse(daily_trigger)
     diff = server_time_offset()
     local_now = datetime.now()
     trigger = []
@@ -421,6 +423,42 @@ def get_server_last_update(daily_trigger):
     update = sorted(trigger)[-1]
     return update
 
+def get_server_next_weekday_update(daily_trigger, weekday=0):
+    """
+    获取服务器时间下一个指定星期几的更新时间（转换为本地时间）
+    
+    Args:
+        daily_trigger (list[str], str): 服务器时间的每日触发时间，如 "06:00" 或 ["00:00", "12:00"]
+        weekday (int): 目标星期几，0=周一，1=周二，...，6=周日
+    
+    Returns:
+        datetime.datetime: 本地时间的下一个更新时间
+    """
+    # 处理 daily_trigger 参数，支持字符串和列表格式
+    daily_trigger = _daily_trigger_parse(daily_trigger)
+
+    diff = server_time_offset()
+    local_now = datetime.now()
+    # 解析触发时间（服务器时间）
+    trigger_times = []
+    for t in daily_trigger:
+        h, m = [int(x) for x in t.split(':')]
+        # 计算服务器时间的当前星期几
+        server_now = local_now - diff
+        # 计算距离目标星期几的天数差
+        days_ahead = weekday - get_server_weekday()
+        # 创建服务器时间的目标时间点
+        server_target = server_now.replace(hour=h, minute=m, second=0, microsecond=0)
+        server_target = server_target + timedelta(days=days_ahead)
+        # 转换为本地时间
+        local_target = server_target + diff
+        # 如果计算出的时间已经过去，则加7天（下周）
+        if local_target <= local_now:
+            local_target = local_target + timedelta(days=7)
+        trigger_times.append(local_target)
+    # 返回最近的一个触发时间
+    update = sorted(trigger_times)[0]
+    return update
 
 def get_server_last_monday_update(daily_trigger):
     """
@@ -450,21 +488,6 @@ def get_server_next_monday_update(daily_trigger):
     return update
 
 
-def get_server_next_weekday_update(daily_trigger, weekday=0):
-    """
-    Get the next update time of a specific weekday.
-    
-    Args:
-        daily_trigger (list[str], str): [ "00:00", "12:00", "18:00",]
-        weekday (int): Target weekday (0=Monday, 1=Tuesday, 2=Wednesday, 3=Thursday, 4=Friday, 5=Saturday, 6=Sunday)
-
-    Returns:
-        datetime.datetime
-    """
-    update = get_server_next_update(daily_trigger)
-    diff = (weekday - update.weekday()) % 7
-    update = update + timedelta(days=diff)
-    return update
 
 
 def nearest_future(future, interval=120):

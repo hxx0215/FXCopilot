@@ -65,6 +65,14 @@
     "Mail": {
       "name": "Task.Mail.name",
       "help": "Task.Mail.help"
+    },
+    "DailyShop": {
+      "name": "Task.DailyShop.name",
+      "help": "Task.DailyShop.help"
+    },
+    "WeeklyShop": {
+      "name": "Task.WeeklyShop.name",
+      "help": "Task.WeeklyShop.help"
     }
   },
   "Scheduler": {
@@ -454,6 +462,30 @@
     "Enable": {
       "name": "Mail.Enable.name",
       "help": "Mail.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "DailyShop": {
+    "_info": {
+      "name": "DailyShop._info.name",
+      "help": "DailyShop._info.help"
+    },
+    "Enable": {
+      "name": "DailyShop.Enable.name",
+      "help": "DailyShop.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
+  "WeeklyShop": {
+    "_info": {
+      "name": "WeeklyShop._info.name",
+      "help": "WeeklyShop._info.help"
+    },
+    "Enable": {
+      "name": "WeeklyShop.Enable.name",
+      "help": "WeeklyShop.Enable.help",
       "True": "True",
       "False": "False"
     }

@@ -27,7 +27,7 @@ class Button(Resource):
     @classmethod
     def default_init(cls,file, area,color, button= None, posi = None):
         left,top,right,bottom = area
-        search = (min(0, left - 20), min(0, top - 20), max(right +20 ,1280), max(bottom+20, 1280))
+        search = (max(0, left - 20), max(0, top - 20), min(right +20 ,1280), min(bottom+20, 1280))
         return cls(file, area, search, color, button if button else (left,top,right,bottom), posi)
 
     @property

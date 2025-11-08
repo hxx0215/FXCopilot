@@ -91,6 +91,12 @@ class GeneratedConfig:
     # Group `Mail`
     Mail_Enable = True  # True, False
 
+    # Group `DailyShop`
+    DailyShop_Enable = True  # True, False
+
+    # Group `WeeklyShop`
+    WeeklyShop_Enable = True  # True, False
+
     # Group `MainlineSetting`
     MainlineSetting_Stage = '5-10'
     MainlineSetting_AutoDecommissioning = False  # True, False

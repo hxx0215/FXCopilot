@@ -49,6 +49,10 @@ FX:
       - MainlineSetting
     Mail:
       - Scheduler
+    DailyShop:
+      - Scheduler
+    WeeklyShop:
+      - Scheduler
 # Daily:
 #   menu: 'list'
 #   page: 'setting'
