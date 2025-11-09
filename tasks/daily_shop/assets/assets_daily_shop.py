@@ -38,3 +38,5 @@ SHOP_FIRST_NONFREE_DAILY_GIFT=ButtonWrapper(
         file='./assets/share/shop/SHOP_FIRST_NONFREE_DAILY_GIFT.png'
     )
 )
+# 添加更明确的别名，用于区分日用和周用礼品选中状态
+SHOP_DAILY_GIFT_SELECTED = SHOP_WEEKLY_GIFT_SELECTED
