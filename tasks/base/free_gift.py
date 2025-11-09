@@ -51,16 +51,10 @@ class FreeGift(UI, ABC):
         raise NotImplementedError("子类必须实现 finish_task 方法")
     
     def run(self):
-        """
-        运行任务 - 通用逻辑
-        """
-        # 确保在正确的页面
         self.ui_ensure(page_shop_gift_shop)
         
-        # 点击对应的礼品选项卡
         self.ui_click(self.shop_gift_button, self.shop_gift_selected)
         
-        # 第一个循环：寻找并点击免费礼品
         for _ in self.loop():
             if self.appear_then_click(self.free_gift_button):
                 continue
@@ -71,7 +65,6 @@ class FreeGift(UI, ABC):
                 self.finish_task()
                 return
         
-        # 第二个循环：确认领取和获取奖励
         for _ in self.loop():
             if self.appear_then_click(self.free_gift_confirm):
                 continue
