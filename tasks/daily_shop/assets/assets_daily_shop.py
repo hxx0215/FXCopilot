@@ -1,0 +1,40 @@
+
+from module.base.button import Button, ButtonWrapper,ItemWrapper
+SHOP_DAILY_GIFT=ButtonWrapper(
+    name='SHOP_DAILY_GIFT',
+    share=Button.default_init(
+        area=(57,407,176,440),color=(97,97,97),
+        file='./assets/share/shop/SHOP_GIFT_DAILY_GIFT.png',
+        button=(32,396,197,456)
+    )
+)
+SHOP_WEEKLY_GIFT_SELECTED=ButtonWrapper(
+    name='SHOP_WEEKLY_GIFT_SELECTED',
+    share=Button.default_init(
+        area=(150,184,225,586),color=(141,142,142),
+        file='./assets/share/shop/SHOP_GIFT_DAILY_GIFT_SELECTED.png'
+    )
+)
+SHOP_FREE_DAILY_GIFT=ButtonWrapper(
+    name='SHOP_FREE_DAILY_GIFT',
+    share=Button.default_init(
+        area=(265,344,449,497),color=(188,174,174),
+        file='./assets/share/shop/SHOP_FREE_DAILY_GIFT.png',
+        button=(253,174,478,632)
+    )
+)
+SHOP_FREE_DAILY_GIFT_CONFIRM=ButtonWrapper(
+    name='SHOP_FREE_DAILY_GIFT_CONFIRM',
+    share=Button.default_init(
+        area=(314,298,439,401),color=(115,100,100),
+        file='./assets/share/shop/SHOP_FREE_DAILY_GIFT_CONFIRM.png',
+        button=(811,494,995,542)
+    )
+)
+SHOP_FIRST_NONFREE_DAILY_GIFT=ButtonWrapper(
+    name='SHOP_FIRST_NONFREE_DAILY_GIFT',
+    share=Button.default_init(
+        area=(274,311,470,489),color=(166,157,154),
+        file='./assets/share/shop/SHOP_FIRST_NONFREE_DAILY_GIFT.png'
+    )
+)

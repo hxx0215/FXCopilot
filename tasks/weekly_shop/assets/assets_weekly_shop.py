@@ -24,7 +24,7 @@ SHOP_FREE_WEEKLY_GIFT=ButtonWrapper(
         button=(253,174,478,632)
     )
 )
-SHOP_FREE_WEEKLY_GIFT_CONFIRTM=ButtonWrapper(
+SHOP_FREE_WEEKLY_GIFT_CONFIRM=ButtonWrapper(
     name='SHOP_FREE_WEEKLY_GIFT_CONFIRTM',
     share=Button.default_init(
         area=(314,283,439,401),color=(123,122,121),

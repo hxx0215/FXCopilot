@@ -2,7 +2,7 @@ from tasks.base.ui import UI
 from tasks.base.page import page_shop_gift_shop
 from tasks.base.assets.assets_base_page import GET_ITEMS
 from .assets.assets_weekly_shop import *
-from module.config.utils import get_server_next_weekday_update,get_server_next_update
+from module.config.utils import get_server_next_weekday_update
 from module.logger.logger import logger
 
 class WeeklyShop(UI):
@@ -15,14 +15,14 @@ class WeeklyShop(UI):
         for _ in self.loop():
             if self.appear_then_click(SHOP_FREE_WEEKLY_GIFT):
                 continue
-            if self.appear(SHOP_FREE_WEEKLY_GIFT_CONFIRTM):
+            if self.appear(SHOP_FREE_WEEKLY_GIFT_CONFIRM):
                 break
             if self.appear(SHOP_FIRST_NONFREE_WEEKLY_GIFT):
                 logger.info('no free gift')
                 self.finish_task()
                 return
         for _ in self.loop():
-            if self.appear_then_click(SHOP_FREE_WEEKLY_GIFT_CONFIRTM):
+            if self.appear_then_click(SHOP_FREE_WEEKLY_GIFT_CONFIRM):
                 continue
             if self.appear_then_click(GET_ITEMS):
                 continue
