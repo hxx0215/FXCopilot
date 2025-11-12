@@ -560,22 +560,6 @@ REFINERY_SCHEDULE_PAGE = ButtonWrapper(
         color=(52,64,86)
     )
 )
-SCHEDULE_EDIT_BUTTON=ButtonWrapper(
-    name='SCHEDULE_EDIT_BUTTON',
-    share=Button.default_init(
-        file='./assets/share/rescheduler/SCHEDULE_EDIT_BUTTON.png',
-        area=(795,607,995,644),
-        color=(0,104,163)
-    )
-)
-SCHEDULE_START_BUTTON=ButtonWrapper(
-    name='SCHEDULE_EDIT_BUTTON',
-    share=Button.default_init(
-        file='./assets/share/rescheduler/SCHEDULE_START_BUTTON.png',
-        area=(800,607,993,644),
-        color=(4, 124, 97)
-    )
-)
 CONVENIENCE_STORE_OPEN=ButtonWrapper(
     name='CONVENIENCE_STORE_OPEN',
     share=Button.default_init(
@@ -1701,6 +1685,70 @@ TIME_ODYSSEY_TIMES_SELECT=ButtonWrapper(
         file='./assets/share/event/time_odyssey/TIME_ODYSSEY_TIMES_SELECT.png'
     )
 )
+TIME_ODYSSEY_SAIL_SET_SAIL=ButtonWrapper(
+    name='TIME_ODYSSEY_SAIL_SET_SAIL',
+    share=Button.default_init(
+        area=(1202,614,1270,661),color=(139,126,67),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_SAIL_SET_SAIL.png'
+    )
+)
+TIME_ODYSSEY_STAGE_SET_SAIL=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_SET_SAIL',
+    share=Button.default_init(
+        area=(1176,565,1273,633),color=(143,128,68),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_STAGE_SET_SAIL.png',
+        button=(1078,563,1276,632)
+    )
+)
+TIME_ODYSSEY_STAGE_POSITION=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_POSITION',
+    share=Button.default_init(
+        area=(795,210,851,253),color=(56,56,56),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_STAGE_POSITION.png'
+    )
+
+)
+TIME_ODYSSEY_STAGE_TO_PORT=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_TO_PORT',
+    share=Button.default_init(
+        area=(969,565,1060,634),color=(53,124,124),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_STAGE_TO_PORT.png'
+    )
+)
+TIME_ODYSSEY_STAGE_SUCCESS=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_SUCCESS',
+    share=[
+    #     Button.default_init(
+    #     area=(573,524,711,591),color=(169,165,128),
+    #     file='./assets/share/event/time_odyssey/TIME_ODYSSEY_S_WIN.png',
+    #     button=(562,262,774,425)
+    # ),
+    Button.default_init(
+        area=(556,526,696,600),color=(172,166,127),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_A_WIN.png',
+        button=(562,262,774,425)
+    ),Button.default_init(
+        area=(561,526,699,593),color=(156,136,96),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_B_WIN.png',
+        button=(562,262,774,425)
+    )]
+)
+TIME_ODYSSEY_S_WIN=ButtonWrapper(
+    name='TIME_ODYSSEY_S_WIN',
+    share=Button.default_init(
+        area=(573,524,711,591),color=(169,165,128),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_S_WIN.png',
+        button=(562,262,774,425)
+    )
+)
+TIME_ODYSSEY_STAGE_FAIL=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_FAIL',
+    share=Button.default_init(
+        area=(551,525,689,592),color=(116,117,119),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_D_LOSE.png',
+        button=(562,262,774,425)
+    )
+)
 STAGE_HOSTING=ButtonWrapper(
     name='STAGE_HOSTING',
     share=Button.default_init(
@@ -1710,9 +1758,11 @@ STAGE_HOSTING=ButtonWrapper(
 )
 STAGE_HOSTING_FINISH_DECOMMISIONING=ButtonWrapper(
     name='STAGE_HOSTING_FINISH_DECOMMISIONING',
-    share=Button.default_init(
+    share=Button(
         area=(548,434,734,480),color=(114,114,114),
-        file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_DECOMMISIONING.png'
+        file='./assets/share/base/main_page/STAGE_HOSTING_FINISH_DECOMMISIONING.png',
+        button=(548,434,734,480),
+        search=(546,432,736,482)
     )
 )
 STAGE_HOSTING_CLOSE=ButtonWrapper(
@@ -2274,5 +2324,19 @@ SHOP_MONTHLY_PASS=ButtonWrapper(
     share=Button.default_init(
         area=(668,229,799,295),color=(130,130,131),
         file='./assets/share/shop/SHOP_MONTHLY_PASS.png'
+    )
+)
+SHOP_BUTTON=ButtonWrapper(
+    name='SHOP_BUTTON',
+    share=Button.default_init(
+        area=(123,659,150,692),color=(107,108,110),
+        file='./assets/share/shop/SHOP_BUTTON.png'
+    )
+)
+SHOP_GIFT_SHOP=ButtonWrapper(
+    name='SHOP_GIFT_SHOP',
+    share=Button.default_init(
+        area=(354,91,412,132),color=(197,210,212),
+        file='./assets/share/shop/SHOP_GIFT_SHOP.png'
     )
 )

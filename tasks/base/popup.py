@@ -16,7 +16,7 @@ class PopupHandler(ModuleBase):
                 return True
         return False
 
-    def handle_reward(self, interval=5, click_button: ButtonWrapper = None) -> bool:
+    def handle_reward(self, interval=5, click_button: ButtonWrapper | None = None) -> bool:
         """
         Args:
             interval:
@@ -103,6 +103,8 @@ class PopupHandler(ModuleBase):
 
         return False
 
+    def pop_confirm_appear(self) -> bool:
+        return self.appear(POPUP_CONFIRM)
     def handle_popup_confirm(self, interval=2) -> bool:
         """
         Args:

@@ -115,11 +115,13 @@
       "ServerUpdate": "00:00"
     },
     "TimeOdysseySetting": {
+      "HostingMode": "foreground",
       "Mode": "default",
       "Times": "default",
       "AutoDecommissioning": false,
       "EnableContinuous": false,
-      "MinimalFuel": 1000
+      "MinimalFuel": 1000,
+      "ReturnPoint": "A"
     }
   },
   "TacticalAcademy": {
@@ -147,6 +149,22 @@
       "Enable": false,
       "NextRun": "2020-01-01 00:00:00",
       "Command": "Mail",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "DailyShop": {
+    "Scheduler": {
+      "Enable": false,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "DailyShop",
+      "ServerUpdate": "00:00"
+    }
+  },
+  "WeeklyShop": {
+    "Scheduler": {
+      "Enable": true,
+      "NextRun": "2020-01-01 00:00:00",
+      "Command": "WeeklyShop",
       "ServerUpdate": "00:00"
     }
   }

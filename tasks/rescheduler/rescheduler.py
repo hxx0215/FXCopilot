@@ -2,7 +2,7 @@
 from tasks.base.ui import UI
 from module.logger import logger
 from tasks.base.page import page_reward,page_refinery,page_refinery_schedule,page_convenience_store,page_convenience_store_schedule
-from tasks.base.assets.assets_base_page import SCHEDULE_EDIT_BUTTON,SCHEDULE_START_BUTTON
+from .assets.assets_rescheduler import *
 from module.exception import RequestHumanTakeover, ScriptError
 from tasks.base.assets.assets_base_popup import POPUP_CONFIRM
 class Rescheduler(UI):
@@ -19,17 +19,24 @@ class Rescheduler(UI):
                 state='start'
                 break
         if state == 'edit':
-            for _ in self.loop():
-                if self.appear_then_click(SCHEDULE_EDIT_BUTTON):
-                    continue
-                if self.handle_popup_confirm():
-                    break
-        for _ in self.loop():
-            if self.appear_then_click(SCHEDULE_START_BUTTON):
-                continue
-            if self.handle_popup_confirm():
-                break
+            self.edit(SCHEDULE_EDIT_BUTTON)
+            self.make_sure_popup_dismiss(SCHEDULER_POP_DISMISS)
+        self.edit(SCHEDULE_START_BUTTON)
+        self.make_sure_popup_dismiss(SCHEDULE_UPGRADE)
         logger.info('finish reschedule')
+
+    def edit(self,btn: ButtonWrapper):
+        for _ in self.loop():
+            if self.appear_then_click(btn):
+                continue
+            if self.appear(POPUP_CONFIRM):
+                break
+    def make_sure_popup_dismiss(self, flag: ButtonWrapper):
+        for _ in self.loop():
+            if self.handle_popup_confirm():
+                continue
+            if self.appear(flag):
+                break
 
 
     def reschedule_refinery(self):

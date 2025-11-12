@@ -1,9 +1,9 @@
 from tasks.base.ui import UI
 from tasks.base.page import page_main_line,page_decommissioning_batch
 from .assets import *
-from tasks.base.assets.assets_base_page import (NEXT_STAGE_BUTTON,PREVIOUS_STAGE_BUTTON,STAGE_HOSTING,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_DECOMMISIONING,STAGE_HOSTING_CLOSE,
+from tasks.base.assets.assets_base_page import (NEXT_STAGE_BUTTON,PREVIOUS_STAGE_BUTTON,STAGE_HOSTING,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_DECOMMISIONING,STAGE_HOSTING_CLOSE,STAGE_HOSTING_FINISH_REACH_TIMES,
                                                 DECOMMISSIONING_PAGE,DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,
-                                                STAGE_HOSTING_GET_SSR, STAGE_INFO_PAGE,STAGE_CLOSE_BUTTON,MAIN_LINE_PAGE)
+                                                STAGE_HOSTING_GET_SSR, STAGE_INFO_PAGE,STAGE_CLOSE_BUTTON,MAIN_LINE_PAGE,STAGE_FAILED_PAGE)
 from tasks.base.assets.assets_base_popup import POPUP_CANCEL,POPUP_CONFIRM
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,DigitCounter
@@ -121,6 +121,9 @@ class Mainline(UI):
             if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
                 finish_reason = 'depot_full'
                 break
+            if self.appear_then_click(STAGE_HOSTING_FINISH_REACH_TIMES):
+                finish_reason = 'reach_times'
+                break
             priority_exist = self.check_if_priorty_exist()
             if priority_exist:
                 finish_reason = 'task_interrupt'
@@ -177,6 +180,23 @@ class Mainline(UI):
             self.ui_click(MAINLINE_FINISH_HOSTING_FUEL_POPUP, STAGE_INFO_PAGE)
             self.ui_click(STAGE_CLOSE_BUTTON, MAIN_LINE_PAGE)
             self.ui_goto_main()
+            self.config.cross_set('Mainline.Scheduler.Enable',False)
+        elif finish_reason == 'reach_times':
+            self.ui_click(STAGE_HOSTING_CLOSE,MAINLINE_STAGE_FINISH)
+            for _ in self.loop():
+                if self.appear_then_click(MAINLINE_STAGE_FINISH):
+                    continue
+                if self.appear_then_click(GET_ITEMS):
+                    continue
+                if self.appear(MAINLINE_STAGE_FINISH_EXIT):
+                    break
+            for _ in self.loop():
+                if self.appear_then_click(MAINLINE_STAGE_FINISH_EXIT):
+                    continue
+                if self.appear(MAIN_LINE_PAGE):
+                    break
+                if self.appear(STAGE_FAILED_PAGE):
+                    break
             self.config.cross_set('Mainline.Scheduler.Enable',False)
         elif finish_reason == 'task_interrupt':
             self.ui_click(STAGE_HOSTING,STOP_HOSTING)

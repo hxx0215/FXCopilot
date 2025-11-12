@@ -81,11 +81,15 @@ MAINLINE_FINISH_HOSTING_FUEL_POPUP=ButtonWrapper(
 )
 MAINLINE_STAGE_FINISH=ButtonWrapper(
     name='MAINLINE_STAGE_FINISH',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(616,513,694,534),color=(96,96,98),
         file='./assets/share/attack/mainline/MAINLINE_STAGE_FINISH.png',
         button=(578,262,1063,490)
-    )
+    ),Button.default_init(
+        area=(611,524,756,598),color=(95,96,97),
+        file='./assets/share/attack/mainline/MAINLINE_STAGE_FINISH_FAILED.png',
+        button=(578,262,1063,490)
+    )]
 )
 MAINLINE_STAGE_FINISH_EXIT=ButtonWrapper(
     name='MAINLINE_STAGE_FINISH_EXIT',

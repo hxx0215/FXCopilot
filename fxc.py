@@ -88,6 +88,14 @@ class FuXiaoCopilot(AzurLaneAutoScript):
         from tasks.mail.mail import Mail
         Mail(self.config, self.device, task="Mail").run()
 
+    def weekly_shop(self):
+        from tasks.weekly_shop.weekly_shop import WeeklyShop
+        WeeklyShop(self.config, self.device, task="WeeklyShop").run()
+
+    def daily_shop(self):
+        from tasks.daily_shop.daily_shop import DailyShop
+        DailyShop(self.config, self.device, task="DailyShop").run()
+
 
 if __name__ == '__main__':
     src = FuXiaoCopilot('fxc')

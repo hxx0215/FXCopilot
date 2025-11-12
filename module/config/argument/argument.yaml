@@ -404,6 +404,10 @@ DungeonSetting:
     value: a-ng1
     option: [a-ng1,a-tp1,a-ac1,a-aa1,a-eq1,a-ng2,a-tp2,a-ac2,a-aa2,a-eq2]
 TimeOdysseySetting:
+  HostingMode:
+    type: select
+    value: foreground
+    option: [foreground, background, manual]
   Mode:
     type: select
     value: default
@@ -424,6 +428,9 @@ TimeOdysseySetting:
     type: input
     value: 1000
     valuetype: 'int'
+  ReturnPoint:
+    type: input
+    value: A
 TacticalAcademy:
   Enable:
     type: checkbox
@@ -435,6 +442,16 @@ MainLine:
     value: true
     option: [true, false]
 Mail:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+DailyShop:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]
+WeeklyShop:
   Enable:
     type: checkbox
     value: true

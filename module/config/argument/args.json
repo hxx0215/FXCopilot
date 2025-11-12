@@ -462,6 +462,15 @@
       }
     },
     "TimeOdysseySetting": {
+      "HostingMode": {
+        "type": "select",
+        "value": "foreground",
+        "option": [
+          "foreground",
+          "background",
+          "manual"
+        ]
+      },
       "Mode": {
         "type": "select",
         "value": "default",
@@ -504,6 +513,10 @@
         "type": "input",
         "value": 1000,
         "valuetype": "int"
+      },
+      "ReturnPoint": {
+        "type": "input",
+        "value": "A"
       }
     }
   },
@@ -594,6 +607,60 @@
       "Command": {
         "type": "input",
         "value": "Mail",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "DailyShop": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": false,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "DailyShop",
+        "display": "hide"
+      },
+      "ServerUpdate": {
+        "type": "input",
+        "value": "00:00",
+        "display": "hide"
+      }
+    }
+  },
+  "WeeklyShop": {
+    "Scheduler": {
+      "Enable": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
+      },
+      "NextRun": {
+        "type": "datetime",
+        "value": "2020-01-01 00:00:00",
+        "validate": "datetime"
+      },
+      "Command": {
+        "type": "input",
+        "value": "WeeklyShop",
         "display": "hide"
       },
       "ServerUpdate": {

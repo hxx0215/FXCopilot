@@ -183,7 +183,7 @@ class QuizCenter(UI):
             f = button.match_template(self.device.image)
             if f:
                 logger.info(f"click at {button.button}")
-            if self.appear(STERN_CANDIDATE):
+            if self.appear_then_click(STERN_CANDIDATE):
                 return 1
             else:
                 return -1
@@ -192,7 +192,7 @@ class QuizCenter(UI):
             f = button.match_template(self.device.image)
             if f:
                 logger.info(f"click at {button.button}")
-            if self.appear(MIDSHIPS_CANDIDATE): # change to apear and click
+            if self.appear_then_click(MIDSHIPS_CANDIDATE): # change to apear and click
                 return 1
             else:
                 return -1
