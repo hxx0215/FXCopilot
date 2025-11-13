@@ -20,12 +20,14 @@ class ConfigModel:
     GitProxy: Optional[str] = None
     SSLVerify: bool = False
     AutoUpdate: bool = True
-    KeepLocalChanges: bool = False
+    KeepLocalChanges: bool = True
 
     # Python
     PythonExecutable: str = "./toolkit/python.exe"
     PypiMirror: Optional[str] = None
     InstallDependencies: bool = True
+    UseVirtualEnv: bool = True  # 是否使用虚拟环境
+    VenvPath: str = "./.venv"   # 虚拟环境路径
     RequirementsFile: str = "requirements.txt"
 
     # Adb

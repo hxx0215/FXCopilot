@@ -59,6 +59,8 @@ try {
 const file = fs.readFileSync(path.join(alasPath, './config/deploy.yaml'), 'utf8');
 const config = yaml.parse(file) as DefAlasConfig;
 const PythonExecutable = config.Deploy.Python.PythonExecutable;
+const UseVirtualEnv = config.Deploy.Python.UseVirtualEnv || false;
+const VenvPath = config.Deploy.Python.VenvPath || './.venv';
 const WebuiPort = config.Deploy.Webui.WebuiPort.toString();
 const Theme = config.Deploy.Webui.Theme;
 
@@ -69,9 +71,23 @@ export const ThemeObj: {[k in string]: 'light' | 'dark'} = {
   system: 'light',
 };
 
-export const pythonPath = path.isAbsolute(PythonExecutable)
-  ? PythonExecutable
-  : path.join(alasPath, PythonExecutable);
+function getPythonPath(): string {
+  if (UseVirtualEnv) {
+    // 使用虚拟环境中的 Python
+    const venvBasePath = path.isAbsolute(VenvPath) ? VenvPath : path.join(alasPath, VenvPath);
+    const venvPython = isMacintosh
+      ? path.join(venvBasePath, 'bin', 'python')
+      : path.join(venvBasePath, 'Scripts', 'python.exe');
+    return venvPython;
+  } else {
+    // 使用原始配置的 Python
+    return path.isAbsolute(PythonExecutable)
+      ? PythonExecutable
+      : path.join(alasPath, PythonExecutable);
+  }
+}
+
+export const pythonPath = getPythonPath();
 export const installerPath = ALAS_INSTR_FILE;
 export const installerArgs = import.meta.env.DEV ? ['--print-test'] : [];
 export const webuiUrl = `http://127.0.0.1:${WebuiPort}`;

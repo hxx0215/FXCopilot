@@ -33,6 +33,8 @@ declare interface DefAlasConfig {
       PythonExecutable: string;
       PypiMirror: string;
       InstallDependencies: boolean;
+      UseVirtualEnv: boolean;
+      VenvPath: string;
       RequirementsFile: string;
     };
     Adb: {
