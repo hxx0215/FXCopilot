@@ -123,7 +123,7 @@ class DeployConfig(ConfigModel):
         """
         # Bypass webui.config.DeployConfig.__setattr__()
         # Don't write these into deploy.yaml
-        super().__setattr__('GitOverCdn', self.Repository in ['cn'])
+        super().__setattr__('GitOverCdn', False)
         if self.Repository in ['global', 'cn']:
             super().__setattr__('Repository', 'https://github.com/hxx0215/FXCopilot')
 

@@ -19,7 +19,16 @@ module.exports = async function () {
     extraMetadata: {
       version: getVersion(),
     },
-
+    
+    // Windows icon configuration
+    win: {
+      icon: 'buildResources/icon.ico',
+    },
+    // macOS icon configuration
+    mac: {
+      icon: 'buildResources/icon.icns',
+    },
+    
     // Specify linux target just for disabling snap compilation
     linux: {
       target: 'deb',
