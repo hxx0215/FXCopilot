@@ -58,7 +58,11 @@ if (!dpiScaling) {
  * Shout down background process if all windows was closed
  */
 app.on('window-all-closed', () => {
-  app.quit();
+  logger.info('All windows closed, waiting for Python processes to clean up...');
+  // 等待Python进程清理完成
+  setTimeout(() => {
+    app.quit();
+  }, 2000);
 });
 
 /**

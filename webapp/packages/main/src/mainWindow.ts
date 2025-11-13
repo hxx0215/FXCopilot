@@ -120,6 +120,10 @@ export async function createWindow() {
         alas?.kill(function () {
           browserWindow?.close();
         });
+        // 等待Python进程清理完成
+        setTimeout(() => {
+          browserWindow?.close();
+        }, 1000);
       },
     },
   ]);
@@ -193,7 +197,10 @@ ipcMain.on('window-close', function () {
     browserWindow = null;
   });
 
-  browserWindow?.close();
+  // 等待进程清理完成
+  setTimeout(() => {
+    browserWindow?.close();
+  }, 1000);
 });
 
 async function initWindowEvents() {

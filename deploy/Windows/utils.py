@@ -120,54 +120,39 @@ def iter_process() -> "Iterable[tuple[int, list[str]]]":
     try:
         import psutil
     except ModuleNotFoundError:
+        # psutil not available, return empty iterator
+        return
+    except Exception as e:
+        # Other import errors (e.g., version incompatibility)
+        print(f"Warning: psutil import failed: {e}")
         return
 
-    if psutil.WINDOWS:
-        # Since this is a one-time-usage, we access psutil._psplatform.Process directly
-        # to bypass the call of psutil.Process.is_running().
-        # This only costs about 0.017s.
-        # If you do psutil.process_iter(['pid', 'cmdline']) it will take over 1s
-        import psutil._psutil_windows as cetx
-        for pid in psutil.pids():
-            # 0 and 4 are always represented in taskmgr and process-hacker
-            if pid == 0 or pid == 4:
-                continue
+    try:
+        # Use the generic process_iter approach which is more compatible
+        for proc in psutil.process_iter(['pid', 'cmdline']):
             try:
-                # This would be fast on psutil<=5.9.8 taking overall time 0.027s
-                # but taking 0.39s on psutil>=6.0.0
-                cmdline = cetx.proc_cmdline(pid, use_peb=True)
-            except (psutil.AccessDenied, psutil.NoSuchProcess, OSError):
-                # psutil.AccessDenied
-                # NoSuchProcess: process no longer exists (pid=xxx)
-                # ProcessLookupError: [Errno 3] assume no such process (originated from psutil_pid_is_running -> 0)
-                # OSError: [WinError 87] 参数错误。: '(originated from ReadProcessMemory)'
-                continue
-
-            # Validate cmdline
-            if not cmdline:
-                continue
-            try:
+                pid = proc.info['pid']
+                cmdline = proc.info['cmdline']
+                
+                # Skip system processes
+                if pid in (0, 4):
+                    continue
+                    
+                # Validate cmdline
+                if not cmdline or len(cmdline) == 0:
+                    continue
+                    
+                # Skip system conhost processes
                 exe = cmdline[0]
-            except IndexError:
+                if exe.startswith(r'\??'):
+                    continue
+                    
+                yield pid, cmdline
+                
+            except (psutil.AccessDenied, psutil.NoSuchProcess, psutil.ZombieProcess, OSError):
+                # Skip processes we can't access or that have terminated
                 continue
-            # \??\C:\Windows\system32\conhost.exe
-            if exe.startswith(r'\??'):
-                continue
-            yield pid, cmdline
-    else:
-        # No optimizations yet
-        for pid in psutil.pids():
-            proc = psutil._psplatform.Process(pid)
-            try:
-                cmdline = proc.cmdline()
-            except (psutil.AccessDenied, psutil.NoSuchProcess, OSError):
-                continue
-
-            # Validate cmdline
-            if not cmdline:
-                continue
-            try:
-                cmdline[0]
-            except IndexError:
-                continue
-            yield pid, cmdline
+                
+    except Exception as e:
+        print(f"Warning: iter_process failed: {e}")
+        return
