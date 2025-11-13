@@ -60,40 +60,17 @@ class AlasManager(DeployConfig):
         self.execute(f'taskkill /f /t /pid {pid}', allow_failure=True, output=False)
 
     def alas_kill(self):
-        import time
-        
-        logger.hr('Kill existing Alas', 0)
-        
-        # 首先检查psutil是否可用
-        try:
-            import psutil
-        except ImportError as e:
-            logger.error(f'psutil not available: {e}, skipping Alas kill')
-            Progress.KillExisting()
-            return True
-        
-        for attempt in range(10):
-            logger.info(f'Kill attempt {attempt + 1}/10')
-            
-            try:
-                proc_list = list(self.iter_process_by_names(['python.exe'], in_alas=True))
-                if not len(proc_list):
-                    logger.info('No existing Alas processes found')
-                    Progress.KillExisting()
-                    return True
-                    
-                logger.info(f'Found {len(proc_list)} Alas processes to kill')
-                for proc in proc_list:
-                    logger.info(f'Killing process: {proc}')
-                    self.kill_process(proc)
-                
-                # 等待进程真正结束
-                time.sleep(1)
-                
-            except Exception as e:
-                logger.error(f'Error during Alas kill attempt {attempt + 1}: {e}')
+        for _ in range(10):
+            logger.hr(f'Kill existing Alas', 0)
+            proc_list = list(self.iter_process_by_names(['python.exe'], in_alas=True))
+            if not len(proc_list):
+                Progress.KillExisting()
+                return True
+            for proc in proc_list:
+                logger.info(proc)
+                self.kill_process(proc)
 
-        logger.warning('Unable to kill all existing Alas processes after 10 attempts')
+        logger.warning('Unable to kill existing Alas, skip')
         Progress.KillExisting()
         return False
 

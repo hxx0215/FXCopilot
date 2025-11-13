@@ -24,11 +24,7 @@ export const addIpcMainListener = async (mainWindow: BrowserWindow, coreService:
   ipcMain.on('window-close', function () {
     coreService?.kill();
     mainWindow?.close();
-    
-    // 等待Python进程清理完成后再退出
-    setTimeout(() => {
-      app.exit(0);
-    }, 1000);
+    app.exit(0);
   });
 
   ipcMain.on(WINDOW_READY, async function (_, args) {

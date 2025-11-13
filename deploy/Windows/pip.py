@@ -75,19 +75,12 @@ class PipManager(DeployConfig):
             logger.info(f'Virtual environment already exists: {self.venv_path}')
             return
         
-        # 确保目录存在
-        venv_dir = os.path.dirname(self.venv_path)
-        if venv_dir and not os.path.exists(venv_dir):
-            os.makedirs(venv_dir, exist_ok=True)
-            logger.info(f'Created directory: {venv_dir}')
-        
-        # 修复引号嵌套问题 - 不需要额外的引号，因为execute方法会处理
         logger.info(f'Creating virtual environment at: {self.venv_path}')
-        self.execute(f'{self.python} -m venv {self.venv_path}')
+        self.execute(f'"{self.python}" -m venv "{self.venv_path}"')
         
         # 升级虚拟环境中的 pip
         logger.info('Upgrading pip in virtual environment')
-        self.execute(f'{self.venv_python} -m pip install --upgrade pip')
+        self.execute(f'"{self.venv_python}" -m pip install --upgrade pip')
     
     def _build_pip_args(self):
         """构建 pip 安装参数"""
@@ -178,7 +171,7 @@ class PipManager(DeployConfig):
         
         # 2. 检查 Python 版本
         logger.hr('Check Virtual Environment Python', 1)
-        self.execute(f'{self.venv_python} --version')
+        self.execute(f'"{self.venv_python}" --version')
         
         # 3. 构建安装参数
         arg = self._build_pip_args()
@@ -186,7 +179,7 @@ class PipManager(DeployConfig):
         # 4. 在虚拟环境中安装依赖
         logger.hr('Install Dependencies in Virtual Environment', 1)
         arg_str = ' ' + ' '.join(arg) if arg else ''
-        self.execute(f'{self.venv_python} -m pip install -r {self.requirements_file}{arg_str}')
+        self.execute(f'"{self.venv_python}" -m pip install -r {self.requirements_file}{arg_str}')
         Progress.UpdateDependency()
     
     def _pip_install_direct(self):
@@ -200,7 +193,7 @@ class PipManager(DeployConfig):
 
         # Install
         logger.hr('Check Python', 1)
-        self.execute(f'{self.python} --version')
+        self.execute(f'"{self.python}" --version')
 
         arg = self._build_pip_args()
 

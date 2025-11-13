@@ -57,7 +57,7 @@ Deploy:
     # Filepath of ADB executable `adb.exe`
     # [Easy installer] Use './toolkit/Lib/site-packages/adbutils/binaries/adb.exe'
     # [Other] Use you own latest ADB, but not the ADB in your emulator
-    AdbExecutable: './.env/Lib/site-packages/adbutils/binaries/adb.exe'
+    AdbExecutable: './toolkit/Lib/site-packages/adbutils/binaries/adb.exe'
     # Whether to replace ADB
     # Chinese emulators (NoxPlayer, LDPlayer, MemuPlayer, MuMuPlayer) use their own ADB, instead of the latest.
     # Different ADB servers will terminate each other at startup, resulting in disconnection.

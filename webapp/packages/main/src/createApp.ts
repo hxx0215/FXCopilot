@@ -37,11 +37,8 @@ export const createApp = async () => {
         coreService.curService?.kill(() => {
           logger.info('kill coreService');
         });
-        // 等待Python进程清理完成
-        setTimeout(() => {
-          app.quit();
-          process.exit(0);
-        }, 1000);
+        app.quit();
+        process.exit(0);
       },
     },
   ]);
