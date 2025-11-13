@@ -185,22 +185,13 @@ ipcMain.on('window-close', function () {
     return;
   }
 
-  // 清理alas的监听器和连接
-  if (alas) {
-    alas?.removeAllListeners('stderr');
-    alas?.removeAllListeners('message');
-    alas?.removeAllListeners('stdout');
-    
-    // 关闭所有WebSocket连接
-    if (browserWindow?.webContents) {
-      browserWindow.webContents.session.clearStorageData();
-      browserWindow.webContents.closeDevTools();
-    }
-
-    alas?.kill(function () {
-      console.log('Alas process killed successfully');
-    });
-  }
+  alas?.removeAllListeners('stderr');
+  alas?.removeAllListeners('message');
+  alas?.removeAllListeners('stdout');
+  alas?.kill(function () {
+    browserWindow?.close();
+    browserWindow = null;
+  });
 
   browserWindow?.close();
 });
