@@ -23,7 +23,15 @@ export class PyShell extends PythonShell {
   }
 
   kill(callback: (...args: any[]) => void): this {
-    treeKill(this.childProcess.pid, 'SIGTERM', callback);
+    if (process.platform === 'win32') {
+      console.log('will be kill later');
+    } else {
+      treeKill(this.childProcess.pid, 'SIGTERM', callback);
+    }
     return this;
+  }
+
+  childPid(): number {
+    return this.childProcess.pid;
   }
 }

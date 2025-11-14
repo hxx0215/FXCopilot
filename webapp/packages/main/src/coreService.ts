@@ -3,7 +3,13 @@ import {createAlas, createInstaller} from '/@/serviceLogic';
 import {ALAS_LOG} from '@common/constant/eventNames';
 import {BrowserWindow} from 'electron';
 import logger from '/@/logger';
+const psList = require('ps-list-commonjs');
 
+type PidDef = {
+  pid: number;
+  ppid: number;
+  name: string;
+}
 export interface CoreServiceOption {
   appABSPath?: string;
   isFirstRun?: boolean;
@@ -87,5 +93,25 @@ export class CoreService {
     /**
      *
      */
+  }
+
+  findAllPids(pid: number, pids: PidDef[]): number[] {
+    const info = pids.find(ps => ps.ppid === pid);
+    if (info) {
+      return [pid, ...this.findAllPids(info.pid, pids)];
+    } else {
+      return [pid];
+    }
+  }
+
+  async listPids(): Promise<number[]> {
+    const pid = this.curService?.childPid();
+    const ls: PidDef[] = await psList();
+    const xs = ls.filter(x => x.name === 'python.exe');
+    if (pid) {
+      return this.findAllPids(pid, xs);
+    } else {
+      return [];
+    }
   }
 }

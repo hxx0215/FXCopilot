@@ -40,6 +40,8 @@ class AlasManager(DeployConfig):
             for pid, cmdline in self.list_process():
                 if pid == self.self_pid:
                     continue
+                if pid == os.getppid():
+                    continue
                 exe = cmdline[0]
                 name = os.path.basename(exe)
                 if not (name and name in names):
