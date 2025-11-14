@@ -203,6 +203,58 @@ class DeployConfig(ConfigModel):
             bool: If success.
                 Terminate installation if failed to execute and not allow_failure.
         """
+        # Windows路径处理：统一分隔符但不破坏引号
+        command = command.replace(r"\\", "/").replace("\\", "/")
+        
+        if not output:
+            command = command + ' >nul 2>nul'
+        logger.info(command)
+        
+        # 使用subprocess获得更好的Windows兼容性
+        try:
+            import shlex
+            cmd_list = shlex.split(command)
+            if output:
+                result = subprocess.run(cmd_list, check=True)
+            else:
+                result = subprocess.run(cmd_list, check=True, capture_output=True)
+            logger.info("[ success ]")
+            return True
+        except subprocess.CalledProcessError as e:
+            if allow_failure:
+                logger.info(f"[ allowed failure ], error_code: {e.returncode}")
+                return False
+            else:
+                logger.info(f"[ failure ], error_code: {e.returncode}")
+                self.show_error(command)
+                raise ExecutionError
+        except Exception as e:
+            # 如果subprocess失败，回退到os.system
+            logger.warning(f"subprocess failed: {e}, falling back to os.system")
+            error_code = os.system(command)
+            if error_code:
+                if allow_failure:
+                    logger.info(f"[ allowed failure ], error_code: {error_code}")
+                    return False
+                else:
+                    logger.info(f"[ failure ], error_code: {error_code}")
+                    self.show_error(command)
+                    raise ExecutionError
+            else:
+                logger.info("[ success ]")
+                return True
+
+    def legacy_execute(self, command, allow_failure=False, output=True):
+        """
+        Args:
+            command (str):
+            allow_failure (bool):
+            output(bool):
+
+        Returns:
+            bool: If success.
+                Terminate installation if failed to execute and not allow_failure.
+        """
         command = command.replace(r"\\", "/").replace("\\", "/").replace('"', '"')
         if not output:
             command = command + ' >nul 2>nul'
