@@ -382,8 +382,6 @@ class UI(MainPage):
         """
         if self.handle_reward():
             return True
-        if self.handle_battle_pass_notification():
-            return True
         if self.handle_get_light_cone():
             return True
         # Popup story that advice you watch it, but no, later
