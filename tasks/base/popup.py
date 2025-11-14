@@ -46,50 +46,6 @@ class PopupHandler(ModuleBase):
 
         return appear
 
-    def handle_battle_pass_notification(self, interval=5) -> bool:
-        """
-        Popup notification that you enter battle pass the first time.
-
-        Args:
-            interval:
-
-        Returns:
-            If handled.
-        """
-        if self.appear_then_click(BATTLE_PASS_NOTIFICATION, interval=interval):
-            return True
-        if self.appear(POPUP_BATTLE_PASS_UPDATE, interval=interval):
-            logger.info(f'{POPUP_BATTLE_PASS_UPDATE} -> {BATTLE_PASS_NOTIFICATION}')
-            self.device.click(BATTLE_PASS_NOTIFICATION)
-            return True
-
-        return False
-
-    def handle_monthly_card_reward(self, interval=1) -> bool:
-        """
-        Popup at 04:00 server time if you have purchased the monthly card.
-
-        Args:
-            interval:
-
-        Returns:
-            If handled.
-        """
-        if self.appear_then_click(MONTHLY_CARD_REWARD, interval=interval):
-            # Language check at the first login of the day may fail due to popups
-            # Retry later
-            from tasks.base.main_page import MainPage
-            if not MainPage._lang_check_success:
-                MainPage._lang_checked = False
-            return True
-        if self.appear_then_click(MONTHLY_CARD_GET_ITEM, interval=interval):
-            from tasks.base.main_page import MainPage
-            if not MainPage._lang_check_success:
-                MainPage._lang_checked = False
-            return True
-
-        return False
-
     def handle_popup_cancel(self, interval=2) -> bool:
         """
         Args:

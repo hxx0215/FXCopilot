@@ -79,43 +79,5 @@ class MainPage(PopupHandler):
     _lang_checked = False
     _lang_check_success = True
 
-    def check_lang_from_map_plane(self) -> str | None:
-        logger.info('check_lang_from_map_plane')
-        # no need check fx is always cn
-        return "cn"
 
-    def handle_lang_check(self, page: Page):
-        """
-        Args:
-            page:
 
-        Returns:
-            bool: If checked
-        """
-        if MainPage._lang_checked:
-            return False
-        if page != page_main:
-            return False
-
-        self.check_lang_from_map_plane()
-        return True
-
-    def acquire_lang_checked(self):
-        """
-        Returns:
-            bool: If checked
-        """
-        # because fx is always using cn
-        return False
-        if MainPage._lang_checked:
-            return False
-
-        logger.info('acquire_lang_checked')
-        try:
-            self.ui_goto(page_main)
-        except AttributeError:
-            logger.critical('Method ui_goto() not found, class MainPage must be inherited by class UI')
-            raise ScriptError
-
-        self.handle_lang_check(page=page_main)
-        return True

@@ -141,7 +141,6 @@ class UI(MainPage):
                     continue
                 if self.ui_page_appear(page, interval=5):
                     logger.info(f'Page switch: {page} -> {page.parent}')
-                    self.handle_lang_check(page)
                     if self.ui_page_confirm(page):
                         logger.info(f'Page arrive confirm {page}')
                     button = page.links[page.parent]
@@ -384,8 +383,6 @@ class UI(MainPage):
         if self.handle_reward():
             return True
         if self.handle_battle_pass_notification():
-            return True
-        if self.handle_monthly_card_reward():
             return True
         if self.handle_get_light_cone():
             return True
