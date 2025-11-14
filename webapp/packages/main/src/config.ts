@@ -71,8 +71,8 @@ export const ThemeObj: {[k in string]: 'light' | 'dark'} = {
   system: 'light',
 };
 
-function getPythonPath(): string {
-  if (UseVirtualEnv) {
+export function getPythonPath(install: boolean = false): string {
+  if (UseVirtualEnv && (!install)) {
     // 使用虚拟环境中的 Python
     const venvBasePath = path.isAbsolute(VenvPath) ? VenvPath : path.join(alasPath, VenvPath);
     const venvPython = isMacintosh

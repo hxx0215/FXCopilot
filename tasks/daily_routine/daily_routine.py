@@ -142,6 +142,8 @@ class DailyRoutine(UI):
             if self.appear_then_click(STAGE_SWEEP_BUTTON):
                 continue
             if self.handle_popup_confirm():
+                continue
+            if self.appear(GET_REWARD):
                 break
         clicked = False
         for _ in self.loop():

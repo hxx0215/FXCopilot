@@ -9,7 +9,7 @@ export const createInstaller: CallbackFun = async (ctx, next) => {
   }
   let installer: PyShell | null = null;
   try {
-    installer = new PyShell(installerPath, installerArgs);
+    installer = new PyShell(installerPath, installerArgs, true);
   } catch (err) {
     ctx.onError(err);
   }

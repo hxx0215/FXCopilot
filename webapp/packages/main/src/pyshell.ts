@@ -1,15 +1,15 @@
-import {alasPath, pythonPath} from '/@/config';
+import {alasPath, getPythonPath} from '/@/config';
 import logger from '/@/logger';
-
-const {PythonShell} = require('python-shell');
+import {PythonShell, Options} from 'python-shell'
 const treeKill = require('tree-kill');
 
 export class PyShell extends PythonShell {
-  constructor(script: string, args: Array<string> = []) {
-    const options = {
+  constructor(script: string, args: Array<string> = [], install: boolean = false) {
+    const pythonPath = getPythonPath(install)
+    const options: Options = {
       mode: 'text',
       args: args,
-      pythonPath: pythonPath,
+      pythonPath,
       scriptPath: alasPath,
     };
     logger.info(`${pythonPath} ${script} ${args}`);
@@ -31,7 +31,7 @@ export class PyShell extends PythonShell {
     return this;
   }
 
-  childPid(): number {
+  childPid(): number| undefined {
     return this.childProcess.pid;
   }
 }
