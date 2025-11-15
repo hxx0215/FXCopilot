@@ -20,9 +20,11 @@ class DailyTask(UI):
                 continue
             if self.appear_then_click(TASK_DAILY_FINAL):
                 continue
+            if self.appear(TASK_DAILY_FINAL_GO):
+                break
             if self.appear(TASK_DAILY_FINAL_FINISHED):
                 break
-        self.config.task_delay(minute=60)
+        self.config.task_delay(server_update=True,minute=60)
 
 
 if __name__ == '__main__':

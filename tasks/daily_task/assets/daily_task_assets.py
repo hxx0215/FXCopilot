@@ -28,3 +28,10 @@ TASK_DAILY_FINAL_FINISHED=ButtonWrapper(
         file='./assets/share/task/TASK_DAILY_FINAL_FINISHED.png'
     )
 )
+TASK_DAILY_FINAL_GO=ButtonWrapper(
+    name='TASK_DAILY_FINAL_GO',
+    share=Button.default_init(
+        area=(1105,140,1151,169),color=(116,116,116),
+        file='./assets/share/task/TASK_DAILY_FINAL_GO.png'
+    )
+)
