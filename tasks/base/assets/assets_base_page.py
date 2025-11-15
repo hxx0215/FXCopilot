@@ -2339,3 +2339,33 @@ SHOP_GIFT_SHOP=ButtonWrapper(
         file='./assets/share/shop/SHOP_GIFT_SHOP.png'
     )
 )
+TASK_BUTTON=ButtonWrapper(
+    name='TASK_BUTTON',
+    share=Button.default_init(
+        area=(899,657,925,692),color=(118,121,125),
+        file='./assets/share/task/TASK_BUTTON.png',
+        button=(805,657,941,698)
+    )
+)
+TASK_ALL_OF_IT=ButtonWrapper(
+    name='TASK_ALL_OF_IT',
+    share=Button.default_init(
+        area=(144,128,241,173),color=(208,213,214),
+        file='./assets/share/task/TASK_ALL_OF_IT.png'
+    )
+)
+TASK_DAILY_BUTTON=ButtonWrapper(
+    name='TASK_DAILY_BUTTON',
+    share=Button.default_init(
+        area=(65,280,107,314),color=(114,114,114),
+        file='./assets/share/task/TASK_DAILY_BUTTON.png',
+        button=(65,275,219,320)
+    )
+)
+TASK_DAILY=ButtonWrapper(
+    name='TASK_DAILY',
+    share=Button.default_init(
+        area=(146,275,240,322),color=(207,213,214),
+        file='./assets/share/task/TASK_DAILY.png'
+    )
+)

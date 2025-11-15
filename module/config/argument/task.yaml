@@ -53,6 +53,8 @@ FX:
       - Scheduler
     WeeklyShop:
       - Scheduler
+    DailyTask:
+      - Scheduler
 # Daily:
 #   menu: 'list'
 #   page: 'setting'

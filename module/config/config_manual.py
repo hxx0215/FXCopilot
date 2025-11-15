@@ -10,8 +10,8 @@ class ManualConfig:
 
     SCHEDULER_PRIORITY = """
     Restart
-    > DailyRoutine > Exercise > Competition > QuizCenter > Mail > Expedition > Beach > TacticalAcademy > DailyShop > WeeklyShop > TimeOdyssey > Mainline 
-    > Reward > Rescheduler
+    > DailyRoutine > Exercise > Competition > QuizCenter > Mail > Expedition > Beach > TacticalAcademy > DailyShop > WeeklyShop  > TimeOdyssey > Mainline 
+    > Reward > Rescheduler > DailyTask
     """
     # SCHEDULER_PRIORITY = """
     # Restart

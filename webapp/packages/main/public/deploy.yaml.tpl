@@ -27,7 +27,7 @@ Deploy:
     # User settings, logs and screenshots will be kept, no mather this is true or false
     # [Developer] Use true, if you modified the code
     # [Other] Use false
-    KeepLocalChanges: false
+    KeepLocalChanges: true
 
   Python:
     # Filepath of python executable `python.exe`
@@ -41,6 +41,13 @@ Deploy:
     # Install dependencies at startup
     # [In most cases] Use true
     InstallDependencies: true
+    # Use virtual environment for dependencies
+    # [Recommended] Use true to avoid dependency conflicts
+    # [Legacy] Use false to install directly to system Python
+    UseVirtualEnv: true
+    # Path to virtual environment directory
+    # [Default] './.venv'
+    VenvPath: ./.venv
     # Path to requirements.txt
     # [In most cases] Use 'requirements.txt'
     # [In AidLux] Use './deploy/AidLux/{version}/requirements.txt', version is default to 0.92

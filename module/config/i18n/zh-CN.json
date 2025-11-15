@@ -73,6 +73,10 @@
     "WeeklyShop": {
       "name": "每周商店",
       "help": ""
+    },
+    "DailyTask": {
+      "name": "每日任务",
+      "help": ""
     }
   },
   "Scheduler": {
@@ -120,8 +124,8 @@
       "CN-Bilibili": "[国服]-B服 "
     },
     "Server": {
-      "name": "Emulator.Server.name",
-      "help": "Emulator.Server.help",
+      "name": "服务器名称",
+      "help": "只用来查看是否在线",
       "镜之洋": "镜之洋",
       "岚之洋": "岚之洋",
       "珊瑚海": "珊瑚海",
@@ -151,10 +155,6 @@
       "help": "速度: MaaTouch = minitouch >>> uiautomator2 ~= ADB\n建议选MaaTouch",
       "minitouch": "minitouch",
       "MaaTouch": "MaaTouch"
-    },
-    "CloudPriorQueue": {
-      "name": "在云游戏中使用星云币快速排队",
-      "help": ""
     },
     "AdbRestart": {
       "name": "在检测不到设备的时候尝试重启adb",
@@ -516,6 +516,18 @@
       "help": "原理：温泉8分钟恢复一次体力，油厂、小卖部10分钟扣除一点体力，所以： 白嫖温泉会每隔8-10分钟重新排班白嫖温泉的恢复，而较低频率则是选择一个最长合适的时间进行排班",
       "spring": "白嫖温泉",
       "longest": "较低频率"
+    }
+  },
+  "DailyTask": {
+    "_info": {
+      "name": "DailyTask._info.name",
+      "help": "DailyTask._info.help"
+    },
+    "Enable": {
+      "name": "DailyTask.Enable.name",
+      "help": "DailyTask.Enable.help",
+      "True": "True",
+      "False": "False"
     }
   },
   "Gui": {

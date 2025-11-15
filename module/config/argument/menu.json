@@ -24,7 +24,8 @@
       "Mainline",
       "Mail",
       "DailyShop",
-      "WeeklyShop"
+      "WeeklyShop",
+      "DailyTask"
     ]
   }
 }

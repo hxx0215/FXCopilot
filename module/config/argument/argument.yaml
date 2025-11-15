@@ -51,7 +51,6 @@ Emulator:
   ControlMethod:
     value: MaaTouch
     option: [ minitouch, MaaTouch ]
-  CloudPriorQueue: false
   AdbRestart: false
 EmulatorInfo:
   Emulator:
@@ -472,3 +471,9 @@ FrequencySetting:
     type: select
     value: spring
     option: [spring, longest]
+
+DailyTask:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]

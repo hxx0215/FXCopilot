@@ -96,6 +96,10 @@ class FuXiaoCopilot(AzurLaneAutoScript):
         from tasks.daily_shop.daily_shop import DailyShop
         DailyShop(self.config, self.device, task="DailyShop").run()
 
+    def daily_task(self):
+        from tasks.daily_task.daily_task import DailyTask
+        DailyTask(self.config, self.device, task="DailyTask").run()
+
 
 if __name__ == '__main__':
     src = FuXiaoCopilot('fxc')

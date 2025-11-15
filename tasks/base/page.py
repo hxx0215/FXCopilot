@@ -280,5 +280,14 @@ page_shop_montly_pass.link(HOME_BUTTON, destination=page_main)
 page_shop_gift_shop = Page(SHOP_GIFT_SHOP)
 page_shop_gift_shop.link(HOME_BUTTON, destination=page_main)
 page_main.link(SHOP_BUTTON, destination=page_shop_gift_shop)
+
+page_task_all_of_it = Page(TASK_ALL_OF_IT)
+page_main.link(TASK_BUTTON, destination=page_task_all_of_it)
+page_task_all_of_it.link(HOME_BUTTON, destination=page_main)
+
+page_task_daily = Page(TASK_DAILY)
+page_task_all_of_it.link(TASK_DAILY_BUTTON, destination=page_task_daily)
+page_task_daily.link(HOME_BUTTON, destination=page_main)
+
 page_temp = Page(TACTICAL_ACADEMY_START_TRAINING)
 

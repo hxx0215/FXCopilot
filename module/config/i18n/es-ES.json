@@ -73,6 +73,10 @@
     "WeeklyShop": {
       "name": "Task.WeeklyShop.name",
       "help": "Task.WeeklyShop.help"
+    },
+    "DailyTask": {
+      "name": "Task.DailyTask.name",
+      "help": "Task.DailyTask.help"
     }
   },
   "Scheduler": {
@@ -151,10 +155,6 @@
       "help": "Velocidad: MaaTouch = minitouch >>> uiautomator2 ~= ADB\nMaaTouch es el recomendado.",
       "minitouch": "minitouch",
       "MaaTouch": "MaaTouch"
-    },
-    "CloudPriorQueue": {
-      "name": "Utilice monedas pagadas para hacer cola rápidamente en los juegos en la nube",
-      "help": ""
     },
     "AdbRestart": {
       "name": "Intentar reiniciar el ADB cuando no se encuentre ninguno.",
@@ -516,6 +516,18 @@
       "help": "FrequencySetting.Frequence.help",
       "spring": "spring",
       "longest": "longest"
+    }
+  },
+  "DailyTask": {
+    "_info": {
+      "name": "DailyTask._info.name",
+      "help": "DailyTask._info.help"
+    },
+    "Enable": {
+      "name": "DailyTask.Enable.name",
+      "help": "DailyTask.Enable.help",
+      "True": "True",
+      "False": "False"
     }
   },
   "Gui": {

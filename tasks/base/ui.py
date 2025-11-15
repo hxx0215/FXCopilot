@@ -164,7 +164,7 @@ class UI(MainPage):
         # Reset connection
         Page.clear_connection()
 
-    def ui_ensure(self, destination, acquire_lang_checked=True, skip_first_screenshot=True):
+    def ui_ensure(self, destination: Page, acquire_lang_checked=True, skip_first_screenshot=True):
         """
         Args:
             destination (Page):

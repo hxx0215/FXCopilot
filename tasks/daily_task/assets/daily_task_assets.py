@@ -1,0 +1,30 @@
+from module.base.button import Button, ButtonWrapper,ItemWrapper
+
+TASK_DAILY_FINAL=ButtonWrapper(
+    name='TASK_DAILY_FINAL',
+    share=Button.default_init(
+        area=(1055,131,1202,179),color=(209,191,105),
+        file='./assets/share/task/TASK_DAILY_FINAL.png'
+    )
+)
+TASK_COLLECT_ALL=ButtonWrapper(
+    name='TASK_COLLECT_ALL',
+    share=Button.default_init(
+        area=(1037,628,1221,677),color=(193,176,93),
+        file='./assets/share/task/TASK_COLLECT_ALL.png'
+    )
+)
+TASK_COLLECT_ALL_DISABLED=ButtonWrapper(
+    name='TASK_COLLECT_ALL_DISABLED',
+    share=Button.default_init(
+        area=(1037,628,1221,677),color=(161,158,130),
+        file='./assets/share/task/TASK_COLLECT_ALL_DISABLED.png'
+    )
+)
+TASK_DAILY_FINAL_FINISHED=ButtonWrapper(
+    name='TASK_DAILY_FINAL_FINISHED',
+    share=Button.default_init(
+        area=(1080,139,1166,167),color=(73,73,73),
+        file='./assets/share/task/TASK_DAILY_FINAL_FINISHED.png'
+    )
+)

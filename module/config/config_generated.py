@@ -23,7 +23,6 @@ class GeneratedConfig:
     Emulator_GameLanguage = 'cn'
     Emulator_ScreenshotMethod = 'auto'  # auto, ADB, ADB_nc, uiautomator2, aScreenCap, aScreenCap_nc, DroidCast, DroidCast_raw, scrcpy, nemu_ipc, ldopengl
     Emulator_ControlMethod = 'MaaTouch'  # minitouch, MaaTouch
-    Emulator_CloudPriorQueue = False
     Emulator_AdbRestart = False
 
     # Group `EmulatorInfo`
@@ -103,3 +102,6 @@ class GeneratedConfig:
 
     # Group `FrequencySetting`
     FrequencySetting_Frequence = 'spring'  # spring, longest
+
+    # Group `DailyTask`
+    DailyTask_Enable = True  # True, False
