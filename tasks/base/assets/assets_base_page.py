@@ -1491,6 +1491,14 @@ GET_ITEMS=ButtonWrapper(
         button=(460,445,836,613)
     )
 )
+GET_SHIP=ButtonWrapper(
+    name='GET_SHIP',
+    share=Button.default_init(
+        area=(76,53,167,89),color=(43,41,50),
+        file='./assets/share/base/main_page/GET_SHIP.png',
+        button=(245,156,971,576)
+    )
+)
 BEACH_START_TRAINING=ButtonWrapper(
     name='BEACH_START_TRAINING',
     share=Button.default_init(

@@ -5,7 +5,7 @@ from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_M
                                                 TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,TIME_ODYSSEY_SAIL_SET_SAIL,TIME_ODYSSEY_STAGE_SET_SAIL,TIME_ODYSSEY_STAGE_POSITION,
                                                 DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_REACH_TIMES,
                                                 TIME_ODYSSEY_STAGE_TO_PORT,TIME_ODYSSEY_STAGE_SUCCESS,TIME_ODYSSEY_STAGE_FAIL,TIME_ODYSSEY_S_WIN,TIME_ODYSSEY_FLEET,TIME_ODYSSEY_FLEET_SWITCH,
-                                                TIME_ODYSSEY_FLEET_AMMUNITION
+                                                TIME_ODYSSEY_FLEET_AMMUNITION,GET_SHIP
                                                 )
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,OcrResultButton,DigitCounter,DataDigit
@@ -190,7 +190,7 @@ class TimeOdyssey(ResourceCheck):
 
     def manual_hosting(self) -> str:
         current = self.check_current_map_state()
-        self.validate_order()
+        order = self.validate_order()
         count = 0
         self.ammunition_capacity = [5,5]
         if current == 'map':
@@ -219,15 +219,12 @@ class TimeOdyssey(ResourceCheck):
                     if result == (0,0,0):
                         continue
                     (ammunition,_,_) = result
-                    if ammunition == 0:
-                        if self.appear_then_click(TIME_ODYSSEY_FLEET_SWITCH):
-                            continue
-                    #TODO check fleet order
-                    if count > 4 and fleet == 1:
-                        if self.appear_then_click(TIME_ODYSSEY_FLEET_SWITCH):
-                            continue
-                    else:
+                    self.ammunition_capacity[fleet - 1] = ammunition
+                    next_fleet = self.get_next_fleet(count,order,fleet)
+                    if fleet == next_fleet:
                         break
+                    else:
+                        self.appear_then_click(TIME_ODYSSEY_FLEET_SWITCH)
                 for image in self.loop():
                     position = ocr.ocr_single_line(image)
                     if position:
@@ -270,7 +267,9 @@ class TimeOdyssey(ResourceCheck):
                     for _ in self.loop():
                         if self.appear_then_click(TIME_ODYSSEY_STAGE_SUCCESS):
                             continue
-                        if self.appear(GET_ITEMS):
+                        if self.appear_then_click(GET_ITEMS):
+                            continue
+                        if self.appear_then_click(GET_SHIP):
                             continue
                         if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
                             return 'not_s_win'
@@ -279,6 +278,8 @@ class TimeOdyssey(ResourceCheck):
                         if self.appear_then_click(TIME_ODYSSEY_S_WIN):
                             continue
                         if self.appear_then_click(GET_ITEMS):
+                            continue
+                        if self.appear_then_click(GET_SHIP):
                             continue
                         if self.handle_popup_confirm():
                             continue
@@ -303,7 +304,7 @@ class TimeOdyssey(ResourceCheck):
         if not all(c in '12' for c in order_str):
             logger.info(f"invalid order: {order_str}, must be consist of 1 or 2")
             raise RequestHumanTakeover
-        return True
+        return [int(c) for c in order_str]
     def manual_hosting_back_port(self):
         for _ in self.loop():
             if self.appear_then_click(TIME_ODYSSEY_STAGE_TO_PORT):

@@ -3,7 +3,7 @@ from module.exception import GameNotRunningError
 from module.logger import logger
 from tasks.base.page import page_main
 from tasks.login.assets.assets_login import *
-from tasks.base.assets.assets_base_page import GET_REWARD
+from tasks.base.assets.assets_base_page import GET_REWARD,GET_SHIP
 from tasks.login.assets.assets_login_popup import ADVERTISE_Castorice
 from module.ocr.ocr import Ocr
 from tasks.base.ui import UI
@@ -87,6 +87,8 @@ class Login(UI):
             if self.appear_then_click(LOGIN_NOTIFICATION):
                 continue
             if self.appear_then_click(GET_REWARD):
+                continue
+            if self.appear_then_click(GET_SHIP):
                 continue
             continue
             # Additional
