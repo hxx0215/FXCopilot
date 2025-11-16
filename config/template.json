@@ -122,7 +122,8 @@
       "MinimalFuel": 1000,
       "ReturnPoint": "A",
       "ManualOrder": 1,
-      "DelegateTimes": 0
+      "DelegateTimes": 0,
+      "BattleCount": {}
     }
   },
   "TacticalAcademy": {

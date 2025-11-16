@@ -522,6 +522,12 @@
         "type": "input",
         "value": 0,
         "valuetype": "int"
+      },
+      "BattleCount": {
+        "type": "stored",
+        "value": {},
+        "display": "hide",
+        "stored": "StoredInt"
       }
     }
   },

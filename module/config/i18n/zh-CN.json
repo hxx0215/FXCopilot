@@ -436,6 +436,10 @@
     "DelegateTimes": {
       "name": "委托作战次数",
       "help": "填写数字"
+    },
+    "BattleCount": {
+      "name": "TimeOdysseySetting.BattleCount.name",
+      "help": "TimeOdysseySetting.BattleCount.help"
     }
   },
   "TacticalAcademy": {

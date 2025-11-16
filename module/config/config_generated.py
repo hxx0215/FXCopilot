@@ -82,6 +82,7 @@ class GeneratedConfig:
     TimeOdysseySetting_ReturnPoint = 'A'
     TimeOdysseySetting_ManualOrder = 1
     TimeOdysseySetting_DelegateTimes = 0
+    TimeOdysseySetting_BattleCount = {}
 
     # Group `TacticalAcademy`
     TacticalAcademy_Enable = True  # True, False

@@ -436,6 +436,10 @@
     "DelegateTimes": {
       "name": "TimeOdysseySetting.DelegateTimes.name",
       "help": "TimeOdysseySetting.DelegateTimes.help"
+    },
+    "BattleCount": {
+      "name": "TimeOdysseySetting.BattleCount.name",
+      "help": "TimeOdysseySetting.BattleCount.help"
     }
   },
   "TacticalAcademy": {

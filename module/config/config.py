@@ -550,6 +550,8 @@ class AzurLaneConfig(ConfigUpdater, ManualConfig, GeneratedConfig, ConfigWatcher
             else:
                 logger.info('BattlePassTodayQuest expired')
                 self.stored.BattlePassWeeklyQuest.clear()
+    def update_battle_count(self, count: int):
+        self.stored.BattleCount.value = count
 
     @property
     def DEVICE_SCREENSHOT_METHOD(self):

@@ -1493,11 +1493,15 @@ GET_ITEMS=ButtonWrapper(
 )
 GET_SHIP=ButtonWrapper(
     name='GET_SHIP',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(76,53,167,89),color=(43,41,50),
         file='./assets/share/base/main_page/GET_SHIP.png',
         button=(245,156,971,576)
-    )
+    ),Button.default_init(
+        area=(1227,623,1249,643),color=(188,188,193),
+        file='./assets/share/base/main_page/GET_SHIP2.png',
+        button=(245,156,971,576)
+    )]
 )
 BEACH_START_TRAINING=ButtonWrapper(
     name='BEACH_START_TRAINING',
@@ -1606,6 +1610,14 @@ TIME_ODYSSEY_MAP_BUTTON=ButtonWrapper(
     share=Button.default_init(
         area=(1069,609,1270,682),color=(182,164,80),
         file='./assets/share/event/time_odyssey/TIME_ODYSSEY_MAP_BUTTON.png'
+    )
+)
+TIME_ODYSSEY_CONTINUE_MANUAL=ButtonWrapper(
+    name='TIME_ODYSSEY_CONTINUE_MANUAL',
+    share=Button.default_init(
+        area=(1211,640,1258,663),color=(146,77,85),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_CONTINUE_MANUAL.png',
+        button=(1076,615,1269,678)
     )
 )
 TIME_ODYSSEY_NORMAL_BUTTON=ButtonWrapper(

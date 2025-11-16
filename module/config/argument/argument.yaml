@@ -437,6 +437,8 @@ TimeOdysseySetting:
     type: input
     value: 0
     valuetype: 'int'
+  BattleCount:
+    stored: StoredInt
 TacticalAcademy:
   Enable:
     type: checkbox

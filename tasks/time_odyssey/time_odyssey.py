@@ -5,7 +5,7 @@ from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_M
                                                 TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,TIME_ODYSSEY_SAIL_SET_SAIL,TIME_ODYSSEY_STAGE_SET_SAIL,TIME_ODYSSEY_STAGE_POSITION,
                                                 DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_REACH_TIMES,
                                                 TIME_ODYSSEY_STAGE_TO_PORT,TIME_ODYSSEY_STAGE_SUCCESS,TIME_ODYSSEY_STAGE_FAIL,TIME_ODYSSEY_S_WIN,TIME_ODYSSEY_FLEET,TIME_ODYSSEY_FLEET_SWITCH,
-                                                TIME_ODYSSEY_FLEET_AMMUNITION,GET_SHIP
+                                                TIME_ODYSSEY_FLEET_AMMUNITION,GET_SHIP,TIME_ODYSSEY_CONTINUE_MANUAL
                                                 )
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,OcrResultButton,DigitCounter,DataDigit
@@ -44,6 +44,9 @@ class TimeOdyssey(ResourceCheck):
                 break
             if self.appear(TIME_ODYSSEY_CONTINUE_HOSTING):
                 current_state = 'continue'
+                break
+            if self.appear(TIME_ODYSSEY_CONTINUE_MANUAL):
+                current_state = 'continue_manual'
                 break
             if timer.reached():
                 break
@@ -191,9 +194,11 @@ class TimeOdyssey(ResourceCheck):
     def manual_hosting(self) -> str:
         current = self.check_current_map_state()
         order = self.validate_order()
-        count = 0
+        count = self.config.stored.BattleCount.value
         self.ammunition_capacity = [5,5]
         if current == 'map':
+            count = 0
+            self.config.update_battle_count(count=count)
             self.ui_click(TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_SAIL_HOSTING_BUTTON)
             for _ in self.loop():
                 if self.appear_then_click(TIME_ODYSSEY_SAIL_SET_SAIL):
@@ -204,87 +209,102 @@ class TimeOdyssey(ResourceCheck):
                     break
                 if self.appear(DECOMMISSIONING_PAGE):
                     return 'depot_full'
-            while 1:
+        elif current == 'continue_manual':
+            for _ in self.loop():
+                if self.appear_then_click(TIME_ODYSSEY_CONTINUE_MANUAL):
+                    continue
+                if self.handle_popup_confirm():
+                    continue
+                if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
+                    break
+                if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
+                    continue
+                if self.appear(DECOMMISSIONING_PAGE):
+                    return 'depot_full'
+        else:
+            return '???'
+        while 1:
+            for _ in self.loop():
+                if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
+                    break
+            ocr = PositionOcr(TIME_ODYSSEY_STAGE_POSITION)
+            fleet_ocr = DataDigit(TIME_ODYSSEY_FLEET)
+            ammunition_ocr = DigitCounter(TIME_ODYSSEY_FLEET_AMMUNITION)
+            for image in self.loop():
+                fleet = fleet_ocr.ocr_single_line(image)
+                if fleet is None:
+                    continue
+                result = ammunition_ocr.ocr_single_line(image)
+                if result == (0,0,0):
+                    continue
+                (ammunition,_,_) = result
+                self.ammunition_capacity[fleet - 1] = ammunition
+                next_fleet = self.get_next_fleet(count,order,fleet)
+                if fleet == next_fleet:
+                    break
+                else:
+                    self.appear_then_click(TIME_ODYSSEY_FLEET_SWITCH)
+            for image in self.loop():
+                position = ocr.ocr_single_line(image)
+                if position:
+                    logger.info(f'current position = {position}')  
+                    if position.lower() == self.config.TimeOdysseySetting_ReturnPoint.lower():
+                        return 'arrive_position'
+                    else:
+                        break
+            for _ in self.loop():
+                if self.appear_then_click(TIME_ODYSSEY_STAGE_SET_SAIL):
+                    continue
+                if self.appear(BATTLE_PAGE):
+                    break
+                if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
+                    return 'depot_full'
+            # self.ui_click(TIME_ODYSSEY_STAGE_SET_SAIL, BATTLE_PAGE)
+            stage_result = ''
+            self.device.screenshot_interval_set(1.0)
+            for _ in self.loop():
+                if self.appear_then_click(BATTLE_PAGE, silent=True):
+                    continue
+                if self.appear(TIME_ODYSSEY_S_WIN):
+                    stage_result = 's-win'
+                    break
+                if self.appear(TIME_ODYSSEY_STAGE_SUCCESS):
+                    stage_result = 'win'
+                    break
+                if self.appear(TIME_ODYSSEY_STAGE_FAIL):
+                    stage_result = 'lose'
+                    break
+            count = count + 1
+            self.config.update_battle_count(count)
+            self.device.screenshot_interval_set()
+            if stage_result == 'lose':
                 for _ in self.loop():
+                    if self.appear_then_click(TIME_ODYSSEY_STAGE_FAIL):
+                        continue
+                    if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
+                        return 'lose_in_stage'
+            if stage_result == 'win':
+                for _ in self.loop():
+                    if self.appear_then_click(TIME_ODYSSEY_STAGE_SUCCESS):
+                        continue
+                    if self.appear_then_click(GET_ITEMS):
+                        continue
+                    if self.appear_then_click(GET_SHIP):
+                        continue
+                    if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
+                        return 'not_s_win'
+            if stage_result == 's-win':
+                for _ in self.loop():
+                    if self.appear_then_click(TIME_ODYSSEY_S_WIN):
+                        continue
+                    if self.appear_then_click(GET_ITEMS):
+                        continue
+                    if self.appear_then_click(GET_SHIP):
+                        continue
+                    if self.handle_popup_confirm():
+                        continue
                     if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
                         break
-                ocr = PositionOcr(TIME_ODYSSEY_STAGE_POSITION)
-                fleet_ocr = DataDigit(TIME_ODYSSEY_FLEET)
-                ammunition_ocr = DigitCounter(TIME_ODYSSEY_FLEET_AMMUNITION)
-                for image in self.loop():
-                    fleet = fleet_ocr.ocr_single_line(image)
-                    if fleet is None:
-                        continue
-                    result = ammunition_ocr.ocr_single_line(image)
-                    if result == (0,0,0):
-                        continue
-                    (ammunition,_,_) = result
-                    self.ammunition_capacity[fleet - 1] = ammunition
-                    next_fleet = self.get_next_fleet(count,order,fleet)
-                    if fleet == next_fleet:
-                        break
-                    else:
-                        self.appear_then_click(TIME_ODYSSEY_FLEET_SWITCH)
-                for image in self.loop():
-                    position = ocr.ocr_single_line(image)
-                    if position:
-                        logger.info(f'current position = {position}')  
-                        if position.lower() == self.config.TimeOdysseySetting_ReturnPoint.lower():
-                            return 'arrive_position'
-                        else:
-                            break
-                for _ in self.loop():
-                    if self.appear_then_click(TIME_ODYSSEY_STAGE_SET_SAIL):
-                        continue
-                    if self.appear(BATTLE_PAGE):
-                        break
-                    if self.appear_then_click(STAGE_HOSTING_FINISH_DECOMMISIONING):
-                        return 'depot_full'
-                # self.ui_click(TIME_ODYSSEY_STAGE_SET_SAIL, BATTLE_PAGE)
-                stage_result = ''
-                self.device.screenshot_interval_set(1.0)
-                for _ in self.loop():
-                    if self.appear_then_click(BATTLE_PAGE, silent=True):
-                        continue
-                    if self.appear(TIME_ODYSSEY_S_WIN):
-                        stage_result = 's-win'
-                        break
-                    if self.appear(TIME_ODYSSEY_STAGE_SUCCESS):
-                        stage_result = 'win'
-                        break
-                    if self.appear(TIME_ODYSSEY_STAGE_FAIL):
-                        stage_result = 'lose'
-                        break
-                count = count + 1
-                self.device.screenshot_interval_set()
-                if stage_result == 'lose':
-                    for _ in self.loop():
-                        if self.appear_then_click(TIME_ODYSSEY_STAGE_FAIL):
-                            continue
-                        if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
-                            return 'lose_in_stage'
-                if stage_result == 'win':
-                    for _ in self.loop():
-                        if self.appear_then_click(TIME_ODYSSEY_STAGE_SUCCESS):
-                            continue
-                        if self.appear_then_click(GET_ITEMS):
-                            continue
-                        if self.appear_then_click(GET_SHIP):
-                            continue
-                        if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
-                            return 'not_s_win'
-                if stage_result == 's-win':
-                    for _ in self.loop():
-                        if self.appear_then_click(TIME_ODYSSEY_S_WIN):
-                            continue
-                        if self.appear_then_click(GET_ITEMS):
-                            continue
-                        if self.appear_then_click(GET_SHIP):
-                            continue
-                        if self.handle_popup_confirm():
-                            continue
-                        if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
-                            break
         return '???'
     def get_next_fleet(self, count: int, order: list[int], current: int):
         if count < len(order):
@@ -348,7 +368,7 @@ if __name__ == '__main__':
     task = TimeOdyssey('fxc', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test8.png")
+    image_path = os.path.join(path,"test9.png")
     task.image_file=image_path
-    b = task.appear(STAGE_HOSTING)
+    b = task.appear(GET_SHIP)
     print(b)

@@ -1,1 +1,14 @@
-{}
+{
+  "BattleCount": {
+    "name": "BattleCount",
+    "path": "TimeOdyssey.TimeOdysseySetting.BattleCount",
+    "i18n": "TimeOdysseySetting.BattleCount.name",
+    "stored": "StoredInt",
+    "attrs": {
+      "time": "2020-01-01 00:00:00",
+      "value": 0
+    },
+    "order": 0,
+    "color": "#777777"
+  }
+}
