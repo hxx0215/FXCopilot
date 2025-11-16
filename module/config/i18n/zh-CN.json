@@ -428,6 +428,14 @@
     "ReturnPoint": {
       "name": "回港点",
       "help": "仅在托管模式为手动时起效，效果为当船队到达下面设置的某个点时自动回港"
+    },
+    "ManualOrder": {
+      "name": "手动顺序",
+      "help": "输入舰队出战顺序如11211表示第3站用第2舰队"
+    },
+    "DelegateTimes": {
+      "name": "委托作战次数",
+      "help": "填写数字"
     }
   },
   "TacticalAcademy": {

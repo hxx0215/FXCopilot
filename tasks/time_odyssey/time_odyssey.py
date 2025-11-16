@@ -4,16 +4,19 @@ from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_M
                                                 STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,STAGE_TO_PORT,STAGE_HOSTING_FINISH_SINK,
                                                 TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,TIME_ODYSSEY_SAIL_SET_SAIL,TIME_ODYSSEY_STAGE_SET_SAIL,TIME_ODYSSEY_STAGE_POSITION,
                                                 DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_REACH_TIMES,
-                                                TIME_ODYSSEY_STAGE_TO_PORT,TIME_ODYSSEY_STAGE_SUCCESS,TIME_ODYSSEY_STAGE_FAIL,TIME_ODYSSEY_S_WIN
+                                                TIME_ODYSSEY_STAGE_TO_PORT,TIME_ODYSSEY_STAGE_SUCCESS,TIME_ODYSSEY_STAGE_FAIL,TIME_ODYSSEY_S_WIN,TIME_ODYSSEY_FLEET,TIME_ODYSSEY_FLEET_SWITCH,
+                                                TIME_ODYSSEY_FLEET_AMMUNITION
                                                 )
 from module.logger.logger import logger
-from module.ocr.ocr import Ocr,OcrResultButton,DigitCounter
+from module.ocr.ocr import Ocr,OcrResultButton,DigitCounter,DataDigit
 from module.base.timer import Timer
+from module.exception import RequestHumanTakeover
 import random
 import re
 
 class PositionOcr(Ocr):
     def format_result(self, result):
+        result = result.replace('0', 'O').replace('1', 'I')
         match = re.match(r'^([A-Za-z])\s*点\s*$', result.strip())
         if match:
             letter = match.group(1)  # 提取字母部分
@@ -22,6 +25,10 @@ class PositionOcr(Ocr):
         return None
 
 class TimeOdyssey(ResourceCheck):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.ammunition_capacity: list[int] = [5, 5]
+
     def setup_mode(self):
         mode = self.config.TimeOdysseySetting_Mode
         logger.info(f"start time oddysey mode: {mode}")
@@ -183,6 +190,9 @@ class TimeOdyssey(ResourceCheck):
 
     def manual_hosting(self) -> str:
         current = self.check_current_map_state()
+        self.validate_order()
+        count = 0
+        self.ammunition_capacity = [5,5]
         if current == 'map':
             self.ui_click(TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_SAIL_HOSTING_BUTTON)
             for _ in self.loop():
@@ -199,11 +209,30 @@ class TimeOdyssey(ResourceCheck):
                     if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
                         break
                 ocr = PositionOcr(TIME_ODYSSEY_STAGE_POSITION)
+                fleet_ocr = DataDigit(TIME_ODYSSEY_FLEET)
+                ammunition_ocr = DigitCounter(TIME_ODYSSEY_FLEET_AMMUNITION)
+                for image in self.loop():
+                    fleet = fleet_ocr.ocr_single_line(image)
+                    if fleet is None:
+                        continue
+                    result = ammunition_ocr.ocr_single_line(image)
+                    if result == (0,0,0):
+                        continue
+                    (ammunition,_,_) = result
+                    if ammunition == 0:
+                        if self.appear_then_click(TIME_ODYSSEY_FLEET_SWITCH):
+                            continue
+                    #TODO check fleet order
+                    if count > 4 and fleet == 1:
+                        if self.appear_then_click(TIME_ODYSSEY_FLEET_SWITCH):
+                            continue
+                    else:
+                        break
                 for image in self.loop():
                     position = ocr.ocr_single_line(image)
                     if position:
                         logger.info(f'current position = {position}')  
-                        if position == self.config.TimeOdysseySetting_ReturnPoint:
+                        if position.lower() == self.config.TimeOdysseySetting_ReturnPoint.lower():
                             return 'arrive_position'
                         else:
                             break
@@ -229,6 +258,7 @@ class TimeOdyssey(ResourceCheck):
                     if self.appear(TIME_ODYSSEY_STAGE_FAIL):
                         stage_result = 'lose'
                         break
+                count = count + 1
                 self.device.screenshot_interval_set()
                 if stage_result == 'lose':
                     for _ in self.loop():
@@ -255,6 +285,25 @@ class TimeOdyssey(ResourceCheck):
                         if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
                             break
         return '???'
+    def get_next_fleet(self, count: int, order: list[int], current: int):
+        if count < len(order):
+            designated_fleet = order[count]
+            if self.ammunition_capacity[designated_fleet - 1] > 0:
+                return designated_fleet
+            else:
+                return 3 - designated_fleet
+        else:
+            if self.ammunition_capacity[current - 1] > 0:
+                return current
+            else:
+                return 3 - current
+    def validate_order(self):
+        order = self.config.TimeOdysseySetting_ManualOrder
+        order_str = str(order)
+        if not all(c in '12' for c in order_str):
+            logger.info(f"invalid order: {order_str}, must be consist of 1 or 2")
+            raise RequestHumanTakeover
+        return True
     def manual_hosting_back_port(self):
         for _ in self.loop():
             if self.appear_then_click(TIME_ODYSSEY_STAGE_TO_PORT):
@@ -279,11 +328,16 @@ class TimeOdyssey(ResourceCheck):
             self.post_hosting(finish_reason=finish_reason)
         elif self.config.TimeOdysseySetting_HostingMode == 'manual':
             finish_reason = self.manual_hosting()
+            #TODO abstract here
             if finish_reason == 'arrive_position':
                 self.manual_hosting_back_port()
                 self.ui_goto_main()
             if finish_reason == 'depot_full':
                 self.decommission()
+            if finish_reason == 'lose_in_stage' or finish_reason == 'not_s_win':
+                self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
+                self.ui_goto_main()
+
 
     def run(self):
         self.ui_ensure(page_time_odyssey_map)

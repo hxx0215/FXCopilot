@@ -80,6 +80,8 @@ class GeneratedConfig:
     TimeOdysseySetting_EnableContinuous = False  # True, False
     TimeOdysseySetting_MinimalFuel = 1000
     TimeOdysseySetting_ReturnPoint = 'A'
+    TimeOdysseySetting_ManualOrder = 1
+    TimeOdysseySetting_DelegateTimes = 0
 
     # Group `TacticalAcademy`
     TacticalAcademy_Enable = True  # True, False

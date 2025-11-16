@@ -120,7 +120,9 @@
       "AutoDecommissioning": false,
       "EnableContinuous": false,
       "MinimalFuel": 1000,
-      "ReturnPoint": "A"
+      "ReturnPoint": "A",
+      "ManualOrder": 1,
+      "DelegateTimes": 0
     }
   },
   "TacticalAcademy": {

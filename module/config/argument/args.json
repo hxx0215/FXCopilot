@@ -513,6 +513,15 @@
       "ReturnPoint": {
         "type": "input",
         "value": "A"
+      },
+      "ManualOrder": {
+        "type": "input",
+        "value": 1
+      },
+      "DelegateTimes": {
+        "type": "input",
+        "value": 0,
+        "valuetype": "int"
       }
     }
   },

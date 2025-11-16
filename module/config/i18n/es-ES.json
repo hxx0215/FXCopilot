@@ -428,6 +428,14 @@
     "ReturnPoint": {
       "name": "TimeOdysseySetting.ReturnPoint.name",
       "help": "TimeOdysseySetting.ReturnPoint.help"
+    },
+    "ManualOrder": {
+      "name": "TimeOdysseySetting.ManualOrder.name",
+      "help": "TimeOdysseySetting.ManualOrder.help"
+    },
+    "DelegateTimes": {
+      "name": "TimeOdysseySetting.DelegateTimes.name",
+      "help": "TimeOdysseySetting.DelegateTimes.help"
     }
   },
   "TacticalAcademy": {

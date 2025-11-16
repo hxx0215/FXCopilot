@@ -1748,6 +1748,36 @@ TIME_ODYSSEY_STAGE_FAIL=ButtonWrapper(
         button=(562,262,774,425)
     )
 )
+TIME_ODYSSEY_DELEGATE=ButtonWrapper(
+    name='TIME_ODYSSEY_DELEGATE',
+    share=Button.default_init(
+        area=(1089,542,1157,563),color=(195,195,195),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_DELEGATE_BUTTON.png',
+        button=(1087,490,1157,563)
+    )
+)
+TIME_ODYSSEY_FLEET_SWITCH=ButtonWrapper(
+    name='TIME_ODYSSEY_FLEET_SWITCH',
+    share=Button.default_init(
+        area=(20,336,30,383),color=(57,81,93),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_FLEET_SWITCH.png',
+        button=(3,336,30,383)
+    )
+)
+TIME_ODYSSEY_FLEET=ButtonWrapper(
+    name='TIME_ODYSSEY_FLEET',
+    share=Button.default_init(
+        area=(23,79,107,130),color=(66,67,72),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_FLEET.png'
+    )
+)
+TIME_ODYSSEY_FLEET_AMMUNITION=ButtonWrapper(
+    name='TIME_ODYSSEY_FLEET_AMMUNITION',
+    share=Button.default_init(
+        area=(621,184,664,209),color=(83,117,124),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSELY_FLEE_AMMUNITION.png'
+    )
+)
 STAGE_HOSTING=ButtonWrapper(
     name='STAGE_HOSTING',
     share=Button.default_init(
