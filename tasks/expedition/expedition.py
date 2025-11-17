@@ -1,6 +1,6 @@
 from tasks.base.quick_claim_check import QuickClaimCheck
 from tasks.base.page import page_expedition,page_reward
-from tasks.base.assets.assets_base_page import EXPEDITION_FINISH_FLAG,EXPEDITION_WAITING,EXPEDITION_COLLECT_ALL,EXPEDITION_FINISH_REWARD,EXPEDITION_WAITING2,EXPEDITION_TIME_DATA,EXPEDITION_READY,EXPEDITION_CURRENT_TEAMS_DATA,EXPEDITION_TIME_SELECT_DATA,EXPEDITION_DEPLOY_ICON_BUTTON,EXPEDITION_AUTO_DEPLOY,EXPEDITION_SAIL,EXPEDITION_RECALL,EXPEDITION_LIMITED_TIME_SELECT_DATA
+from tasks.base.assets.assets_base_page import EXPEDITION_FINISH_FLAG,EXPEDITION_WAITING,EXPEDITION_COLLECT_ALL,EXPEDITION_FINISH_REWARD,EXPEDITION_WAITING2,EXPEDITION_TIME_DATA,EXPEDITION_READY,EXPEDITION_CURRENT_TEAMS_DATA,EXPEDITION_TIME_SELECT_DATA,EXPEDITION_DEPLOY_ICON_BUTTON,EXPEDITION_AUTO_DEPLOY,EXPEDITION_SAIL,EXPEDITION_RECALL,EXPEDITION_LIMITED_TIME_SELECT_DATA,EXPEDITION_LIMITED_SPECIAL
 from module.logger import logger
 from module.base.timer import Timer
 from module.ocr.ocr import DigitCounter,Ocr,OcrResultButton,QuickClaimTimeOcr
@@ -62,7 +62,7 @@ class Expedition(QuickClaimCheck):
             if timer.reached():
                 break
     def select_expedition_page(self, page_name: str, button: ButtonWrapper):
-        keywords_str = ['2小时','4小时','8小时','12小时']
+        keywords_str = ['2小时','4小时','8小时','10小时','12小时']
         keywords = [TimeExpeditionKeyword.init(idx,k) for (idx,k) in enumerate(keywords_str)]
         ocr = TimeExpeditionOcr(button)
         for image in self.loop():
@@ -72,6 +72,37 @@ class Expedition(QuickClaimCheck):
                 if btn:
                     self.ui_ocr_button_click(btn)
                     return
+    
+    def special_check(self):
+        self.select_expedition_page('10小时', EXPEDITION_LIMITED_TIME_SELECT_DATA)
+        timer = Timer(3).start()
+        item_clicked = False
+        swiped = False
+        while 1:
+            for _ in self.loop():
+                if self.appear_then_click(EXPEDITION_LIMITED_SPECIAL):
+                    continue
+                if self.appear_then_click(EXPEDITION_AUTO_DEPLOY):
+                    continue
+                if self.appear(EXPEDITION_SAIL):
+                    item_clicked = True
+                    break
+                if timer.reached():
+                    break
+            if swiped:
+                break
+            if item_clicked:
+                for _ in self.loop():
+                    if self.appear_then_click(EXPEDITION_SAIL):
+                        continue
+                    if self.appear(EXPEDITION_RECALL):
+                        return
+            else:
+                vector = (0,-500)
+                box = (746,169,1252,484)
+                self.device.swipe_vector(vector,box=box)
+                timer.reset()
+                swiped = True
                 
     def deploy_next_expedition(self):
         current_time = get_server_now()
@@ -92,6 +123,7 @@ class Expedition(QuickClaimCheck):
             else:
                 self.select_expedition_page('2小时',EXPEDITION_TIME_SELECT_DATA)
         if current_time >= server_special_expedition_start_time and current_time < server_special_expedition_end_time:
+            self.special_check()
             self.select_expedition_page('12小时',EXPEDITION_LIMITED_TIME_SELECT_DATA)
         while 1:
             for image in self.loop():

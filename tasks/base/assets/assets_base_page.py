@@ -1427,6 +1427,15 @@ EXPEDITION_LIMITED_TIME_SELECT_DATA=ButtonWrapper(
         file='./assets/share/attack/expedition/EXPEDITION_LIMITED_TIME_SELECT_DATA.png'
     )
 )
+EXPEDITION_LIMITED_SPECIAL=ButtonWrapper(
+    name='EXPEDITION_LIMITED_SPECIAL',
+    share=Button(
+        area=(996,424,1254,505),color=(128,146,146),
+        file='./assets/share/attack/expedition/EXPEDITION_LIMITED_SPECIAL.png',
+        button=(741,419,994,488),
+        search=(983,94,1267,573)
+    )
+)
 EXPEDITION_DEPLOY_ICON_BUTTON=ButtonWrapper(
     name='EXPEDITION_DEPLOY_ICON_BUTTON',
     share=Button(
