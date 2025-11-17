@@ -19,9 +19,7 @@ class PositionOcr(Ocr):
         result = result.replace('0', 'O').replace('1', 'I')
         match = re.match(r'^([A-Za-z])\s*点\s*$', result.strip())
         if match:
-            letter = match.group(1)  # 提取字母部分
-            logger.info(f'current position = {letter}')  
-            return letter
+            return match.group(1)  # 提取字母部分
         return None
 
 class TimeOdyssey(ResourceCheck):
@@ -290,6 +288,8 @@ class TimeOdyssey(ResourceCheck):
                     if self.appear_then_click(GET_ITEMS):
                         continue
                     if self.appear_then_click(GET_SHIP):
+                        continue
+                    if self.handle_popup_confirm():
                         continue
                     if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
                         return 'not_s_win'
