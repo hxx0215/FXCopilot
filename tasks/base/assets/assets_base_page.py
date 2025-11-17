@@ -971,6 +971,13 @@ ARENA_ADVANCE_POPUP=ButtonWrapper(
         button=(739,436,926,485)
     )
 )
+ARENA_SEASON_REMAIN=ButtonWrapper(
+    name='ARENA_SEASON_REMAIN',
+    share=Button.default_init(
+        area=(1163,106,1262,135),color=(89,52,109),
+        file='./assets/share/attack/competition/ARENA_SEASON_REMAIN.png'
+    )
+)
 DAILY_ROUTINE_BUTTON=ButtonWrapper(
     name='DAILY_ROUTINE_BUTTON',
     share=Button.default_init(

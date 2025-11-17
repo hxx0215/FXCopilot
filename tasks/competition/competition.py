@@ -3,11 +3,13 @@ from tasks.base.page import page_competition
 from tasks.base.assets.assets_base_page import *
 from tasks.base.assets.assets_base_popup import *
 from module.logger import logger
-from module.ocr.ocr import Ocr,OcrResultButton
+from module.ocr.ocr import Ocr,OcrResultButton,Duration
 import random
 import operator
 from module.base.timer import Timer
 from module.exception import GameStuckError
+from module.config.utils import get_server_next_update
+from datetime import timedelta
 class CompetitorOcr(Ocr):
     pass
 class Competition(UI):
@@ -139,6 +141,21 @@ class Competition(UI):
                     cnt = 0
                     continue
 
+    def delay_decision(self):
+        ocr = Duration(ARENA_SEASON_REMAIN)
+        for image in self.loop():
+            result = ocr.ocr_single_line(image)
+            default_time = timedelta()
+            if result == default_time:
+                continue
+            next_day = timedelta(hours=24)
+            if result > next_day:
+                self.config.task_delay(server_update=True)
+            else:
+                target = get_server_next_update('20:00')
+                self.config.task_delay(target=target)
+            break
+
 
     def run(self):
         self.ui_ensure(page_competition)
@@ -149,7 +166,7 @@ class Competition(UI):
         else:
             logger.info("begin to find opposite")
             self.start_competition()
-        self.config.task_delay(server_update=True)
+        self.delay_decision()
 
 
 if __name__ == '__main__':
