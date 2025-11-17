@@ -486,3 +486,9 @@ DailyTask:
     type: checkbox
     value: true
     option: [true, false]
+
+ExerciseSetting:
+  SeasonpassCheck:
+    type: select
+    value: 'no'
+    option: ['no','normal','advance']

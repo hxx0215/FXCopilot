@@ -542,6 +542,19 @@
       "False": "False"
     }
   },
+  "ExerciseSetting": {
+    "_info": {
+      "name": "ExerciseSetting._info.name",
+      "help": "ExerciseSetting._info.help"
+    },
+    "SeasonpassCheck": {
+      "name": "ExerciseSetting.SeasonpassCheck.name",
+      "help": "ExerciseSetting.SeasonpassCheck.help",
+      "no": "no",
+      "normal": "normal",
+      "advance": "advance"
+    }
+  },
   "Gui": {
     "Aside": {
       "Install": "Instalar",

@@ -28,6 +28,7 @@ FX:
       - FrequencySetting
     Exercise:
       - Scheduler
+      - ExerciseSetting
     QuizCenter:
       - Scheduler
     Competition:

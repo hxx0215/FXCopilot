@@ -261,6 +261,17 @@
         "value": "00:00",
         "display": "hide"
       }
+    },
+    "ExerciseSetting": {
+      "SeasonpassCheck": {
+        "type": "select",
+        "value": "no",
+        "option": [
+          "no",
+          "normal",
+          "advance"
+        ]
+      }
     }
   },
   "QuizCenter": {

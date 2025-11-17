@@ -9,6 +9,7 @@ from tasks.base.assets.assets_base_page import (EXERCISE_PAGE,CONTINUOUS_CHALLEN
                                                 SEASON_PASS_DAILY1_REFRESH,SEASON_PASS_DAILY2_REFRESH,SEASON_PASS_DAILY3_REFRESH, SEASON_PASS_TASK_REFRESH)
 from module.ocr.ocr import Ocr,DigitCounter
 from module.base.timer import Timer
+from module.config.utils import get_server_next_update
 
 class Exercise(UI):
     def _get_remain_count(self):
@@ -72,7 +73,12 @@ class Exercise(UI):
     def check_season_pass(self) -> int:
         self.ui_ensure(page_season_pass)
         self.ui_click(SEASON_PASS_SWITCH_TASK,SEASON_PASS_DAILY_TASK)
-        ls = [(SEASON_PASS_DAILY1, SEASON_PASS_DAILY1_REFRESH),(SEASON_PASS_DAILY2, SEASON_PASS_DAILY2_REFRESH),(SEASON_PASS_DAILY3,SEASON_PASS_DAILY3_REFRESH)]
+        if self.config.ExerciseSetting_SeasonpassCheck == 'normal':
+            ls = [(SEASON_PASS_DAILY1, SEASON_PASS_DAILY1_REFRESH),(SEASON_PASS_DAILY2, SEASON_PASS_DAILY2_REFRESH)]
+        elif self.config.ExerciseSetting_SeasonpassCheck == 'advance':
+            ls = [(SEASON_PASS_DAILY1, SEASON_PASS_DAILY1_REFRESH),(SEASON_PASS_DAILY2, SEASON_PASS_DAILY2_REFRESH),(SEASON_PASS_DAILY3,SEASON_PASS_DAILY3_REFRESH)]
+        else:
+            return 0
         for (ocr,refresh_btn) in ls:
             while self.check_should_refresh(ocr):
                 self.ui_click(SEASON_PASS_TASK_REFRESH, refresh_btn)
@@ -89,7 +95,10 @@ class Exercise(UI):
 
     def run(self):
         logger.info("begin daily exercise")
-        keep_time = self.check_season_pass()
+        if self.config.ExerciseSetting_SeasonpassCheck != 'no':
+            keep_time = self.check_season_pass()
+        else:
+            keep_time = 0
         self.ui_ensure(page_main_line)
         self.device.sleep(0.5)
         self.ui_ensure(page_exercise)
@@ -110,7 +119,12 @@ class Exercise(UI):
                 break;
         logger.info("execise finished")
         self.device.sleep(1)
-        self.config.task_delay(server_update=True)
+        if keep_time == 0:
+            self.config.task_delay(server_update=True)
+        else:
+            #如果是通行证更新的那天在晚上7点再检查一次，防止漏打
+            target = get_server_next_update('19:00')
+            self.config.task_delay(target=target)
 
         
 if __name__ == '__main__':

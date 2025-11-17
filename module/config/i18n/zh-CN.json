@@ -542,6 +542,19 @@
       "False": "False"
     }
   },
+  "ExerciseSetting": {
+    "_info": {
+      "name": "演习设置",
+      "help": ""
+    },
+    "SeasonpassCheck": {
+      "name": "通航证检查",
+      "help": "检查通航证中是否是否有演习相关任务",
+      "no": "不检查",
+      "normal": "只检查普通同航证(没买68选这个)",
+      "advance": "高级同航证"
+    }
+  },
   "Gui": {
     "Aside": {
       "Install": "安装",

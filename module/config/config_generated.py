@@ -108,3 +108,6 @@ class GeneratedConfig:
 
     # Group `DailyTask`
     DailyTask_Enable = True  # True, False
+
+    # Group `ExerciseSetting`
+    ExerciseSetting_SeasonpassCheck = 'no'  # no, normal, advance
