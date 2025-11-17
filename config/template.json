@@ -125,6 +125,7 @@
       "MinimalFuel": 1000,
       "ReturnPoint": "A",
       "ManualOrder": 1,
+      "ManualResult": "S",
       "DelegateTimes": 0,
       "BattleCount": {}
     }

@@ -529,6 +529,14 @@
         "type": "input",
         "value": 1
       },
+      "ManualResult": {
+        "type": "select",
+        "value": "S",
+        "option": [
+          "S",
+          "A"
+        ]
+      },
       "DelegateTimes": {
         "type": "input",
         "value": 0,

@@ -81,6 +81,7 @@ class GeneratedConfig:
     TimeOdysseySetting_MinimalFuel = 1000
     TimeOdysseySetting_ReturnPoint = 'A'
     TimeOdysseySetting_ManualOrder = 1
+    TimeOdysseySetting_ManualResult = 'S'  # S, A
     TimeOdysseySetting_DelegateTimes = 0
     TimeOdysseySetting_BattleCount = {}
 

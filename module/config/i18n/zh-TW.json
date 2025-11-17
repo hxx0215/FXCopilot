@@ -433,6 +433,12 @@
       "name": "TimeOdysseySetting.ManualOrder.name",
       "help": "TimeOdysseySetting.ManualOrder.help"
     },
+    "ManualResult": {
+      "name": "TimeOdysseySetting.ManualResult.name",
+      "help": "TimeOdysseySetting.ManualResult.help",
+      "S": "S",
+      "A": "A"
+    },
     "DelegateTimes": {
       "name": "TimeOdysseySetting.DelegateTimes.name",
       "help": "TimeOdysseySetting.DelegateTimes.help"

@@ -35,3 +35,4 @@ exe打包coming soon
 - [X] 每日礼包
 - [X] 每周礼包
 - [X] exe打包(点[这里](https://github.com/hxx0215/FXCopilot/releases))
+- [ ] 技能等级9+

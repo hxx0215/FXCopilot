@@ -291,8 +291,12 @@ class TimeOdyssey(ResourceCheck):
                         continue
                     if self.handle_popup_confirm():
                         continue
-                    if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
-                        return 'not_s_win'
+                    if self.config.TimeOdysseySetting_ManualResult == 'A':
+                        if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
+                            break
+                    else:
+                        if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
+                            return 'not_s_win'
             if stage_result == 's-win':
                 for _ in self.loop():
                     if self.appear_then_click(TIME_ODYSSEY_S_WIN):
