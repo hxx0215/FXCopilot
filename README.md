@@ -14,7 +14,7 @@ Fork 自[StarRailCopilot](https://github.com/LmeSzinc/StarRailCopilot)
 5. python ./gui.py 
 6. 访问 http://localhost:22367/
 
-exe打包coming soon
+exe打包 ~~coming soon~~ 已完成，[点这里下载](https://github.com/hxx0215/FXCopilot/releases)
 
 让MLXR多些时间陪家人，少些时间玩二游
 
@@ -22,7 +22,7 @@ exe打包coming soon
 
 # TODO
 - [X] 主线挂机
-- [ ] 远征10小时1600油检查
+- [X] 远征10小时1600油检查
 - [X] 邮件检查
 - [X] 初始代码删除，部分代码重构
 - [X] 活动挂机精细控制(针对船捞满后打到油点自动退出)
@@ -35,4 +35,4 @@ exe打包coming soon
 - [X] 每日礼包
 - [X] 每周礼包
 - [X] exe打包(点[这里](https://github.com/hxx0215/FXCopilot/releases))
-- [ ] 技能等级9+
+- [X] 技能等级9+学习
