@@ -9,7 +9,8 @@ from tasks.base.assets.assets_base_page import (TACTICAL_ACADEMY_TIME_DATA,TACTI
                                                 TACTICAL_ACADEMY_BASIC_SUPPORT,TACTICAL_ACADEMY_INTERMEDIATE_SUPPORT,TACTICAL_ACADEMY_ADVANCED_SUPPORT,
                                                 TACTICAL_ACADEMY_BASIC_COMMAND,TACTICAL_ACADEMY_INTERMEDIATE_COMMAND,TACTICAL_ACADEMY_ADVANCED_COMMAND,
                                                 TACTICAL_ACADEMY_CLASS_COMMAND,TACTICAL_ACADEMY_CLASS_PRIMARY,TACTICAL_ACADEMY_CLASS_ULTIMATE,TACTICAL_ACADEMY_CLASS_SUPPORT,
-                                                TACTICAL_ACADEMY_BOOK_TYPE_DATA,TACTICAL_ACADEMY_PAGE
+                                                TACTICAL_ACADEMY_BOOK_TYPE_DATA,TACTICAL_ACADEMY_PAGE,TACTICAL_ACADEMY_SPECIAL_GUNNERY,TACTICAL_ACADEMY_SPECIAL_AVIATION,
+                                                TACTICAL_ACADEMY_SPECIAL_AUXILIARY,TACTICAL_ACADEMY_SPECIAL_TORPEDO,TACTICAL_ACADEMY_SPECIAL_COMMAND,TACTICAL_ACADEMY_SPECIAL_SUPPORT
                                                 )
 from tasks.base.page import page_tactical_academy,page_temp
 from module.base.timer import Timer
@@ -17,13 +18,22 @@ from module.ocr.ocr import DataDigit,DigitCounter,Ocr
 from module.logger.logger import logger
 import datetime
 from typing import cast
+import math
 
 LEVEL_ACCUMULATE_EXP=[0,100,300,700,1500,3100,5500,9100]
+SPECIAL_BOOK_DICT={
+    "【炮击】":TACTICAL_ACADEMY_SPECIAL_GUNNERY,
+    "【雷击】":TACTICAL_ACADEMY_SPECIAL_TORPEDO,
+    "【辅助】":TACTICAL_ACADEMY_SPECIAL_AUXILIARY,
+    "【航空】":TACTICAL_ACADEMY_SPECIAL_AVIATION,
+    'support': TACTICAL_ACADEMY_SPECIAL_SUPPORT,
+    'command': TACTICAL_ACADEMY_SPECIAL_COMMAND 
+}
 BOOK_DICT= {
-    "【炮击】":[TACTICAL_ACADEMY_BASIC_GUNNERY,TACTICAL_ACADEMY_INTERMEDIATE_GUNNERY,TACTICAL_ACADEMY_ADVANCED_GUNNERY],
+    "【炮击】":[TACTICAL_ACADEMY_BASIC_GUNNERY,TACTICAL_ACADEMY_INTERMEDIATE_GUNNERY,TACTICAL_ACADEMY_ADVANCED_GUNNERY,TACTICAL_ACADEMY_SPECIAL_GUNNERY],
     "【雷击】":[TACTICAL_ACADEMY_BASIC_TORPEDO,TACTICAL_ACADEMY_INTERMEDIATE_TORPEDO,TACTICAL_ACADEMY_ADVANCED_TORPEDO],
     "【辅助】":[TACTICAL_ACADEMY_BASIC_AUXILIARY,TACTICAL_ACADEMY_INTERMEDIATE_AUXILIARY,TACTICAL_ACADEMY_ADVANCED_AUXILIARY],
-    "【航空】":[TACTICAL_ACADEMY_BASIC_AVIATION,TACTICAL_ACADEMY_INTERMEDIATE_AVIATION,TACTICAL_ACADEMY_ADVANCED_AVIATION],
+    "【航空】":[TACTICAL_ACADEMY_BASIC_AVIATION,TACTICAL_ACADEMY_INTERMEDIATE_AVIATION,TACTICAL_ACADEMY_ADVANCED_AVIATION,TACTICAL_ACADEMY_SPECIAL_AVIATION],
     'support': [TACTICAL_ACADEMY_BASIC_SUPPORT,TACTICAL_ACADEMY_INTERMEDIATE_SUPPORT,TACTICAL_ACADEMY_ADVANCED_SUPPORT],
     'command': [TACTICAL_ACADEMY_BASIC_COMMAND,TACTICAL_ACADEMY_INTERMEDIATE_COMMAND,TACTICAL_ACADEMY_ADVANCED_COMMAND]
 }
@@ -39,10 +49,6 @@ class TacticalAcademy(QuickClaimCheck):
             if level and level != 0:
                 current_level = level
                 break
-        if current_level == 9:
-            #close and return
-            self.device.adb_shell(['input', 'keyevent', '4'])
-            return
         exp_ocr = DigitCounter(TACTICAL_ACADEMY_CURRENT_EXP)
         current_exp = -1
         for image in self.loop():
@@ -50,8 +56,6 @@ class TacticalAcademy(QuickClaimCheck):
             if not (current == 0  and remain == 0 and total == 0):
                 current_exp = current
                 break
-        logger.info(f'current level{current_level}')
-        current_acc_exp = LEVEL_ACCUMULATE_EXP[current_level - 1] + current_exp
         tactical_class = ''
         for image in self.loop():
             if self.appear(TACTICAL_ACADEMY_CLASS_SUPPORT):
@@ -66,10 +70,42 @@ class TacticalAcademy(QuickClaimCheck):
             if self.appear(TACTICAL_ACADEMY_CLASS_ULTIMATE):
                 tactical_class = 'ultimate'
                 break
-        if tactical_class == 'primary' or tactical_class == 'ultimate':
-            self.pick_front_skill_book(current_acc_exp // 150)
-        if tactical_class == 'support' or tactical_class == 'command':
-            self.pick_front_skill_book(current_acc_exp // 100, book_type= tactical_class, combat=False)
+        logger.info(f'current level{current_level}')
+        if current_level == 9:
+            logger.info(f'current exp {current_exp}')
+            if current_exp < 1000:
+                logger.info('level9 should be learn by hand')
+                self.device.adb_shell(['input', 'keyevent', '4'])
+                return
+            if tactical_class == 'primary' or tactical_class == 'ultimate':
+                book_count = math.ceil((7200 - current_exp) / 1800)
+                book_type = ''
+            if tactical_class == 'support' or tactical_class == 'command':
+                book_count = math.ceil((7200 - current_exp) / 1200)
+                book_type = tactical_class
+            ocr = Ocr(TACTICAL_ACADEMY_BOOK_TYPE_DATA)
+            if book_type == '':
+                for image in self.loop():
+                    book_type = ocr.ocr_single_line(image)
+                    if book_type in SPECIAL_BOOK_DICT:
+                        break
+            btn = SPECIAL_BOOK_DICT[book_type]
+            cnt = self.find_item(btn)
+            pick_books = min(book_count, cnt)
+            logger.info(f'pick {pick_books} books')
+            if pick_books > 0:
+                self.add_item([(btn,pick_books)],(144,507,826,619))
+                logger.info('pick finished')
+                self.ui_click(TACTICAL_ACADEMY_START_TRAINING, TACTICAL_ACADEMY_PAGE)
+            else:
+                logger.info('no books can be learn')
+                self.device.adb_shell(['input', 'keyevent', '4'])
+        else:
+            current_acc_exp = LEVEL_ACCUMULATE_EXP[current_level - 1] + current_exp
+            if tactical_class == 'primary' or tactical_class == 'ultimate':
+                self.pick_front_skill_book(current_acc_exp // 150)
+            if tactical_class == 'support' or tactical_class == 'command':
+                self.pick_front_skill_book(current_acc_exp // 100, book_type= tactical_class, combat=False)
     def pick_front_skill_book(self, exp: int, book_type: str = '', combat: bool = True):
         ocr = Ocr(TACTICAL_ACADEMY_BOOK_TYPE_DATA)
         if book_type == '':

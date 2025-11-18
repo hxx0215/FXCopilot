@@ -2235,6 +2235,60 @@ TACTICAL_ACADEMY_ADVANCED_SUPPORT=ItemWrapper(
     ),
     ocr_area=(152,402,253,422)
 )
+TACTICAL_ACADEMY_SPECIAL_GUNNERY=ItemWrapper(
+    name='TACTICAL_ACADEMY_SPECIAL_GUNNERY',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_SPECIAL_GUNNERY.png',
+        area=(193,367,216,390),color=(163,228,125),
+        button=(154,324,254,423),search=(152,334,1144,411)
+    ),
+    ocr_area=(219,404,252,423)
+)
+TACTICAL_ACADEMY_SPECIAL_AVIATION=ItemWrapper(
+    name='TACTICAL_ACADEMY_SPECIAL_AVIATION',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_SPECIAL_AVIATION.png',
+        area=(310,365,329,392),color=(162,212,103),
+        button=(266,328,365,423),search=(152,334,1144,411)
+    ),
+    ocr_area=(331,404,364,423)
+)
+TACTICAL_ACADEMY_SPECIAL_AUXILIARY=ItemWrapper(
+    name='TACTICAL_ACADEMY_SPECIAL_AUXILIARY',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_SPECIAL_AUXILIARY.png',
+        area=(421,367,440,392),color=(155,211,106),
+        button=(379,328,478,423),search=(152,334,1144,411)
+    ),
+    ocr_area=(446,404,479,423)
+)
+TACTICAL_ACADEMY_SPECIAL_TORPEDO=ItemWrapper(
+    name='TACTICAL_ACADEMY_SPECIAL_TORPEDO',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_SPECIAL_TORPEDO.png',
+        area=(529,369,552,389),color=(151,215,112),
+        button=(491,328,590,423),search=(152,334,1144,411)
+    ),
+    ocr_area=(556,404,589,423)
+)
+TACTICAL_ACADEMY_SPECIAL_COMMAND=ItemWrapper(
+    name='TACTICAL_ACADEMY_SPECIAL_COMMAND',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_SPECIAL_COMMAND.png',
+        area=(183,347,218,404),color=(198,174,152),
+        button=(154,324,254,423),search=(152,334,1144,411)
+    ),
+    ocr_area=(223,404,252,423)
+)
+TACTICAL_ACADEMY_SPECIAL_SUPPORT=ItemWrapper(
+    name='TACTICAL_ACADEMY_SPECIAL_SUPPORT',
+    share=Button(
+        file='./assets/share/naval_port/tactical_academy/TACTICAL_ACADEMY_SPECIAL_SUPPORT.png',
+        area=(183,347,218,404),color=(176,177,166),
+        button=(154,324,254,423),search=(152,334,1144,411)
+    ),
+    ocr_area=(223,404,252,423)
+)
 
 TACTICAL_ACADEMY_CLASS_SUPPORT=ButtonWrapper(
     name='TACTICAL_ACADEMY_CLASS_SUPPORT',
