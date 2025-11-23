@@ -107,12 +107,13 @@ class TimeOdyssey(ResourceCheck):
             if self.appear_then_click(STAGE_HOSTING_FINISH_SINK):
                 finish_reason = 'sink'
                 break
-            ocr_result = self.get_current_resources()
-            if ocr_result:
-                fuel, _, _ = ocr_result
-                if fuel < self.config.TimeOdysseySetting_MinimalFuel:
-                    finish_reason = 'less_than_minimal_fuel'
-                    break
+            if self.config.TimeOdysseySetting_EnableContinuous:
+                ocr_result = self.get_current_resources()
+                if ocr_result:
+                    fuel, _, _ = ocr_result
+                    if fuel < self.config.TimeOdysseySetting_MinimalFuel:
+                        finish_reason = 'less_than_minimal_fuel'
+                        break
             priority_exist = self.check_if_priorty_exist()
             if priority_exist:
                 finish_reason = 'task_interrupt'
@@ -243,6 +244,12 @@ class TimeOdyssey(ResourceCheck):
                 else:
                     self.appear_then_click(TIME_ODYSSEY_FLEET_SWITCH)
             for image in self.loop():
+                if self.config.TimeOdysseySetting_EnableContinuous:
+                    ocr_result = self.get_current_resources()
+                    if ocr_result:
+                        fuel, _, _ = ocr_result
+                        if fuel < self.config.TimeOdysseySetting_MinimalFuel:
+                            return 'less_than_minimal_fuel'
                 position = ocr.ocr_single_line(image)
                 if position:
                     logger.info(f'current position = {position}')  
@@ -281,24 +288,10 @@ class TimeOdyssey(ResourceCheck):
                         continue
                     if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
                         return 'lose_in_stage'
-            if stage_result == 'win':
+            if stage_result == 'win' or stage_result == 's-win':
                 for _ in self.loop():
                     if self.appear_then_click(TIME_ODYSSEY_STAGE_SUCCESS):
                         continue
-                    if self.appear_then_click(GET_ITEMS):
-                        continue
-                    if self.appear_then_click(GET_SHIP):
-                        continue
-                    if self.handle_popup_confirm():
-                        continue
-                    if self.config.TimeOdysseySetting_ManualResult == 'A':
-                        if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
-                            break
-                    else:
-                        if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
-                            return 'not_s_win'
-            if stage_result == 's-win':
-                for _ in self.loop():
                     if self.appear_then_click(TIME_ODYSSEY_S_WIN):
                         continue
                     if self.appear_then_click(GET_ITEMS):
@@ -307,8 +300,12 @@ class TimeOdyssey(ResourceCheck):
                         continue
                     if self.handle_popup_confirm():
                         continue
-                    if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
-                        break
+                    if self.config.TimeOdysseySetting_ManualResult == 'S' and stage_result == 'win':
+                        if self.appear(TIME_ODYSSEY_STAGE_TO_PORT):
+                            return 'not_s_win'
+                    else:
+                        if self.appear(TIME_ODYSSEY_STAGE_SET_SAIL):
+                            break
         return '???'
     def get_next_fleet(self, count: int, order: list[int], current: int):
         if count < len(order):
@@ -359,7 +356,7 @@ class TimeOdyssey(ResourceCheck):
                 self.ui_goto_main()
             if finish_reason == 'depot_full':
                 self.decommission()
-            if finish_reason == 'lose_in_stage' or finish_reason == 'not_s_win':
+            if finish_reason == 'lose_in_stage' or finish_reason == 'not_s_win' or finish_reason == 'less_than_minimal_fuel':
                 self.config.cross_set('TimeOdyssey.Scheduler.Enable',False)
                 self.ui_goto_main()
 
