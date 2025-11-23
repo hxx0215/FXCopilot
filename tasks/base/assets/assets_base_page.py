@@ -2489,3 +2489,18 @@ TASK_DAILY=ButtonWrapper(
         file='./assets/share/task/TASK_DAILY.png'
     )
 )
+TASK_EVENT_BUTTON=ButtonWrapper(
+    name='TASK_EVENT_BUTTON',
+    share=Button.default_init(
+        area=(70,353,100,387),color=(106,106,106),
+        file='./assets/share/task/TASK_EVENT_BUTTON.png',
+        button=(60,344,223,399)
+    )
+)
+TASK_EVENT=ButtonWrapper(
+    name='TASK_EVENT',
+    share=Button.default_init(
+        area=(143,350,246,396),color=(208,213,214),
+        file='./assets/share/task/TASK_EVENT.png'
+    )
+)

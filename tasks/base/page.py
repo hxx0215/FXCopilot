@@ -289,5 +289,9 @@ page_task_daily = Page(TASK_DAILY)
 page_task_all_of_it.link(TASK_DAILY_BUTTON, destination=page_task_daily)
 page_task_daily.link(HOME_BUTTON, destination=page_main)
 
+page_task_event = Page(TASK_EVENT)
+page_task_all_of_it.link(TASK_EVENT_BUTTON, destination=page_task_event)
+page_task_event.link(HOME_BUTTON, destination=page_main)
+
 page_temp = Page(TACTICAL_ACADEMY_START_TRAINING)
 
