@@ -561,6 +561,18 @@
       "advance": "advance"
     }
   },
+  "LuckyDraw": {
+    "_info": {
+      "name": "LuckyDraw._info.name",
+      "help": "LuckyDraw._info.help"
+    },
+    "Enable": {
+      "name": "LuckyDraw.Enable.name",
+      "help": "LuckyDraw.Enable.help",
+      "True": "True",
+      "False": "False"
+    }
+  },
   "Gui": {
     "Aside": {
       "Install": "Install",

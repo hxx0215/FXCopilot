@@ -496,3 +496,9 @@ ExerciseSetting:
     type: select
     value: 'no'
     option: ['no','normal','advance']
+
+LuckyDraw:
+  Enable:
+    type: checkbox
+    value: true
+    option: [true, false]

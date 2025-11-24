@@ -2504,3 +2504,18 @@ TASK_EVENT=ButtonWrapper(
         file='./assets/share/task/TASK_EVENT.png'
     )
 )
+LUCKY_DRAW_PAGE=ButtonWrapper(
+    name='LUCKY_DRAW_PAGE',
+    share=Button.default_init(
+        area=(270,609,354,633),color=(135,121,63),
+        file='./assets/share/event/lucky_draw/LUCKY_DRAW_PAGE.png'
+    )
+)
+LUCK_DRAW_BUTTON=ButtonWrapper(
+    name='LUCK_DRAW_BUTTON',
+    share=Button(
+        area=(22,308,128,327),color=(78,78,78),
+        search=(13,97,170,680),button=(13,282,170,360),
+        file='./assets/share/event/luck_dray/LUCKY_DRAW_BUTTON.png'
+    )
+)

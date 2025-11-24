@@ -725,6 +725,16 @@
         "value": "00:00",
         "display": "hide"
       }
+    },
+    "LuckyDraw": {
+      "Enable": {
+        "type": "checkbox",
+        "value": true,
+        "option": [
+          true,
+          false
+        ]
+      }
     }
   }
 }

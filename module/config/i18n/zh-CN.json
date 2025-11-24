@@ -561,6 +561,18 @@
       "advance": "高级同航证"
     }
   },
+  "LuckyDraw": {
+    "_info": {
+      "name": "幸运大转盘",
+      "help": "全服奖励需要手动领取"
+    },
+    "Enable": {
+      "name": "幸运大转盘",
+      "help": "",
+      "True": "True",
+      "False": "False"
+    }
+  },
   "Gui": {
     "Aside": {
       "Install": "安装",

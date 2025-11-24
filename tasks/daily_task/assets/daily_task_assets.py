@@ -35,3 +35,25 @@ TASK_DAILY_FINAL_GO=ButtonWrapper(
         file='./assets/share/task/TASK_DAILY_FINAL_GO.png'
     )
 )
+LUCKY_DRAW=ButtonWrapper(
+    name='LUCKY_DRAW',
+    share=Button.default_init(
+        area=(270,609,354,633),color=(135,121,63),
+        file='./assets/share/event/lucky_draw/LUCKY_DRAW_PAGE.png',
+        button=(405,342,478,387)
+    )
+)
+LUCKY_DRAW_POINT=ButtonWrapper(
+    name='LUCKY_DRAW_POINT',
+    share=Button.default_init(
+        area=(544,611,617,631),color=(126,124,100),
+        file='./assets/share/event/lucky_draw/LUCKY_DRAW_POINT.png'
+    )
+)
+LUCKY_DRAW_REMAIN=ButtonWrapper(
+    name='LUCKY_DRAW_REMAIN',
+    share=Button.default_init(
+        area=(471,323,489,340),color=(233,82,68),
+        file='./assets/share/event/lucky_draw/LUCKY_DRAW_REMAIN.png'
+    )
+)

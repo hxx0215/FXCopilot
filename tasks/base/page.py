@@ -241,6 +241,10 @@ page_main.link(TO_EVENT_PAGE_BUTTON, destination=page_time_odyssey)
 page_time_odyssey.link(HOME_BUTTON, destination=page_main)
 
 
+page_lucky_draw = Page(LUCKY_DRAW_PAGE)
+page_time_odyssey.link(LUCK_DRAW_BUTTON, destination=page_lucky_draw)
+page_lucky_draw.link(HOME_BUTTON, destination=page_main)
+
 page_time_odyssey_map = Page(TIME_ODYSSEY_REMAIN_TIME)
 page_time_odyssey.link(TIME_ODYSSEY_SAIL_BUTTON, destination=page_time_odyssey_map)
 page_time_odyssey_map.link(HOME_BUTTON, destination=page_main)
@@ -291,6 +295,7 @@ page_task_daily.link(HOME_BUTTON, destination=page_main)
 
 page_task_event = Page(TASK_EVENT)
 page_task_all_of_it.link(TASK_EVENT_BUTTON, destination=page_task_event)
+page_task_daily.link(TASK_EVENT_BUTTON, destination=page_task_event)
 page_task_event.link(HOME_BUTTON, destination=page_main)
 
 page_temp = Page(TACTICAL_ACADEMY_START_TRAINING)

@@ -112,3 +112,6 @@ class GeneratedConfig:
 
     # Group `ExerciseSetting`
     ExerciseSetting_SeasonpassCheck = 'no'  # no, normal, advance
+
+    # Group `LuckyDraw`
+    LuckyDraw_Enable = True  # True, False
