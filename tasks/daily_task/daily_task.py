@@ -35,40 +35,25 @@ class DailyTask(UI):
 
     def lucky_draw(self):
         self.ui_ensure(page_lucky_draw)
-        timer = Timer(3).start()
         ocr = DataDigit(LUCKY_DRAW_POINT)
-        point = -1
-        can_draw = False
+        canCheck = True
+        timer = Timer(10)
         for image in self.loop():
-            if self.appear(LUCKY_DRAW_REMAIN):
-                can_draw = True
-                timer.reset()
-            if self.handle_popup_confirm():
-                continue
-            if can_draw and self.appear_then_click(LUCKY_DRAW, interval= 3):
-                continue
-            if self.appear_then_click(GET_ITEMS, interval= 1.5):
-                continue
-            if timer.reached():
+            if canCheck:
                 point = ocr.ocr_single_line(image)
-                if point == 0:
-                    break
-                else:
-                    timer.reset()
-        # ocr = DataDigit(LUCKY_DRAW_POINT)
-        # count = 0
-        # for image in self.loop():
-        #     if count == 0:
-        #         point = ocr.ocr_single_line(image)
-        #     if point == 0:
-        #         break
-        #     else:
-        #         count = point
-        #     if self.appear_then_click(LUCKY_DRAW, interval= 3):
-        #         continue
-        #     if self.appear_then_click(GET_ITEMS, interval= 1.5):
-        #         count = count - 100
-        #         continue
+                canCheck = False
+                timer = timer.start()
+            if point == 0:
+                break
+            else:
+                if self.appear_then_click(LUCKY_DRAW, interval= 3):
+                    continue
+                if self.appear_then_click(GET_ITEMS, interval= 1.5):
+                    canCheck = True
+                    timer = timer.clear()
+                    continue
+            if timer.reached():
+                break
 
 
     def run(self):
