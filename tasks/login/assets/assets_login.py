@@ -94,6 +94,14 @@ LOGIN_LOADING = ButtonWrapper(
         file='./assets/share/login/LOGIN_LOADING.png'
     ),
 )
+NETWORK_ERROR = ButtonWrapper(
+    name='NETWORK_ERROR',
+    share=Button.default_init(
+        area=(569,313,714,368),color=(179,179,186),
+        file='./assets/share/login/NETWORK_ERROR.png',
+        button=(690,425,874,468)
+    )
+)
 
 SERVER_MAINTAIN = ButtonWrapper(
     name='SERVER_MAINTAIN',

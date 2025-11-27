@@ -1501,11 +1501,15 @@ BEACH_CONTINUE_TRAINING=ButtonWrapper(
 )
 GET_ITEMS=ButtonWrapper(
     name='GET_ITEMS',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(503,144,653,208),color=(190,181,167),
         file='./assets/share/base/main_page/GET_ITEMS.png',
         button=(460,445,836,613)
-    )
+    ),Button.default_init(
+        area=(503,144,653,208),color=(176,170,161),
+        file='./assets/share/base/main_page/GET_ITEMS2.png',
+        button=(460,445,836,613)
+    )]
 )
 GET_SHIP=ButtonWrapper(
     name='GET_SHIP',
@@ -2511,11 +2515,11 @@ LUCKY_DRAW_PAGE=ButtonWrapper(
         file='./assets/share/event/lucky_draw/LUCKY_DRAW_PAGE.png'
     )
 )
-LUCK_DRAW_BUTTON=ButtonWrapper(
-    name='LUCK_DRAW_BUTTON',
+LUCKY_DRAW_BUTTON=ButtonWrapper(
+    name='LUCKY_DRAW_BUTTON',
     share=Button(
         area=(22,308,128,327),color=(78,78,78),
         search=(13,97,170,680),button=(13,282,170,360),
-        file='./assets/share/event/luck_dray/LUCKY_DRAW_BUTTON.png'
+        file='./assets/share/event/lucky_draw/LUCKY_DRAW_BUTTON.png'
     )
 )

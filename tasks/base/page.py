@@ -242,7 +242,7 @@ page_time_odyssey.link(HOME_BUTTON, destination=page_main)
 
 
 page_lucky_draw = Page(LUCKY_DRAW_PAGE)
-page_time_odyssey.link(LUCK_DRAW_BUTTON, destination=page_lucky_draw)
+page_time_odyssey.link(LUCKY_DRAW_BUTTON, destination=page_lucky_draw)
 page_lucky_draw.link(HOME_BUTTON, destination=page_main)
 
 page_time_odyssey_map = Page(TIME_ODYSSEY_REMAIN_TIME)

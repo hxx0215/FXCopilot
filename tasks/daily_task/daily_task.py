@@ -1,7 +1,7 @@
 from tasks.base.ui import UI
-from tasks.base.page import page_task_daily,page_task_event,page_lucky_draw
+from tasks.base.page import page_task_daily,page_task_event,page_lucky_draw,page_time_odyssey
 from .assets.daily_task_assets import *
-from tasks.base.assets.assets_base_page import GET_ITEMS
+from tasks.base.assets.assets_base_page import GET_ITEMS,LUCKY_DRAW_BUTTON
 from module.logger.logger import logger
 from module.ocr.ocr import DataDigit
 from module.base.timer import Timer
@@ -34,7 +34,12 @@ class DailyTask(UI):
         self._claim_rewards(page_task_event)
 
     def lucky_draw(self):
-        self.ui_ensure(page_lucky_draw)
+        self.ui_ensure(page_time_odyssey)
+        for _ in self.loop():
+            if self.ui_page_appear(page_lucky_draw):
+                break
+            if self.appear_then_click(LUCKY_DRAW_BUTTON):
+                continue
         ocr = DataDigit(LUCKY_DRAW_POINT)
         canCheck = True
         timer = Timer(10)
@@ -46,6 +51,9 @@ class DailyTask(UI):
             if point == 0:
                 break
             else:
+                if self.handle_popup_confirm():
+                    canCheck = True
+                    continue
                 if self.appear_then_click(LUCKY_DRAW, interval= 3):
                     continue
                 if self.appear_then_click(GET_ITEMS, interval= 1.5):

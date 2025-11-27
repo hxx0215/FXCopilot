@@ -65,6 +65,10 @@ class Login(UI):
                 logger.info('app should update')
                 continue
 
+            if self.appear_then_click(NETWORK_ERROR):
+                logger.warning('network error retry')
+                continue
+
             # Watch resource downloading and loading
             if self.appear(LOGIN_LOADING, interval=5):
                 logger.info('Game resources downloading or loading')
