@@ -102,6 +102,14 @@ NETWORK_ERROR = ButtonWrapper(
         button=(690,425,874,468)
     )
 )
+NET_TIMEOUT = ButtonWrapper(
+    name='NET_TIMEOUT',
+    share=Button.default_init(
+        area=(494,315,788,367),color=(189,190,195),
+        file='./assets/share/login/NET_TIMEOUT.png',
+        button=(549,425,732,462)
+    )
+)
 
 SERVER_MAINTAIN = ButtonWrapper(
     name='SERVER_MAINTAIN',

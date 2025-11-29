@@ -68,6 +68,9 @@ class Login(UI):
             if self.appear_then_click(NETWORK_ERROR):
                 logger.warning('network error retry')
                 continue
+            if self.appear_then_click(NET_TIMEOUT):
+                logger.warning('net time out retry....')
+                continue
 
             # Watch resource downloading and loading
             if self.appear(LOGIN_LOADING, interval=5):
