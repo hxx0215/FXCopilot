@@ -80,6 +80,12 @@ class Login(UI):
                 orientation_timer.reset()
                 continue
 
+            if self.appear(LOGIN_WAITING):
+                logger.info('Account Login.....')
+                self.device.stuck_record_clear()
+                app_timer.reset()
+                orientation_timer.reset()
+
             if login_confirm_appeared and (not login_success):
                 text = ocr.ocr_single_line(self.device.image)
                 if '成功' in text:

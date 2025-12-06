@@ -126,3 +126,11 @@ APP_UPDATE = ButtonWrapper(
         button=(689,423,872,468)
     )
 )
+LOGIN_WAITING=ButtonWrapper(
+    name='LOGIN_WAITING',
+    share=Button(
+        area=(778,130,906,167),color=(251,227,206),
+        button=(778,130,906,167),search=(753,5,932,222),
+        file='./assets/share/login/LOGIN_WAITING.png'
+    )
+)
