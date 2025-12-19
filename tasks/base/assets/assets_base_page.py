@@ -1714,10 +1714,13 @@ TIME_ODYSSEY_HOSTING_START=ButtonWrapper(
 )
 TIME_ODYSSEY_TIMES_DATA=ButtonWrapper(
     name='TIME_ODYSSEY_TIMES_DATA',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(818,423,933,570),color=(214,214,214),
         file='./assets/share/event/time_odyssey/TIME_ODYSSEY_TIMES_DATA.png'
-    )
+    ),Button.default_init(
+        area=(821,409,920,553),color=(208,208,208),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_TIMES_DATA_1.png'
+    )]
 )
 TIME_ODYSSEY_CONTINUE_HOSTING=ButtonWrapper(
     name='TIME_ODYSSEY_CONTINUE_HOSTING',
@@ -1728,10 +1731,13 @@ TIME_ODYSSEY_CONTINUE_HOSTING=ButtonWrapper(
 )
 TIME_ODYSSEY_TIMES_SELECT=ButtonWrapper(
     name='TIME_ODYSSEY_TIMES_SELECT',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(928,575,959,607),color=(43,43,43),
         file='./assets/share/event/time_odyssey/TIME_ODYSSEY_TIMES_SELECT.png'
-    )
+    ),Button.default_init(
+        area=(914,570,928,585),color=(111,111,111),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_TIMES_SELECT_1.png'
+    )]
 )
 TIME_ODYSSEY_SAIL_SET_SAIL=ButtonWrapper(
     name='TIME_ODYSSEY_SAIL_SET_SAIL',
