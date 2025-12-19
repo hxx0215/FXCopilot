@@ -998,7 +998,7 @@ DAILY_CONVOY_ESCORT_BUTTON=ButtonWrapper(
         area=(483,568,544,657),color=(90,91,97),
         file='./assets/share/attack/daily_routine/CONVOY_ESCORT_BUTTON.png',
         button=(430,568,597,657),
-        search=(475,563,559,662)
+        search=(475,563,559,702)
     )
 )
 DAILY_CONVOY_ESCORT_ACTIVE=ButtonWrapper(
@@ -1007,7 +1007,7 @@ DAILY_CONVOY_ESCORT_ACTIVE=ButtonWrapper(
         area=(422,539,606,648),color=(74,71,63),
         file='./assets/share/attack/daily_routine/CONVOY_ESCORT_ACTIVE.png',
         button=(422,539,606,648),
-        search=(417,534,611,653)
+        search=(417,534,611,693)
     )
 )
 DAILY_CONVOY_ESCORT_START=ButtonWrapper(
@@ -1034,7 +1034,7 @@ DAILY_MILITARY_TECHNOLOGY_BUTTON=ButtonWrapper(
         area=(864,568,925,657),color=(77,82,91),
         file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_BUTTON.png',
         button=(813,568,980,657),
-        search=(859,563,930,662)
+        search=(859,563,930,702)
     )
 )
 DAILY_MILITARY_TECHNOLOGY_ACTIVE=ButtonWrapper(
@@ -1043,7 +1043,7 @@ DAILY_MILITARY_TECHNOLOGY_ACTIVE=ButtonWrapper(
         area=(804,539,988,648),color=(62,63,57),
         file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_ACTIVE.png',
         button=(804,539,988,648),
-        search=(799,534,993,653)
+        search=(799,534,993,693)
     )
 )
 DAILY_MILITARY_TECHNOLOGY_START=ButtonWrapper(
@@ -1071,7 +1071,7 @@ DAILY_TACTICAL_TRAINING_BUTTON=ButtonWrapper(
         area=(1054,568,1115,657),color=(82,78,85),
         file='./assets/share/attack/daily_routine/TACTICAL_TRAINING_BUTTON.png',
         button=(1004,568,1171,657),
-        search=(1049,563,1120,662)
+        search=(1049,563,1120,702)
     )
 )
 DAILY_TACTICAL_TRAINING_ACTIVE=ButtonWrapper(
@@ -1080,7 +1080,7 @@ DAILY_TACTICAL_TRAINING_ACTIVE=ButtonWrapper(
         area=(994,539,1178,648),color=(66,63,57),
         file='./assets/share/attack/daily_routine/TACTICAL_TRAINING_ACTIVE.png',
         button=(994,539,1178,648),
-        search=(989,534,1183,653)
+        search=(989,534,1183,693)
     )
 )
 DAILY_TACTICAL_TRAINING_START=ButtonWrapper(
@@ -1107,7 +1107,7 @@ DAILY_ARM_TRANSPORT_BUTTON=ButtonWrapper(
         area=(295,569,354,654),color=(92,100,110),
         file='./assets/share/attack/daily_routine/ARM_TRANSPORT_BUTTON.png',
         button=(242,569,406,659),
-        search=(290,564,359,659)
+        search=(290,564,359,699)
     )
 )
 DAILY_ARM_TRANSPORT_ACTIVE=ButtonWrapper(
@@ -1116,7 +1116,7 @@ DAILY_ARM_TRANSPORT_ACTIVE=ButtonWrapper(
         area=(230,539,416,648),color=(67,67,62),
         file='./assets/share/attack/daily_routine/ARM_TRASPORT_ACTIVE.png',
         button=(230,539,416,648),
-        search=(225,534,421,653)
+        search=(225,534,421,693)
     )
 )
 DAILY_ARM_TRANSPORT_START=ButtonWrapper(
@@ -1142,9 +1142,10 @@ DAILY_BATTLE_FIELD_BUTTON=ButtonWrapper(
     share=[Button.default_init(
         file='./assets/share/attack/daily_routine/BATTLE_FIELD_BUTTON_LEGACY.png',
         area=(1195,567,1227,633),color=(202,151,113),
-    ),Button.default_init(
+    ),Button(
         file='./assets/share/attack/daily_routine/BATTLE_FIELD_BUTTON.png',
-        area=(1195,567,1227,633),color=(216,165,127)
+        area=(1195,567,1227,633),color=(216,165,127),
+        search=(1175,547,1247,693),button=(1195,567,1227,633)
     )
     ]
 )
@@ -1157,7 +1158,7 @@ DAILY_BATTLE_FIELD_ACTIVE=ButtonWrapper(
     ),Button(
         file='./assets/share/attack/daily_routine/BATTLE_FIELD_ACTIVE.png',
         area=(1185,537,1226,648),color=(136,119,94),
-        button=(1185,537,1226,648),search=(1180,532,1231,653)
+        button=(1185,537,1226,648),search=(1180,532,1231,693)
     )
     ]
 )
@@ -1185,7 +1186,7 @@ DAILY_MILITARY_PRACTICE_BUTTON=ButtonWrapper(
         file='./assets/share/attack/daily_routine/MILITARY_PRACTICE_BUTTON.png',
         area=(674,568,735,657),color=(121,162,192),
         button=(622,568,789,657),
-        search=(669,563,740,661)
+        search=(669,563,740,701)
     )
 )
 DAILY_MILITARY_PRACTICE_ACTIVE=ButtonWrapper(
@@ -1194,7 +1195,7 @@ DAILY_MILITARY_PRACTICE_ACTIVE=ButtonWrapper(
         area=(613,539,797,648),color=(82,95,97),
         file='./assets/share/attack/daily_routine/MILITARY_PRACTICE_ACTIVE.png',
         button=(613,539,797,648),
-        search=(608,534,802,653)
+        search=(608,534,802,693)
     )
 )
 DAILY_MILITARY_PRACTICE_START=ButtonWrapper(
@@ -1435,6 +1436,14 @@ EXPEDITION_LIMITED_SPECIAL=ButtonWrapper(
         button=(741,419,994,488),
         search=(983,94,1267,573)
     )
+)
+EXPEDITION_LIMITED_SPECIAL_TITLE = ButtonWrapper(
+    name='EXPEDITION_LIMITED_SPECIAL_TITLE',
+    share=Button(
+        area=(763,279,811,375),color=(203,182,140),
+        file='./assets/share/attack/expedition/EXPEDITION_LIMITED_SPECIAL_TITLE.png',
+        button=(741,419,994,488),
+        search=(743,142,831,583))
 )
 EXPEDITION_DEPLOY_ICON_BUTTON=ButtonWrapper(
     name='EXPEDITION_DEPLOY_ICON_BUTTON',
@@ -1926,12 +1935,16 @@ DECOMMISSIONING_BATCH_SELECT=ButtonWrapper(
 )
 DECOMMISSIONING_BATCH_SELECT_PAGE=ButtonWrapper(
     name='DECOMMISSIONING_BATCH_SELECT_PAGE',
-    share=Button(
-        area=(208,222,373,369),color=(55,55,55),
-        file='./assets/share/depot/DECOMMISSIONING_BATCH_SELECT_PAGE.png',
-        button=(208,222,373,369),search=(203,217,378,369)
+    share=[
+        Button(
+            area=(208,222,373,369),color=(55,55,55),
+            file='./assets/share/depot/DECOMMISSIONING_BATCH_SELECT_PAGE.png',
+            button=(208,222,373,369),search=(203,217,378,369)),
+        Button.default_init(
+            area=(209,216,324,306),color=(62,62,62),
+            file='./assets/share/depot/DECOMMISSIONING_BATCH_SELECT_PAGE_1.png'
+        )]
     )
-)
 DECOMMISSIONING_BATCH_CLOSE=ButtonWrapper(
     name='DECOMMISSIONING_BATCH_CLOSE',
     share=Button.default_init(
@@ -1941,12 +1954,15 @@ DECOMMISSIONING_BATCH_CLOSE=ButtonWrapper(
 )
 DECOMMISSIONING_BATCH_CONFIRM=ButtonWrapper(
     name='DECOMMISSIONING_BATCH_CONFIRM',
-    share=Button(
+    share=[Button(
         area=(889,442,1073,488),color=(96,195,196),
         file='./assets/share/depot/DECOMMISSIONING_BATCH_CONFIRM.png',
         button=(889,442,1073,488),search=(884,437,1078,493)
-
-    )
+    ),Button.default_init(
+        area=(1006,458,1051,486),color=(154,221,221),
+        file='./assets/share/depot/DECOMMISSIONING_BATCH_CONFIRM_1.png',
+        button=(894,453,1070,494)
+    )]
 )
 DECOMMISSIONING_SELECTED_DATA=ButtonWrapper(
     name='DECOMMISSIONING_SELECTED_DATA',

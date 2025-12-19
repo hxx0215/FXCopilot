@@ -219,7 +219,7 @@ if __name__ == '__main__':
     task = Mainline('fxc', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test4.png")
+    image_path = os.path.join(path,"test5.png")
     task.image_file=image_path
-    b = task.appear(STAGE_HOSTING_CLOSE)
+    b = task.appear(DECOMMISSIONING_BATCH_CONFIRM)
     print(b)

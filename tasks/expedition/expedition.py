@@ -1,6 +1,6 @@
 from tasks.base.quick_claim_check import QuickClaimCheck
 from tasks.base.page import page_expedition,page_reward
-from tasks.base.assets.assets_base_page import EXPEDITION_FINISH_FLAG,EXPEDITION_WAITING,EXPEDITION_COLLECT_ALL,EXPEDITION_FINISH_REWARD,EXPEDITION_WAITING2,EXPEDITION_TIME_DATA,EXPEDITION_READY,EXPEDITION_CURRENT_TEAMS_DATA,EXPEDITION_TIME_SELECT_DATA,EXPEDITION_DEPLOY_ICON_BUTTON,EXPEDITION_AUTO_DEPLOY,EXPEDITION_SAIL,EXPEDITION_RECALL,EXPEDITION_LIMITED_TIME_SELECT_DATA,EXPEDITION_LIMITED_SPECIAL
+from tasks.base.assets.assets_base_page import EXPEDITION_FINISH_FLAG,EXPEDITION_WAITING,EXPEDITION_COLLECT_ALL,EXPEDITION_FINISH_REWARD,EXPEDITION_WAITING2,EXPEDITION_TIME_DATA,EXPEDITION_READY,EXPEDITION_CURRENT_TEAMS_DATA,EXPEDITION_TIME_SELECT_DATA,EXPEDITION_DEPLOY_ICON_BUTTON,EXPEDITION_AUTO_DEPLOY,EXPEDITION_SAIL,EXPEDITION_RECALL,EXPEDITION_LIMITED_TIME_SELECT_DATA,EXPEDITION_LIMITED_SPECIAL,EXPEDITION_LIMITED_SPECIAL_TITLE
 from module.logger import logger
 from module.base.timer import Timer
 from module.ocr.ocr import DigitCounter,Ocr,OcrResultButton,QuickClaimTimeOcr
@@ -78,13 +78,16 @@ class Expedition(QuickClaimCheck):
         timer = Timer(3).start()
         item_clicked = False
         swiped = False
+        found_available = False
         while 1:
             for _ in self.loop():
-                if self.appear_then_click(EXPEDITION_LIMITED_SPECIAL):
+                if self.appear(EXPEDITION_LIMITED_SPECIAL_TITLE):
+                    found_available = True
+                if found_available and self.appear_then_click(EXPEDITION_LIMITED_SPECIAL):
                     continue
-                if self.appear_then_click(EXPEDITION_AUTO_DEPLOY):
+                if found_available and self.appear_then_click(EXPEDITION_AUTO_DEPLOY):
                     continue
-                if self.appear(EXPEDITION_SAIL):
+                if found_available and self.appear(EXPEDITION_SAIL):
                     item_clicked = True
                     break
                 if timer.reached():
@@ -180,7 +183,7 @@ if __name__ == '__main__':
     task = Expedition('src', task='Exercise')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test4.png")
+    image_path = os.path.join(path,"test6.png")
     task.image_file=image_path
-    rs = EXPEDITION_DEPLOY_ICON_BUTTON.match_multi_template(task.device.image, similarity=0.8)
+    rs = EXPEDITION_LIMITED_SPECIAL_TITLE.match_multi_template(task.device.image, similarity=0.85)
     print(f"result {rs}")

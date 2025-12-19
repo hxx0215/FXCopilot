@@ -11,6 +11,7 @@ from dataclasses import dataclass
 from typing import ClassVar
 from module.exception import RequestHumanTakeover
 from module.base.button import ClickButton
+from module.base.timer import Timer
 import re
 import jellyfish
 import math
@@ -124,9 +125,14 @@ class QuizCenter(UI):
             ocr_btn = random.choice(filtered_result)
         else:
             ocr_btn = random.choice(result)
+        popuped = False
         for _ in self.loop():
-            if self.handle_popup_confirm():
+            if popuped and (not self.pop_confirm_appear()):
                 break
+            if self.handle_popup_confirm():
+                popuped = True
+                self.device.sleep(1)
+                continue
             if self.ui_ocr_button_click(ocr_btn):
                 continue
         for _ in self.loop():
