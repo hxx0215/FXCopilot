@@ -103,6 +103,8 @@ class Competition(UI):
             if self.appear_then_click(CLICK_TO_CONTINUE):
                 timer.reset()
                 continue
+            if self.appear_then_click(GET_ITEMS):
+                continue
             if self.appear(ARENA_REFRESH):
                 return
             if timer.reached():
@@ -173,7 +175,7 @@ if __name__ == '__main__':
     task = Competition('src', task='Exercise')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test","test7.png")
+    image_path = os.path.join(path,"test","test8.png")
     task.image_file=image_path
-    b = task.appear(ARENA_SMALL_CLASS_SELECTED)
+    b = task.appear(GET_ITEMS)
     print(b)

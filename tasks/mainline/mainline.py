@@ -3,7 +3,7 @@ from tasks.base.page import page_main_line,page_decommissioning_batch
 from .assets import *
 from tasks.base.assets.assets_base_page import (NEXT_STAGE_BUTTON,PREVIOUS_STAGE_BUTTON,STAGE_HOSTING,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_DECOMMISIONING,STAGE_HOSTING_CLOSE,STAGE_HOSTING_FINISH_REACH_TIMES,
                                                 DECOMMISSIONING_PAGE,DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,
-                                                STAGE_HOSTING_GET_SSR, STAGE_INFO_PAGE,STAGE_CLOSE_BUTTON,MAIN_LINE_PAGE,STAGE_FAILED_PAGE)
+                                                STAGE_HOSTING_GET_SSR, STAGE_INFO_PAGE,STAGE_CLOSE_BUTTON,MAIN_LINE_PAGE,STAGE_FAILED_PAGE,GET_SHIP)
 from tasks.base.assets.assets_base_popup import POPUP_CANCEL,POPUP_CONFIRM
 from module.logger.logger import logger
 from module.ocr.ocr import Ocr,DigitCounter
@@ -36,7 +36,7 @@ class Mainline(UI):
             return (False,-1,-1)
         if not (1 <= a <= 19):
             return (False,-1,-1)
-        if a < 19:
+        if a <= 19:
             if not (1 <= b <= 10):
                 return (False,-1,-1)
         elif a == 19:
@@ -46,6 +46,7 @@ class Mainline(UI):
     def move(self,current, target, left, right):
         times = abs(current - target)
         timer = Timer(10).start()
+        logger.info(f'move times: {times}')
         for _ in self.loop():
             if times > 0:
                 if current < target:
@@ -90,6 +91,8 @@ class Mainline(UI):
                 if match:
                     current_stage = int(match.group(2))
                     break
+            if current_stage == stage:
+                break
             self.move(current_stage, stage, PREVIOUS_STAGE_BUTTON,NEXT_STAGE_BUTTON)
         logger.info('find stage')
     def start_hosting(self):
@@ -168,7 +171,13 @@ class Mainline(UI):
             self.ui_click(MAINLINE_FINISH_HOSTING_FUEL_POPUP, STAGE_HOSTING_GET_SSR)
             self.ui_click(STAGE_HOSTING_CLOSE, MAINLINE_STAGE_FINISH)
             self.ui_click(MAINLINE_STAGE_FINISH, GET_ITEMS)
-            self.ui_click(GET_ITEMS, MAINLINE_STAGE_FINISH_EXIT)
+            for _ in self.loop():
+                if self.appear_then_click(GET_ITEMS):
+                    continue
+                if self.appear_then_click(GET_SHIP):
+                    continue
+                if self.appear(MAINLINE_STAGE_FINISH_EXIT):
+                    break
             for _ in self.loop():
                 if self.appear_then_click(MAINLINE_STAGE_FINISH_EXIT):
                     break
