@@ -75,7 +75,7 @@ class Expedition(QuickClaimCheck):
     
     def special_check(self):
         self.select_expedition_page('10小时', EXPEDITION_LIMITED_TIME_SELECT_DATA)
-        timer = Timer(3).start()
+        timer = Timer(5).start()
         item_clicked = False
         swiped = False
         while 1:
@@ -90,8 +90,10 @@ class Expedition(QuickClaimCheck):
                     item_clicked = True
                     break
                 if timer.reached():
+                    logger.info('find 1600 timeout')
                     break
-            if swiped:
+            if swiped and not item_clicked:
+                logger.info('not find 1600')
                 break
             if item_clicked:
                 for _ in self.loop():
@@ -103,7 +105,8 @@ class Expedition(QuickClaimCheck):
                 vector = (0,-500)
                 box = (746,169,1252,484)
                 self.device.swipe_vector(vector,box=box)
-                timer.reset()
+                logger.info('reset timer')
+                timer = timer.reset()
                 swiped = True
                 
     def deploy_next_expedition(self):

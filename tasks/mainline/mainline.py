@@ -61,10 +61,15 @@ class Mainline(UI):
                 break
 
     def move_stage(self,chapter,stage):
+        timer = Timer(3)
         for _ in self.loop():
             if self.appear(MAINLINE_STAGE_START):
-                logger.info('found start')
-                break
+                timer.start()
+                if timer.reached():
+                    break
+                else:
+                    continue
+            timer.reset()
             self.device.swipe_vector((500,0),box=STAGE_SELECTOR_AREA)
         ocr_chapter = -1
         while ocr_chapter != chapter:

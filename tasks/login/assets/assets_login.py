@@ -96,11 +96,15 @@ LOGIN_LOADING = ButtonWrapper(
 )
 NETWORK_ERROR = ButtonWrapper(
     name='NETWORK_ERROR',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(569,313,714,368),color=(179,179,186),
         file='./assets/share/login/NETWORK_ERROR.png',
         button=(690,425,874,468)
-    )
+    ),Button.default_init(
+        area=(452,315,828,368),color=(192,192,197),
+        file='./assets/share/login/NETWORK_ERROR_1.png',
+        button=(550,425,734,468)
+    )]
 )
 NET_TIMEOUT = ButtonWrapper(
     name='NET_TIMEOUT',
