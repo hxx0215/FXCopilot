@@ -80,7 +80,7 @@ class Expedition(QuickClaimCheck):
         swiped = False
         while 1:
             for _ in self.loop():
-                if self.appear_then_click(EXPEDITION_LIMITED_SPECIAL_TITLE):
+                if self.appear_then_click(EXPEDITION_LIMITED_SPECIAL_TITLE, similarity=0.93):
                     continue
                 # if found_available and self.appear_then_click(EXPEDITION_LIMITED_SPECIAL):
                 #     continue
@@ -185,7 +185,7 @@ if __name__ == '__main__':
     task = Expedition('src', task='Exercise')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test7.png")
+    image_path = os.path.join(path,"test6.png")
     task.image_file=image_path
-    rs = task.appear(EXPEDITION_LIMITED_SPECIAL_TITLE)
+    rs = task.appear(EXPEDITION_LIMITED_SPECIAL_TITLE, similarity= 0.93)
     print(f"result {rs}")

@@ -1439,11 +1439,16 @@ EXPEDITION_LIMITED_SPECIAL=ButtonWrapper(
 )
 EXPEDITION_LIMITED_SPECIAL_TITLE = ButtonWrapper(
     name='EXPEDITION_LIMITED_SPECIAL_TITLE',
-    share=Button(
+    share=[Button(
         area=(763,279,811,375),color=(203,182,140),
         file='./assets/share/attack/expedition/EXPEDITION_LIMITED_SPECIAL_TITLE.png',
         button=(741,279,994,375),
-        search=(743,142,831,583))
+        search=(743,142,831,583)),
+        Button(
+        area=(763,279,811,375),color=(205,184,142),
+        file='./assets/share/attack/expedition/EXPEDITION_LIMITED_SPECIAL_TITLE_1.png',
+        button=(741,279,994,375),
+        search=(743,142,831,583))]
 )
 EXPEDITION_DEPLOY_ICON_BUTTON=ButtonWrapper(
     name='EXPEDITION_DEPLOY_ICON_BUTTON',

@@ -3,6 +3,7 @@ from tasks.base.page import page_shop_gift_shop
 from tasks.base.assets.assets_base_page import GET_ITEMS
 from module.config.utils import get_server_next_weekday_update
 from module.logger.logger import logger
+from module.base.timer import Timer
 from abc import ABC, abstractmethod
 
 
@@ -52,9 +53,9 @@ class FreeGift(UI, ABC):
     
     def run(self):
         self.ui_ensure(page_shop_gift_shop)
-        
         self.ui_click(self.shop_gift_button, self.shop_gift_selected)
         
+        timer = Timer(7).start()
         for _ in self.loop():
             if self.appear_then_click(self.free_gift_button):
                 continue
@@ -62,6 +63,10 @@ class FreeGift(UI, ABC):
                 break
             if self.appear(self.first_nonfree_gift):
                 logger.info('no free gift')
+                self.finish_task()
+                return
+            if timer.reached():
+                logger.info('not found free gift')
                 self.finish_task()
                 return
         

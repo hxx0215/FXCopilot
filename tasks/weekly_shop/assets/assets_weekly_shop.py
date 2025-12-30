@@ -18,19 +18,27 @@ SHOP_WEEKLY_GIFT_SELECTED=ButtonWrapper(
 )
 SHOP_FREE_WEEKLY_GIFT=ButtonWrapper(
     name='SHOP_FREE_WEEKLY_GIFT',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(265,325,449,497),color=(167,166,165),
         file='./assets/share/shop/SHOP_FREE_WEEKLY_GIFT.png',
         button=(253,174,478,632)
-    )
+    ),Button.default_init(
+        area=(273,364,442,496),color=(159,165,165),
+        file='./assets/share/shop/SHOP_FREE_WEEKLY_GIFT_1.png',
+        button=(253,174,478,632)
+    )]
 )
 SHOP_FREE_WEEKLY_GIFT_CONFIRM=ButtonWrapper(
     name='SHOP_FREE_WEEKLY_GIFT_CONFIRTM',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(314,283,439,401),color=(123,122,121),
         file='./assets/share/shop/SHOP_FREE_WEEKLY_GIFT_CONFIRM.png',
         button=(811,494,995,542)
-    )
+    ),Button.default_init(
+        area=(314,283,439,401),color=(122,127,127),
+        file='./assets/share/shop/SHOP_FREE_WEEKLY_GIFT_CONFIRM_1.png',
+        button=(811,494,995,542)
+    )]
 )
 SHOP_FIRST_NONFREE_WEEKLY_GIFT=ButtonWrapper(
     name='SHOP_FIRST_NONFREE_WEEKLY_GIFT',
