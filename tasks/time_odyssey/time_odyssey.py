@@ -2,7 +2,7 @@ from tasks.base.resource_check import ResourceCheck
 from tasks.base.page import page_time_odyssey_map,page_decommissioning_batch
 from tasks.base.assets.assets_base_page import (TIME_ODYSSEY_PAGE,TIME_ODYSSEY_MAP_BUTTON,TIME_ODYSSEY_TIMES_DATA,TIME_ODYSSEY_TIMES_SELECT,STAGE_HOSTING,STAGE_HOSTING_FINISH_DECOMMISIONING,
                                                 STAGE_HOSTING_CLOSE,DECOMMISSIONING_PAGE,TIME_ODYSSEY_CONTINUE_HOSTING,STAGE_HOSTING_FINISH_FUEL,STAGE_SET_SAIL,STAGE_TO_PORT,STAGE_HOSTING_FINISH_SINK,
-                                                TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,TIME_ODYSSEY_SAIL_SET_SAIL,TIME_ODYSSEY_STAGE_SET_SAIL,TIME_ODYSSEY_STAGE_POSITION,
+                                                TIME_ODYSSEY_SAIL_HOSTING_BUTTON,TIME_ODYSSEY_HOSTING_START,TIME_ODYSSEY_REMAIN_TIME,TIME_ODYSSEY_SAIL_SET_SAIL,TIME_ODYSSEY_STAGE_SET_SAIL,TIME_ODYSSEY_STAGE_POSITION,TIME_ODYSSEY_STAGE_POSITION_I,
                                                 DECOMMISSIONING_BATCH_CONFIRM,DECOMMISSIONING_SELECTED_DATA,DECOMMISSIONING_CONFIRM,GET_ITEMS,STOP_HOSTING,BATTLE_PAGE,STAGE_HOSTING_FINISH_REACH_TIMES,
                                                 TIME_ODYSSEY_STAGE_TO_PORT,TIME_ODYSSEY_STAGE_SUCCESS,TIME_ODYSSEY_STAGE_FAIL,TIME_ODYSSEY_S_WIN,TIME_ODYSSEY_FLEET,TIME_ODYSSEY_FLEET_SWITCH,
                                                 TIME_ODYSSEY_FLEET_AMMUNITION,GET_SHIP,TIME_ODYSSEY_CONTINUE_MANUAL
@@ -251,6 +251,9 @@ class TimeOdyssey(ResourceCheck):
                         if fuel < self.config.TimeOdysseySetting_MinimalFuel:
                             return 'less_than_minimal_fuel'
                 position = ocr.ocr_single_line(image)
+                p_i = self.appear(TIME_ODYSSEY_STAGE_POSITION_I)
+                if (not position) and p_i:
+                    position = 'I'
                 if position:
                     logger.info(f'current position = {position}')  
                     if position.lower() == self.config.TimeOdysseySetting_ReturnPoint.lower():

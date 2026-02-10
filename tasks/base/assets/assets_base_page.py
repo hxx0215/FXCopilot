@@ -1767,6 +1767,14 @@ TIME_ODYSSEY_STAGE_POSITION=ButtonWrapper(
     )
 
 )
+TIME_ODYSSEY_STAGE_POSITION_I=ButtonWrapper(
+    name='TIME_ODYSSEY_STAGE_POSITION_I',
+    share=Button.default_init(
+        area=(802,222,837,249),color=(88,88,88),
+        file='./assets/share/event/time_odyssey/TIME_ODYSSEY_STAGE_POSITION_I.png'
+
+    )
+)
 TIME_ODYSSEY_STAGE_TO_PORT=ButtonWrapper(
     name='TIME_ODYSSEY_STAGE_TO_PORT',
     share=Button.default_init(

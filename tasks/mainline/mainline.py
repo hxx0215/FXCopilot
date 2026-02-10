@@ -88,6 +88,8 @@ class Mainline(UI):
         logger.info('got target chapter')
         self.ui_click(MAINLINE_STAGE_START, MAINLINE_HOSTING)
         current_stage = -1
+        self.device.sleep(1.0)
+        self.device.screenshot()
         while stage != current_stage:
             ocr = Ocr(MAINLINE_STAGE_NAME)
             for image in self.loop():
