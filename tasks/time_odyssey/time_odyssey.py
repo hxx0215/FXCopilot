@@ -108,10 +108,12 @@ class TimeOdyssey(ResourceCheck):
                 finish_reason = 'sink'
                 break
             if self.config.TimeOdysseySetting_EnableContinuous:
-                ocr_result = self.get_current_resources()
+                ocr_result = self.get_fuel()
                 if ocr_result:
-                    fuel, _, _ = ocr_result
+                    fuel = ocr_result
+                    logger.info(f'current fuel:{fuel}')
                     if fuel < self.config.TimeOdysseySetting_MinimalFuel:
+                        logger.info(f'current fuel:{fuel}, minimal fuel:{self.config.TimeOdysseySetting_MinimalFuel}')
                         finish_reason = 'less_than_minimal_fuel'
                         break
             priority_exist = self.check_if_priorty_exist()
@@ -156,6 +158,7 @@ class TimeOdyssey(ResourceCheck):
 
     def post_hosting(self, finish_reason):
         self.device.screenshot_interval_set()
+        logger.info(f'task finish reason is: {finish_reason}')
         if finish_reason == 'depot_full':
             self.ui_click(STAGE_HOSTING_CLOSE, DECOMMISSIONING_PAGE)
             self.decommission()
@@ -245,10 +248,12 @@ class TimeOdyssey(ResourceCheck):
                     self.appear_then_click(TIME_ODYSSEY_FLEET_SWITCH)
             for image in self.loop():
                 if self.config.TimeOdysseySetting_EnableContinuous:
-                    ocr_result = self.get_current_resources()
+                    ocr_result = self.get_fuel()
+                    logger.info(f'current oil{ocr_result}')
                     if ocr_result:
-                        fuel, _, _ = ocr_result
+                        fuel = ocr_result
                         if fuel < self.config.TimeOdysseySetting_MinimalFuel:
+                            logger.info(f'current fuel:{fuel}, minimal fuel:{self.config.TimeOdysseySetting_MinimalFuel}')
                             return 'less_than_minimal_fuel'
                 position = ocr.ocr_single_line(image)
                 p_i = self.appear(TIME_ODYSSEY_STAGE_POSITION_I)
@@ -256,7 +261,7 @@ class TimeOdyssey(ResourceCheck):
                     position = 'I'
                 if position:
                     logger.info(f'current position = {position}')  
-                    if position.lower() == self.config.TimeOdysseySetting_ReturnPoint.lower():
+                    if position.lower() in self.config.TimeOdysseySetting_ReturnPoint.lower():
                         return 'arrive_position'
                     else:
                         break
@@ -372,7 +377,7 @@ if __name__ == '__main__':
     task = TimeOdyssey('fxc', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test9.png")
+    image_path = os.path.join(path,"test10.png")
     task.image_file=image_path
-    b = task.appear(GET_SHIP)
+    b = task.get_fuel()
     print(b)

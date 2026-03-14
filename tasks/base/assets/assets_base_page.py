@@ -1945,6 +1945,20 @@ RESOURCE_DATA=ButtonWrapper(
         file='./assets/share/base/main_page/RESOURCE_DATA.png'
     )
 )
+FUEL_DATA=ButtonWrapper(
+    name='FUEL_DATA',
+    share=Button.default_init(
+        area=(825,28,911,50),color=(52,55,58),
+        file='./assets/share/base/main_page/FUEL_DATA.png'
+    )
+)
+FUEL_ICON=ButtonWrapper(
+    name='FUEL_ICON',
+    share=Button.default_init(
+        area=(799,23,825,56),color=(153,154,156),
+        file='./assets/share/base/main_page/FUEL_ICON.png'
+    )
+)
 DECOMMISSIONING_BATCH_SELECT=ButtonWrapper(
     name='DECOMMISSIONING_BATCH_SELECT',
     share=Button.default_init(
