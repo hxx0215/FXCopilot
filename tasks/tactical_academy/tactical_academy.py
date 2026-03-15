@@ -49,6 +49,10 @@ class TacticalAcademy(QuickClaimCheck):
             if level and level != 0:
                 current_level = level
                 break
+        if current_level == 10:
+            logger.info('current level is 10, stop learning')
+            self.device.adb_shell(['input', 'keyevent', '4'])
+            return
         exp_ocr = DigitCounter(TACTICAL_ACADEMY_CURRENT_EXP)
         current_exp = -1
         for image in self.loop():
