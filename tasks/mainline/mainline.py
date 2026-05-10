@@ -34,12 +34,12 @@ class Mainline(UI):
             b = int(parts[1])
         except ValueError:
             return (False,-1,-1)
-        if not (1 <= a <= 19):
+        if not (1 <= a <= 20):
             return (False,-1,-1)
-        if a <= 19:
+        if a < 20:
             if not (1 <= b <= 10):
                 return (False,-1,-1)
-        elif a == 19:
+        elif a == 20:
             if not (1 <= b <= 5):
                 return (False,-1,-1)
         return (True,a,b)
@@ -92,7 +92,7 @@ class Mainline(UI):
         self.device.screenshot()
         while stage != current_stage:
             ocr = Ocr(MAINLINE_STAGE_NAME)
-            for image in self.loop():
+            for image in self.loop(False):
                 r = ocr.ocr_single_line(image)
                 match = re.search(r'(\d+)-(\d+)', r)
                 if match:
@@ -101,6 +101,7 @@ class Mainline(UI):
             if current_stage == stage:
                 break
             self.move(current_stage, stage, PREVIOUS_STAGE_BUTTON,NEXT_STAGE_BUTTON)
+            self.device.sleep(3.0)
         logger.info('find stage')
     def start_hosting(self):
         self.ui_click(MAINLINE_HOSTING,MAINLINE_START_HOSTING)

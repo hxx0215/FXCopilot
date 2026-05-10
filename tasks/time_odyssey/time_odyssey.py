@@ -111,7 +111,6 @@ class TimeOdyssey(ResourceCheck):
                 ocr_result = self.get_fuel()
                 if ocr_result:
                     fuel = ocr_result
-                    logger.info(f'current fuel:{fuel}')
                     if fuel < self.config.TimeOdysseySetting_MinimalFuel:
                         logger.info(f'current fuel:{fuel}, minimal fuel:{self.config.TimeOdysseySetting_MinimalFuel}')
                         finish_reason = 'less_than_minimal_fuel'
@@ -135,6 +134,7 @@ class TimeOdyssey(ResourceCheck):
                         break
                 # self.ui_click(DECOMMISSIONING_BATCH_CONFIRM, DECOMMISSIONING_PAGE)
                 logger.info('demission batch confirm')
+                self.device.sleep(1.0)
                 counter = DigitCounter(DECOMMISSIONING_SELECTED_DATA)
                 image = self.device.screenshot()
                 (current,remain,total) = counter.ocr_single_line(image)
