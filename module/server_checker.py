@@ -10,7 +10,7 @@ from module.logger import logger
 
 class ServerChecker:
     def __init__(self, server: str) -> None:
-        self._base: str = 'https://fx-status.deno.dev'
+        self._base: str = 'https://fx-status.pages.dev'
         self._api: str = '/api/force/status'
         
         # 处理服务器名称（直接使用，不需要分割转换）

@@ -2507,10 +2507,13 @@ SHOP_BUTTON=ButtonWrapper(
 )
 SHOP_GIFT_SHOP=ButtonWrapper(
     name='SHOP_GIFT_SHOP',
-    share=Button.default_init(
+    share=[Button.default_init(
         area=(354,91,412,132),color=(197,210,212),
         file='./assets/share/shop/SHOP_GIFT_SHOP.png'
-    )
+    ),Button.default_init(
+        area=(316,89,362,130),color=(188,203,206),
+        file='./assets/share/shop/SHOP_GIFT_SHOP_2.png'
+    )]
 )
 TASK_BUTTON=ButtonWrapper(
     name='TASK_BUTTON',
