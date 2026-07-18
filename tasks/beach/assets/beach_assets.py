@@ -1,0 +1,92 @@
+
+from module.base.button import Button, ButtonWrapper,ItemWrapper
+BEACH_FOOD_COCONUT = ItemWrapper(
+    name='BEACH_FOOD_COCONUT',
+    share=Button(
+        area=(489,336,590,402),color=(161,156,145),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_COCONUT.png',
+        search=(145,324,1146,424),button=(489,324,590,424)
+    ),
+    ocr_area=(489,402,590,424)
+)
+BEACH_FOOD_CHICKEN = ItemWrapper(
+    name='BEACH_FOOD_CHICKEN',
+    share=Button(
+        area=(378,334,479,402),color=(134,113,89),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_CHIKEN.png',
+        search=(145,324,1146,424),button=(378,324,479,424)
+    ),
+    ocr_area=(378,402,479,424)
+)
+BEACH_FOOD_SEAFOOD = ItemWrapper(
+    name='BEACH_FOOD_SEAFOOD',
+    share=Button(
+        area=(265,334,366,402),color=(130,110,86),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_SEAFOOD.png',
+        search=(145,324,1146,424),button=(265,324,366,424)
+    ),
+    ocr_area=(265,402,366,424)
+)
+BEACH_FOOD_SHRIMP=ItemWrapper(
+    name='BEACH_FOOD_SHRIMP',
+    share=Button(
+        area=(152,334,253,402),color=(135,122,94),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_SHRIMP.png',
+        search=(145,324,1146,424),button=(152,324,253,424)
+    ),
+    ocr_area=(152,402,253,424)
+)
+BEACH_FOOD_COCONUT_PLUS=ItemWrapper(
+    name='BEACH_FOOD_COCONUT_PLUS',
+    share=Button(
+        area=(601,343,702,390),color=(186,187,176),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_COCONUT_PLUS.png',
+        search=(145,324,1146,424),button=(601,323,702,418)
+    ),
+    ocr_area=(601,395,702,424)
+)
+BEACH_FOOD_CHIKEN_PLUS=ItemWrapper(
+    name='BEACH_FOOD_CHIKEN_PLUS',
+    share=Button(
+        area=(713,343,814,390),color=(174,126,71),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_CHIKEN_PLUS.png',
+        search=(145,324,1146,424),button=(713,323,814,418)
+    ),
+    ocr_area=(713,395,814,424)
+)
+BEACH_FOOD_SEAFOOD_PLUS=ItemWrapper(
+    name='BEACH_FOOD_SEAFOOD_PLUS',
+    share=Button(
+        area=(825,343,926,390),color=(154,126,87),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_SEAFOOD_PLUS.png',
+        search=(145,324,1146,424),button=(825,323,926,418)
+    ),
+    ocr_area=(825,395,926,424)
+)
+BEACH_FOOD_SHRIMP_PLUS=ItemWrapper(
+    name='BEACH_FOOD_SHRIMP_PLUS',
+    share=Button(
+        area=(938,343,1039,390),color=(184,134,83),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_SHRIMP_PLUS.png',
+        search=(145,324,1146,424),button=(938,323,1039,418)
+    ),
+    ocr_area=(938,395,1039,424)
+)
+BEACH_FOOD_FUGU_PLUS=ItemWrapper(
+    name='BEACH_FOOD_FUGU_PLUS',
+    share=Button(
+        area=(468,343,569,390),color=(148,142,140),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_FUGU_PLUS.png',
+        search=(145,324,1146,424),button=(468,323,569,418)
+    ),
+    ocr_area=(468,395,569,424)
+)
+BEACH_FOOD_FUGU=ItemWrapper(
+    name='BEACH_FOOD_FUGU',
+    share=Button(
+        area=(1026,343,1127,390),color=(137,142,153),
+        file='./assets/share/naval_port/beach/BEACH_FOOD_FUGU.png',
+        search=(145,324,1146,424),button=(1026,323,1127,418)
+    ),
+    ocr_area=(1026,395,1127,424)
+)

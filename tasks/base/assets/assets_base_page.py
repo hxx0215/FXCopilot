@@ -1545,42 +1545,6 @@ BEACH_START_TRAINING=ButtonWrapper(
     )
 )
 
-BEACH_FOOD_COCONUT = ItemWrapper(
-    name='BEACH_FOOD_COCONUT',
-    share=Button(
-        area=(489,336,590,402),color=(161,156,145),
-        file='./assets/share/naval_port/beach/BEACH_FOOD_COCONUT.png',
-        search=(145,324,1146,424),button=(489,324,590,424)
-    ),
-    ocr_area=(489,402,590,424)
-)
-BEACH_FOOD_CHICKEN = ItemWrapper(
-    name='BEACH_FOOD_CHICKEN',
-    share=Button(
-        area=(378,334,479,402),color=(134,113,89),
-        file='./assets/share/naval_port/beach/BEACH_FOOD_CHIKEN.png',
-        search=(145,324,1146,424),button=(378,324,479,424)
-    ),
-    ocr_area=(378,402,479,424)
-)
-BEACH_FOOD_SEAFOOD = ItemWrapper(
-    name='BEACH_FOOD_SEAFOOD',
-    share=Button(
-        area=(265,334,366,402),color=(130,110,86),
-        file='./assets/share/naval_port/beach/BEACH_FOOD_SEAFOOD.png',
-        search=(145,324,1146,424),button=(265,324,366,424)
-    ),
-    ocr_area=(265,402,366,424)
-)
-BEACH_FOOD_SHRIMP=ItemWrapper(
-    name='BEACH_FOOD_SHRIMP',
-    share=Button(
-        area=(152,334,253,402),color=(135,122,94),
-        file='./assets/share/naval_port/beach/BEACH_FOOD_SHRIMP.png',
-        search=(145,324,1146,424),button=(152,324,253,424)
-    ),
-    ocr_area=(152,402,253,424)
-)
 DAILY_REWARD = ButtonWrapper(
     name='DAILY_REWARD',
     share=Button.default_init(

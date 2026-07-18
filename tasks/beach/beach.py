@@ -4,7 +4,8 @@ from tasks.base.page import  page_beach
 from module.ocr.ocr import ItemOcr
 from module.logger.logger import logger
 from module.base.button import ItemWrapper
-from tasks.base.assets.assets_base_page import BEACH_TIME_DATA,BEACH_CONTINUE_TRAINING,GET_ITEMS,BEACH_START_TRAINING,BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN,BEACH_PAGE,BEACH_FOOD_SEAFOOD,BEACH_FOOD_SHRIMP
+from tasks.base.assets.assets_base_page import BEACH_TIME_DATA,BEACH_CONTINUE_TRAINING,GET_ITEMS,BEACH_START_TRAINING,BEACH_PAGE
+from .assets.beach_assets import BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN,BEACH_FOOD_SEAFOOD,BEACH_FOOD_SHRIMP,BEACH_FOOD_FUGU,BEACH_FOOD_CHIKEN_PLUS,BEACH_FOOD_COCONUT_PLUS,BEACH_FOOD_FUGU_PLUS,BEACH_FOOD_SEAFOOD_PLUS,BEACH_FOOD_SHRIMP_PLUS
 from module.base.timer import Timer
 import datetime
 
@@ -12,7 +13,8 @@ class Beach(QuickClaimCheck):
     def __init__(self, config, device=None, task=None):
         super().__init__(config, BEACH_TIME_DATA, device, task)
     def process_pick_food(self):
-        foods = [BEACH_FOOD_COCONUT,BEACH_FOOD_CHICKEN, BEACH_FOOD_SEAFOOD, BEACH_FOOD_SHRIMP]
+        foods = [BEACH_FOOD_COCONUT, BEACH_FOOD_COCONUT_PLUS,BEACH_FOOD_FUGU, BEACH_FOOD_FUGU_PLUS, BEACH_FOOD_CHICKEN, BEACH_FOOD_CHIKEN_PLUS, 
+                  BEACH_FOOD_SEAFOOD, BEACH_FOOD_SEAFOOD_PLUS, BEACH_FOOD_SHRIMP, BEACH_FOOD_SHRIMP_PLUS]
         total = 6
         pick_food: list[tuple[ItemWrapper, int]] = []
         for food in foods:
