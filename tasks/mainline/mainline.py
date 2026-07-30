@@ -40,7 +40,7 @@ class Mainline(UI):
             if not (1 <= b <= 10):
                 return (False,-1,-1)
         elif a == 20:
-            if not (1 <= b <= 5):
+            if not (1 <= b <= 10):
                 return (False,-1,-1)
         return (True,a,b)
     def move(self,current, target, left, right):
