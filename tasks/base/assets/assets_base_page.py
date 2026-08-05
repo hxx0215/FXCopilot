@@ -719,7 +719,7 @@ QUIZ_CENTER_BUTTON=ButtonWrapper(
     name='QUIZ_CENTER_BUTTON',
     share=Button.default_init(
         file='./assets/share/naval_port/quiz_center/QUIZ_CENTER_BUTTON.png',
-        area=(705,636,735,669),color=(207,214,215)
+        area=(663,636,693,669),color=(201,210,211)
     )
 )
 QUIZ_CENTER_PAGE=ButtonWrapper(
