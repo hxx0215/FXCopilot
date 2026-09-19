@@ -138,3 +138,33 @@ LOGIN_WAITING=ButtonWrapper(
         file='./assets/share/login/LOGIN_WAITING.png'
     )
 )
+ACCOUNT_SELECT=ButtonWrapper(
+    name='ACCOUNT_SELECT',
+    share=Button(
+        area=(430,279,588,315),color=(229,229,229),
+        button=(805,290,833,308),search=(420,270,600,330),
+        file='./assets/share/login/ACCOUNT_SELECT.png'
+    )
+)
+ACCOUNT_BUTTON=ButtonWrapper(
+    name='ACCOUNT_BUTTON',
+    share=Button.default_init(
+        area=(503,338,587,369),color=(232,233,234),
+        file='./assets/share/login/ACCOUNT_BUTTON.png'
+    )
+)
+ACCOUNT_LOGIN=ButtonWrapper(
+    name='ACCOUNT_LOGIN',
+    share=Button(
+        area=(483,283,560,403),color=(240,240,240),
+        button=(651,515,851,593),search=(478,268,565,408),
+        file='./assets/share/login/ACCOUNT_LOGIN.png'
+    )
+)
+ACCOUNT_LOGIN_WAITING=ButtonWrapper(
+    name='ACCOUNT_LOGIN_WAITING',
+    share=Button.default_init(
+        area=(351,131,630,166),color=(215,215,215),
+        file='./assets/share/login/ACCOUNT_LOGIN_WAIT.png'
+    )
+)

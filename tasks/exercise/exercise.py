@@ -108,7 +108,7 @@ class Exercise(UI):
                 break
         #至少测一次是否还能进行演习
         remain_count = self._get_remain_count()
-        while remain_count > keep_time:
+        while True:
             self.ui_click(CONTINUOUS_CHALLENGE_BUTTON, CONTINUOUS_CHALLENGE_CANCEL)
             self.ui_click(EXERCISE_ALL_BUTTON, EXERCISE_ALL_CHECKBOX)
             self.start_hosting()

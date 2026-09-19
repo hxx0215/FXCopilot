@@ -80,6 +80,20 @@ class Login(UI):
                 orientation_timer.reset()
                 continue
 
+            if self.appear(ACCOUNT_LOGIN_WAITING):
+                self.device.stuck_record_clear()
+                app_timer.reset()
+                orientation_timer.reset()
+                continue
+
+            if self.appear_then_click(ACCOUNT_SELECT,similarity=.75):
+                continue
+
+            if self.appear_then_click(ACCOUNT_BUTTON):
+                continue
+            if self.appear_then_click(ACCOUNT_LOGIN):
+                continue
+
             if self.appear(LOGIN_WAITING):
                 logger.info('Account Login.....')
                 self.device.stuck_record_clear()
@@ -167,3 +181,11 @@ class Login(UI):
         self.handle_app_login()
 
         self.config.task_delay(server_update=True)
+if __name__ == '__main__':
+    task = Login('fxc', task='Login')
+    import os
+    path = os.path.dirname(__file__)
+    image_path = os.path.join(path,"test.png")
+    task.image_file=image_path
+    b = task.appear(ACCOUNT_SELECT,similarity=.75)
+    print(b)
