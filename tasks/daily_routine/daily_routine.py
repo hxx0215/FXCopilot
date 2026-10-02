@@ -107,7 +107,11 @@ class DailyRoutine(UI):
         self.device.sleep((3,3.5))
         b2 = start_button2 if start_button2 else start_button
         for _ in self.loop():
-            if not self.appear(start_button) and not self.appear(b2):
+            if (start_button == DAILY_TACTICAL_TRAINING_START):
+                st = not self.appear(start_button)
+                sb = not self.appear(b2)
+                logger.info(f'check DAILY_TACTICAL_TRAINING_START {st} and {sb}')
+            if (not self.appear(start_button)) and (not self.appear(b2)):
                 self.device.swipe_vector((1200,0),box=STAGE_SELECTOR_AREA)
                 self.device.sleep((2,3))
             else:
@@ -162,7 +166,6 @@ class DailyRoutine(UI):
         if weekday != 6 and weekday % 2 == 0:
             #1,3,5
             self.arm_transport_stage()
-            self.military_practice_stage()
         elif weekday % 2 == 1:
             #2,4,6
             self.military_technology_stage()
@@ -172,6 +175,7 @@ class DailyRoutine(UI):
             self.military_technology_stage()
             self.military_practice_stage()
             self.tactical_traning_stage()
+        self.military_practice_stage()
         self.convoy_escort_stage()
         self.battle_field_stage()
         self.config.task_delay(server_update=True)
@@ -180,8 +184,8 @@ if __name__ == '__main__':
     task = DailyRoutine('src', task='QuizCenter')
     import os
     path = os.path.dirname(__file__)
-    image_path = os.path.join(path,"test9.png")
+    image_path = os.path.join(path,"test13.png")
     task.image_file=image_path
-    b = task.appear(DAILY_BATTLE_FIELD_BUTTON)
+    b = task.appear(DAILY_TACTICAL_TRAINING_START)
     print(b)
     

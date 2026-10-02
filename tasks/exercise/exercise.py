@@ -72,7 +72,7 @@ class Exercise(UI):
 
     def check_season_pass(self) -> int:
         self.ui_ensure(page_season_pass)
-        self.ui_click(SEASON_PASS_SWITCH_TASK,SEASON_PASS_DAILY_TASK)
+        self.ui_click(SEASON_PASS_SWITCH_TASK,SEASON_PASS_DAILY_TASK, similarity=0.80)
         if self.config.ExerciseSetting_SeasonpassCheck == 'normal':
             ls = [(SEASON_PASS_DAILY1, SEASON_PASS_DAILY1_REFRESH),(SEASON_PASS_DAILY2, SEASON_PASS_DAILY2_REFRESH)]
         elif self.config.ExerciseSetting_SeasonpassCheck == 'advance':

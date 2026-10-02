@@ -1039,12 +1039,15 @@ DAILY_MILITARY_TECHNOLOGY_BUTTON=ButtonWrapper(
 )
 DAILY_MILITARY_TECHNOLOGY_ACTIVE=ButtonWrapper(
     name='DAILY_MILITARY_TECHNOLOGY_ACTIVE',
-    share=Button(
+    share=[Button(
         area=(804,539,988,648),color=(62,63,57),
         file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_ACTIVE.png',
         button=(804,539,988,648),
         search=(799,534,993,693)
-    )
+    ), Button.default_init(
+        area=(804,566,988,675),color=(67,67,62),
+        file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_ACTIVE2.png'
+    )]
 )
 DAILY_MILITARY_TECHNOLOGY_START=ButtonWrapper(
     name='DAILY_MILITARY_TECHNOLOGY_START',
@@ -1052,7 +1055,7 @@ DAILY_MILITARY_TECHNOLOGY_START=ButtonWrapper(
         area=(615,119,840,520),color=(168,167,158),
         file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_START.png',
         button=(635,460,819,510),
-        search=(595,99,860,540)
+        search=(585,89,870,550)
     )
 )
 DAILY_MILITARY_TECHNOLOGY_START2=ButtonWrapper(
@@ -1061,7 +1064,7 @@ DAILY_MILITARY_TECHNOLOGY_START2=ButtonWrapper(
         area=(600,121,854,519),color=(168,167,159),
         file='./assets/share/attack/daily_routine/MILITARY_TECHNOLOGY_START2.png',
         button=(635,461,818,512),
-        search=(580,101,874,539)
+        search=(570,91,884,549)
     )
 )
 
@@ -1089,7 +1092,7 @@ DAILY_TACTICAL_TRAINING_START=ButtonWrapper(
         area=(615,119,840,520),color=(167,167,160),
         file='./assets/share/attack/daily_routine/TACTICAL_TRAINING_START.png',
         button=(635,460,819,510),
-        search=(595,99,860,540)
+        search=(575,99,860,540)
     )
 )
 DAILY_TACTICAL_TRAINING_START2=ButtonWrapper(
@@ -1098,7 +1101,7 @@ DAILY_TACTICAL_TRAINING_START2=ButtonWrapper(
         area=(600,121,854,519),color=(167,168,162),
         file='./assets/share/attack/daily_routine/TACTICAL_TRAINING_START2.png',
         button=(635,461,818,512),
-        search=(580,101,874,539)
+        search=(570,101,874,539)
     )
 )
 DAILY_ARM_TRANSPORT_BUTTON=ButtonWrapper(
