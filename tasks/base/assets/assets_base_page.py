@@ -1171,7 +1171,7 @@ DAILY_BATTLE_FIELD_START=ButtonWrapper(
         area=(628,119,827,520),color=(119,149,153),
         file='./assets/share/attack/daily_routine/BATTLE_FIELD_START.png',
         button=(635,460,819,510),
-        search=(608,99,847,540)
+        search=(578,99,867,540)
     )
 )
 DAILY_BATTLE_FIELD_START2=ButtonWrapper(
@@ -1180,7 +1180,7 @@ DAILY_BATTLE_FIELD_START2=ButtonWrapper(
         area=(615,121,840,519),color=(117,148,154),
         file='./assets/share/attack/daily_routine/BATTLE_FIELD_START2.png',
         button=(635,461,818,512),
-        search=(595,101,860,539)
+        search=(565,101,880,539)
     )
 )
 DAILY_MILITARY_PRACTICE_BUTTON=ButtonWrapper(
